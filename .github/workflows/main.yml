@@ -1,0 +1,26 @@
+# This is the work flow to generate preview links for Pull Requests
+name: PR-Preview-Generator
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Using Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Installing Surge
+        run: npm i -g surge
+      - name: Deploying on Surge
+        env:
+          SURGE_LOGIN: pasindur2@gmail.com
+          SURGE_TOKEN: 9502e7edc4d21133ff5de02a24a434eb
+          DEPLOY_DOMAIN: https://pr-${{ github.event.number }}-petso.surge.sh
+        run: surge ./ $DEPLOY_DOMAIN --token $SURGE_TOKEN

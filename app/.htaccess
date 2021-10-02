@@ -1,0 +1,2 @@
+# Forbid access to 'app' folder
+Options -Indexes

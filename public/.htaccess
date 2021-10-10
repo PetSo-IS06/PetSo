@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+
+Options -Multiviews
+
+RewriteEngine On
+
+RewriteBase /Petso-frontend/public
+
+# Static resources if they exist
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Route all other requests
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+</IfModule>

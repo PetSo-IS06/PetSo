@@ -1,0 +1,193 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+
+/* Form section */
+
+section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 75vh;
+    /* margin: 0px 200px 0px 200px; */
+    /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    animation: gradient 10s ease infinite;
+    background-size: 400% 400%; */
+    
+  }
+
+img {
+    width: 32px;
+  }
+
+.container {
+  box-sizing: unset;
+  position: relative;
+  padding: 50px;
+  width: 300px;
+  min-height: 380px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.459);
+  /*backdrop-filter: blur(5px); */
+  border-radius: 10px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.39);
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  border-radius: 5px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 2%);
+}
+
+.form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.form h2 {
+  color: var(--black-color);
+  letter-spacing: 1px;
+  margin-bottom: 35px;
+  text-align-last: center;
+}
+.form .inputBx {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form .inputBx input {
+  width: 100%;
+  height: 38.900001525878906px;
+  outline: none;
+  border: none;
+  border: 1px solid var(--black-color);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 10px;
+  padding-left: 40px;
+  border-radius: 15px;
+  color: var(--black-color);
+  font-size: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+.form .inputBx .password-control {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: inline-block;
+  width: 35px;
+  height: 30px;
+  transition: 0.5s;
+}
+.form .inputBx .password-control img{
+  /* width: 50px; */
+  /* height: 50px; */
+  transform: scale(0.8);
+}
+.form .inputBx .view {
+  transition: 0.5s;
+}
+.form .inputBx img {
+  position: absolute;
+  left: 8px;
+  transform: scale(0.6);
+}
+.form .inputBx input[type=submit] {
+  background: var(--primary-purple-color);
+  color: var(--white-color);
+  /* max-width: 217.2px;
+  max-height: 54.9px;
+  width: 50%; */
+  height: 40.900001525878906px;
+  width: 170.19696044921875px;
+  left: 8.901611328125px;
+  top: 8.099998474121094px;
+  border-radius: 12px;
+  padding: 8px 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 1.5s;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 22.1px 0px 10px 0px;
+}
+.form .inputBx input[type=submit]:hover {
+  /* background: linear-gradient(115deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.25)); */
+  background: var(--secondary-purple-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  color: var(--black-color);
+  transition: 0.5s;
+}
+.form .inputBx input::placeholder {
+  color: var(--white-color);
+}
+.form .inputBx span {
+  position: absolute;
+  left: 30px;
+  padding: 10px;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  transition: 0.5s;
+  pointer-events: none;
+}
+.form .inputBx input:focus ~ span,
+.form .inputBx input:valid ~ span {
+  transform: translateX(-30px) translateY(-25px);
+  font-size: 12px;
+}
+.form p {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form p a {
+  text-decoration : none;
+}
+.form p a:hover {
+  color: var(--primary-purple-color);
+  /* background-color: rgb(213, 2, 255); */
+  /* background-image: linear-gradient(to right, #b841d6 0%, rgb(109, 40, 105) 100%); */
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.remember {
+  position: relative;
+  display: inline-block;
+  color: var(--black-color);
+  cursor: pointer;
+}
+
+/* =========== Styles for mobile View ============= */
+
+@media screen and (max-width: 768px) {
+
+  section{
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 45px;
+    border-radius: 10px;
+    margin-top: 30px;
+    /* min-height: 380px; */
+    }
+
+}

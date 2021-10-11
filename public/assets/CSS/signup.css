@@ -1,0 +1,48 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap'); */
+
+body {
+  overflow: hidden;
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("/assets/img/login.jpg");
+}
+
+.btn-cancel{
+  font-size: large;
+  margin-top: 400px;
+  color: #f8f8f8;
+  background-color: #6C6666;
+  width: 132.16665649414062px;
+  height: 47.92857360839844px;
+  left: 5.416748046875px;
+  top: 7.0714263916015625px;
+  border-radius: 12px;
+  text-shadow: slategrey;
+  font-weight: bold;
+  display: block;
+ }
+
+/* =========== Styles for mobile View ============= */
+
+@media screen and (max-width: 768px) {
+
+  section{
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 45px;
+    border-radius: 10px;
+    margin-top: 30px;
+    /* min-height: 380px; */
+}
+
+  .btn-cancel {
+    display: none;
+  }
+  
+}

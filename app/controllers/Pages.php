@@ -15,11 +15,8 @@ class Pages extends Controller {
         $this->view('pages/index', $data);
     }
 
-    public function home() {
-        $this->view('pages/home');
+    public function aboutUs() {
+        $this->view('pages/aboutUs');
     }
 
-    // public function topNavbar() {
-    //     $this->view('pages/components/topNavbar');
-    // }
 }

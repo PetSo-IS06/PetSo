@@ -26,9 +26,10 @@ class Core
 
         // check url[1]
         if (isset($url[1])) {
-            if (method_exists($this->currentController, $url[1]));
-            $this->currentMethod = $url[1];
-            unset($url[1]);
+            if (method_exists($this->currentController, $url[1])){
+                $this->currentMethod = $url[1];
+                unset($url[1]);
+            } 
         }
         // get parameters -> if does not exits, keep it empty
         $this->params = $url ? array_values($url) : [];

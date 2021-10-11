@@ -20,7 +20,7 @@ section {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url("/assets/img/login_img/login.jpg");
+  background-image: url("../img/login_img/login.jpg");
   background-size: 100% 100%;
   /*background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   animation: gradient 10s ease infinite;
@@ -69,6 +69,7 @@ section {
   height: 100px;
   top: -15px;
   right: -45px;
+  z-index: 3;
 }
 .box .square:nth-child(2) {
   width: 150px;

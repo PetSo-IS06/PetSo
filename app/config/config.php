@@ -5,7 +5,7 @@
 
     //App Root (Dynamic Links)
     define('APP_ROOT', dirname(dirname(__FILE__)));
-    define('URL_ROOT', 'localhost/Petso-frontend');
+    define('URL_ROOT', 'http://localhost/Petso-frontend');
     define('URL_SUBFOLDER', 'Petso-Frontend');
 
     //Database Info

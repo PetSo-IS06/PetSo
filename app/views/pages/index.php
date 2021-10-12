@@ -15,6 +15,13 @@
             require APP_ROOT . '/views/components/topNavbar.php';
         ?>
     </div>
+    <div class="hero">
+        <div class="hero-banner">
+            <div class="hero-banner-icon">
+                <h1>Hero Section</h1>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

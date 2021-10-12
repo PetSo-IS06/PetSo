@@ -1,0 +1,56 @@
+@import '../variables/font_sizes.css';
+@import '../variables/colors.css';
+@import '../variables/screen_sizes.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+.step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .stepNo {
+    margin-top: 20px;
+  }
+  
+  .step li {
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+    border-radius: 3em;
+    background: var(--primary-purple-color);
+    margin: 0 1em;
+    display: inline-block;
+    color: var(--white-color);
+    position: relative;
+    stroke: var(--primary-purple-color);
+    stroke-width: "2";
+  }
+  .step li::before{
+    content: '';
+    position: absolute;
+    top: .9em;
+    left: -4em;
+    width: 4em;
+    height: .2em;
+    background: #9F2884;
+    z-index: -1;
+    stroke: #9F2884;
+    stroke-width: "2";
+  }
+  .step li:first-child::before {
+    display: none;
+  }
+  .step .active {
+    background: #9F2884;
+  }
+  .step .active ~ li {
+    background: rgb(233, 168, 200);
+  }
+  .step .active ~ li::before {
+    background: #9F2884;
+  }
+  

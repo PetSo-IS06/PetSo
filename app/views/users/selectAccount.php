@@ -9,31 +9,33 @@
 <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/selectAccount.css'/>
 <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'/> 
 </center>
-<body background="../assets/img/Bg.png"> <center>
-    <h3>Create an Account</h3>
-   
-  <ul>
-    <li class="active">1</li>
-    <li>2</li>
-    <li>3</li> 
-  </ul> 
+
+<body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png"> <center> <br><br>
+
+    <h3>Create an Account</h3>  
 </center>
+<div class = "step">
+        <h3>Log in to your Account</h3>
+        <ul class="stepNo">
+            <li>1</li>
+            <li class="active">2</li>
+            <li>3</li> 
+        </ul> 
+    </div>
+
 
 <div class="left"><center>
-<h3> Welfare Organization </h3> <br> 
-    <img src="../assets/img/account_img/organization.png" height="75px" width="75px">
+
+<h3> Welfare Organization </h3> <br> <a href ="/">
+    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px"></a>
 
   </center>
 </div>
 
 <div class="right"> <center>
+
   <h3> User  </h3> <br>  <a href ="/">
   <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px"> </a>
-</center>
-    
-</div>
-  <h3> User  </h3> <br> 
-  <img src="../assets/img/account_img/user.svg" height="75px" width="75px">
 </center>
     
 </div>

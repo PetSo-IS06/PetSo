@@ -91,7 +91,7 @@
 
 /* =========== Styles for Tablet View ============= */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: var(--md)) {
     .nav-menu-top #button1 {
         display: block; 
         position: absolute;

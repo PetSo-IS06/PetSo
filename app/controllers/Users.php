@@ -9,7 +9,6 @@
             $data = [
                 'title' => 'Login Page'
             ];
-
             $this->view('users/login', $data);
         }
     }

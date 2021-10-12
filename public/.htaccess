@@ -1,11 +1,8 @@
 <IfModule mod_rewrite.c>
 
 Options -Multiviews
-
 RewriteEngine On
-
-RewriteBase /Petso-frontend/public
-
+RewriteBase /PetSo/public
 # Static resources if they exist
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

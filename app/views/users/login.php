@@ -11,7 +11,6 @@
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'>
 </head>
 <body>
-
     <!-- Top step display section goes here -->
     <div class = "step">
         <h3>Log in to your Account</h3>
@@ -41,26 +40,28 @@
                     <div class="inputBx">
                         <input type="text" required="required">
                         <span>UserID</span>
-                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/uidicon.png" alt="user">
+                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/uidicon.webp" alt="user">
                     </div>
                     <div class="inputBx password">
                         <input id="password-input" type="password" name="password" required="required">
-                        <img src="assets/img/login_img/lock.png" alt="lock">
+                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lock.png" alt="lock">
                         <span>Password</span>
                         <a href="#" class="password-control" onclick="return show_hide_password(this);">
-                            <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lShowPw.webp" alt="SPW"
+                            <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/ShowPw.webp" alt="SPW"
                                     id="imgClickAndChange" onclick="changeImage(this);">
                         </a>
                     </div>
-                    <label class="remember"><input type="checkbox">
-                        Remember</label>
+                    <label class="remember">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
 
                     <div class="inputBx LogIn">
                         <input type="submit" value="Log in" disabled> 
                     </div>
                     </form>
                     <p>Forgot password? <a href="#">Click Here</a></p>
-                    <p>Don't have an account <a href="<?php echo URL_ROOT; ?>/users/">Sign up</a></p>
+                    <p>Don't have an account <a href="<?php echo URL_ROOT; ?>/users/selectAccount">Sign up</a></p>
                 </div>
             </div>
         </div>
@@ -71,5 +72,5 @@
         </div>
     </section>
 </body>
-<script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/login.js"></script>
+    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/login.js"></script>
 </html>

@@ -1,12 +1,12 @@
 <?php
 
     //Site Info
-    define('SITE_NAME', 'Petso');
+    define('SITE_NAME', 'PetSo');
 
     //App Root (Dynamic Links)
     define('APP_ROOT', dirname(dirname(__FILE__)));
-    define('URL_ROOT', 'http://localhost/Petso-frontend');
-    define('URL_SUBFOLDER', 'Petso-Frontend');
+    define('URL_ROOT', 'http://localhost/PetSo');
+    define('URL_SUBFOLDER', 'PetSo');
 
     //Database Info
     define('DB_HOST', 'localhost');

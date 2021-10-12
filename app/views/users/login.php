@@ -66,7 +66,7 @@
             </div>
         </div>
         <div>
-            <button type="submit" class="btn-cancel">
+            <button type="submit" class="btn-cancel" >
                 Cancel
             </button>
         </div>

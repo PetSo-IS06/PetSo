@@ -45,7 +45,7 @@
     function collapseMenu() {
       var x = document.getElementById("main-links");
       if (x.className === "nav-menu-main") {
-        x.className += " responsive";
+        x.className += "responsive";
       } else {
         x.className = "nav-menu-main";
       }

@@ -12,7 +12,6 @@
             $this->view('users/login', $data);
         }
 
-
         public function signup() {
             $data = [
                 'title' => 'SignUp Page'
@@ -29,5 +28,12 @@
         }
 
         
+    }
+        public function selectAccount() {
+            $data = [
+                'title' => 'Login Page'
+            ];
+            $this->view('users/selectAccount', $data);
+        }
     }
 

@@ -6,11 +6,12 @@ class Pages extends Controller {
     }
 
     public function index() {
-        // $users = $this->userModel->getUsers();
 
+        // $users = $this->userModel->getUsers();
         $data = [
             'title' => 'Home Page',
-            'users' => '',
+           'users' => "",
+
         ];
         $this->view('pages/index', $data);
     }

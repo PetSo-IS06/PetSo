@@ -9,8 +9,8 @@
     define('URL_SUBFOLDER', 'PetSo');
 
     //Database Info
-    define('DB_HOST', 'localhost');
+    define('DB_HOST', '127.0.0.1');
     define('DB_USER', 'root');
-    define('DB_PASS', '');
+    define('DB_PASS', "Pasindu@1999");
     define('DB_NAME', 'petso');
 

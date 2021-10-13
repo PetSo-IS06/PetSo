@@ -11,4 +11,11 @@
             ];
             $this->view('users/login', $data);
         }
+
+        public function signup() {
+            $data = [
+                'title' => 'SignUp Page'
+            ];
+            $this->view('users/signup', $data);
+        }
     }

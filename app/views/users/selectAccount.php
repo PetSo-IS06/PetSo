@@ -11,8 +11,7 @@
 </center>
 
 <body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png"> <center> <br><br>
-
-    <h3>Create an Account</h3>  
+<h3>Create an Account</h3>  
 </center>
 <div class = "step">
         <h3>Log in to your Account</h3>
@@ -22,8 +21,7 @@
             <li>3</li> 
         </ul> 
     </div>
-
-
+</center>
 <div class="left"><center>
 
 <h3> Welfare Organization </h3> <br> <a href ="/">
@@ -37,7 +35,6 @@
   <h3> User  </h3> <br>  <a href ="/">
   <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px"> </a>
 </center>
-    
 </div>
  <br> <center>
  <button type="submit" class="btn-cancel"> 

@@ -39,6 +39,5 @@
             ];
             $this->view('users/selectAccount', $data);
         }
-    }
 
 

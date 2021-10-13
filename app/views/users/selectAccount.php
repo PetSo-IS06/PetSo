@@ -11,10 +11,9 @@
 </center>
 
 <body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png"> <center> <br><br>
-<h3>Create an Account</h3>  
 </center>
 <div class = "step">
-        <h3>Log in to your Account</h3>
+<h3>Create an Account</h3>  
         <ul class="stepNo">
             <li>1</li>
             <li class="active">2</li>

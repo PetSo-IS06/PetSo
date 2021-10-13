@@ -9,9 +9,8 @@ class Pages extends Controller {
 
         // $users = $this->userModel->getUsers();
         $data = [
-            'title' => 'Home Page',
+           'title' => 'Home Page',
            'users' => "",
-
         ];
         $this->view('pages/index', $data);
     }

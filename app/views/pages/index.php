@@ -62,6 +62,11 @@
             </div>
         </div>
     </div>
+    <div id="footer">
+        <?php
+            require APP_ROOT . '/views/components/footer.php';
+        ?>
+    </div>
 </body>
 </html>
 

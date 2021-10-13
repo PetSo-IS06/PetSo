@@ -13,7 +13,7 @@
    <nav class="nav">
        <div class="nav-logo">
             <a href="/">
-                <img src="../assets/img/Petso_logo.png" alt="Petso logo">
+            <img src="<?php echo URL_ROOT; ?>/public/assets/img/petso_logo.png"> 
             </a>
        </div>
     <div class="nav-bars">

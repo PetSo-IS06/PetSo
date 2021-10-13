@@ -1,0 +1,35 @@
+@import '../variables/font_sizes.css';
+@import '../variables/colors.css';
+@import '../variables/screen_sizes.css';
+@import '../global_custom.css';
+
+* {
+    box-sizing: border-box;
+    
+  }
+  .footer_column a{
+      color: white;
+      text-decoration: none;
+  }
+  .footer_column h2{
+      color:white;   
+  }
+  .footer_column a:hover {
+color:var( --primary-light-grey-color);
+-webkit-transition: all 0.3s ease;
+transition: all 0.3s ease;
+  }
+  
+  .footer_column {
+    float: left;
+    width: 33.33%;
+    padding-left: 35px;
+    height: 300px; 
+    padding-top: 20px;  
+   
+  } 
+  .footer_row:after {
+    content: "";
+    clear: both;
+    padding-left: 10px;
+  }

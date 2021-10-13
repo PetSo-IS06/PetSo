@@ -7,18 +7,25 @@
 
 <title>Signup1</title>  </head>
 <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/selectAccount.css'/>
-
-
-<body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png"> <center> <br><br>
-    <h3>Create an Account</h3>
-    
-     
-  
+<link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'/> 
 </center>
 
+<body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png"> <center> <br><br>
+</center>
+<div class = "step">
+<h3>Create an Account</h3>  
+        <ul class="stepNo">
+            <li>1</li>
+            <li class="active">2</li>
+            <li>3</li> 
+        </ul> 
+    </div>
+</center>
 <div class="left"><center>
+
 <h3> Welfare Organization </h3> <br> <a href ="/">
     <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px"></a>
+
   </center>
 </div>
 
@@ -27,10 +34,7 @@
   <h3> User  </h3> <br>  <a href ="/">
   <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px"> </a>
 </center>
-    
 </div>
-
- 
  <br> <center>
  <button type="submit" class="btn-cancel"> 
    Cancel

@@ -6,11 +6,11 @@ class Pages extends Controller {
     }
 
     public function index() {
-        $users = $this->userModel->getUsers();
+        // $users = $this->userModel->getUsers();
 
         $data = [
             'title' => 'Home Page',
-            'users' => $users
+            'users' => '',
         ];
         $this->view('pages/index', $data);
     }
@@ -23,4 +23,7 @@ class Pages extends Controller {
         $this->view('pages/services');
     }
 
+    public function projectTopSection(){
+        $this->view('pages/projectTopSection');
+    }
 }

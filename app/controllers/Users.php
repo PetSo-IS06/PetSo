@@ -26,9 +26,6 @@
             ];
             $this->view('users/OrganizationSignUp', $data);
         }
-
-        
-    }
         public function selectAccount() {
             $data = [
                 'title' => 'Login Page'

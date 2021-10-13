@@ -61,7 +61,7 @@
                     </div>
                     </form>
                     <p>Forgot password? <a href="#">Click Here</a></p>
-                    <p>Don't have an account <a href="<?php echo URL_ROOT; ?>/users/selectAccount">Sign up</a></p>
+                    <p>Don't have an account? <a href="<?php echo URL_ROOT; ?>/users/selectAccount">Sign up</a></p>
                 </div>
             </div>
         </div>

@@ -1,0 +1,55 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+   .left {
+    
+      background-color: rgb(243, 221, 238);
+      opacity: 0.7;
+      float: left;
+      height: 25%;
+      width: 25%;
+     overflow-x: hidden;
+      padding-top: 20px;
+      margin-left: 230px;
+      border-radius: 30px;
+      margin-top: 100px;
+   }
+
+   .right {
+    /* right: 40%; */
+    background-color: rgb(243, 221, 238);
+    opacity: 0.7;
+    float: right;
+    height: 25%;
+    width: 25%;
+   overflow-x: hidden;
+    padding-top: 20px;
+    margin-right: 230px;
+    border-radius: 30px;
+    margin-top: 100px;
+ }
+
+ .right:hover {
+    box-shadow: 0 0 8px rgba(122, 26, 93, 1.2);
+
+}
+.left:hover { 
+    box-shadow: 0 0 8px rgba(122, 26, 93, 1.2);
+}
+  .btn-cancel{
+   margin-top: 300px;
+   color: #f8f8f8;
+   background-color: var( --primary-light-grey-color);
+   width: 120px;
+   height: 40px;
+   font-weight: bolder;
+   border-radius: 10px;
+   border: none;
+  }
+
+  .btn-cancel:hover{
+    box-shadow: 0 0 8px rgba(122, 26, 93, 1.2);
+    cursor: pointer;
+  }

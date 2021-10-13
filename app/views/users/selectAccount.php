@@ -1,3 +1,40 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-echo 'Select Account';
+<title>Signup1</title>  </head>
+<link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/selectAccount.css'/>
+
+
+<body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png"> <center> <br><br>
+    <h3>Create an Account</h3>
+    
+     
+  
+</center>
+
+<div class="left"><center>
+<h3> Welfare Organization </h3> <br> <a href ="/">
+    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px"></a>
+  </center>
+</div>
+
+<div class="right"> <center>
+
+  <h3> User  </h3> <br>  <a href ="/">
+  <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px"> </a>
+</center>
+    
+</div>
+
+ 
+ <br> <center>
+ <button type="submit" class="btn-cancel"> 
+   Cancel
+ </button>
+</center>
+</body>
+  </html>

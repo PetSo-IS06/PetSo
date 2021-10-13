@@ -13,7 +13,7 @@
    <nav class="nav">
        <div class="nav-logo">
             <a href="/">
-                <img src="./assets/img/Petso_logo.png" alt="Petso logo">
+                <img src="../assets/img/Petso_logo.png" alt="Petso logo">
             </a>
        </div>
     <div class="nav-bars">
@@ -27,7 +27,8 @@
                 <i class="fas fa-bell notify"></i>
             </a>
             <a href="<?php echo URL_ROOT;?>/users/login" class="nav-menu-main-links">Login</a>
-            <a href="<?php echo URL_ROOT;?>/users/signup" class="nav-menu-signup-btn" id="button1">Sign Up</a>
+            <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button1">Sign Up</a>
+
         </div>
         <div class="nav-menu-main" id="main-links">
             <a href="<?php echo URL_ROOT;?>/pages/index" class="nav-menu-main-links">Home</a>
@@ -37,7 +38,8 @@
             </a>
             <a href="<?php echo URL_ROOT;?>/pages/aboutUs" class="nav-menu-main-links">About Us</a>
             <a href="<?php echo URL_ROOT;?>/pages/faq" class="nav-menu-main-links">FAQs</a>
-            <a href="<?php echo URL_ROOT;?>/users/signup" class="nav-menu-signup-btn" id="button2">Sign Up</a>
+            <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button2">Sign Up</a>
+
         </div>
     </div>
    </nav> 

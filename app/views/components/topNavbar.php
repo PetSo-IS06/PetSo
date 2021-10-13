@@ -27,6 +27,12 @@
                 <i class="fas fa-bell notify"></i>
             </a>
             <a href="<?php echo URL_ROOT;?>/users/login" class="nav-menu-main-links">Login</a>
+<<<<<<< HEAD
+=======
+
+            <a href="<?php echo URL_ROOT;?>/users/signup" class="nav-menu-signup-btn" id="button1">Sign Up</a>
+
+>>>>>>> 118e06e (test)
             <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button1">Sign Up</a>
 
         </div>

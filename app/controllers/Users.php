@@ -33,4 +33,12 @@
             $this->view('users/selectAccount', $data);
         }
     }
+    public function selectAccount() {
+            $data = [
+                'title' => 'Login Page'
+            ];
+            $this->view('users/selectAccount', $data);
+        }
+    }
+
 

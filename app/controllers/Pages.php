@@ -8,7 +8,11 @@ class Pages extends Controller {
     public function index() {
 
         // $users = $this->userModel->getUsers();
+<<<<<<< HEAD
         $data = [
+=======
+         $data = [
+>>>>>>> 118e06e (test)
             'title' => 'Home Page',
            'users' => "",
 

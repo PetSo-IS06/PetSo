@@ -6,8 +6,11 @@
         }
 
         public function login() {
+            // an associative array to handle user input
             $data = [
-                'title' => 'Login Page'
+                'title' => 'Login Page',
+                'usernameError' => '',
+                'passwordError' => ''
             ];
             $this->view('users/login', $data);
         }

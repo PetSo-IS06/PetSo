@@ -36,16 +36,18 @@
             <div class="container"> 
                 <div class="form"> 
                     <h2>Welcome to PetSo</h2>
-                    <form action="">
-                    <div class="inputBx">
-                        <input type="text" required="required">
-                        <span>UserID</span>
+                    <form action="<?php echo URL_ROOT; ?>/users/login">
+                    <div class="inputBx" method="POST">
+                        <input type="email">
+                        <span>Email</span> 
+                        <span class="invalidInput"><?php echo $data['usernameError'] ?></span>
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/uidicon.webp" alt="user">
                     </div>
                     <div class="inputBx password">
-                        <input id="password-input" type="password" name="password" required="required">
+                        <input id="password-input" type="password" name="password">
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lock.png" alt="lock">
                         <span>Password</span>
+                        <span class="invalidInput"><?php echo $data['passwordError'] ?></span>
                         <a href="#" class="password-control" onclick="return show_hide_password(this);">
                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/ShowPw.webp" alt="SPW"
                                     id="imgClickAndChange" onclick="changeImage(this);">

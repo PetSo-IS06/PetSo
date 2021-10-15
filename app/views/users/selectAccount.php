@@ -23,7 +23,7 @@
 </center>
 <div class="left"><center>
 
-<h3> Welfare Organization </h3> <br> <a href ="/">
+<h3> Welfare Organization </h3> <br> <a href="<?php echo URL_ROOT; ?>/users/organizationSignUp">
     <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px"></a>
 
   </center>

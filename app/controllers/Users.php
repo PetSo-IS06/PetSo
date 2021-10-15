@@ -20,7 +20,7 @@
         }
     
 
-        public function signUpOrg() {
+        public function organizationSignUp () {
             $data = [
                 'title' => 'Login Page'
             ];

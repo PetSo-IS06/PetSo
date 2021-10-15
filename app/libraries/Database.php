@@ -53,7 +53,7 @@
             $this->statement->bindValue($parameter, $value, $type);
         }
 
-        // execeute prepared statement
+        // execute prepared statement
         public function execute() {
             return $this->statement->execute();
         }

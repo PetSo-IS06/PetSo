@@ -8,9 +8,26 @@
             $this->db = new Database;
         }
 
+        public function login($email, $password){
+           $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
+            // bind value
+           $this->db->bind(':email', $email);
+
+           $row = $this->db->single();
+
+           $hashedPassword = $row->us_password;
+
+           if(password_verify($password, $hashedPassword)) {
+               return $row;
+           } else {
+               return false;
+           }
+        }
+
         public function register($data) {
+
             $this->db->query(
-                'INSERT INTO User (us_name, us_email, us_mobile, us_password, account_status) 
+                'INSERT INTO `petso`.`User` (`us_name`, `us_email`, `us_mobile`, `us_password`, `account_status`) 
                 VALUES (:username, :email, :mobile, :password, :accountStatus)');
 
             // bind values
@@ -37,7 +54,7 @@
 
         public function findUserByEmail($email) {
             // prepared statement
-            $this->db->query('SELECT * FROM User WHERE us_email = :email');
+            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
 
             // email param will be binded with $email
             $this->db->bind(':email', $email);

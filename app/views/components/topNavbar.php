@@ -26,8 +26,13 @@
             <a href="" class="nav-menu-main-links">
                 <i class="fas fa-bell notify"></i>
             </a>
-            <a href="<?php echo URL_ROOT;?>/users/login" class="nav-menu-main-links">Login</a>
-            <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button1">Sign Up</a>
+            <?php if(isset($_SESSION['user_id'])) : ?>
+                <a href="<?php echo URL_ROOT;?>/users/logout" class="nav-menu-main-links">Log out</a>
+                <a href="<?php echo URL_ROOT;?>/" class="nav-menu-signup-btn" id="button1">My Profile</a>
+            <?php else : ?>
+                <a href="<?php echo URL_ROOT;?>/users/login" class="nav-menu-main-links">Log in</a>
+                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button1">Sign Up</a>
+            <?php endif;?>
 
         </div>
         <div class="nav-menu-main" id="main-links">
@@ -38,8 +43,11 @@
             </a>
             <a href="<?php echo URL_ROOT;?>/pages/aboutUs" class="nav-menu-main-links">About Us</a>
             <a href="<?php echo URL_ROOT;?>/pages/faq" class="nav-menu-main-links">FAQs</a>
-            <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button2">Sign Up</a>
-
+            <?php if(isset($_SESSION['user_id'])) : ?>
+                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button2">My Profile</a>
+            <?php else : ?>
+                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button2">Sign Up</a>
+            <?php endif;?>
         </div>
     </div>
    </nav> 

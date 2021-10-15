@@ -36,34 +36,36 @@
             <div class="container"> 
                 <div class="form"> 
                     <h2>Welcome to PetSo</h2>
-                    <form action="<?php echo URL_ROOT; ?>/users/login">
-                    <div class="inputBx" method="POST">
+                    <form action="<?php echo URL_ROOT; ?>/users/login" method="POST">
+                    <div class="inputBx">
                         <input type="email">
-                        <span>Email</span> 
-                        <span class="invalidInput"><?php echo $data['usernameError'] ?></span>
+                        <span>Email</span>
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/uidicon.webp" alt="user">
                     </div>
+                    <span class="invalidInput"><?php echo $data['emailError'] ?></span>
+
                     <div class="inputBx password">
                         <input id="password-input" type="password" name="password">
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lock.png" alt="lock">
                         <span>Password</span>
-                        <span class="invalidInput"><?php echo $data['passwordError'] ?></span>
                         <a href="#" class="password-control" onclick="return show_hide_password(this);">
                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/ShowPw.webp" alt="SPW"
                                     id="imgClickAndChange" onclick="changeImage(this);">
                         </a>
                     </div>
-                    <label class="remember">
+                    <span class="invalidInput"><?php echo $data['passwordError'] ?></span>
+
+                    <!-- <label class="remember">
                         <input type="checkbox">
                         Remember me
-                    </label>
+                    </label> -->
 
                     <div class="inputBx LogIn">
-                        <input type="submit" value="Log in" disabled> 
+                        <input id="submit" type="submit" value="Log in" > 
                     </div>
                     </form>
                     <p>Forgot password? <a href="#">Click Here</a></p>
-                    <p>Don't have an account? <a href="<?php echo URL_ROOT; ?>/users/selectAccount">Sign up</a></p>
+                    <p>Don't have an account? <a href="<?php echo URL_ROOT; ?>/users/signup">Sign up</a></p>
                 </div>
             </div>
         </div>

@@ -26,40 +26,49 @@
             <div class="container">
                 <div class="form">
                     <h2>A little bit about you :)</h2>
-                    <form action="">
+                    <form action="<?php echo URL_ROOT; ?>/users/signup" method="POST">
 
                     <div class="inputBx">
-                        <input type="text" required="required">
+                        <input type="text" name="username" id="username" required="required">
                         <span>Name</span>
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/uidicon.webp" alt="user">
                     </div>
+                    <span class="invalidInput"><?php echo $data['usernameError'] ?></span>
 
                     <div class="inputBx">
-                        <input type="text" required="required">
+                        <input type="text" name="email" id="email" required="required">
                         <span>Email</span>
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/email.png" alt="user">
                     </div>
+                    <span class="invalidInput"><?php echo $data['emailError'] ?></span>
+
                     <div class="inputBx">
-                        <input type="text" required="required">
+                        <input type="text" name="mobile"  id="mobile" required="required">
                         <span>Mobile</span>
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/mobile.jpg" alt="user">
                     </div>
+                    <span class="invalidInput"><?php echo $data['mobileError'] ?></span>
+
                     <div class="inputBx password">
-                        <input id="password-input" type="password" name="password" required="required">
+                        <input id="password-input" type="password" name="password" id="password" required="required">
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lock.png" alt="lock">
                         <span>Password</span>
                     </div>
+                    <span class="invalidInput"><?php echo $data['confirmPasswordError'] ?></span>
+
                     <div class="inputBx password">
-                        <input id="confirmPassword-input" type="password" name="Confirm-Password" required="required">
+                        <input id="confirmPassword-input" type="password" name="confirmPassword" id="confirmPassword" required="required">
                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lock.png" alt="lock">
                         <span>Confirm Password</span>
                     </div>
+                    <span class="invalidInput"><?php echo $data['confirmPasswordError'] ?></span>
 
                     <label class="remember"><input type="checkbox">
-    By clicking, you are agreeing to our terms of service and privacy policy.</label>
+                        I agree to the <a>terms of service</a> and <a>privacy policy.</a>
+                    </label>
 
                     <div class="inputBx LogIn">
-                        <input type="submit" value="Create Account" disabled>
+                        <input id="submit" type="submit" value="Create Account">
                     </div>
 
                     </form>
@@ -68,7 +77,7 @@
             </div>
         </div>
         <div>
-            <a href="<?php echo URL_ROOT;?>">
+            <a href="<?php echo URL_ROOT;?>/pages">
                 <button type="submit" class="btn-cancel">Cancel</button>
             </a>
         </div>

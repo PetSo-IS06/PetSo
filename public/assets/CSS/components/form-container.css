@@ -60,10 +60,15 @@ img {
   margin-bottom: 35px;
   text-align-last: center;
 }
+.form .invalidInput {
+  font-size: smaller;
+  color: red;
+}
 .form .inputBx {
   position: relative;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,7 +152,7 @@ img {
 }
 .form .inputBx input:focus ~ span,
 .form .inputBx input:valid ~ span {
-  transform: translateX(-30px) translateY(-25px);
+  transform: translateX(-30px) translateY(-30px);
   font-size: 12px;
 }
 .form p {
@@ -173,7 +178,10 @@ img {
   position: relative;
   display: inline-block;
   color: var(--black-color);
-  cursor: pointer;
+  /* cursor: pointer; */
+  margin-top: 20px;
+  font-size: smaller;
+  text-align: justify
 }
 
 /* =========== Styles for mobile View ============= */

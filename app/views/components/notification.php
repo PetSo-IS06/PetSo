@@ -13,7 +13,7 @@
 
      <center>
            <div class="center"> <br>
-               <h2> Thnak you for registering Petso</h2>
+               <h2> Thank you for Registering Petso</h2>
                <br><br>
                <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/checked.png" height="170px" width="170px"> <br>
                <h3> You will be notified via email once <br> your account has been verified</h3> <br>

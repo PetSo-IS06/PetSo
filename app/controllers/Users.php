@@ -39,7 +39,7 @@
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // sanitize post data
-                // filter_input_array() returns false if POST var is set to scalar value
+                // filter_input_array() returns false if POST is set to scalar value
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 // trim() removes white space on either sides of input strings
@@ -49,11 +49,11 @@
                     'mobile' => trim($_POST['mobile']),
                     'password' => trim($_POST['password']),
                     'confirmPassword' => trim($_POST['confirmPassword']),
-                    'usernameError' => ' ',
-                    'emailError' => ' ',
-                    'mobileError' => ' ',
-                    'passwordError' => ' ',
-                    'confirmPasswordError' => ' '
+                    'usernameError' => '',
+                    'emailError' => '',
+                    'mobileError' => '',
+                    'passwordError' => '',
+                    'confirmPasswordError' => ''
                 ];
 
                 // regular expressions
@@ -127,15 +127,16 @@
         }
     
 
-        public function signUpOrg() {
+        public function organizationSignUp() {
             $data = [
-                'title' => 'Login Page'
+                'title' => 'Org Sign up'
             ];
             $this->view('users/OrganizationSignUp', $data);
         }
+
         public function selectAccount() {
             $data = [
-                'title' => 'Login Page'
+                'title' => 'Select Account'
             ];
             $this->view('users/selectAccount', $data);
         }

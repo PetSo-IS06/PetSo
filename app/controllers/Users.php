@@ -87,7 +87,7 @@
                 'mobile' => '',
                 'password' => '',
                 'confirmPassword' => '',
-                'agreeCondition' => '',
+                'agreeCondition' => 'no',
                 'usernameError' => '',
                 'emailError' => '',
                 'mobileError' => '',

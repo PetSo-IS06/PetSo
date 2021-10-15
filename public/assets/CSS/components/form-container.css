@@ -60,10 +60,15 @@ img {
   margin-bottom: 35px;
   text-align-last: center;
 }
+.form .invalidInput {
+  font-size: smaller;
+  color: red;
+}
 .form .inputBx {
   position: relative;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,6 +86,11 @@ img {
   color: var(--black-color);
   font-size: 16px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .form .inputBx .password-control {
   position: absolute;
@@ -147,7 +157,7 @@ img {
 }
 .form .inputBx input:focus ~ span,
 .form .inputBx input:valid ~ span {
-  transform: translateX(-30px) translateY(-25px);
+  transform: translateX(-30px) translateY(-30px);
   font-size: 12px;
 }
 .form p {
@@ -173,7 +183,10 @@ img {
   position: relative;
   display: inline-block;
   color: var(--black-color);
-  cursor: pointer;
+  /* cursor: pointer; */
+  margin-top: 20px;
+  font-size: smaller;
+  text-align: justify
 }
 
 /* =========== Styles for mobile View ============= */

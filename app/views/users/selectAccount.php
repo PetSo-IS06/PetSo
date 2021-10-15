@@ -21,8 +21,7 @@
         </ul> 
     </div>
 </center>
-
-<a href="<?php echo URL_ROOT; ?>/organizations/organizationSignUp" class="">
+<a href="<?php echo URL_ROOT; ?>/users/organizationSignUp" class="">
   <div class="left"><center>
     <h3> Welfare Organization </h3> <br>
       <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px">

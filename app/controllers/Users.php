@@ -32,5 +32,12 @@
             ];
             $this->view('users/selectAccount', $data);
         }
+
+        public function adminViewOrgRequest() {
+            $data = [
+                'title' => 'Login Page'
+            ];
+            $this->view('users/AdminViewOrgRequest', $data);
+        }
     }
    

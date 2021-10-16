@@ -202,6 +202,7 @@
             $this->view('users/selectAccount', $data);
         }
 
+
         public function logout() {
             unset($_SESSION['user_id']);
             unset($_SESSION['user_email']);
@@ -211,6 +212,13 @@
 
         public function notification(){
             $this->view('components/notification');
+
+        public function adminViewOrgRequest() {
+            $data = [
+                'title' => 'Login Page'
+            ];
+            $this->view('users/AdminViewOrgRequest', $data);
+
         }
     }
    

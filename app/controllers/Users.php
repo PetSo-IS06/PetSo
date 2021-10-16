@@ -140,19 +140,6 @@
             $this->view('users/selectAccount', $data);
         }
 
-        public function userProfile() {
-            $result = $this->userModel->getUser();
-
-            $data = [
-                'username' => $result -> us_name,
-                'mobile' => $result -> us_mobile,
-                'address' => $result -> us_address,
-                'city' => $result -> us_city,
-                'district' => $result -> us_district,
-            ];
-
-            $this->view('users/userProfile', $data);
-        }
 
         public function logout() {
             unset($_SESSION['user_id']);
@@ -161,65 +148,15 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
-        public function userProfileEdit() {
+        public function notification(){
+            $this->view('components/notification');
+
+        public function adminViewOrgRequest() {
             $data = [
-                'username' => '',
-                'mobile' => '',
-                'address' => '',
-                'city' => '',
-                'district' => '',
-                'nameError' => '',
-                'mobileError' => ''
+                'title' => 'Login Page'
             ];
+            $this->view('users/AdminViewOrgRequest', $data);
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // sanitize post data
-                // filter_input_array() returns false if POST is set to scalar value
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // trim() removes white space on either sides of input strings
-                $data = [
-                    'username' => trim($_POST['username']),
-                    'mobile' => trim($_POST['mobile']),
-                    'address' => trim($_POST['address']),
-                    'city' => trim($_POST['city']),
-                    'district' => trim($_POST['district']),
-                    'nameError' => '',
-                    'mobileError' => '',
-                ];
-
-                // regular expressions
-                $nameValidation = "/^[a-zA-Z0-9]*$/";
-                $mobileValidation = "/^[0-9]*$/";
-//                $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
-
-                // validate characters in username
-//                if(empty($data['username'])) {
-//                    $data['usernameError'] = 'Please enter your name';
-//                } elseif(!preg_match($nameValidation, $data['username'])) {
-//                    $data['usernameError'] = 'Name should only contain letters/numbers';
-//                }
-
-                // validate mobile number (length & numbers only)
-//                if(strlen(($data['mobile'])) != 10) {
-//                    $data['mobileError'] = 'Number should contain 10 digits';
-//                } elseif(!preg_match($mobileValidation, $data['mobile'])) {
-//                    $data['mobileError'] = 'Mobile number should contain only numbers';
-//                }
-
-                // make sure errors are empty
-                if(empty($data['usernameError']) && empty($data['mobileError'])) {
-
-                    // register user from model function
-                    if($this->userModel->editUserProfile($data)) {
-                        // redirect to profile page
-                        header('location:' . URL_ROOT . '/users/userProfile');
-                    } else {
-                        die('Something went wrong.');
-                    }
-                }
-            }
-            $this->view('users/userProfile', $data);
         }
 
     }

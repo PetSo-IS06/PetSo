@@ -30,7 +30,6 @@
   </div>
 </a>
 
- 
   <a href="<?php echo URL_ROOT; ?>/users/signup" class="">
     <div class="right"> <center>
       <h3> User  </h3> <br> 

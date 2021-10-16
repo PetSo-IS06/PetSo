@@ -21,14 +21,14 @@
         </ul> 
     </div>
 </center>
+
 <a href="<?php echo URL_ROOT; ?>/users/organizationSignUp" class="">
   <div class="left"><center>
     <h3> Welfare Organization </h3> <br>
       <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px">
       </center>
   </div>
-</a>
-
+</a> 
   <a href="<?php echo URL_ROOT; ?>/users/signup" class="">
     <div class="right"> <center>
       <h3> User  </h3> <br> 
@@ -36,7 +36,6 @@
       </center>
     </div>
   </a>
-
  <br> <center>
  <button type="submit" class="btn-cancel"> 
    Cancel

@@ -10,13 +10,12 @@
 
     //Database Info
 
-    define('DB_HOST', '52.74.232.121:3306');
-    define('DB_USER', 'petsodev');
-    define('DB_PASS', "Azma123&*^");
+    // define('DB_HOST', '52.74.232.121:3306');
+    // define('DB_USER', 'petsodev');
+    // define('DB_PASS', "Azma123&*^");
 
-    // define('DB_HOST', 'localhost');
-    // define('DB_USER', 'root');
-    // define('DB_PASS', '');
-
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
     define('DB_NAME', 'petso');
 

@@ -194,8 +194,12 @@ input::-webkit-inner-spin-button {
 @media screen and (max-width: 768px) {
 
   section{
-    flex-direction: column;
-  }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
 
   .container {
     padding: 45px;

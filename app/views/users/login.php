@@ -38,7 +38,7 @@
                     <h2>Welcome to PetSo</h2>
                     <form action="<?php echo URL_ROOT; ?>/users/login" method="POST">
                         <div class="inputBx">
-                            <input name="email" id="email" type="email" required="required">
+                            <input name="email" id="email" type="text" required="required">
                             <span>Email</span>
                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/uidicon.webp" alt="user">
                         </div>

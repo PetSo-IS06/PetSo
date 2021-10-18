@@ -2,6 +2,7 @@
 @import '../variables/colors.css';
 @import '../variables/screen_sizes.css';
 @import '../global_custom.css';
+
 .center { 
     background-color: rgb(243, 221, 238);
     opacity: 0.8;
@@ -12,16 +13,16 @@
     border-radius: 25px;
     margin-top: 100px; 
  }
-  h2{ color: purple;
+  h2{ color: var(--primary-purple-color);
 
   } 
   .back_btn{
-      background-color:#9F2884;
+      background-color:var(--primary-purple-color);
       font-weight: bolder;
       width: 200px;
       height: 45px;
       border-radius: 10px;
       color: mintcream;
-      border: #9F2884;
+      border: var(--primary-purple-color);
   }
 

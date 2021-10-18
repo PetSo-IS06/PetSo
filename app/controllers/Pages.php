@@ -25,4 +25,6 @@ class Pages extends Controller {
     public function projectTopSection(){
         $this->view('pages/projectTopSection');
     }
+
+    
 }

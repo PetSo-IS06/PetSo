@@ -15,13 +15,12 @@
 <div class = "step">
 <h3>Create an Account</h3>  
         <ul class="stepNo">
-            <li>1</li>
-            <li class="active">2</li>
+            <li class="active">1</li>
+            <li>2</li>
             <li>3</li> 
         </ul> 
     </div>
 </center>
-
 
 <a href="<?php echo URL_ROOT; ?>/users/organizationSignUp" class="">
   <div class="left"><center>
@@ -31,7 +30,6 @@
   </div>
 </a>
 
- 
   <a href="<?php echo URL_ROOT; ?>/users/signup" class="">
     <div class="right"> <center>
       <h3> User  </h3> <br> 
@@ -45,5 +43,11 @@
    Cancel
  </button>
 </center>
+
+<div id="notification">
+        <?php
+            require APP_ROOT . '/views/components/notification.php';
+        ?>
+    </div>
 </body>
   </html>

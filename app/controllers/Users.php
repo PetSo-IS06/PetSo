@@ -192,8 +192,6 @@
 
             $this->view('users/signup', $data);
         }
-    
-
         public function organizationSignUp() {
             $data = [
                 'title' => 'Org Sign up'
@@ -213,6 +211,10 @@
             unset($_SESSION['user_email']);
 
             header('location:' . URL_ROOT . '/pages/index');
+        }
+
+        public function notification(){
+            $this->view('components/notification');
         }
     }
    

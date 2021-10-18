@@ -1,4 +1,10 @@
 
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+
 .box {
     background-color: rgb(248, 242, 247);
     opacity: 0.8;
@@ -81,8 +87,7 @@
   margin-left:-250px;
   border: #9F2884;
   }
-  .btn-next{
-          
+  .btn-next{       
   margin-top: 350px;
   color: white;
   background-color:rgb(19, 119, 250);
@@ -97,7 +102,7 @@
   }   
       .pagination {
           display: inline-block;
-          margin-top: 350px;
+          margin-top: 250px;
           margin-right: 75px;
       }
   

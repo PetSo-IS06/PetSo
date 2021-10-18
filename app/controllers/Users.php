@@ -233,8 +233,26 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
+<<<<<<< HEAD
         public function notification(){
             $this->view('components/notification');
+=======
+        public function projectOverview() {
+            $data = [
+                "title"               => '',
+                "initiation_date"       => '',
+                "desctription"          => '',
+            ];
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                if(isset($_POST['next'])){
+                    $data = [
+                        "title"               => isset($_POST['title']) ? trim($_POST['title']) : '',
+                        "initiation_date"     => isset($_POST['initiation_date']) ? trim($_POST['initiation_date']) : '',
+                        "description"         => isset($_POST['description']) ? trim($_POST['description']) : '',
+                    ];
+            $this->view('users/projectOverviewForm', $data);
+>>>>>>> c75f6cd (projectform data retriwed)
         }
     }
    

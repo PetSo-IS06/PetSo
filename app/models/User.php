@@ -68,16 +68,19 @@
         }
 
 
-        public function getProjectOveviewForm() {
-            $this->db->query('INSERT INTO welfare_project (title,initiation_date,description')
-
-            values (:title, :initiation_date, :description);
+        public function getProjectOveviewForm($data) {
+            $this->db->query('INSERT INTO welfare_project (title,initiation_date,description)
+            values (:title, :initiation_date, :description)');
 
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':initiation_date',$data['initiation_date']);
             $this->db->bind(':description', $data['description']);
 
-            $result = $this->db->resultSet();    // resultSet returns an array of Objects
-            return $result;
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+
         }
     }

@@ -233,10 +233,11 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
-<<<<<<< HEAD
         public function notification(){
             $this->view('components/notification');
-=======
+
+        }
+        
         public function projectOverview() {
             $data = [
                 "title"               => '',
@@ -252,7 +253,6 @@
                         "description"         => isset($_POST['description']) ? trim($_POST['description']) : '',
                     ];
             $this->view('users/projectOverviewForm', $data);
->>>>>>> c75f6cd (projectform data retriwed)
         }
     }
    

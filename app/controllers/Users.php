@@ -237,12 +237,13 @@
             $this->view('components/notification');
 
         }
-        
+
         public function projectOverview() {
             $data = [
                 "title"               => '',
                 "initiation_date"       => '',
                 "desctription"          => '',
+                "coverImage"     => '',
             ];
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){

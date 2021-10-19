@@ -16,19 +16,20 @@
       Whether it’s the fund or the workforce, let us help you get all you need.</p>
 </div> </center> <br> <br>
             <h4>Please read the following instruction carefully before filling the form</h4> <br>
-            <ul>
+            <ol>
                 <li>In order to publish a welfare project in Petso, you must first get your project approved by the system administration. </li>
                 <li>Make sure  to include all the important details about your project in the following form and upload relevant images.</li>
                 <li>You will be notified via an email once your project is approved and the project will be displayed to everyone who visit Petso.</li>
                 <li>Note: You can only have 3 ongoing projects maximum at a time. If you already have 3 ongoing projects, please make sure to publish your next project after the completion of volunteer enrollment and/or fundraising  of one of those projects. </li>
-</ul>
+</ol>
   <br> <br>
         
        <center>
            <h2>Let’s create your next welfare project at Petso!</h2>
         <div class="box">
               <h3>Project Details</h3> <br> <hr>
-              <form class="form" action= '<?php echo URL_ROOT; ?>/users/projectOverView' method="POST">
+              <form class="form" action= '<?php echo URL_ROOT; ?>/users/projectOverView' method="POST" enctype="multipart/form-data"
+>
                   
                 <div class="left">
                     <span class="label">Project Title</span>
@@ -46,7 +47,7 @@
                         <input type="text"  name="description" placeholder="The Story">
                     </div> <br>
                       Upload a clear image as the cover photo for your project page. <br>
-                      <input Type="file">
+                      <input type="file" name="coverImage" id="coverImage">
 
                  </div> <br><br>
                  <button type="submit" class="btn-cancel"> 

@@ -66,4 +66,34 @@
                 return false;
             }
         }
+
+        public function editUserProfile ($data) {
+
+            $this->db->query(
+                'UPDATE `petso`.`User` SET `us_name` = :username , `us_mobile` = :mobile , `us_address` = :address,
+                        `us_city` = :city, `us_district` = :district WHERE `us_email` = :email');
+
+            // bind values
+            $this->db->bind(':email', $_SESSION['user_email']);
+            $this->db->bind(':username', $data['username']);
+            $this->db->bind(':mobile', $data['mobile']);
+            $this->db->bind(':address', $data['address']);
+            $this->db->bind(':city', $data['city']);
+            $this->db->bind(':district', $data['district']);
+
+            // execute function
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function getUser() {
+            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
+            $this->db->bind(':email', $_SESSION['user_email']);
+
+            $result = $this->db->single();    // resultSet returns an array of Objects
+            return $result;
+        }
     }

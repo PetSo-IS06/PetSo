@@ -60,7 +60,7 @@
                             <?php echo $_SESSION['user_email']; ?>
                             <hr/>
                         </label>
-                        <a href="#">My Profile</a>
+                        <a href="<?php echo URL_ROOT;?>/users/userProfile">My Profile</a>
                         <a href="#">Notifications</a>
                         <a href="<?php 
                         if($_SESSION['user_type'] == 'user') :

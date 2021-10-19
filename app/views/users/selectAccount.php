@@ -43,11 +43,5 @@
    Cancel
  </button>
 </center>
-
-<div id="notification">
-        <?php
-            require APP_ROOT . '/views/components/notification.php';
-        ?>
-    </div>
 </body>
   </html>

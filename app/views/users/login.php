@@ -38,7 +38,7 @@
                     <h2>Welcome to PetSo</h2>
                     <form action="<?php echo URL_ROOT; ?>/users/login" method="POST">
                         <div class="inputBx">
-                            <input name="email" id="email" type="text" required="required">
+                            <input name="email" id="email" type="email" required="required">
                             <span>Email</span>
                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/uidicon.webp" alt="user">
                         </div>
@@ -70,9 +70,11 @@
             </div>
         </div>
         <div>
-            <button type="submit" class="btn-cancel" >
-                Cancel
-            </button>
+            <a href="<?php echo URL_ROOT; ?>/pages/index">
+                <button type="submit" class="btn-cancel">
+                    Cancel
+                </button>
+            </a>
         </div>
     </section>
 </body>

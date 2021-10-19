@@ -44,7 +44,6 @@
                 </td>";
                 echo "</tr>";
               }
-            // print_r($data)
 
             ?>   
         </tbody>  

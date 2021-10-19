@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/topNavbar.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/profile-tag.css">
 </head>
 <body>
    <nav class="nav">
@@ -28,7 +29,7 @@
             </a>
             <?php if(isset($_SESSION['user_id'])) : ?>
                 <a href="<?php echo URL_ROOT;?>/users/logout" class="nav-menu-main-links">Log out</a>
-                <a href="<?php echo URL_ROOT;?>/" class="nav-menu-signup-btn" id="button1">My Profile</a>
+                <a href="<?php echo URL_ROOT;?>/" class="nav-menu-profile-tag" id="tag1">My Profile</a>
             <?php else : ?>
                 <a href="<?php echo URL_ROOT;?>/users/login" class="nav-menu-main-links">Log in</a>
                 <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button1">Sign Up</a>
@@ -38,13 +39,35 @@
         <div class="nav-menu-main" id="main-links">
             <a href="<?php echo URL_ROOT;?>/pages/index" class="nav-menu-main-links">Home</a>
             <a href="<?php echo URL_ROOT;?>/pages/services" class="nav-menu-main-links">Services</a>
-            <a href="/" class="nav-menu-main-links">Explore 
+            <label class="nav-menu-main-links-explore" id="explore">Explore 
+                <div class="dropdown-content-explore" id="explore">
+                    <a href="#">Welfare Projects</a>
+                    <a href="#">Animals Reported</a>
+                    <a href="#">Adoption</a>
+                    <a href="#">Sposorships</a>
+                </div>
                 <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
+            </label>
             <a href="<?php echo URL_ROOT;?>/pages/aboutUs" class="nav-menu-main-links">About Us</a>
             <a href="<?php echo URL_ROOT;?>/pages/faq" class="nav-menu-main-links">FAQs</a>
             <?php if(isset($_SESSION['user_id'])) : ?>
-                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button2">My Profile</a>
+                <label  class="nav-menu-profile-tag" id="tag2">
+                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt="Profile Pic">
+                    <?php echo $_SESSION['user_name']; ?> <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    <div class="dropdown-content">
+                        <label class="dropdown-content-header">
+                            <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt="Profile Pic">
+                            <h3><?php echo $_SESSION['user_name']; ?></h3>
+                            <?php echo $_SESSION['user_name']; ?>
+                            <hr/>
+                        </label>
+                        <a href="#">My Profile</a>
+                        <a href="#">Notifications</a>
+                        <a href="#">My Dashboard</a>
+                        <a href="#">My Complaints</a>
+                        <a href="<?php echo URL_ROOT;?>/users/logout">Logout</a>
+                    </div>
+                </label>
             <?php else : ?>
                 <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button2">Sign Up</a>
             <?php endif;?>

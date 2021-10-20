@@ -72,9 +72,9 @@
                     <span class="label">Would you respond to requests made <br>by the public regarding <br> animals in
                         need of help nearby your
                         location?</span> <br><br>
-                    <input type="radio" id="yes" value="yes" name="if_findhelp" value=<?php echo $data['if_findhelp'] ?>>
+                    <input type="radio" id="yes" value=1 name="if_findhelp">
                     <label for="yes">Yes</label> &nbsp; &nbsp; &nbsp; 
-                    <input type="radio" id="No" value="no" name="if_findhelp" value=<?php echo $data['if_findhelp'] ?>>
+                    <input type="radio" id="No" value=0 name="if_findhelp">
                     <label for="no">No</label>
                     <br><br><br>
                     <h3>Account Credentials</h3>

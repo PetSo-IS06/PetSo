@@ -56,6 +56,7 @@
             }
         }
 
+
         public function addOrganizationAnimal($id, $animal_type){
             $this->db->query('INSERT INTO `petso`.`Org_Animal` (org, animal_type) 
             values (:org, :animal_type)');
@@ -133,6 +134,34 @@
 
             // bind value
         //    $this->db->bind();
+        }
+        
+        public function updateOrganization($data) {
+            $this->db->query('UPDATE Organization SET org_name=:org_name, org_mobile=:org_mobile, org_email=:org_email,
+            org_address1=:org_address1, org_website=:org_website, org_facebook=:org_facebook, org_insta=:org_insta  WHERE org_id=1');
+
+            $this->db->bind(':org_name', $data['org_name']);
+            $this->db->bind(':org_mobile', $data['org_mobile']);
+            $this->db->bind(':org_email', $data['org_email']);
+            $this->db->bind(':org_website', $data['org_website']);
+            $this->db->bind(':org_address1', $data['org_address1']);
+            $this->db->bind(':org_facebook', $data['org_facebook']);
+            $this->db->bind(':org_insta', $data['org_insta']);
+    
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function updateOrgProfileImage($img_url){
+            $this->db->query("UPDATE Organization SET org_profile_img='$img_url'  WHERE org_id=1");
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
         }
     }
     

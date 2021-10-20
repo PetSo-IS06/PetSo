@@ -4,9 +4,11 @@
         public function __construct() {
             $this->userModel = $this->model('User');
             $this->organizationModel = $this->model('Organization');
+            $this->adminModel = $this->model('Admin');
         }
 
         public function login() {
+            error_reporting(E_ALL ^ E_WARNING);
             // an associative array to handle user input
             $data = [
                 'email' => '',
@@ -36,7 +38,7 @@
                     $data['emailError'] = 'Please enter the correct format';
                 } else {
                     // check if email already exists
-                    if(!$this->userModel->findUserByEmail($data['email']) && !$this->organizationModel->checkEmailExistance($data['email'])) {
+                    if(!$this->userModel->findUserByEmail($data['email']) && !$this->organizationModel->checkEmailExistance($data['email']) && !$this->adminModel->findAdminByEmail($data['email'])) {
                         $data['emailError'] = 'Email not registered';
                     }
                 }
@@ -60,7 +62,7 @@
                                     // redirect to Index page
                                     header('location:' . URL_ROOT . '/pages/index');
                                 } else {
-                                    $data['passwordError'] = 'Password or Username Incorrect';
+                                    $data['passwordError'] = 'Incorrect Password';
             
                                     $this->view('users/login', $data);
                                 }  
@@ -73,9 +75,22 @@
                                 // redirect to Index page
                                 header('location:' . URL_ROOT . '/pages/index');
                             } else {
-                                $data['passwordError'] = 'Password or Username Incorrect';
+                                $data['passwordError'] = 'Incorrect Password';
                                 $this->view('users/login', $data);
                             }
+                        } elseif($this->adminModel->findAdminByEmail($data['email'])){
+                            $loggedInUser = $this->adminModel->adminLogin($data['email'], $data['password']);
+
+                                if($loggedInUser) {
+                                    $this->createAdminSession($loggedInUser);
+                                    // redirect to Index page
+                                    header('location:' . URL_ROOT . '/pages/index');
+                                } else {
+                                    $data['passwordError'] = 'Incorrect Password';
+            
+                                    $this->view('users/login', $data);
+                                }
+
                         }
                 }
             } else {
@@ -104,6 +119,14 @@
             $_SESSION['user_name'] = $org->org_name;
             $_SESSION['user_email'] = $org->org_email;
             $_SESSION['user_type'] = 'organization';
+        }
+
+        public function createAdminSession($admin) {
+            session_start();
+            $_SESSION['user_id'] = $admin->ad_id;
+            $_SESSION['user_name'] = 'ADMIN';
+            $_SESSION['user_email'] = $admin->ad_email;
+            $_SESSION['user_type'] = 'admin';
         }
 
         public function signup() {

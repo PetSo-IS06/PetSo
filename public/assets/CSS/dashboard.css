@@ -232,7 +232,8 @@ input {
 }
 
 .opportunities {
-  display: flex;
+  display:flex;
+  flex-direction: column;
 }
 
 .applications-section {

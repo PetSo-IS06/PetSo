@@ -90,13 +90,49 @@
                     </div>
                 </div>
                 </section>
-                <!-- Initial display -->
-                <div class="opportunities" id="opportunities">
-                        <h2>Opportunities</h2>
-                    </div>
 
+                <!-- Initial display -->
+                <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
+                    <div class="article-head">
+                        <h3>Volunteer Opportunities</h3>
+                            <div class="search-sec-bar">
+                                <input type="search" placeholder="Search..." name="searchPrj" />
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th><input type="checkbox" name=""></th>
+                                    <th>ID</th>
+                                    <th>Project ID</th>
+                                    <th>Description</th>
+                                    <th>Opening Date</th>
+                                    <th>Closing Date</th>
+                                    <th>Work Days</th>
+                                    <th>Location</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox" name=""></td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                </tr>
+                                <tbody>
+                            </table>
+                        </div>
+                </div>
+
+
+                <!-- Applications Section -->
                 <section class="grid" id="article">
-                    <!-- Applications Section -->
                     <article class="applications-section" id="applications-section">
                         <div class="article-head">
                             <h3>My Volunteers</h3>

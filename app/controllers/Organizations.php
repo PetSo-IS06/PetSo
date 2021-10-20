@@ -144,7 +144,7 @@
                         if($this->organizationModel->addOrganization($data)){
 
                             $data = [
-                                "title"                  => "SignUp Page",
+                                "title"                  => "organization",
                                 "org_name"               => '',
                                 "org_mobile"             => '',
                                 "org_landline"           => '',
@@ -184,7 +184,9 @@
                                 foreach($animals as $animal){
                                     $this->organizationModel->addOrganizationAnimal($organization_id, $animal);
                                 }
-                            }       
+                            }   
+                            $root = URL_ROOT;
+                            header("Location: $root./users/login");
                         }
                     }
                 }
@@ -200,5 +202,12 @@
             ];
             $this->view('users/selectAccount', $data);
         }
+
+        public function dashboard(){
+            $data = [
+                'title' => 'Dashboard Data'
+            ];
+
+            $this->view('users/organization/dashboard', $data);
+        }
     }
-   

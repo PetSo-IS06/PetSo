@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/topNavbar.css">
-    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/profile-tag.css">
 </head>
 <body>
    <nav class="nav">
@@ -58,12 +57,17 @@
                         <label class="dropdown-content-header">
                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt="Profile Pic">
                             <h3><?php echo $_SESSION['user_name']; ?></h3>
-                            <?php echo $_SESSION['user_name']; ?>
+                            <?php echo $_SESSION['user_email']; ?>
                             <hr/>
                         </label>
                         <a href="#">My Profile</a>
                         <a href="#">Notifications</a>
-                        <a href="#">My Dashboard</a>
+                        <a href="<?php 
+                        if($_SESSION['user_type'] == 'user') :
+                            echo URL_ROOT.'/users/dashboard';
+                        elseif($_SESSION['user_type'] == 'organization') :
+                            echo URL_ROOT.'/organizations/dashboard';
+                        endif;?>">My Dashboard</a>
                         <a href="#">My Complaints</a>
                         <a href="<?php echo URL_ROOT;?>/users/logout">Logout</a>
                     </div>

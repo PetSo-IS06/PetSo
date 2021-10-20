@@ -3,6 +3,7 @@
     class Users extends Controller {
         public function __construct() {
             $this->userModel = $this->model('User');
+            $this->organizationModel = $this->model('Organization');
         }
 
         public function login() {
@@ -35,7 +36,7 @@
                     $data['emailError'] = 'Please enter the correct format';
                 } else {
                     // check if email already exists
-                    if(!$this->userModel->findUserByEmail($data['email'])) {
+                    if(!$this->userModel->findUserByEmail($data['email']) && !$this->organizationModel->checkEmailExistance($data['email'])) {
                         $data['emailError'] = 'Email not registered';
                     }
                 }
@@ -51,17 +52,31 @@
 
                 // make sure errors are empty
                 if(empty($data['emailError']) && empty($data['passwordError'])){
-                    $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+                        if($this->userModel->findUserByEmail($data['email'])){
+                            $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
-                    if($loggedInUser) {
-                        $this->createUserSession($loggedInUser);
-                        // redirect to Index page
-                        header('location:' . URL_ROOT . '/pages/index');
-                    } else {
-                        $data['passwordError'] = 'Password or Username Incorrect';
+                                if($loggedInUser) {
+                                    $this->createUserSession($loggedInUser);
+                                    // redirect to Index page
+                                    header('location:' . URL_ROOT . '/pages/index');
+                                } else {
+                                    $data['passwordError'] = 'Password or Username Incorrect';
+            
+                                    $this->view('users/login', $data);
+                                }  
 
-                        $this->view('users/login', $data);
-                    }
+                        } elseif($this->organizationModel->checkEmailExistance($data['email'])) {
+                            $loggedInUser = $this->organizationModel->login($data['email'], $data['password']);
+
+                            if($loggedInUser) {
+                                $this->createOrgSession($loggedInUser);
+                                // redirect to Index page
+                                header('location:' . URL_ROOT . '/pages/index');
+                            } else {
+                                $data['passwordError'] = 'Password or Username Incorrect';
+                                $this->view('users/login', $data);
+                            }
+                        }
                 }
             } else {
                 $data = [
@@ -80,6 +95,15 @@
             $_SESSION['user_id'] = $user->us_id;
             $_SESSION['user_name'] = $user->us_name;
             $_SESSION['user_email'] = $user->us_email;
+            $_SESSION['user_type'] = 'user';
+        }
+
+        public function createOrgSession($org) {
+            session_start();
+            $_SESSION['user_id'] = $org->org_id;
+            $_SESSION['user_name'] = $org->org_name;
+            $_SESSION['user_email'] = $org->org_email;
+            $_SESSION['user_type'] = 'organization';
         }
 
         public function signup() {

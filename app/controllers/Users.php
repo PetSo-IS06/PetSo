@@ -162,9 +162,9 @@
 
         public function adminViewOrgRequest() {
 
-            $data = $this->userModel->getpendingRequest();
+            $data = $this->userModel->getpendingRequests();
 
-            $this->view('users/pendingRequests', $data);
+            $this->view('users/AdminViewOrgRequest', $data);
         }
       
         public function adminViewPendingRequest(){

@@ -62,7 +62,12 @@
                         </label>
                         <a href="#">My Profile</a>
                         <a href="#">Notifications</a>
-                        <a href="#">My Dashboard</a>
+                        <a href="<?php 
+                        if($_SESSION['user_type'] == 'user') :
+                            echo URL_ROOT.'/users/dashboard';
+                        elseif($_SESSION['user_type'] == 'organization') :
+                            echo URL_ROOT.'/organizations/dashboard';
+                        endif;?>">My Dashboard</a>
                         <a href="#">My Complaints</a>
                         <a href="<?php echo URL_ROOT;?>/users/logout">Logout</a>
                     </div>

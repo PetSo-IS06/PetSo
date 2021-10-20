@@ -67,7 +67,9 @@
     justify-content: center;
     text-decoration: none;
     padding: 10px 30px;
-}:hover {
+}
+
+.nav-menu-main-links:hover {
     color: var(--primary-purple-color);
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;

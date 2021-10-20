@@ -8,6 +8,22 @@
             $this->db = new Database;
         }
 
+        public function login($email, $password){
+            $this->db->query('SELECT * FROM `petso`.`Organization` WHERE `org_email` = :email');
+             // bind value
+            $this->db->bind(':email', $email);
+ 
+            $row = $this->db->single();
+ 
+            $hashedPassword = $row->us_password;
+ 
+            if(password_verify($password, $hashedPassword)) {
+                return $row;
+            } else {
+                return false;
+            }
+         }
+
 
         public function addOrganization($data) {
             $this->db->query('INSERT INTO Organization (org_name, org_mobile, org_landline, org_email, org_password, 
@@ -82,6 +98,13 @@
 
             $result = $this->db->resultSet(); 
             return $result;
+        }
+
+        public function dashboard($data){
+            $this->db->query(' ');
+
+            // bind value
+        //    $this->db->bind();
         }
     }
     

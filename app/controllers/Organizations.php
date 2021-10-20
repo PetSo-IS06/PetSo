@@ -144,7 +144,7 @@
                         if($this->organizationModel->addOrganization($data)){
 
                             $data = [
-                                "title"                  => "SignUp Page",
+                                "title"                  => "organization",
                                 "org_name"               => '',
                                 "org_mobile"             => '',
                                 "org_landline"           => '',
@@ -200,5 +200,12 @@
             ];
             $this->view('users/selectAccount', $data);
         }
+
+        public function dashboard(){
+            $data = [
+                'title' => 'Dashboard Data'
+            ];
+
+            $this->view('users/organization/dashboard', $data);
+        }
     }
-   

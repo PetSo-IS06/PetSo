@@ -10,8 +10,8 @@
        
     </head>
     <body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png">  <center>
-        <div class="box">
-      <h2>Organization Pending Requests</h2> <br>
+        <div class="box"> <br>
+      <h2>Organization Pending Requests</h2> 
         <table>
             <thead>
                 <tr>
@@ -22,25 +22,33 @@
                     
                 </tr>
             </thead>
-            <tbody>
+            <tbody> <br>
             <?php
                 foreach ($data as $value) {
                     $name = $value->org_name;
+
+                    $url = URL_ROOT."/users/OrgDetails";
+
+
                  echo "<tr>";
                echo "<td> $value->org_name </td>"; 
                 echo "<td>
-                    <button type='submit' class='btn-approve'>
+                <form action='http://localhost/PetSo/users/adminViewPendingRequest' method='POST'>
+                    <button type='submit' class='btn-approve' name='approve'>
                        Approve
                     </button>
+                    </form>
                      </td>";
                     
                echo "<td>
-                    <button type='submit' class='btn-reject'>
+               <form action='http://localhost/PetSo/users/adminViewPendingRequest' method='POST'>
+                    <button type='submit' class='btn-reject' name='reject'>
                         Reject
                     </button>
+                </form>
                 </td>";
                echo "<td>
-                    <a href> Details</a>
+               <a href='$url'> Details</a>
                 </td>";
                 echo "</tr>";
               }

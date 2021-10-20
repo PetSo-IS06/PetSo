@@ -57,7 +57,7 @@
                         <label class="dropdown-content-header">
                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt="Profile Pic">
                             <h3><?php echo $_SESSION['user_name']; ?></h3>
-                            <?php echo $_SESSION['user_name']; ?>
+                            <?php echo $_SESSION['user_email']; ?>
                             <hr/>
                         </label>
                         <a href="#">My Profile</a>

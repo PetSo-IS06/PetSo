@@ -20,7 +20,6 @@
             <i class="fas fa-chevron-left"></i>Back to Home
     </a>
     <div class="container">
-        
         <div class="page-header">
             <nav>
                 <a href="#" class="logo">
@@ -218,6 +217,11 @@
                     </article>
                 </section>
         </section>
+    </div>
+    <div id="footer">
+        <?php
+            require APP_ROOT . '/views/components/footer.php';
+        ?>
     </div>
 </body>
 </html>

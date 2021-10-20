@@ -3,6 +3,7 @@
     class Users extends Controller {
         public function __construct() {
             $this->userModel = $this->model('User');
+            $this->organizationModel = $this->model('Organization');
         }
 
         public function login() {
@@ -35,9 +36,7 @@
                     $data['emailError'] = 'Please enter the correct format';
                 } else {
                     // check if email already exists
-                    if(!$this->userModel->findUserByEmail($data['email'])) {
-                        $data['emailError'] = 'Email not registered';
-                    }elseif(!$this->organizationModel->checkEmailExistance($data['email'])){
+                    if(!$this->userModel->findUserByEmail($data['email']) && !$this->organizationModel->checkEmailExistance($data['email'])) {
                         $data['emailError'] = 'Email not registered';
                     }
                 }
@@ -101,9 +100,9 @@
 
         public function createOrgSession($org) {
             session_start();
-            $_SESSION['user_id'] = $org->us_id;
-            $_SESSION['user_name'] = $org->us_name;
-            $_SESSION['user_email'] = $org->us_email;
+            $_SESSION['user_id'] = $org->org_id;
+            $_SESSION['user_name'] = $org->org_name;
+            $_SESSION['user_email'] = $org->org_email;
             $_SESSION['user_type'] = 'organization';
         }
 

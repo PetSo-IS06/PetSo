@@ -55,7 +55,7 @@ input {
 .page-header {
   overflow: auto;
   padding-top: 20px;
-  width: var(--page-header-width);
+  width: 30%;
   height: auto;
   color: var(--primary-grey-color);
   background: var(--primary-very-light-grey-color);
@@ -131,7 +131,7 @@ input {
 /* PAGE CONTENT STYLES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .page-content {
-  width: calc(100% - var(--page-header-width));
+  width: 100%;
   border-radius: 15px;
   min-height: 100vh;
   padding: 30px;

@@ -184,7 +184,9 @@
                                 foreach($animals as $animal){
                                     $this->organizationModel->addOrganizationAnimal($organization_id, $animal);
                                 }
-                            }       
+                            }   
+                            $root = URL_ROOT;
+                            header("Location: $root./users/login");
                         }
                     }
                 }

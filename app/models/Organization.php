@@ -15,7 +15,7 @@
  
             $row = $this->db->single();
  
-            $hashedPassword = $row->us_password;
+            $hashedPassword = $row->org_password;
  
             if(password_verify($password, $hashedPassword)) {
                 return $row;
@@ -26,8 +26,8 @@
 
 
         public function addOrganization($data) {
-            $this->db->query('INSERT INTO Organization (org_name, org_mobile, org_landline, org_email, org_password, 
-            org_address1, org_address2, org_area, org_district, if_findhelp, org_website, org_facebook,  org_insta, org_profile_img, org_doc, account_status) 
+            $this->db->query('INSERT INTO `petso`.`Organization` (`org_name`, `org_mobile`, `org_landline`, `org_email`, `org_password`, 
+            `org_address1`, `org_address2`, `org_area`, `org_district`, `if_findhelp`, `org_website`, `org_facebook`,  `org_insta`, `org_profile_img`, `org_doc`, `account_status`) 
 
             values (:org_name, :org_mobile, :org_landline, :org_email, 
             :org_password, :org_address1, :org_address2, :org_area, :org_district, :if_findhelp, :org_website, :org_facebook, :org_insta, :org_profile_img, :org_doc, :account_status)');
@@ -48,7 +48,7 @@
             $this->db->bind(':org_insta', $data['org_insta']);
             $this->db->bind(':org_profile_img', $data['org_profile_img']);
             $this->db->bind(':org_doc', $data['org_doc']);
-            $this->db->bind(':account_status', "pending");
+            $this->db->bind(':account_status', 'pending');
 
             if($this->db->execute()){
                 return true;
@@ -76,25 +76,27 @@
         }
 
         public function checkEmailExistance($email){
-            $this->db->query("SELECT * FROM organization WHERE org_email='$email'");
+            $this->db->query("SELECT * FROM `petso`.`Organization` WHERE `org_email`=:email");
+            $this->db->bind(':email', $email);
+
             $result = $this->db->rowCount();
 
             if($result>0){
                 return true;
             }else{
-                return false;
+                return true;
             } 
         }
 
         public function getOrganization(){
-            $this->db->query("SELECT * FROM organization WHERE org_id=1");
+            $this->db->query("SELECT * FROM `petso`.`Organization` WHERE org_id=1");
 
             $result = $this->db->resultSet(); 
             return $result;
         }
 
         public function getOrganizationAnimalTypes(){
-            $this->db->query("SELECT * FROM org_animal WHERE org=1");
+            $this->db->query("SELECT * FROM `petso`.`Org_Animal` WHERE `org`=1");
 
             $result = $this->db->resultSet(); 
             return $result;

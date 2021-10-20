@@ -22,139 +22,171 @@
 
         <div class="center">
             <div>
-                <h3>Tell us about your Organization</h3>
+                <h3>Tell us about your Organization</h3> <br>
                 <p style="color: #9F2884;">Please note that your account will only be created after verifying the
                     details
                     you enter here.</p>
-                <span>Already Have an account <a href="">Sign In</a></span>
+                    <br>
+                <span>Already Have an account <a href="<?php echo URL_ROOT; ?>/users/login">Sign In</a></span>
             </div>
             <br><br>
-            <form class="form">
+            <form class="form" action="<?php echo URL_ROOT; ?>/organizations/organizationSignUp" method="POST" enctype="multipart/form-data">
                 <div class="left">
                     <span class="label">Name Of the Organization</span>
 
                     <div class="inputBx">
-                        <input type="text" required="required" placeholder="Name*">
+                        <input type="text" placeholder="Name*" name="org_name" value=<?php echo $data['org_name'] ?>> <br>
+                        <?php
+                            if(!empty($data['name_error'])){
+                                $msg = $data['name_error'];
+                                echo "<span class='error'>$msg";
+                            }
+                        ?>
+                        
                     </div>
 
                     <span class="label"> Contact Numbers </span>
                     <div class="inputBx">
-                        <input type="text" required="required" placeholder="Mobile*">
+                        <input type="number" placeholder="Mobile*" name="org_mobile" value=<?php echo $data['org_mobile'] ?>>
                     </div>
                     <div class="inputBx" style="padding-top: 1px;">
-                        <input type="text" required="required" placeholder="Landline*">
-                    </div>
+                        <input type="number" placeholder="Landline*" name="org_landline" value=<?php echo $data['org_mobile'] ?>><br>
+                        <?php
+                        if(!empty($data['contact_error'])){
+                            $msg = $data['contact_error'];
+                            echo "<span class='error'>$msg</span>";
+                        }
+                    ?>
+                    </div><br>
+                    
 
 
-                    <span class="label"> What Type of Animals Do you take care of? </span><br>
+                    <span class="label"> What Type of Animals Do you take care of? </span><br><br>
 
-                    <div class="selectBx">
-                        <select name="Select Animals" id="Select Animals">
-                            <option value="Select Animals">Cat</option>
-                            <option value="Select Animals">Dog</option>
-                            <option value="Select Animals">Rabbit</option>
-                        </select>
-                    </div>
+                    Cats &nbsp<input type="checkbox" name="animals[]" value="Cats"/> &nbsp &nbsp
+                    Dogs &nbsp<input type="checkbox" name="animals[]" value="Dogs"/> &nbsp &nbsp
+                    Rabbits &nbsp<input type="checkbox" name="animals[]" value="Rabbits"/>
 
 
-                    <br>
+                    <br><br><br><br>
                     <span class="label">Would you respond to requests made <br>by the public regarding <br> animals in
                         need of help nearby your
-                        location?</span> <br>
-                    <input type="radio" id="yes" value="yes" name="request">
-                    <label for="yes">Yes</label> &nbsp; &nbsp; &nbsp; &nbsp;
-                    <input type="radio" id="No" value="no" name="request">
-                    <label for="no">No</label><br>
-
+                        location?</span> <br><br>
+                    <input type="radio" id="yes" value="yes" name="if_findhelp" value=<?php echo $data['if_findhelp'] ?>>
+                    <label for="yes">Yes</label> &nbsp; &nbsp; &nbsp; 
+                    <input type="radio" id="No" value="no" name="if_findhelp" value=<?php echo $data['if_findhelp'] ?>>
+                    <label for="no">No</label>
+                    <br><br><br>
                     <h3>Account Credentials</h3>
-                    <hr>
+                    <hr><br>
                     <span class="label">Email Address </span>
                     <div class="inputBx">
-                        <input type="text" required="required" placeholder="Email Address*">
+                        <input type="text" placeholder="Email Address*" name="org_email" value=<?php echo $data['org_email'] ?>><br>
+                        <?php
+                        if(!empty($data['email_error'])){
+                            $msg = $data['email_error'];
+                            echo "<span class='error'>$msg</span>";
+                        }
+                    ?><br>
                     </div>
                     <span class="label">Password </span>
                     <div class="inputBx">
-                        <input type="password" required="required" placeholder="Password*">
+                        <input type="password" placeholder="Password*" name="org_password" value=<?php echo $data['org_password'] ?>><br>
+                        <?php
+                        if(!empty($data['password_error'])){
+                            $msg = $data['password_error'];
+                            echo "<span class='error'>$msg</span>";
+                        }
+                    ?>
                     </div>
 
                     <span class="label">Confirm Password</span>
                     <div class="inputBx">
-                        <input type="password" required="required" placeholder="Confirm Password*">
+                        <input type="password" placeholder="Confirm Password*" name="org_confirm_password" value=<?php echo $data['org_confirm_password'] ?>><br>
+                        <?php
+                        if(!empty($data['confirm_password_error'])){
+                            $msg = $data['confirm_password_error'];
+                            echo "<span class='error'>$msg</span>";
+                        }
+                    ?><br>
+                    <?php
+                        if(!empty($data['password_match_error'])){
+                            $msg = $data['password_match_error'];
+                            echo "<span class='error'>$msg</span>";
+                        }
+                    ?><br>
                     </div>
                 </div>
 
 
                 <div class="right">
-
                     <span class="label">Address</span>
                     <div class="inputBx">
-                        <input type="text" required="required" placeholder="Street 1*">
+                        <input type="text" placeholder="Street 1*" name="org_address1" value=<?php echo $data['org_address1'] ?>>
                     </div>
                     <div class="inputBx">
-                        <input type="text" required="required" placeholder="Street 2*">
+                        <input type="text" placeholder="Street 2*" name="org_address2" value=<?php echo $data['org_address2'] ?>><br>
+                        <?php
+                        if(!empty($data['address_error'])){
+                            $msg = $data['address_error'];
+                            echo "<span class='error'>$msg</span>";
+                        }
+                    ?>
                     </div>
                     <div>
-                        <div style="float: left;">
-                            <span class="label">Select District</span>
-                            <div class="selectBx">
-                                <select name="Select Animals" id="Select Animals">
-                                    <option value="Select Animals">Kandy</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div style="float: right;">
-                            <span class="label">Select Area</span>
-                            <div class="selectBx">
-                                <select name="Select Animals" id="Select Animals">
-                                    <option value="Select Animals">Town</option>
-                                </select>
-                            </div>
+                        <span class="label">Select District</span>
+                        <div class="selectBx">
+                            <select id="Select Animals" name="org_district" >
+                                <option value="Colombo">Colombo</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Maatar">Matara</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Kurnegala">Kurnegala</option>
+                            </select><br>
                         </div>
                     </div>
 
-                    <div style="padding-top: 260px;">
+                    <div style="padding-top: 252px;">
                         <h3>Other Accounts</h3>
-                        <hr>
+                        <hr><br>
                         <span class="label">Web Link </span>
                         <div class="inputBx">
-                            <input type="text" required="required" placeholder="Link">
-                        </div>
+                            <input type="text" placeholder="Link" name="org_website">
+                        </div><br>
                         <span class="label">Facebook Page Link </span>
                         <div class="inputBx">
-                            <input type="text" required="required" placeholder="Link">
+                            <input type="text" placeholder="Link" name="org_facebook">
                         </div>
 
                         <span class="label">Instagram ID</span>
                         <div class="inputBx">
-                            <input type="text" required="required" placeholder="ID">
+                            <input type="text" placeholder="ID" name="org_insta">
                         </div>
 
                     </div>
                     </p>
                 </div>
-                <br><br><br><br>
+                <br><br><br><br><br><br><br><br><br>
                 <div class="documents">
                     <h3 style="float: left;"> Supporting Documents(Optional)</h3>
-                    <br><br><br>
+                    <br><br>
                     <hr>
                     <br>
                     If you have any documents that will help us verify you as a recognized welfare organization in the
                     community, please upload them here.
 
-
-
                     <br><br>
-                    <input type="file" style="float: left;" placeholder="Choose File">
+                    <input type="file" style="float: left;" placeholder="Choose File" name="org_doc" id="org_doc">
                     <br><br>
 
                     By clicking 'Requesting Account', you are agreeing to our <a href>terms of service </a> and <a
                         href>privacy policy.</a>
 
                     <br>
-                    <button type="submit" class="btn-cancel">
+                    <button type="button" class="btn-cancel">
                         Cancel
                     </button>
-                    <button type="submit" class="btn-request">
+                    <button type="submit" class="btn-request" name="submit">
                         Request Account
                     </button>
 
@@ -164,3 +196,7 @@
     </center>
 </body>
 </html>
+
+
+
+

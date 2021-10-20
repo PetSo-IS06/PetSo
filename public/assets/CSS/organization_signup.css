@@ -85,6 +85,7 @@ li:first-child::before {
 .right {
     float: right;
     padding-right: 70px;
+    width: 450px;
 }
 
 .documents {
@@ -135,6 +136,7 @@ img {
     position: absolute;
     left: 8px;
     transform: scale(0.6);
+    
 }
 
 .form .selectBx {
@@ -165,6 +167,18 @@ img {
     padding-bottom: 5px;
 }
 
+.checkbox{
+    border:2px dotted #00f;
+    display:block;
+    background:#ff0000;
+    float: left;
+}
+
+input.checkbox {
+    width: 40px;
+    height: 40px;
+}
+
 .btn-cancel {
     margin-top: 50px;
     color: white;
@@ -185,6 +199,10 @@ img {
     font-weight: bold;
     border-radius: 11px;
     float: right;
+}
+
+.error{
+    color: red;
 }
 
 

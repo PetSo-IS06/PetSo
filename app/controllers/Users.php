@@ -194,13 +194,7 @@
 
             $this->view('users/signup', $data);
         }
-        public function organizationSignUp() {
-            $data = [
-                'title' => 'Org Sign up'
-            ];
-            $this->view('users/OrganizationSignUp', $data);
-        }
-
+        
         public function selectAccount() {
             $data = [
                 'title' => 'Select Account'

@@ -75,4 +75,9 @@
             $this->execute();
             return $this->statement->rowCount();
         }
+
+        //get last inserted ID
+        public function getLastInsertedId(){
+            return $this->dbHandler->lastInsertId();
+        }
     }

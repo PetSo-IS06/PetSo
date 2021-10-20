@@ -88,7 +88,7 @@
 
 
         public function getprojectView() {
-            $this->db->query("SELECT * FROM welfare_project where project_ID=12");
+            $this->db->query("SELECT * FROM welfare_project where project_ID=13");
 
             $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;

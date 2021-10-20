@@ -226,6 +226,19 @@
       
         public function adminViewPendingRequest(){
             $data = $this->userModel->getPendingRequests();
+            if (isset($_POST['approve'])) {
+              if(  $this->userModel->changeStatus('approved')){
+
+                $data = $this->userModel->getPendingRequests();
+              }
+            }
+            if (isset($_POST['reject'])) {
+
+               if( $this->userModel->changeStatus('rejected')){
+                $data = $this->userModel->getPendingRequests();
+               }
+            }
+
             $this->view('users/AdminViewOrgRequest', $data);
 
         }

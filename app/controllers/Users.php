@@ -158,9 +158,14 @@
 
         public function notification(){
             $this->view('components/notification');
+        }
 
         public function adminViewOrgRequest() {
 
+            $data = $this->userModel->getpendingRequest();
+
+            $this->view('users/pendingRequests', $data);
+        }
       
         public function adminViewPendingRequest(){
             $data = $this->userModel->getPendingRequests();

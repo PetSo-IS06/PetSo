@@ -39,9 +39,11 @@
   </a>
 
  <br> <center>
- <button type="submit" class="btn-cancel"> 
-   Cancel
- </button>
+    <a href="<?php echo URL_ROOT; ?>/pages/index">
+        <button type="submit" class="btn-cancel">
+            Cancel
+        </button>
+    </a>
 </center>
 </body>
   </html>

@@ -28,12 +28,13 @@
                     $name = $value->org_name;
 
                     $url = URL_ROOT."/users/OrgDetails";
+                    $url1 = URL_ROOT."/users";
 
 
                  echo "<tr>";
                echo "<td> $value->org_name </td>"; 
                 echo "<td>
-                <form action='http://localhost/PetSo/users/adminViewPendingRequest' method='POST'>
+                <form action='$url1/changeStatus/$value->org_id' method='POST'>
                     <button type='submit' class='btn-approve' name='approve'>
                        Approve
                     </button>
@@ -41,7 +42,7 @@
                      </td>";
                     
                echo "<td>
-               <form action='http://localhost/PetSo/users/adminViewPendingRequest' method='POST'>
+               <form action='$url1/changeStatus/$value->org_id' method='POST'>
                     <button type='submit' class='btn-reject' name='reject'>
                         Reject
                     </button>

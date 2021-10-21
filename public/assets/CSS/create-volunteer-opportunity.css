@@ -1,0 +1,98 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+.prj-form-container {
+    padding: 2rem calc((100vw - 1180px) / 2);
+    box-shadow: -1px 0px 5px 4px #C4C4C4;
+    border-radius: 25px;
+    color: var(--primary-grey-color);
+    margin: 2rem calc((100vw - 1200px)/2);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start; */
+    align-items: left;
+}
+
+.prj-form-container .form-row {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.form-input label {
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    vertical-align: bottom;
+}
+
+.form-input {
+    margin-top: 1rem;
+}
+
+.form-input#col {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-input-col {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.form-input#col .input-box {
+    margin-right: 1rem;
+    padding-left: 1rem;
+}
+
+/* .form-row .form-col {
+    width: 50%;
+} */
+
+.form-input .input-box {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: .5rem;
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.form-input .input-box-area {
+    width: 100%;
+    height: 100px;
+    vertical-align: top;
+    border-radius: 5px;
+    margin-top: .5rem;
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.form-btn-cancel {
+    padding: 12px 24px;
+    text-decoration: none;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-light-grey-color);
+    color: var(--white-color);
+}
+
+.form-row input[type=submit] {
+    padding: 12px 24px;
+    cursor: pointer;
+    text-decoration: none;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-purple-color);
+    color: var(--white-color);
+}
+

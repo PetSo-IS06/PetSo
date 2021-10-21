@@ -3,6 +3,7 @@
     class Organizations extends Controller {
         public function __construct() {
             $this->organizationModel = $this->model('Organization');
+            $this->projectModel = $this->model('Project');
         }
     
 
@@ -204,9 +205,26 @@
         }
 
         public function dashboard(){
-            $data = [
-                'title' => 'Dashboard Data'
-            ];
+            $result = $this->projectModel->getOpportunities();
+
+
+            $data = $result;
+            // $data = [
+            //     'id' => $result->id,
+            //     'reason' => $result->reason,
+            //     'description' => $result->description,
+            //     'district' => $result->district,
+            //     'area' => $result->area,
+            //     'work-start' => $result->work_start,
+            //     'work-end' => $result->work_end,
+            //     'work-from' => $result->work_from,
+            //     'work-to' => $result->work_to,
+            //     'days' => $result->days,
+            //     'requirements' => $result->requirements,
+            //     'app-open' => $result->app_open,
+            //     'app-close' => $result->app_close,
+            //     'create-date' => $result->create_date
+            // ];
 
             $this->view('users/organization/dashboard', $data);
         }

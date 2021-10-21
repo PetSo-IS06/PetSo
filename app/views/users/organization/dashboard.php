@@ -105,25 +105,32 @@
                                 <tr class="table-head">
                                     <th><input type="checkbox" name=""></th>
                                     <th>ID</th>
-                                    <th>Project ID</th>
                                     <th>Description</th>
-                                    <th>Opening Date</th>
+                                    <th>Created Date</th>
+                                    <th>District</th>
+                                    <th>Area</th>
                                     <th>Closing Date</th>
-                                    <th>Work Days</th>
-                                    <th>Location</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td><input type="checkbox" name=""></td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                </tr>
+                                    <?php
+                                    foreach ($data as $item) {
+                                        echo "<tr>
+                                            <td><input type='checkbox' name=''></td>
+                                            <td>$item->id</td>
+                                            <td>$item->description</td>
+                                            <td>$item->create_date</td>
+                                            <td>$item->district</td>
+                                            <td>$item->area</td>
+                                            <td>$item->app_close</td>
+                                            <td>$item->work_start</td>
+                                            <td>$item->work_end</td>
+                                        </tr>";
+                                    }
+                                    
+                                    ?>
                                 <tbody>
                             </table>
                         </div>

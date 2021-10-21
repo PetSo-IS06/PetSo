@@ -20,7 +20,7 @@
     <div class="prj-form-container">
         <h2 class="form-title">Volunteer Enrollment</h2>
         <hr/>
-        <form action="<?php echo URL_ROOT; ?>/Projects/createVolunteerOpportunity" method="POST">
+        <form action="<?php echo URL_ROOT . '/Projects/createVolunteerOpportunity'; ?>" method="POST" id='volForm'>
             <div class="form-row">
                 <div class="form-input">
                     <label class="input-label">Would you like to enroll volunteers for the project?</label><br/>
@@ -29,11 +29,11 @@
                 </div>
                 <div class="form-input">
                     <label class="input-label">Why should people volunteer for this project?</label><br/>
-                    <input class="input-box-area" name="reason" type="text"> 
+                    <textarea class="input-box-area" rows="4" cols="50" name="reason" form="volForm"></textarea>
                 </div>
                 <div class="form-input">
                     <label class="input-label">Work Description</label><br/>
-                    <input class="input-box-area" name="description" type="text"> 
+                    <textarea class="input-box-area" rows="4" cols="50" name="description" form="volForm"></textarea>
                 </div>
                 <div class="form-row">
                     <div class="form-input" id="col">
@@ -72,7 +72,7 @@
                 <div class="form-row" style="flex-direction: row; justify-content: space-between">
                     <div class="form-input">
                         <label class="input-label">Requirements</label><br/>
-                        <input class="input-box-area" style="width: 480px; margin-right: 2rem" name="requirements" type="text"> 
+                        <textarea class="input-box-area" style="width: 480px; margin-right: 2rem" rows="4" cols="50" name="requirements" form="volForm"></textarea>
                     </div>
                     <div class="form-input" style="width: 100%; margin-left: 2rem;">
                         <div class="form-input-col" id="col">

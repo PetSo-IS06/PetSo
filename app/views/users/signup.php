@@ -76,7 +76,6 @@
                     <div class="inputBx LogIn">
                         <input id="submit" type="submit" value="Create Account">
                     </div>
-
                 </form>
                 <p>Already have an account <a href="<?php echo URL_ROOT; ?>/users/login"> &nbsp;Sign in</a></p>
             </div>

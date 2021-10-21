@@ -70,9 +70,11 @@
             </div>
         </div>
         <div>
-            <button type="submit" class="btn-cancel" >
-                Cancel
-            </button>
+            <a href="<?php echo URL_ROOT; ?>/pages/index">
+                <button type="submit" class="btn-cancel">
+                    Cancel
+                </button>
+            </a>
         </div>
     </section>
 </body>

@@ -1,0 +1,249 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+body {
+    background-repeat: no-repeat;
+}
+.profile {
+    margin-top: 110px;
+    margin-bottom: 50px;
+    /*padding-left: 74px;*/
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    margin-top: 110px;
+    margin-left: 20px;
+}
+
+.container1 {
+    box-sizing: unset;
+    position: relative;
+    padding: 10px;
+    width: 316px;
+    height: 531px;
+    min-height: 380px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /*backdrop-filter: blur(5px); */
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+.container1 img {
+    width: 166px;
+    height: 166px;
+    border-radius: 50%;
+}
+
+.container1 h3 {
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.container1 text {
+    margin-bottom: 10px;
+    color: #555454;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+}
+
+.container1 hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 265px;
+    left: 100px;
+    top: 650px;
+    /* Very light grey */
+    border: 1px solid #C4C4C4;
+}
+
+.container1Bot {
+    margin-top: 15px;
+    align-items: flex-start;
+}
+.container1Bot .date {
+    align-items: flex-end;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+}
+.container1Bot span {
+    align-items: flex-start;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+}
+.container1Bot a {
+    align-items: flex-start;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 25px;
+    cursor:pointer;
+}
+
+.container2 {
+    box-sizing: unset;
+    position: relative;
+    padding: 50px;
+    width: 618px;
+    height: 373px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+.container2 h2 {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #555454;
+}
+.container2 hr {
+    border: 1px solid #C4C4C4;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    width: 563px;
+}
+
+.container2 .profileBody text {
+    font-style: normal;
+    font-weight: bold;
+    color: #555454;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 15px;
+}
+.container2 .profileBody {
+    margin-top: 40px;
+}
+.container2 .profileBody span {
+    font-style: normal;
+    font-weight: normal;
+    color: #555454;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 15px;
+}
+.container2 .inputs {
+    margin-bottom: 20px;
+}
+.container2 a {
+    cursor: pointer;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+.container2 .infoUpper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.edit{
+    display: none;
+    flex-direction: column;
+}
+
+.container2 .editUpper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.edit_info_label{
+    font-style: normal;
+    font-weight: bold;
+    color: #555454;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 15px;
+}
+
+.field{
+   margin-bottom: 20px;
+}
+
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.container2 .field input {
+    margin-left: auto;
+}
+
+.account_info{
+    margin: 50px 30px 30px 30px;
+}
+
+#account_email{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+#account_id{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.account_status{
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+.container3 {
+    box-sizing: unset;
+    position: relative;
+    padding: 50px;
+    width: 320px;
+    height: 262px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+.container3 h2 {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #555454;
+}
+.container3 hr {
+    border: 1px solid #C4C4C4;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+}

@@ -10,7 +10,7 @@
 <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'/> 
 </center>
 
-<body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png"> <center> <br><br>
+<body> <center> <br><br>
 </center>
 <div class = "step">
 <h3>Create an Account</h3>  
@@ -43,11 +43,5 @@
    Cancel
  </button>
 </center>
-
-<div id="notification">
-        <?php
-            require APP_ROOT . '/views/components/notification.php';
-        ?>
-    </div>
 </body>
   </html>

@@ -93,8 +93,8 @@
             return $result;
         }
 
-        public function changeStatus($status) {
-            $this->db->query("UPDATE organization  SET account_status='$status' where org_id=3");
+        public function changeStatus($status, $id) {
+            $this->db->query("UPDATE organization  SET account_status='$status' where org_id=$id");
             if($this->db->execute()){
                 return true;
             } else {

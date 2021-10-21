@@ -169,18 +169,18 @@
       
         public function adminViewPendingRequest(){
             $data = $this->userModel->getPendingRequests();
-            if (isset($_POST['approve'])) {
-              if(  $this->userModel->changeStatus('approved')){
+            // if (isset($_POST['approve'])) {
+            //   if(  $this->userModel->changeStatus('approved')){
 
-                $data = $this->userModel->getPendingRequests();
-              }
-            }
-            if (isset($_POST['reject'])) {
+            //     $data = $this->userModel->getPendingRequests();
+            //   }
+            // }
+            // if (isset($_POST['reject'])) {
 
-               if( $this->userModel->changeStatus('rejected')){
-                $data = $this->userModel->getPendingRequests();
-               }
-            }
+            //    if( $this->userModel->changeStatus('rejected')){
+            //     $data = $this->userModel->getPendingRequests();
+            //    }
+            // }
 
             $this->view('users/AdminViewOrgRequest', $data);
 
@@ -190,5 +190,30 @@
 
             $this->view('users/orgDetails', $data[0]);
         }
+
+        public function changeStatus($id){
+            if (isset($_POST['approve'])) {
+                if(  $this->userModel->changeStatus('approved',$id)){
+                    // header("Location: $root./users/adminViewPendingRequest");
+
+                    $data = $this->userModel->getPendingRequests();
+
+                    $this->view('users/AdminViewOrgRequest', $data);
+                //   $data = $this->userModel->getPendingRequests();
+                }
+              }
+              if (isset($_POST['reject'])) {
+  
+                 if( $this->userModel->changeStatus('rejected',$id)){
+                    // header("Location: $root./users/adminViewPendingRequest");
+                    $data = $this->userModel->getPendingRequests();
+
+                    $this->view('users/AdminViewOrgRequest', $data);
+                //   $data = $this->userModel->getPendingRequests();
+                 }
+                //  $root = URL_ROOT;      
+
+        }
     }
+}
    

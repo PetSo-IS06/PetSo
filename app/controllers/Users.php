@@ -130,6 +130,7 @@
         }
 
         public function signup() {
+            error_reporting(E_ALL ^ E_WARNING);
             $data = [
                 'username' => '',
                 'email' => '',
@@ -167,7 +168,7 @@
                 ];
 
                 // regular expressions
-                $nameValidation = "/^[a-zA-Z0-9]*$/";
+                $nameValidation = "/^[a-zA-Z]*$/";
                 $mobileValidation = "/^[0-9]*$/";
                 $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
 
@@ -180,7 +181,7 @@
                 if(empty($data['username'])) {
                     $data['usernameError'] = 'Please enter your name';
                 } elseif(!preg_match($nameValidation, $data['username'])) {
-                    $data['usernameError'] = 'Name should only contain letters/numbers';
+                    $data['usernameError'] = 'Name should only contain letters';
                 }
 
                 // validate email

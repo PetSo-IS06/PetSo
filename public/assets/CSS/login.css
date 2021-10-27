@@ -105,6 +105,7 @@ body {
   text-shadow: slategrey;
   font-weight: bold;
   display: block;
+  cursor: pointer;
  }
 
 /* =========== Styles for mobile View ============= */

@@ -81,9 +81,11 @@
             </div>
         </div>
         </div>
-        <div>
-            <button type="submit" class="btn-cancel">Cancel</button>
-        </div>
+        <a href="<?php echo URL_ROOT; ?>/pages/index">
+            <button type="submit" class="btn-cancel">
+                Cancel
+            </button>
+        </a>
     </section>
 </body>
 <script type="text/javascript" src="assets/js/login.js"></script>

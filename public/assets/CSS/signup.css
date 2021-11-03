@@ -8,7 +8,8 @@ html {
 body {
   /*overflow: hidden;*/
   /*height: 100%;*/
-  background-size: 100% 100%;
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
   background-image: url("../img/login.jpg");
 }
@@ -26,6 +27,7 @@ body {
   text-shadow: slategrey;
   font-weight: bold;
   display: block;
+  cursor: pointer;
  }
 
 /* =========== Styles for mobile View ============= */

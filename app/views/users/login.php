@@ -36,7 +36,7 @@
             <div class="container"> 
                 <div class="form"> 
                     <h2>Welcome to PetSo</h2>
-                    <form action="<?php echo URL_ROOT; ?>/logins/index" method="POST">
+                    <form action="<?php echo URL_ROOT; ?>/authentications/login" method="POST">
                         <div class="inputBx">
                             <input name="email" id="email" type="email" required="required">
                             <span>Email</span>

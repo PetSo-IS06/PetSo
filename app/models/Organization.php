@@ -23,19 +23,20 @@
          }
 
 
-        public function addOrganization($data) {
-            $this->db->query('INSERT INTO `petso`.`Organization` (`org_name`, `org_mobile`, `org_landline`, `org_email`, `org_password`, 
-            `org_address1`, `org_address2`, `org_area`, `org_district`, `if_findhelp`, `org_website`, `org_facebook`,  `org_insta`, `org_profile_img`, `org_doc`, `account_status`) 
+        public function addOrganization($data, $accountID) {
+            $this->db->query('INSERT INTO `petso`.`Organization` (`account_id`, `org_name`, `org_mobile`, `org_landline`, 
+            `org_address1`, `org_address2`, `org_area`, `org_district`, `if_findhelp`, 
+            `org_website`, `org_facebook`,  `org_insta`, `org_profile_img`, `org_doc`, `account_status`) 
 
-            values (:org_name, :org_mobile, :org_landline, :org_email, 
-            :org_password, :org_address1, :org_address2, :org_area, :org_district, :if_findhelp, :org_website, :org_facebook, :org_insta, :org_profile_img, :org_doc, :account_status)');
+            values (:accountID, :org_name, :org_mobile, :org_landline,
+            :org_address1, :org_address2, :org_area, :org_district, :if_findhelp, 
+            :org_website, :org_facebook, :org_insta, :org_profile_img, :org_doc, :account_status)');
 
+            $this->db->bind(':accountID', $accountID);
             $this->db->bind(':org_name', $data['org_name']);
             $this->db->bind(':org_mobile', $data['org_mobile']);
             $this->db->bind(':org_landline', $data['org_landline']);
             // $this->db->bind(':animal_type', $data['animal_type']);
-            $this->db->bind(':org_email', $data['org_email']);
-            $this->db->bind(':org_password', $data['org_password']);
             $this->db->bind(':org_address1', $data['org_address1']);
             $this->db->bind(':org_address2', $data['org_address2']);
             $this->db->bind(':org_area', $data['org_area']);
@@ -56,7 +57,7 @@
         }
 
         public function addOrganizationAnimal($id, $animal_type){
-            $this->db->query('INSERT INTO org_animal (org, animal_type) 
+            $this->db->query('INSERT INTO `petso`.`Org_Animal` (org, animal_type) 
             values (:org, :animal_type)');
 
             $this->db->bind(':org', $id);
@@ -73,18 +74,18 @@
             return $this->db->getLastInsertedId();
         }
 
-        public function checkEmailExistance($email){
-            $this->db->query("SELECT * FROM `petso`.`Organization` WHERE `org_email`=:email");
-            $this->db->bind(':email', $email);
+        // public function checkEmailExistance($email){
+        //     $this->db->query("SELECT * FROM `petso`.`Organization` WHERE `org_email`=:email");
+        //     $this->db->bind(':email', $email);
 
-            $result = $this->db->rowCount();
+        //     $result = $this->db->rowCount();
 
-            if($result>0){
-                return true;
-            }else{
-                return false;
-            } 
-        }
+        //     if($result>0){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     } 
+        // }
 
         public function getOrganization(){
             $this->db->query("SELECT * FROM `petso`.`Organization` WHERE org_id=1");

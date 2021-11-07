@@ -4,8 +4,6 @@
         public function __construct() {
             $this->authModel = $this->model('Authentication');
             $this->userModel = $this->model('User');
-            $this->organizationModel = $this->model('Organization');
-            $this->adminModel = $this->model('Admin');
         }
 
         public function signup() {

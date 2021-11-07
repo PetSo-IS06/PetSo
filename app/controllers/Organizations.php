@@ -2,6 +2,7 @@
 
     class Organizations extends Controller {
         public function __construct() {
+            $this->authModel = $this->model('Authentication');
             $this->organizationModel = $this->model('Organization');
         }
     
@@ -23,8 +24,8 @@
                 "org_name"               => '',
                 "org_mobile"             => '',
                 "org_landline"           => '',
-                "org_email"              => '',
-                "org_password"           => '',
+                "email"              => '',
+                "password"           => '',
                 "org_confirm_password"   => '',
                 "org_address1"           => '',
                 "org_address2"           => '',
@@ -57,8 +58,8 @@
                         "org_name"               => isset($_POST['org_name']) ? trim($_POST['org_name']) : '',
                         "org_mobile"             => isset($_POST['org_mobile']) ? trim($_POST['org_mobile']) : '',
                         "org_landline"           => isset($_POST['org_landline']) ? trim($_POST['org_landline']) : '',
-                        "org_email"              => isset($_POST['org_email']) ? trim($_POST['org_email']) : '',
-                        "org_password"           => isset($_POST['org_password']) ? trim($_POST['org_password']) : '',
+                        "email"              => isset($_POST['email']) ? trim($_POST['email']) : '',
+                        "password"           => isset($_POST['password']) ? trim($_POST['password']) : '',
                         "org_confirm_password"   => isset($_POST['org_confirm_password']) ? trim($_POST['org_confirm_password']) : '',
                         "org_address1"           => isset($_POST['org_address1']) ? trim($_POST['org_address1']) : '',
                         "org_address2"           => isset($_POST['org_address2']) ? trim($_POST['org_address2']) : '',
@@ -80,19 +81,19 @@
                         $data["contact_error"] = "Please enter at least one mobile number";
                     }
 
-                    if(empty($data['org_email'])){
+                    if(empty($data['email'])){
                         $data["email_error"] = "Please enter organization email";
-                    }else if(!filter_var($data['org_email'], FILTER_VALIDATE_EMAIL)){
+                    }else if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
                         $data["email_error"] = "Please enter a valid email";
                     }else{
-                        if($this->organizationModel->checkEmailExistance($data['org_email'])){
+                        if($this->authModel->ifEmailExists($data['email'])){
                             $data["email_error"] = "This email is already taken";
                         };
                     }
 
-                    if(empty($data['org_password'])){
+                    if(empty($data['password'])){
                         $data["password_error"] = "Please enter password";
-                    }else if(strlen($data['org_password']) < 8){
+                    }else if(strlen($data['password']) < 8){
                         $data["password_error"] = "Password should contain atleast 8 characters";
                     }
 
@@ -103,7 +104,7 @@
                     }
 
                     if(empty($data['password_error']) && empty($data['confirm_password_error'])){
-                        if($data['org_password'] != $data['org_confirm_password']){
+                        if($data['password'] != $data['org_confirm_password']){
                             $data["password_match_error"] = "Password Mismatch";
                         }
                     }
@@ -123,7 +124,8 @@
                     if(empty($data['name_error']) && empty($data['contact_error']) && empty($data['password_error']) 
                     && empty($data['confirm_password_error']) && empty($data['password_match_error']) && empty($data['address_error'])){
 
-                        $data['org_password'] = password_hash($data['org_password'], PASSWORD_DEFAULT);
+                        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                        $type = 'org';
 
                         if(!empty($_FILES['org_doc']['name'])){
                             $output_dir = "uploads";//Path for file upload
@@ -140,16 +142,24 @@
                             $data["org_doc"] = $output_dir."/".$Newfile_name;
                         }
 
+                        if($this->authModel->createAccount($data, $type)){
+                            $accountID = $this->authModel->getAccountID($data['email']);
 
-                        if($this->organizationModel->addOrganization($data)){
+                            if($accountID){
+                                $this->organizationModel->addOrganization($data, $accountID);
+                                // // redirect to login page
+                                // header('location:' . URL_ROOT . '/authentications/login');
+                            } else {
+                                die('Could not register organization');
+                            }
 
                             $data = [
                                 "title"                  => "organization",
                                 "org_name"               => '',
                                 "org_mobile"             => '',
                                 "org_landline"           => '',
-                                "org_email"              => '',
-                                "org_password"           => '',
+                                "email"              => '',
+                                "password"           => '',
                                 "org_confirm_password"   => '',
                                 "org_address1"           => '',
                                 "org_address2"           => '',
@@ -185,8 +195,10 @@
                                     $this->organizationModel->addOrganizationAnimal($organization_id, $animal);
                                 }
                             }   
-                            $root = URL_ROOT;
-                            header("Location: $root./users/login");
+                            // redirect to login page
+                            header('location:' . URL_ROOT . '/authentications/login');
+                        } else {
+                            die('Something went wrong.');
                         }
                     }
                 }

@@ -8,7 +8,7 @@
             $this->adminModel = $this->model('Admin');
         }
 
-        public function index() {
+        public function login() {
             error_reporting(E_ALL ^ E_WARNING);
             // an associative array to handle user input
             $data = [

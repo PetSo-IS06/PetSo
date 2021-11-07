@@ -27,7 +27,7 @@
                     details
                     you enter here.</p>
                     <br>
-                <span>Already Have an account <a href="<?php echo URL_ROOT; ?>/users/login">Sign In</a></span>
+                <span>Already Have an account <a href="<?php echo URL_ROOT; ?>/Authentications/login">Sign In</a></span>
             </div>
             <br><br>
             <form class="form" action="<?php echo URL_ROOT; ?>/organizations/organizationSignUp" method="POST" enctype="multipart/form-data">
@@ -81,7 +81,7 @@
                     <hr><br>
                     <span class="label">Email Address </span>
                     <div class="inputBx">
-                        <input type="text" placeholder="Email Address*" name="org_email" value=<?php echo $data['org_email'] ?>><br>
+                        <input type="text" placeholder="Email Address*" name="email" value=<?php echo $data['email'] ?>><br>
                         <?php
                         if(!empty($data['email_error'])){
                             $msg = $data['email_error'];
@@ -91,7 +91,7 @@
                     </div>
                     <span class="label">Password </span>
                     <div class="inputBx">
-                        <input type="password" placeholder="Password*" name="org_password" value=<?php echo $data['org_password'] ?>><br>
+                        <input type="password" placeholder="Password*" name="password" value=<?php echo $data['password'] ?>><br>
                         <?php
                         if(!empty($data['password_error'])){
                             $msg = $data['password_error'];

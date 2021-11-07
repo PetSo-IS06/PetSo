@@ -8,16 +8,14 @@
             $this->db = new Database;
         }
 
-        public function login($email, $password){
-           $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
+        public function login($id){
+           $this->db->query('SELECT * FROM `petso`.`User` WHERE `account_id` = :id');
             // bind value
-           $this->db->bind(':email', $email);
+           $this->db->bind(':id', $id);
 
            $row = $this->db->single();
 
-           $hashedPassword = $row->us_password;
-
-           if(password_verify($password, $hashedPassword)) {
+           if($row) {
                return $row;
            } else {
                return false;
@@ -52,20 +50,20 @@
             return $result;
         }
 
-        public function findUserByEmail($email) {
-            // prepared statement
-            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
+        // public function findUserByEmail($email) {
+        //     // prepared statement
+        //     $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
 
-            // email param will be binded with $email
-            $this->db->bind(':email', $email);
+        //     // email param will be binded with $email
+        //     $this->db->bind(':email', $email);
 
-            // check if already registered
-            if($this->db->rowCount() > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        //     // check if already registered
+        //     if($this->db->rowCount() > 0) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
         public function editUserProfile ($data) {
 

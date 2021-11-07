@@ -8,16 +8,14 @@
             $this->db = new Database;
         }
 
-        public function login($email, $password){
-            $this->db->query('SELECT * FROM `petso`.`Organization` WHERE `org_email` = :email');
+        public function login($id){
+            $this->db->query('SELECT * FROM `petso`.`Organization` WHERE `account_id` = :id');
              // bind value
-            $this->db->bind(':email', $email);
+            $this->db->bind(':id', $id);
  
             $row = $this->db->single();
  
-            $hashedPassword = $row->org_password;
- 
-            if(password_verify($password, $hashedPassword)) {
+            if($row) {
                 return $row;
             } else {
                 return false;

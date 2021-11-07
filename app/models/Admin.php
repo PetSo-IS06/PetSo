@@ -23,16 +23,14 @@
             }
         }
 
-        public function adminLogin($email, $password){
-            $this->db->query('SELECT * FROM `petso`.`Admin` WHERE `ad_email` = :email');
+        public function login($id){
+            $this->db->query('SELECT * FROM `petso`.`Admin` WHERE `account_id` = :id');
              // bind value
-            $this->db->bind(':email', $email);
+            $this->db->bind(':id', $id);
  
             $row = $this->db->single();
 
-           $hashedPassword = $row->ad_password;
-
-           if(password_verify($password, $hashedPassword)) {
+           if($row) {
                return $row;
            } else {
                return false;

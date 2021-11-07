@@ -30,7 +30,7 @@
                 <a href="<?php echo URL_ROOT;?>/users/logout" class="nav-menu-main-links">Log out</a>
                 <a href="<?php echo URL_ROOT;?>/" class="nav-menu-profile-tag" id="tag1">My Profile</a>
             <?php else : ?>
-                <a href="<?php echo URL_ROOT;?>/users/login" class="nav-menu-main-links">Log in</a>
+                <a href="<?php echo URL_ROOT;?>/logins/index" class="nav-menu-main-links">Log in</a>
                 <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button1">Sign Up</a>
             <?php endif;?>
 

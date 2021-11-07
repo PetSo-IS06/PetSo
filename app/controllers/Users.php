@@ -2,6 +2,7 @@
 
     class Users extends Controller {
         public function __construct() {
+            $this->authModel = $this->model('Authentication');
             $this->userModel = $this->model('User');
             $this->organizationModel = $this->model('Organization');
             $this->adminModel = $this->model('Admin');
@@ -46,7 +47,7 @@
                 ];
 
                 // regular expressions
-                $nameValidation = "/^[a-zA-Z]*$/";
+                $nameValidation = "/^[a-zA-Z ]*$/";
                 $mobileValidation = "/^[0-9]*$/";
                 $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
 
@@ -69,7 +70,7 @@
                     $data['emailError'] = 'Please enter the correct format';
                 } else {
                     // check if email already exists
-                    if($this->userModel->findUserByEmail($data['email'])) {
+                    if($this->authModel->ifEmailExists($data['email'])) {
                         $data['emailError'] = 'Email is already registered';
                     }
                 }
@@ -107,11 +108,19 @@
                 && empty($data['agreeConditionError']))) {
                     // hash password
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    $type = 'user';
 
                     // register user from model function
-                    if($this->userModel->register($data)) {
-                        // redirect to login page
-                        header('location:' . URL_ROOT . '/users/login');
+                    if($this->authModel->createAccount($data, $type)) {
+                        $accountID = $this->authModel->getAccountID($data['email']);
+
+                        if($accountID){
+                            $this->userModel->register($data, $accountID);
+                            // redirect to login page
+                            header('location:' . URL_ROOT . '/authentications/login');
+                        } else {
+                            die('Could not register user');
+                        }
                     } else {
                         die('Something went wrong.');
                     }

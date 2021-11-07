@@ -1,8 +1,8 @@
 <?php
 
-    class Logins extends Controller {
+    class Authentications extends Controller {
         public function __construct() {
-            $this->loginModel = $this->model('Login');
+            $this->authModel = $this->model('Authentication');
             $this->userModel = $this->model('User');
             $this->organizationModel = $this->model('Organization');
             $this->adminModel = $this->model('Admin');
@@ -39,7 +39,7 @@
                     $data['emailError'] = 'Please enter the correct format';
                 } else {
                     // check if email already exists
-                    if(!$this->loginModel->ifEmailExists($data['email'])) {
+                    if(!$this->authModel->ifEmailExists($data['email'])) {
                         $data['emailError'] = 'Email not registered';
                     }
                 }
@@ -55,7 +55,7 @@
 
                 // make sure errors are empty
                 if(empty($data['emailError']) && empty($data['passwordError'])){
-                    $loggedInAccount = $this->loginModel->getAccountInfo($data['email'], $data['password']);
+                    $loggedInAccount = $this->authModel->getAccountInfo($data['email'], $data['password']);
 
                     if($loggedInAccount->type == 'user') {
                         $loggedInUser = $this->userModel->login($loggedInAccount->id);

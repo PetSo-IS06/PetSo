@@ -22,17 +22,16 @@
            }
         }
 
-        public function register($data) {
+        public function register($data, $accountID) {
 
             $this->db->query(
-                'INSERT INTO `petso`.`User` (`us_name`, `us_email`, `us_mobile`, `us_password`, `account_status`) 
-                VALUES (:username, :email, :mobile, :password, :accountStatus)');
+                'INSERT INTO `petso`.`User` (`account_id`, `us_name`, `us_mobile`, `account_status`) 
+                VALUES (:accountID, :username, :mobile, :accountStatus)');
 
             // bind values
+            $this->db->bind(':accountID', $accountID);
             $this->db->bind(':username', $data['username']);
-            $this->db->bind(':email', $data['email']);
             $this->db->bind(':mobile', $data['mobile']);
-            $this->db->bind(':password', $data['password']);
             $this->db->bind(':accountStatus', 'active');
 
             // execute function

@@ -8,33 +8,30 @@
             $this->db = new Database;
         }
 
-        public function login($email, $password){
-           $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
+        public function login($id){
+           $this->db->query('SELECT * FROM `petso`.`User` WHERE `account_id` = :id');
             // bind value
-           $this->db->bind(':email', $email);
+           $this->db->bind(':id', $id);
 
            $row = $this->db->single();
 
-           $hashedPassword = $row->us_password;
-
-           if(password_verify($password, $hashedPassword)) {
+           if($row) {
                return $row;
            } else {
                return false;
            }
         }
 
-        public function register($data) {
+        public function register($data, $accountID) {
 
             $this->db->query(
-                'INSERT INTO `petso`.`User` (`us_name`, `us_email`, `us_mobile`, `us_password`, `account_status`) 
-                VALUES (:username, :email, :mobile, :password, :accountStatus)');
+                'INSERT INTO `petso`.`User` (`account_id`, `us_name`, `us_mobile`, `account_status`) 
+                VALUES (:accountID, :username, :mobile, :accountStatus)');
 
             // bind values
+            $this->db->bind(':accountID', $accountID);
             $this->db->bind(':username', $data['username']);
-            $this->db->bind(':email', $data['email']);
             $this->db->bind(':mobile', $data['mobile']);
-            $this->db->bind(':password', $data['password']);
             $this->db->bind(':accountStatus', 'active');
 
             // execute function
@@ -52,20 +49,20 @@
             return $result;
         }
 
-        public function findUserByEmail($email) {
-            // prepared statement
-            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
+        // public function findUserByEmail($email) {
+        //     // prepared statement
+        //     $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
 
-            // email param will be binded with $email
-            $this->db->bind(':email', $email);
+        //     // email param will be binded with $email
+        //     $this->db->bind(':email', $email);
 
-            // check if already registered
-            if($this->db->rowCount() > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        //     // check if already registered
+        //     if($this->db->rowCount() > 0) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
         public function editUserProfile ($data) {
 

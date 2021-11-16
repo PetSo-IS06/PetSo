@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/organization-dashboard.js"></script>
-    <title><?php echo SITE_NAME; ?></title>
+    <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
 <body>
     <div id="top-nav">

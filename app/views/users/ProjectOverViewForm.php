@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-        <title>Project over view Form</title>
+        <title><?php echo SITE_NAME; ?> | Create Project</title>
         <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/ProjectOverview.css'/>
     </head>
     <body> <center>

@@ -1,4 +1,14 @@
 
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+ .row{
+     height: 200px;
+     background-color: var(--primary-purple-color);
+ }
+
 .box {
     background-color: rgb(248, 242, 247);
     opacity: 0.8;
@@ -7,16 +17,28 @@
      position: center;
    overflow-x: hidden;
     border-radius: 15px;
-    margin-top: 100px; 
+    margin-top: 120px;
+    box-shadow: 5px 5px 8px var(--primary-purple-color); 
+    border: 2px solid purple ;
+    
   }
   
   h2{ color: purple;
+  }
+
+  h1,p {
+      color: white;
+  }
+
+  li{
+      float: left;
   }
   
   .form {
           position: relative;
           width: 100%;
           height: 65%;
+          margin-top: 25px;
       }
       .left {
           float: left;
@@ -80,9 +102,10 @@
   float: left;
   margin-left:-250px;
   border: #9F2884;
+  margin-bottom: 50px;
+
   }
-  .btn-next{
-          
+  .btn{       
   margin-top: 350px;
   color: white;
   background-color:rgb(19, 119, 250);
@@ -93,11 +116,12 @@
   float: right;
   margin-right: 150px;
   border: #9F2884;
+  margin-bottom: 50px;
   
   }   
       .pagination {
           display: inline-block;
-          margin-top: 350px;
+          margin-top: 250px;
           margin-right: 75px;
       }
   

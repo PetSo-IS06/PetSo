@@ -156,18 +156,6 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
-        public function resetPassword(){
-            $data = [
-                'email' => '',
-                'mobile' => '',
-                'emailError' => '',
-                'mobileError' => ''
-            ];
-
-            $this->view('users/resetPassword1', $data);
-        }
-
-
         public function userProfileEdit() {
             $data = [
                 'username' => '',

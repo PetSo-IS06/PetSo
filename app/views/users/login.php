@@ -64,7 +64,7 @@
                             <input id="submit" type="submit" value="Log in" > 
                         </div>
                     </form>
-                    <p>Forgot password? <a href="<?php echo URL_ROOT; ?>/users/resetPassword">Reset Password</a></p>
+                    <p>Forgot password? <a href="<?php echo URL_ROOT; ?>/authentications/resetPassword"> Reset Password</a></p>
                     <p>Don't have an account? <a href="<?php echo URL_ROOT; ?>/users/signup">Sign up</a></p>
                 </div>
             </div>

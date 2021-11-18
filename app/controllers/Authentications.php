@@ -132,4 +132,15 @@
             $_SESSION['user_email'] = $account->email;
             $_SESSION['user_type'] = $account->email;
         }
+
+        public function resetPassword(){
+            $data = [
+                'email' => '',
+                'mobile' => '',
+                'emailError' => '',
+                'mobileError' => ''
+            ];
+
+            $this->view('users/resetPassword', $data);
+        }
     }

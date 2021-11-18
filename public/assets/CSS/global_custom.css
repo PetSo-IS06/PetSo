@@ -9,6 +9,66 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/* --------------------- Text Colors ----------------------------- */
+
+.grey {
+    color: var(--primary-grey-color);
+}
+
+.purple {
+    color: var(--primary-purple-color);
+}
+
+.yellow {
+    color: var(--primary-yellow-color);
+}
+
+.blue {
+    color: var(--primary-blue-color);
+}
+
+.light-grey {
+    color: var(--primary-light-grey-color);
+}
+
+.very-light-grey {
+    color: var(--primary-very-light-grey-color);
+}
+
+.white {
+    color: var(--white-color);
+}
+
+.black {
+    color: var(--black-color);
+}
+
+.green {
+    color: var(--primary-green-color);
+}
+
+.red {
+    color: var(--primary-red-color);
+}
+
+/* --------------------- Page Styles ----------------------------- */
+
+.bd-mg {
+    margin: 0 calc((100vw - 1200px) / 2);
+}
+
+.body1 {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../img/login.jpg");
+}
+
+.center {
+    text-align: center;
+}
+
+/* --------------------- Back Nav Styles ----------------------------- */
+
 .back {
     color: var(--primary-grey-color);
     text-decoration: none;
@@ -17,4 +77,102 @@
 
 .back i {
     padding-right: .5rem;
+}
+
+/* --------------------- Heading Styles ----------------------------- */
+
+.heading1 {
+    font-size: var(--heading2-size);
+    color: var(--primary-grey-color);
+}
+
+.heading1B {
+    font-size: var(--heading2-size);
+    color: var(--primary-grey-color);
+    font-weight: bold;
+}
+
+.heading2 {
+    font-size: var(--heading2-size);
+    color: var(--primary-grey-color);
+}
+
+.heading2B {
+    font-size: var(--heading2-size);
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: var(--subtitle-size);
+    color: var(--primary-grey-color);
+}
+
+.subtitleB {
+    font-size: var(--subtitle-size);
+    color: var(--primary-grey-color);
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+/* --------------------- Button Styles ----------------------------- */
+
+.disable {
+    opacity: 0.72;
+    cursor:not-allowed
+}
+
+.purple-btn {
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-purple-color);
+    margin-left: 16px;
+    color: var(--white-color);
+}
+
+.grey-btn {
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-light-grey-color);
+    margin-left: 16px;
+    color: var(--white-color);
+}
+
+.blue-btn {
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-blue-color);
+    margin-left: 16px;
+    color: var(--white-color);
+}
+
+.yellow-btn {
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-yellow-color);
+    margin-left: 16px;
+    color: var(--white-color);
+}
+
+.green-btn {
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-green-color);
+    margin-left: 16px;
+    color: var(--white-color);
 }

@@ -25,7 +25,7 @@
     </div>
 
     <section>
-        <div class="container">
+        <div class="form-container">
             <div class="form">
                 <h2>A little bit about you :)</h2>
                 <form action="<?php echo URL_ROOT . '/users/signup'; ?>" method="POST">

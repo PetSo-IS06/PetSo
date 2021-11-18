@@ -13,7 +13,7 @@
 <body>
     <!-- Top step display section goes here -->
     <div class = "step">
-        <h3>Log in to your Account</h3>
+        <h3 class="heading2B">Log in to your Account</h3>
         <ul class="stepNo">
             <li>1</li>
             <li class="active">2</li>
@@ -33,7 +33,7 @@
                 <img class ="b-img" src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/login3.jpg" alt="">
             </div>
 
-            <div class="container"> 
+            <div class="form-container"> 
                 <div class="form"> 
                     <h2>Welcome to PetSo</h2>
                     <form action="<?php echo URL_ROOT; ?>/authentications/login" method="POST">
@@ -64,7 +64,7 @@
                             <input id="submit" type="submit" value="Log in" > 
                         </div>
                     </form>
-                    <p>Forgot password? <a href="#">Click Here</a></p>
+                    <p>Forgot password? <a href="<?php echo URL_ROOT; ?>/users/resetPassword">Reset Password</a></p>
                     <p>Don't have an account? <a href="<?php echo URL_ROOT; ?>/users/signup">Sign up</a></p>
                 </div>
             </div>

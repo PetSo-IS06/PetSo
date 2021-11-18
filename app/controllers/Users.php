@@ -156,8 +156,15 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
-        public function notification(){
-            $this->view('components/notification');
+        public function resetPassword(){
+            $data = [
+                'email' => '',
+                'mobile' => '',
+                'emailError' => '',
+                'mobileError' => ''
+            ];
+
+            $this->view('users/resetPassword1', $data);
         }
 
 

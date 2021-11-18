@@ -49,6 +49,10 @@
     position: relative;
 }
 
+.nav-menu-top .purple-btn {
+    display: none;
+}
+
 .notify {
     transform: rotate(45deg);
     display: inline-block
@@ -59,6 +63,8 @@
     padding: 1rem 1rem;
     list-style: none;
     width: 100%;
+    color: red;
+    justify-content: flex-end;
 }
 
 .nav-menu-main-links {
@@ -112,7 +118,7 @@
     padding-left: 5px;
 }
 
-.purple-btn #button1 {
+.nav-menu-top .purple-btn {
     display: none;
 }
 
@@ -188,7 +194,7 @@
 /* =========== Styles for Tablet View ============= */
 
 @media screen and (max-width: 768px) {
-    .nav-menu-top #button1 {
+    .nav-menu-top .purple-btn {
         display: block; 
         position: absolute;
         padding: 8px 16px;
@@ -200,9 +206,8 @@
         display: none;
     }
 
-    .purple-btn #button2 {
-        display: none;
-        color: red;
+    .nav-menu-main .purple-btn #button2 {
+        display: none !important;
     }
 
     .nav-bars {

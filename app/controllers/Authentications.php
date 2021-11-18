@@ -143,4 +143,15 @@
 
             $this->view('users/resetPassword', $data);
         }
+
+        public function verifyOTP(){
+            $data = [
+                'email' => '',
+                'mobile' => '',
+                'emailError' => '',
+                'mobileError' => ''
+            ];
+
+            $this->view('users/verifyOTP', $data);
+        }
     }

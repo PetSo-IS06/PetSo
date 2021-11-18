@@ -31,7 +31,7 @@
                 <span class="invalidInput"><?php echo $data['mobileError'] ?></span>
                 <div class="rp-bottom">
                     <a href="<?php echo URL_ROOT; ?>/authentications/login" class="grey-btn">Cancel</a>
-                    <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="purple-btn">Confirm</a>
+                    <a href="<?php echo URL_ROOT;?>/authentications/verifyOTP" class="purple-btn">Confirm</a>
                 </div>
             </form>
         </div>

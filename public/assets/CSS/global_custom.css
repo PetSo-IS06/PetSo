@@ -1,6 +1,7 @@
 @import './variables/font_sizes.css';
 @import './variables/colors.css';
 @import './variables/screen_sizes.css';
+@import './variables/buttons.css';
 
 * {
     box-sizing: border-box;
@@ -8,6 +9,70 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
+
+/* --------------------- Text Colors ----------------------------- */
+
+.grey {
+    color: var(--primary-grey-color);
+}
+
+.purple {
+    color: var(--primary-purple-color);
+}
+
+.yellow {
+    color: var(--primary-yellow-color);
+}
+
+.blue {
+    color: var(--primary-blue-color);
+}
+
+.light-grey {
+    color: var(--primary-light-grey-color);
+}
+
+.very-light-grey {
+    color: var(--primary-very-light-grey-color);
+}
+
+.white {
+    color: var(--white-color);
+}
+
+.black {
+    color: var(--black-color);
+}
+
+.green {
+    color: var(--primary-green-color);
+}
+
+.red {
+    color: var(--primary-red-color);
+}
+
+/* --------------------- Page Styles ----------------------------- */
+
+.bd-mg {
+    margin: 0 calc((100vw - 1200px) / 2);
+}
+
+.body1 {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../img/login.jpg");
+}
+
+.center {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+/* --------------------- Back Nav Styles ----------------------------- */
 
 .back {
     color: var(--primary-grey-color);
@@ -17,4 +82,246 @@
 
 .back i {
     padding-right: .5rem;
+}
+
+/* --------------------- Heading Styles ----------------------------- */
+
+.heading1 {
+    font-size: var(--heading2-size);
+}
+
+.heading1B {
+    font-size: var(--heading2-size);
+    font-weight: bold;
+}
+
+.heading2 {
+    font-size: var(--heading2-size);
+}
+
+.heading2B {
+    font-size: var(--heading2-size);
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: var(--subtitle-size);
+}
+
+.subtitleB {
+    font-size: var(--subtitle-size);
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+.normal {
+    font-size: var(--normal-size);
+}
+
+.normalB {
+    font-size: var(--normal-size);
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+/* --------------------- Button Styles ----------------------------- */
+
+.disable {
+    opacity: 0.72;
+    cursor:not-allowed
+}
+
+.purple-btn {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--min-btn-width);
+    padding: 12px 26px;
+    text-decoration: none;
+    border: solid 3px var(--primary-purple-color);
+    outline: none;
+    border-radius: 10px;
+    background: var(--white-color);
+    color: var(--primary-purple-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out;
+    -webkit-transition: background-color 0.3s ease-out;
+}
+.purple-btn:hover {
+    background: var(--primary-purple-color);
+    color: var(--white-color);
+}
+
+.grey-btn {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--min-btn-width);
+    padding: 12px 26px;
+    text-decoration: none;
+    border: solid 3px var(--primary-grey-color);
+    outline: none;
+    border-radius: 10px;
+    background: var(--white-color);
+    color: var(--primary-grey-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out;
+    -webkit-transition: background-color 0.3s ease-out;
+}
+.grey-btn:hover {
+    background: var(--primary-grey-color);
+    color: var(--white-color);
+}
+
+.blue-btn {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--min-btn-width);
+    padding: 12px 26px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-blue-color);
+    color: var(--white-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out;
+    -webkit-transition: background-color 0.3s ease-out;
+}
+.blue-btn:hover {
+    background: var(--primary-blue-color);
+    color: var(--white-color);
+}
+
+.yellow-btn {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--min-btn-width);
+    padding: 12px 26px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-yellow-color);
+    color: var(--white-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out;
+    -webkit-transition: background-color 0.3s ease-out;
+}
+.yellow-btn:hover {
+    background: var(--primary-yellow-color);
+    color: var(--white-color);
+}
+
+.green-btn {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--min-btn-width);
+    padding: 12px 26px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-green-color);
+    color: var(--white-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out;
+    -webkit-transition: background-color 0.3s ease-out;
+}
+.green-btn:hover {
+    background: var(--primary-green-color);
+    color: var(--white-color);
+}
+
+/* --------------------- Card Styles ----------------------------- */
+
+.card1 {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 2rem calc((100vw - 450px) / 2);
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 7px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 25px;
+    padding: 2rem 3rem;
+}
+
+/* --------------------- Form Styles ----------------------------- */
+
+.invalidInput {
+    font-size: smaller;
+    color: red;
+    padding-left: 2rem;
+}
+.inputBx {
+    position: relative;
+    /* padding: 0 1rem; */
+    margin-bottom: 5px;
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-grey-color)
+}
+.inputBx input {
+    width: 100%;
+    height: 42px;
+    outline: none;
+    border: none;
+    padding-left: 3rem;
+    border: 1px solid var(--primary-grey-color);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.inputBx .password-control {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: inline-block;
+    width: 35px;
+    height: 30px;
+    transition: 0.5s;
+}
+.inputBx .password-control img{
+    transform: scale(0.8);
+}
+.inputBx .view {
+    transition: 0.5s;
+}
+.inputBx img {
+    position: absolute;
+    left: 10px;
+    transform: scale(0.6);
+    width: 32px;
+}
+.inputBx input::placeholder {
+    color: var(--white-color);
+  }
+.inputBx span {
+    position: absolute;
+    left: 50px;
+    display: inline-block;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.inputBx input:focus ~ span,
+.inputBx input:valid ~ span {
+    transform: translateX(-30px) translateY(-35px);
+    font-size: var(--normal-size);
 }

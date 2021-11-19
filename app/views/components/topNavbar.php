@@ -31,7 +31,7 @@
                 <a href="<?php echo URL_ROOT;?>/" class="nav-menu-profile-tag" id="tag1">My Profile</a>
             <?php else : ?>
                 <a href="<?php echo URL_ROOT;?>/Authentications/login" class="nav-menu-main-links">Log in</a>
-                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button1">Sign Up</a>
+                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="purple-btn hide" id="button1">Sign Up</a>
             <?php endif;?>
 
         </div>
@@ -73,7 +73,7 @@
                     </div>
                 </label>
             <?php else : ?>
-                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="nav-menu-signup-btn" id="button2">Sign Up</a>
+                <a href="<?php echo URL_ROOT;?>/users/selectAccount" class="purple-btn" id="button2">Sign Up</a>
             <?php endif;?>
         </div>
     </div>

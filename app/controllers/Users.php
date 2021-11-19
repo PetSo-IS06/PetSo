@@ -156,11 +156,6 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
-        public function notification(){
-            $this->view('components/notification');
-        }
-
-
         public function userProfileEdit() {
             $data = [
                 'username' => '',

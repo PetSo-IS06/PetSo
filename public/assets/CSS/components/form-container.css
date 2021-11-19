@@ -22,7 +22,7 @@ img {
     width: 32px;
   }
 
-.container {
+.form-container {
   box-sizing: unset;
   position: relative;
   padding: 50px;
@@ -37,7 +37,7 @@ img {
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.39);
 }
 
-.container::after {
+.form-container::after {
   content: "";
   position: absolute;
   top: 5px;

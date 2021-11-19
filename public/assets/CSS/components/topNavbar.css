@@ -16,7 +16,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0.2rem calc((100vw - 1200px) / 2);
+    /* padding: 0.2rem calc((100vw - 1200px) / 2); */
     margin-bottom: 3rem;
     z-index: 10;
     position: relative;
@@ -49,15 +49,22 @@
     position: relative;
 }
 
+.nav-menu-top .purple-btn {
+    display: none;
+}
+
 .notify {
     transform: rotate(45deg);
     display: inline-block
 }
 
 .nav-menu-main {
+    display: flex;
     padding: 1rem 1rem;
     list-style: none;
     width: 100%;
+    color: red;
+    justify-content: flex-end;
 }
 
 .nav-menu-main-links {
@@ -111,16 +118,7 @@
     padding-left: 5px;
 }
 
-.nav-menu-signup-btn {
-    padding: 12px 24px;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    background: var(--primary-purple-color);
-    margin-left: 16px;
-    color: var(--white-color);
-}#button1 {
+.nav-menu-top .purple-btn {
     display: none;
 }
 
@@ -196,7 +194,7 @@
 /* =========== Styles for Tablet View ============= */
 
 @media screen and (max-width: 768px) {
-    .nav-menu-top #button1 {
+    .nav-menu-top .purple-btn {
         display: block; 
         position: absolute;
         padding: 8px 16px;
@@ -208,8 +206,8 @@
         display: none;
     }
 
-    .nav-menu-signup-btn #button2 {
-        display: none;
+    .nav-menu-main .purple-btn #button2 {
+        display: none !important;
     }
 
     .nav-bars {
@@ -236,6 +234,7 @@
     }
 
     .nav-menu-main.resposive {
+        flex-direction: column;
         padding-top: 2rem;
         position: relative;
     }

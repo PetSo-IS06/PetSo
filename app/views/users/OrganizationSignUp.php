@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title><?php echo SITE_NAME; ?> | Register</title>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/organization_signup.css'>
 </head>
 

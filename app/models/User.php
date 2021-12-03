@@ -87,8 +87,8 @@
         }
 
         public function getUser() {
-            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_email` = :email');
-            $this->db->bind(':email', $_SESSION['user_email']);
+            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_id` = :id');
+            $this->db->bind(':id', $_SESSION['user_id']);
 
             $result = $this->db->single();    // resultSet returns an array of Objects
             return $result;

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/topNavbar.css">
 </head>
 <body>
-   <nav class="nav">
+   <nav class="nav pg-body">
        <div class="nav-logo">
             <a href="/">
             <img src="<?php echo URL_ROOT; ?>/public/assets/img/petso_logo.png"> 
@@ -58,7 +58,6 @@
                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt="Profile Pic">
                             <h3><?php echo $_SESSION['user_name']; ?></h3>
                             <?php echo $_SESSION['user_email']; ?>
-                            <hr/>
                         </label>
                         <a href="<?php echo URL_ROOT;?>/users/userProfile">My Profile</a>
                         <a href="#">Notifications</a>

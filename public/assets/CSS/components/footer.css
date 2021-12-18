@@ -8,17 +8,22 @@
     margin: 0;
     padding: 0;
   }
+
+.footer_row {
+  width: 100%;
+}
+
   .footer_column a{
-      color: white;
-      text-decoration: none;
+    color: white;
+    text-decoration: none;
   }
   .footer_column h2{
-      color:white;   
+    color:white;   
   }
   .footer_column a:hover {
-color:var( --primary-light-grey-color);
--webkit-transition: all 0.3s ease;
-transition: all 0.3s ease;
+    color:var( --primary-light-grey-color);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
   
   .footer_column {

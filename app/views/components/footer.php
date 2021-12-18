@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Footer</title>
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/footer.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
 </head>
 <body>
     <div class="footer_row">

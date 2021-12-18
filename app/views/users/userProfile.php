@@ -21,9 +21,9 @@
 
         <!--1-->
         <div class="container1">
-            <div>
-                <img src="<?php echo URL_ROOT; ?>/public/assets/img/profile/propic.jpeg">
-            </div>
+            <a href="userProfile.php">
+                <img src="" alt="Add your image here">
+            </a>
             <br>
             <h2><?php echo $data['username']; ?></h2>
             <text><?php echo $_SESSION['user_email']; ?></text>

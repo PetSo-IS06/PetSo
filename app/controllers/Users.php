@@ -6,6 +6,7 @@
             $this->userModel = $this->model('User');
         }
 
+
         public function signup() {
             error_reporting(E_ALL ^ E_WARNING);
             $data = [

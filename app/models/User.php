@@ -68,10 +68,10 @@
 
             $this->db->query(
                 'UPDATE `petso`.`User` SET `us_name` = :username , `us_mobile` = :mobile , `us_address` = :address,
-                        `us_city` = :city, `us_district` = :district WHERE `us_email` = :email');
+                        `us_city` = :city, `us_district` = :district WHERE `us_id` = :id');
 
             // bind values
-            $this->db->bind(':email', $_SESSION['user_email']);
+            $this->db->bind(':id', $_SESSION['user_id']);
             $this->db->bind(':username', $data['username']);
             $this->db->bind(':mobile', $data['mobile']);
             $this->db->bind(':address', $data['address']);

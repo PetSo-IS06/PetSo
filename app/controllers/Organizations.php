@@ -237,6 +237,6 @@
             //     'create-date' => $result->create_date
             // ];
 
-            $this->view('users/organization/dashboard', $data);
+            $this->view('users/organization/orgDashboard', $data);
         }
     }

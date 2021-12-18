@@ -10,6 +10,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+:root {
+    --margin: calc((100vw - 1200px) / 2);
+}
+
 /* --------------------- Text Colors ----------------------------- */
 
 .grey {
@@ -54,8 +58,12 @@
 
 /* --------------------- Page Styles ----------------------------- */
 
-.bd-mg {
-    margin: 0 calc((100vw - 1200px) / 2);
+.pg-body {
+    padding: 0 var(--margin);
+}
+
+.override-mg {
+    margin: 0 calc(-1 * var(--margin));
 }
 
 .body1 {

@@ -106,7 +106,7 @@
                 ];
             }
 
-            $this->view('users/login', $data);
+            $this->view('pages/login', $data);
         }
 
         public function createUserSession($account, $user) {

@@ -6,6 +6,10 @@
             $this->userModel = $this->model('User');
         }
 
+        public function index() {
+            $this->view('pages/index');
+        }
+
         public function signup() {
             error_reporting(E_ALL ^ E_WARNING);
             $data = [

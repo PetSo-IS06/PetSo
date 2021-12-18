@@ -6,7 +6,6 @@
             $this->organizationModel = $this->model('Organization');
             $this->projectModel = $this->model('Project');
         }
-    
 
         public function organizationViewProfile() {
             $data = [
@@ -219,8 +218,8 @@
         public function dashboard(){
             $result = $this->projectModel->getOpportunities();
 
-
             $data = $result;
+            
             // $data = [
             //     'id' => $result->id,
             //     'reason' => $result->reason,

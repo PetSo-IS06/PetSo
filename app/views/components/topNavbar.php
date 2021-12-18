@@ -65,7 +65,7 @@
                         <a href="<?php 
                         if($_SESSION['user_type'] == 'user') :
                             echo URL_ROOT.'/users/dashboard';
-                        elseif($_SESSION['user_type'] == 'organization') :
+                        elseif($_SESSION['user_type'] == 'org') :
                             echo URL_ROOT.'/organizations/dashboard';
                         endif;?>">My Dashboard</a>
                         <a href="#">My Complaints</a>

@@ -21,7 +21,7 @@
 </div>
 <div id="body" class="pg-body">
     <div class="hero">
-        <div class="hero-banner  override-mg">
+        <div class="hero-banner override-mg">
             <div class="hero-banner-contents">
                 <div class="hero-banner-contents-icon">
                     <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/paw-with-plus.png" alt="">

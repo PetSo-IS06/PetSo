@@ -1,0 +1,80 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+:root {
+    --margin: calc((100vw - 1200px) / 2);
+}
+
+.header {
+    background-image: url('../img/welfare_img/volunteers-group.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    justify-content: center;
+    display: flex;
+    margin: 0 calc(-1 * var(--margin));
+    margin-left: calc(-1 * var(--margin));
+    margin-right: calc(-1 * var(--margin));
+}
+
+.header-contents {
+    justify-content: center;
+    height: fit-content;
+    margin: auto 0;
+    width: 50vw;
+}
+
+.header-contents h1 {
+    z-index: 2;
+    /* margin-top: 1rem; */
+    text-align: center;
+    font-size: var(--heading1-size);
+    color: var(--white-color);
+    font-weight: bold;
+}
+
+.header-contents p {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.header-contents .action {
+    display:flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.prj-form h2 {
+    margin: 2rem 0;
+}
+
+.prj-form .form-sec {
+ width: 100%;
+}
+
+.prj-form .form-sec h2 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+.prj-form .form-sec .instr {
+    margin: 2rem 0;
+}
+
+.prj-form .form-sec .inputBx2 {
+    width: 40%;
+    margin-top: 3rem;
+}
+
+.prj-form .form-sec .prj-form-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+/* =========== Styles for Mobile View ============= */
+
+@media screen and (max-width: 360px) {
+    
+}

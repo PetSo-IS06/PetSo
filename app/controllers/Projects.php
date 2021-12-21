@@ -10,7 +10,7 @@ class Projects extends Controller {
             'title' => 'Home Page',
             'users' => ''
         ];
-        $this->view('users/ProjectOverViewForm', $data);
+        $this->view('projects/createProject', $data);
     }
 
     public function createVolunteerOpportunity() {

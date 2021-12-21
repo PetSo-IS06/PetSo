@@ -86,11 +86,15 @@
             }
         }
 
-        public function getUser() {
-            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_id` = :id');
-            $this->db->bind(':id', $_SESSION['user_id']);
+        public function getPendingRequests() {
+            $this->db->query("SELECT * FROM organization where account_status ='pending'");
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
 
-            $result = $this->db->single();    // resultSet returns an array of Objects
+        public function getOrgDetails() {
+            $this->db->query("SELECT * FROM organization where org_id=1");
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;
         }
     }

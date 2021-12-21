@@ -11,6 +11,11 @@
 </center>
 
 <body>
+<div id="top-nav">
+    <?php
+    require APP_ROOT . '/views/components/topNavbar.php';
+    ?>
+</div>
 <div class = "step">
 <h3>Create an Account</h3>  
         <ul class="stepNo">
@@ -21,7 +26,7 @@
     </div>
 </center>
 <a href="<?php echo URL_ROOT; ?>/users/organizationSignUp">
-  <div class="left"> <center>
+  <div class="select-left"> <center>
     <h3> Welfare Organization </h3> <br>
       <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px">
 </center>
@@ -29,7 +34,7 @@
 </a>
 
   <a href="<?php echo URL_ROOT; ?>/users/signup">
-    <div class="right">  <center>
+    <div class="select-right">  <center>
       <h3> User  </h3> <br>  
       <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px"> 
 </center>
@@ -42,6 +47,12 @@
             Cancel
         </button>
     </a>
-</center>
+</center> <br> <br>
+
+<div id="footer">
+    <?php
+    require APP_ROOT . '/views/components/footer.php';
+    ?>
+</div>
 </body>
   </html>

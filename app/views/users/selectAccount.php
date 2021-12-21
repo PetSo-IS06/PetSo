@@ -10,8 +10,7 @@
 <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'/> 
 </center>
 
-<body> <center> <br><br>
-</center>
+<body>
 <div class = "step">
 <h3>Create an Account</h3>  
         <ul class="stepNo">
@@ -21,19 +20,19 @@
         </ul> 
     </div>
 </center>
-<a href="<?php echo URL_ROOT; ?>/users/organizationSignUp" class="">
-  <div class="left"><center>
+<a href="<?php echo URL_ROOT; ?>/users/organizationSignUp">
+  <div class="left"> <center>
     <h3> Welfare Organization </h3> <br>
       <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px">
-      </center>
+</center>
   </div>
 </a>
 
-  <a href="<?php echo URL_ROOT; ?>/users/signup" class="">
-    <div class="right"> <center>
-      <h3> User  </h3> <br> 
-      <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px">
-      </center>
+  <a href="<?php echo URL_ROOT; ?>/users/signup">
+    <div class="right">  <center>
+      <h3> User  </h3> <br>  
+      <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px"> 
+</center>
     </div>
   </a>
 

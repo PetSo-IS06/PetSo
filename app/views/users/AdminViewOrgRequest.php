@@ -15,88 +15,40 @@
         <table>
             <thead>
                 <tr>
-                    <th>Organization Name</th> <th></th>
-                    <th>Approve</th> <th></th>
-                    <th>Reject</th> <th></th>   
-                    <th>Details</th> <th></th>
+                    <th>Organization Name</th> 
+                    <th>Approve</th> 
+                    <th>Reject</th>   
+                    <th>Details</th>
                     
                 </tr>
             </thead>
             <tbody>
             <?php
-                // foreach ($data as $value) {
-                    // $name = $value['org_name'];
-                //   echo "$name";
-            //   }
-            print_r($data)
-
-            ?>
-
-             
-            <tr>
-                <td> Adopties.lk </td> <td></td>
-    
-                <td>
-                    <button type="submit" class="btn-approve">
-                        Approve
+                foreach ($data as $value) {
+                    $name = $value->org_name;
+                 echo "<tr>";
+               echo "<td> $value->org_name </td>"; 
+                echo "<td>
+                    <button type='submit' class='btn-approve'>
+                       Approve
                     </button>
+                     </td>";
                     
-                </td> <td></td>
-                <td>
-                    <button type="submit" class="btn-reject">
+               echo "<td>
+                    <button type='submit' class='btn-reject'>
                         Reject
                     </button>
-                </td> <td></td>
-                <td>
+                </td>";
+               echo "<td>
                     <a href> Details</a>
-                </td>
-            </tr>
-        </tbody>  
+                </td>";
+                echo "</tr>";
+              }
+            // print_r($data)
 
-        <tbody>
-             
-            <tr>
-                <td> Paw Prints </td> <td></td>
-    
-                <td>
-                    <button type="submit" class="btn-approve">
-                        Approve
-                    </button>
-                    
-                </td> <td></td>
-                <td>
-                    <button type="submit" class="btn-reject">
-                        Reject
-                    </button>
-                </td> <td></td>
-                <td>
-                    <a href> Details</a>
-                </td>
-            </tr>
+            ?>   
         </tbody>  
-
-        <tbody>
-             
-            <tr>
-                <td> Embark </td> <td></td>
-    
-                <td>
-                    <button type="submit" class="btn-approve">
-                        Approve
-                    </button>
-                    
-                </td> <td></td>
-                <td>
-                    <button type="submit" class="btn-reject">
-                        Reject
-                    </button>
-                </td> <td></td>
-                <td>
-                    <a href> Details</a>
-                </td>
-            </tr>
-        </tbody>  
-        </table>
+            </table>
     </div>
         </center>
     </body>

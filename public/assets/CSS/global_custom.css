@@ -342,6 +342,14 @@
     font-size: var(--normal-size);
 }
 
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+
+input[type=date]:focus::-webkit-datetime-edit {
+    color: black !important;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 -webkit-appearance: none;
@@ -382,6 +390,42 @@ margin: 0;
 .inputBx input:valid ~ span {
     transform: translateX(-30px) translateY(-35px);
     font-size: var(--normal-size);
+}
+
+.textArea {
+    margin-top: .8rem;
+    color: var(--primary-grey-color);
+}
+
+.textArea .text-box {
+    position: relative;
+    margin-bottom: 5px;
+    display: flex;
+    /* width: 100%; */
+    align-items: center;
+    color: var(--primary-grey-color)
+}
+
+.textArea .text-box textarea {
+    width: 100%;
+    height: 40%;
+    outline: none;
+    resize: none;
+    border: none;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    border: 1px solid var(--primary-grey-color);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.textArea span {
+    position: relative;
+    left: 10px;
+    display: inline-block;
+    transition: 0.5s;
+    pointer-events: none;
 }
 
 /* --------------------- Pagination ----------------------------- */

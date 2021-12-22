@@ -73,6 +73,33 @@
     margin-top: 3rem;
 }
 
+.prj-form .form-sec .vol-bool input {       /*Not working*/
+    margin-left: 2rem;
+}
+
+.prj-form .form-sec .vol-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.vol-inputs-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.vol-inputs-col-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.vol-inputs-col-row .selectBx {
+    margin-right: 2rem;
+    width: 100%;
+}
+
 /* =========== Styles for Mobile View ============= */
 
 @media screen and (max-width: 360px) {

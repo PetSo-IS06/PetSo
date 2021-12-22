@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/select-box.css">
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/set-min-date.js"></script>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/textarea-bullets.js"></script>
+    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/create-project.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title><?php echo SITE_NAME; ?> | Home</title>
@@ -78,23 +79,23 @@
                             </div>
                         </div>
                         <div class="inputBx2" id="">
-                            <input name="cause" id="cause" type="text" required="required">
+                            <input name="cause" id="cause" type="text">
                             <span class="normalB">Other</span>
                         </div>
                         <span class="invalidInput"><?php echo '' ?></span>
 
                         <div class="prj-form-nav">
-                            <a href="" class="grey-btn">Cancel</a>
+                            <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
                             <div class="pagination">
-                                <a href="#" style="pointer-events: none">&laquo;</a>
+                                <a style="pointer-events: none">&laquo;</a>
                                 <a href="#" class="active">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">&raquo;</a>
+                                <a onClick="showProjectDetails()">2</a>
+                                <a onClick="showVolunteering()">3</a>
+                                <a onClick="showFunding()">4</a>
+                                <a onClick="showBankInfo()">5</a>
+                                <a onClick="showProjectDetailsNext()">&raquo;</a>
                             </div>
-                            <a id="prj-cause-next-btn" onClick="showProjectDetailsForm()" class="blue-btn">Next</a>
+                            <a id="prj-cause-next-btn" onClick="showProjectDetailsNext()" class="blue-btn">Next</a>
                         </div>
                     </div>
 
@@ -128,17 +129,17 @@
                     </div>
 
                     <div class="prj-form-nav">
-                        <a href="" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
                         <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
+                            <a onClick="showProjectCause()">&laquo;</a>
+                            <a onClick="showProjectCause()">1</a>
                             <a href="#" class="active">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">&raquo;</a>
+                            <a onClick="showVolunteering()">3</a>
+                            <a onClick="showFunding()">4</a>
+                            <a onClick="showBankInfo()">5</a>
+                            <a onClick="showVolunteeringNext()">&raquo;</a>
                         </div>
-                        <a href="" class="blue-btn">Next</a>
+                        <a id="prj-vol-next-btn" onClick="showVolunteeringNext()" class="blue-btn">Next</a>
                     </div>
                 </div>
 
@@ -416,22 +417,22 @@
                     </div>
 
                     <div class="prj-form-nav">
-                        <a href="" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
                         <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
+                            <a onClick="showProjectDetails()">&laquo;</a>
+                            <a onClick="showProjectCause()">1</a>
+                            <a onClick="showProjectDetails()">2</a>
                             <a href="#" class="active">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">&raquo;</a>
+                            <a onClick="showFunding()">4</a>
+                            <a onClick="showBankInfo()">5</a>
+                            <a onClick="showFundingNext()">&raquo;</a>
                         </div>
-                        <a href="" class="blue-btn">Next</a>
+                        <a id="prj-fund-next-btn" onClick="showFundingNext()" class="blue-btn">Next</a>
                     </div>
                 </div>
 
                 <!-- Project Funding Form -->    
-                <div class="form-sec card2" id="prj-details">
+                <div class="form-sec card2" id="prj-funds">
                     <h2 class="grey subtitleB">Project Funding</h2>
                     <hr>
 
@@ -486,22 +487,22 @@
                     
 
                     <div class="prj-form-nav">
-                        <a href="" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
                         <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
+                            <a onClick="showVolunteering()">&laquo;</a>
+                            <a onClick="showProjectCause()">1</a>
+                            <a onClick="showProjectDetails()">2</a>
+                            <a onClick="showVolunteering()">3</a>
                             <a href="#" class="active">4</a>
-                            <a href="#">5</a>
-                            <a href="#">&raquo;</a>
+                            <a onClick="showBankInfo()">5</a>
+                            <a onClick="showBankNext()">&raquo;</a>
                         </div>
-                        <a href="" class="blue-btn">Next</a>
+                        <a id="prj-bank-next-btn" onClick="showBankNext()" class="blue-btn">Next</a>
                     </div>
                 </div>
 
                 <!-- Bank account Details Form -->    
-                <div class="form-sec card2" id="prj-details">
+                <div class="form-sec card2" id="prj-bank">
                     <h2 class="grey subtitleB">Bank account Details</h2>
                     <hr>
 
@@ -567,17 +568,18 @@
                         </div>
                     </div>
                     <div class="prj-form-nav">
-                        <a href="" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
                         <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
+                            <a onClick="showFunding()">&laquo;</a>
+                            <a onClick="showProjectCause()">1</a>
+                            <a onClick="showProjectDetails()">2</a>
+                            <a onClick="showVolunteering()">3</a>
+                            <a onClick="showFunding()">4</a>
                             <a href="#" class="active">5</a>
                             <a href="#" style="pointer-events: none">&raquo;</a>
                         </div>
-                        <a href="" class="purple-btn">Submit</a>
+                        <input type="submit" class="purple-btn" value="Submit">
+                        <!-- <a href="" class="purple-btn">Submit</a> -->
                     </div>
                 </div>
             </form>
@@ -588,7 +590,4 @@
             ?>
         </div>
     </body>
-    
 </html>
-
-

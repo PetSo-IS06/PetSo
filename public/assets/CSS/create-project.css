@@ -53,6 +53,14 @@
  width: 100%;
 }
 
+#prj-cause {
+    display: block;
+}
+
+#prj-details, #prj-vol, #prj-funds, #prj-bank {
+    display: none;
+}
+
 .prj-form .form-sec h2 {
     margin-top: 0;
     margin-bottom: .5rem;

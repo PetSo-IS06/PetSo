@@ -130,7 +130,7 @@
     bottom: 0;
   }
   
-  input[type="radio"] {
+  .selectBx input[type="radio"] {
     position: absolute;
     right: 0;
     left: 0;
@@ -186,7 +186,7 @@
     top: 0;
     bottom: auto;
     opacity: 1;
-    animation: unset;
+    /* animation: unset; */
   }
   
   .option input[type="radio"]:checked ~ .label:before {

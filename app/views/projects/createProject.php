@@ -118,7 +118,6 @@
                         <span class="normalB">Project description</span>
                         <div class="text-box" id="">
                             <textarea rows="10" name="prjDescription"></textarea> 
-                            <!-- <textarea onInput="handleInput(event)" rows="10"></textarea>  -->
                         </div>
                         <span class="invalidInput"><?php echo '' ?></span>
                     </div> 
@@ -150,90 +149,329 @@
 
                     <div class="vol-bool">
                         <p class="grey normalB">Would you like to enroll volunteers for the project?</p>
-                        <input type="radio" name="volunteering" value="Yes"> Yes &nbsp;
-                        <input type="radio" name="volunteering" value="No"> No
+                        <input type="radio" name="volunteering" value="Yes" id="isVolunteering"> Yes &nbsp;
+                        <input type="radio" name="volunteering" value="No" id="noVolunteering"> No
                     </div>
 
-                    <div class="textArea">
-                        <span class="normalB">Why should people volunteer for this project?</span>
-                        <div class="text-box" id="">
-                            <textarea rows="10" name="volReason"></textarea>
-                        </div>
-                        <span class="invalidInput"><?php echo '' ?></span>
-                    </div> 
+                    <div id="vol-form">
+                        <div class="textArea">
+                            <span class="normalB">Why should people volunteer for this project?</span>
+                            <div class="text-box" id="">
+                                <textarea rows="10" name="volReason"></textarea>
+                            </div>
+                            <span class="invalidInput"><?php echo '' ?></span>
+                        </div> 
 
-                    <div class="textArea">
-                        <span class="normalB">Work Description</span>
-                        <div class="text-box" id="">
-                            <textarea rows="10" name="volDescription"></textarea>
-                        </div>
-                        <span class="invalidInput"><?php echo '' ?></span>
-                    </div> 
+                        <div class="textArea">
+                            <span class="normalB">Work Description</span>
+                            <div class="text-box" id="">
+                                <textarea rows="10" name="volDescription"></textarea>
+                            </div>
+                            <span class="invalidInput"><?php echo '' ?></span>
+                        </div> 
 
-                    <div class="vol-inputs">
-                        <div class="vol-inputs-col">
-                            <div class="vol-inputs-col-row">
-                                <div class="selectBx" id="selectBx">
-                                    <input type="checkbox" id="options-view-button" name="selectbox">
-                                    <div id="select-button">
-                                        <div id="selected-value">
-                                            <span class="normalB">District*</span>
+                        <div class="vol-inputs">
+                            <div class="vol-inputs-col">
+                                <div class="row-title">
+                                    <label class="grey normalB">Location</label>
+                                </div>
+                                <div class="vol-inputs-col-row">
+                                    <div class="selectBx" id="selectBx">
+                                        <input type="checkbox" id="options-view-button" name="selectbox">
+                                        <div id="select-button">
+                                            <div id="selected-value">
+                                                <span class="normalB">District*</span>
+                                            </div>
+                                            <div id="chevrons">
+                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            </div>
                                         </div>
-                                        <div id="chevrons">
-                                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                        <div id="options">
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="district" value="Kandy">
+                                                <input class="s-c bottom" type="radio" name="district" value="Kandy">
+                                                <span class="label">Kandy</span>
+                                                <span class="opt-val">Kandy</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="district" value="Colombo">
+                                                <input class="s-c bottom" type="radio" name="district" value="Colombo">
+                                                <span class="label">Colombo</span>
+                                                <span class="opt-val">Colombo</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="district" value="Galle">
+                                                <input class="s-c bottom" type="radio" name="district" value="Galle">
+                                                <span class="label">Galle</span>
+                                                <span class="opt-val">Galle</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="options">
-                                        <div class="option">
-                                            <input class="s-c top" type="radio" name="district" value="Kandy">
-                                            <input class="s-c bottom" type="radio" name="district" value="Kandy">
-                                            <span class="label">Kandy</span>
-                                            <span class="opt-val">Kandy</span>
+                                    <div class="selectBx" id="selectBx">
+                                        <input type="checkbox" id="options-view-button" name="selectbox">
+                                        <div id="select-button">
+                                            <div id="selected-value">
+                                                <span class="normalB">Area*</span>
+                                            </div>
+                                            <div id="chevrons">
+                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            </div>
                                         </div>
-                                        <div class="option">
-                                            <input class="s-c top" type="radio" name="district" value="Colombo">
-                                            <input class="s-c bottom" type="radio" name="district" value="Colombo">
-                                            <span class="label">Colombo</span>
-                                            <span class="opt-val">Colombo</span>
-                                        </div>
-                                        <div class="option">
-                                            <input class="s-c top" type="radio" name="district" value="Galle">
-                                            <input class="s-c bottom" type="radio" name="district" value="Galle">
-                                            <span class="label">Galle</span>
-                                            <span class="opt-val">Galle</span>
+                                        <div id="options">
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="Area" value="Kandy">
+                                                <input class="s-c bottom" type="radio" name="Area" value="Kandy">
+                                                <span class="label">Kandy</span>
+                                                <span class="opt-val">Kandy</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="Area" value="Colombo">
+                                                <input class="s-c bottom" type="radio" name="Area" value="Colombo">
+                                                <span class="label">Colombo</span>
+                                                <span class="opt-val">Colombo</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="Area" value="Galle">
+                                                <input class="s-c bottom" type="radio" name="Area" value="Galle">
+                                                <span class="label">Galle</span>
+                                                <span class="opt-val">Galle</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="selectBx" id="selectBx">
-                                    <input type="checkbox" id="options-view-button" name="selectbox">
-                                    <div id="select-button">
-                                        <div id="selected-value">
-                                            <span class="normalB">District*</span>
+
+                                <div class="row-title">
+                                    <label class="grey normalB">Work Hours</label>
+                                </div>
+                                <div class="vol-inputs-col-row">
+                                    <div class="selectBx" id="selectBx">
+                                        <input type="checkbox" id="options-view-button" name="selectbox">
+                                        <div id="select-button">
+                                            <div id="selected-value">
+                                                <span class="normalB">From*</span>
+                                            </div>
+                                            <div id="chevrons">
+                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            </div>
                                         </div>
-                                        <div id="chevrons">
-                                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                        <div id="options">
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-from" value="Not specified">
+                                                <input class="s-c bottom" type="radio" name="work-from" value="Not specified">
+                                                <span class="label">Not specified</span>
+                                                <span class="opt-val">Not specified</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-from" value="8:00AM">
+                                                <input class="s-c bottom" type="radio" name="work-from" value="8:00AM">
+                                                <span class="label">8:00AM</span>
+                                                <span class="opt-val">8:00AM</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-from" value="9:00AM">
+                                                <input class="s-c bottom" type="radio" name="work-from" value="9:00AM">
+                                                <span class="label">9:00AM</span>
+                                                <span class="opt-val">9:00AM</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-from" value="10:00AM">
+                                                <input class="s-c bottom" type="radio" name="work-from" value="10:00AM">
+                                                <span class="label">10:00AM</span>
+                                                <span class="opt-val">10:00AM</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="options">
-                                        <div class="option">
-                                            <input class="s-c top" type="radio" name="district" value="Kandy">
-                                            <input class="s-c bottom" type="radio" name="district" value="Kandy">
-                                            <span class="label">Kandy</span>
-                                            <span class="opt-val">Kandy</span>
+                                    <div class="selectBx" id="selectBx">
+                                        <input type="checkbox" id="options-view-button" name="selectbox">
+                                        <div id="select-button">
+                                            <div id="selected-value">
+                                                <span class="normalB">To*</span>
+                                            </div>
+                                            <div id="chevrons">
+                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            </div>
                                         </div>
-                                        <div class="option">
-                                            <input class="s-c top" type="radio" name="district" value="Colombo">
-                                            <input class="s-c bottom" type="radio" name="district" value="Colombo">
-                                            <span class="label">Colombo</span>
-                                            <span class="opt-val">Colombo</span>
-                                        </div>
-                                        <div class="option">
-                                            <input class="s-c top" type="radio" name="district" value="Galle">
-                                            <input class="s-c bottom" type="radio" name="district" value="Galle">
-                                            <span class="label">Galle</span>
-                                            <span class="opt-val">Galle</span>
+                                        <div id="options">
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-to" value="Not specified">
+                                                <input class="s-c bottom" type="radio" name="work-to" value="Not specified">
+                                                <span class="label">Not specified</span>
+                                                <span class="opt-val">Not specified</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-to" value="3:00PM">
+                                                <input class="s-c bottom" type="radio" name="work-to" value="3:00PM">
+                                                <span class="label">3:00PM</span>
+                                                <span class="opt-val">3:00PM</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-to" value="4:00PM">
+                                                <input class="s-c bottom" type="radio" name="work-to" value="4:00PM">
+                                                <span class="label">4:00PM</span>
+                                                <span class="opt-val">4:00PM</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="work-to" value="5:00PM">
+                                                <input class="s-c bottom" type="radio" name="work-to" value="5:00PM">
+                                                <span class="label">5:00PM</span>
+                                                <span class="opt-val">5:00PM</span>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="textArea">
+                                    <span class="normalB">Requirements</span>
+                                    <div class="text-box" id="requirements">
+                                        <textarea name="volRequirements" onInput="handleInput(event)" rows="12"></textarea> 
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div> 
+                            </div>
+                            <div class="vol-inputs-col">
+                                <div class="vol-inputs-col-row">
+                                    <div class="widen">
+                                        <div class="inputBx2" id="date">
+                                            <input name="work-start" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Work Start date</span>
+                                        </div>
+                                        <span class="invalidInput"><?php echo '' ?></span>
+                                    </div>
+                                    <div class="widen">
+                                        <div class="inputBx2" id="date">
+                                            <input name="work-end" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Work End date</span>
+                                        </div>
+                                        <span class="invalidInput"><?php echo '' ?></span>
+                                    </div>
+                                </div>
+                                <div class="vol-inputs-col-row" id="work-days">
+                                    <div class="selectBx" id="selectBx">
+                                        <input type="checkbox" id="options-view-button" name="selectbox">
+                                        <div id="select-button">
+                                            <div id="selected-value">
+                                                <span class="normalB">Work days</span>
+                                            </div>
+                                            <div id="chevrons">
+                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            </div>
+                                        </div>
+                                        <div id="options">
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="days" value="Daily">
+                                                <input class="s-c bottom" type="radio" name="days" value="Daily">
+                                                <span class="label">Daily</span>
+                                                <span class="opt-val">Daily</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="days" value="Weekends">
+                                                <input class="s-c bottom" type="radio" name="days" value="Weekends">
+                                                <span class="label">Weekends</span>
+                                                <span class="opt-val">Weekends</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="days" value="Weekdays">
+                                                <input class="s-c bottom" type="radio" name="days" value="Weekdays">
+                                                <span class="label">Weekdays</span>
+                                                <span class="opt-val">Weekdays</span>
+                                            </div>
+                                            <div class="option">
+                                                <input class="s-c top" type="radio" name="days" value="Any preferred days">
+                                                <input class="s-c bottom" type="radio" name="days" value="Any preferred days">
+                                                <span class="label">Any preferred days</span>
+                                                <span class="opt-val">Any preferred days</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vol-inputs-col-row">
+                                    <div class="widen">
+                                        <div class="inputBx2" id="date">
+                                            <input name="app-open" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Application Opening date</span>
+                                        </div>
+                                        <span class="invalidInput"><?php echo '' ?></span>
+                                    </div>
+                                    <div class="widen">
+                                        <div class="inputBx2" id="date">
+                                            <input name="app-close" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Application Closing date</span>
+                                        </div>
+                                        <span class="invalidInput"><?php echo '' ?></span>
+                                    </div>
+                                </div>
+                                <div class="textArea" id="notes">
+                                    <span class="normalB">Additional Notes</span>
+                                    <div class="text-box" id="">
+                                        <textarea name="volRequirements" onInput="handleInput(event)" rows="5"></textarea> 
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
+                            <input type="file" id="myFile" name="filename">
+                        </div>
+                    </div>
+
+                    <div class="prj-form-nav">
+                        <a href="" class="grey-btn">Cancel</a>
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#" class="active">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">&raquo;</a>
+                        </div>
+                        <a href="" class="blue-btn">Next</a>
+                    </div>
+                </div>
+
+                <!-- Project Funding Form -->    
+                <div class="form-sec card2" id="prj-details">
+                    <h2 class="grey subtitleB">Project Funding</h2>
+                    <hr>
+
+                    <div class="fund-bool">
+                        <p class="grey normalB">Would you like to raise funds for the project?</p>
+                        <input type="radio" name="funding" value="Yes" id="isFunding"> Yes &nbsp;
+                        <input type="radio" name="funding" value="No" id="noFunding"> No
+                    </div>
+
+                    <div class="textArea">
+                        <span class="normalB">What will the funds be used for?</span>
+                        <div class="text-box" id="">
+                            <textarea rows="10" name="prjFundsFor"></textarea> 
+                        </div>
+                        <span class="invalidInput"><?php echo '' ?></span>
+                    </div>
+
+                    <div class="fund-inputs">
+                        <div class="fund-inputs-col">
+                            <div class="inputBx2" id="">
+                                <input name="targetAmount" id="title" type="number" required="required">
+                                <span class="normalB">Target Amount (LKR)</span>
+                            </div>
+                            <span class="invalidInput"><?php echo '' ?></span>
+                        </div>
+                        <div class="fund-inputs-col">
+                            <div class="fund-inputs-col-row">
+                                <div id="fund-date">
+                                    <div class="inputBx2" id="date">
+                                        <input name="work-start" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                        <span class="normalB">Work Start date</span>
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div>
+                                <div id="fund-date">
+                                    <div class="inputBx2" id="date">
+                                        <input name="work-end" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                        <span class="normalB">Work End date</span>
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
                                 </div>
                             </div>
                         </div>
@@ -249,9 +487,9 @@
                         <div class="pagination">
                             <a href="#">&laquo;</a>
                             <a href="#">1</a>
-                            <a href="#" class="active">2</a>
+                            <a href="#">2</a>
                             <a href="#">3</a>
-                            <a href="#">4</a>
+                            <a href="#" class="active">4</a>
                             <a href="#">5</a>
                             <a href="#">&raquo;</a>
                         </div>

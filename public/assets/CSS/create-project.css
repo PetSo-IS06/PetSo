@@ -81,22 +81,86 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.prj-form .form-sec #vol-form {
+    display: block;
 }
 
 .vol-inputs-col {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.vol-inputs-col .row-title {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.vol-inputs-col #work-days {
+    margin-top: 3rem;
+}
+
+.vol-inputs-col #notes {
+    margin: 0;
 }
 
 .vol-inputs-col-row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.vol-inputs-col-row #date {
+    width: 100%;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.vol-inputs-col-row .inputBx2 {
+    width: 100%;
+}
+
+.widen {
+    flex-grow: 1;
+    margin-top: 4rem;
 }
 
 .vol-inputs-col-row .selectBx {
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
+    flex-grow: 1;
+    width: auto;
+}
+
+.prj-form .form-sec .fund-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.fund-inputs .fund-inputs-col {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.fund-inputs .fund-inputs-col .inputBx2 {
+    width: 100%;
+}
+
+.fund-inputs-col .fund-inputs-col-row {
+    display: flex;
+    /* flex-grow: 1; */
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.fund-inputs-col .fund-inputs-col-row #fund-date {
     width: 100%;
 }
 

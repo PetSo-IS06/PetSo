@@ -136,6 +136,10 @@
     width: auto;
 }
 
+.prj-form .form-sec #fund-form {
+    display: block;
+}
+
 .prj-form .form-sec .fund-inputs {
     display: flex;
     flex-direction: row;
@@ -162,6 +166,55 @@
 
 .fund-inputs-col .fund-inputs-col-row #fund-date {
     width: 100%;
+}
+
+.prj-form .form-sec #acnt-form {
+    display: block;
+}
+
+.prj-form .form-sec .acnt-inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding-top: 3rem;
+}
+
+.acnt-inputs-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    /* gap: 1rem; */
+}
+
+.acnt-inputs-col .inputBx2 {
+    margin-top: 2rem !important;
+}
+
+.acnt-inputs-col #item {
+    width: 100%;
+}
+
+.acnt-inputs-col .save-acnt label{
+    margin-left: 1rem;
+}
+
+.acnt-inputs-col .acnt-card {
+    display: flex;
+    margin: 1rem 30px;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid var(--primary-purple-color);
+    box-sizing: border-box;
+    box-shadow: -1px 0px 5px 4px #C4C4C4;
+    border-radius: 10px;
+    padding: 8px 16px 12px 16px;
+    cursor: pointer;
+}
+
+.acnt-inputs-col .acnt-card h3 {
+    line-height: 5px;
 }
 
 /* =========== Styles for Mobile View ============= */

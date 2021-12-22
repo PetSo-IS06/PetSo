@@ -86,7 +86,7 @@
                         <div class="prj-form-nav">
                             <a href="" class="grey-btn">Cancel</a>
                             <div class="pagination">
-                                <a href="#">&laquo;</a>
+                                <a href="#" style="pointer-events: none">&laquo;</a>
                                 <a href="#" class="active">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
@@ -94,7 +94,7 @@
                                 <a href="#">5</a>
                                 <a href="#">&raquo;</a>
                             </div>
-                            <a href="" class="blue-btn">Next</a>
+                            <a id="prj-cause-next-btn" onClick="showProjectDetailsForm()" class="blue-btn">Next</a>
                         </div>
                     </div>
 
@@ -435,52 +435,55 @@
                     <h2 class="grey subtitleB">Project Funding</h2>
                     <hr>
 
-                    <div class="fund-bool">
-                        <p class="grey normalB">Would you like to raise funds for the project?</p>
-                        <input type="radio" name="funding" value="Yes" id="isFunding"> Yes &nbsp;
-                        <input type="radio" name="funding" value="No" id="noFunding"> No
-                    </div>
-
-                    <div class="textArea">
-                        <span class="normalB">What will the funds be used for?</span>
-                        <div class="text-box" id="">
-                            <textarea rows="10" name="prjFundsFor"></textarea> 
+                    <div id="fund-form">
+                        <div class="fund-bool">
+                            <p class="grey normalB">Would you like to raise funds for the project?</p>
+                            <input type="radio" name="funding" value="Yes" id="isFunding"> Yes &nbsp;
+                            <input type="radio" name="funding" value="No" id="noFunding"> No
                         </div>
-                        <span class="invalidInput"><?php echo '' ?></span>
-                    </div>
 
-                    <div class="fund-inputs">
-                        <div class="fund-inputs-col">
-                            <div class="inputBx2" id="">
-                                <input name="targetAmount" id="title" type="number" required="required">
-                                <span class="normalB">Target Amount (LKR)</span>
+                        <div class="textArea">
+                            <span class="normalB">What will the funds be used for?</span>
+                            <div class="text-box" id="">
+                                <textarea rows="10" name="prjFundsFor"></textarea> 
                             </div>
                             <span class="invalidInput"><?php echo '' ?></span>
                         </div>
-                        <div class="fund-inputs-col">
-                            <div class="fund-inputs-col-row">
-                                <div id="fund-date">
-                                    <div class="inputBx2" id="date">
-                                        <input name="work-start" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
-                                        <span class="normalB">Work Start date</span>
-                                    </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+
+                        <div class="fund-inputs">
+                            <div class="fund-inputs-col">
+                                <div class="inputBx2" id="">
+                                    <input name="targetAmount" id="title" type="number" required="required">
+                                    <span class="normalB">Target Amount (LKR)</span>
                                 </div>
-                                <div id="fund-date">
-                                    <div class="inputBx2" id="date">
-                                        <input name="work-end" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
-                                        <span class="normalB">Work End date</span>
+                                <span class="invalidInput"><?php echo '' ?></span>
+                            </div>
+                            <div class="fund-inputs-col">
+                                <div class="fund-inputs-col-row">
+                                    <div id="fund-date">
+                                        <div class="inputBx2" id="date">
+                                            <input name="work-start" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Work Start date</span>
+                                        </div>
+                                        <span class="invalidInput"><?php echo '' ?></span>
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <div id="fund-date">
+                                        <div class="inputBx2" id="date">
+                                            <input name="work-end" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Work End date</span>
+                                        </div>
+                                        <span class="invalidInput"><?php echo '' ?></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div>
-                        <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
-                        <input type="file" id="myFile" name="filename">
+                        <div>
+                            <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
+                            <input type="file" id="myFile" name="filename">
+                        </div>
                     </div>
+                    
 
                     <div class="prj-form-nav">
                         <a href="" class="grey-btn">Cancel</a>
@@ -494,6 +497,87 @@
                             <a href="#">&raquo;</a>
                         </div>
                         <a href="" class="blue-btn">Next</a>
+                    </div>
+                </div>
+
+                <!-- Bank account Details Form -->    
+                <div class="form-sec card2" id="prj-details">
+                    <h2 class="grey subtitleB">Bank account Details</h2>
+                    <hr>
+
+                    <div class="fund-bool">
+                        <p class="purple normalB">Please note that the account details you mention here will not be made visible to any other users and we only need it to transfer the collected funds after the completion of the fundraiser.</p>
+                        <input type="radio" name="bankInfo" value="newAccount" id="newAccount"> Use a new bank account &nbsp;
+                        <input type="radio" name="bankInfo" value="savedAccount" id="savedAccount"> Select account details in my profile
+                    </div>
+
+                    <div id="acnt-form">
+                        <div class="acnt-inputs">
+                            <div class="acnt-inputs-col">
+                                <div id="">
+                                    <div class="inputBx2" id="item">
+                                        <input name="accountHolder" id="title" type="text" required="required">
+                                        <span class="normalB">Account Holder’s Name</span>
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div>
+                                <div id="">
+                                    <div class="inputBx2" id="item">
+                                        <input name="bank" id="title" type="text" required="required">
+                                        <span class="normalB">Bank Name</span>
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div>
+                                <div id="">
+                                    <div class="inputBx2" id="item">
+                                        <input name="branch" id="branch" type="text" required="required">
+                                        <span class="normalB">Branch Name</span>
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div>
+                                <div id="">
+                                    <div class="inputBx2" id="item">
+                                        <input name="branchCode" id="branchCode" type="text" required="required">
+                                        <span class="normalB">Branch code</span>
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div>
+                                <div id="">
+                                    <div class="inputBx2" id="item">
+                                        <input name="accountNo" id="accountNo" type="number" required="required">
+                                        <span class="normalB">Account Number</span>
+                                    </div>
+                                    <span class="invalidInput"><?php echo '' ?></span>
+                                </div>
+                                <div class="save-acnt">
+                                    <input type="checkbox" name="saveAccount" value="True">
+                                    <label class="">Save account details to profile</label>
+                                </div>
+                            </div>
+                            <div class="acnt-inputs-col">
+                                <div class="acnt-card" id="">
+                                    <h3 class="grey normalB">Commercial Bank, Thimbirigasyaya</h3>
+                                    <p class="grey normal">Acc. No: 100825...</p>
+                                </div>
+                                <div class="acnt-card" id="">
+                                    <h3 class="grey normalB">Commercial Bank, Thimbirigasyaya</h3>
+                                    <p class="grey normal">Acc. No: 100825...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prj-form-nav">
+                        <a href="" class="grey-btn">Cancel</a>
+                        <div class="pagination">
+                            <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#" class="active">5</a>
+                            <a href="#" style="pointer-events: none">&raquo;</a>
+                        </div>
+                        <a href="" class="purple-btn">Submit</a>
                     </div>
                 </div>
             </form>

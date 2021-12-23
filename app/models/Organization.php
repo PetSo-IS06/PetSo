@@ -101,6 +101,33 @@
             return $result;
         }
 
+        public function saveBankAccount($data){
+            $this->db->query('INSERT INTO `petso`.`Bank_Account` (`org_id`, `account_holder`, `bank`, `branch`, `branch_code`, `account_no`) 
+            VALUES (:org_id, :account_holder, :bank, :branch, :branch_code, :account_no)');
+
+            $this->db->bind(':org_id', $_SESSION['user_id']);
+            $this->db->bind(':account_holder', $data['accountHolder']);
+            $this->db->bind(':bank', $data['bank']);
+            $this->db->bind(':branch', $data['branch']);
+            $this->db->bind(':branch_code', $data['branchCode']);
+            $this->db->bind(':account_no', $data['accountNo']);
+
+            if($this->db->execute()) {
+                return $this->db->getLastInsertedId();
+            } else {
+                return -1;
+            }
+        }
+
+        public function getBankAccounts(){
+            $this->db->query("SELECT * FROM `petso`.`Bank_Account` WHERE `org_id` = :org_id");
+
+            $this->db->bind(':org_id', $_SESSION['user_id']);
+
+            $result = $this->db->resultSet(); 
+            return $result;
+        }
+
         public function dashboard($data){
             $this->db->query(' ');
 

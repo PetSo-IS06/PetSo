@@ -239,4 +239,12 @@
 
             $this->view('users/organization/orgDashboard', $data);
         }
+
+        public function getBankAccounts(){
+            $result = $this->organizationModel->getBankAccounts();
+
+            $data = $result;
+
+            $this->view('projects/createProject', $data);
+        }
     }

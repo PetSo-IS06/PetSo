@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <form action="" method="POST" class="prj-form">
+            <form action="<?php echo URL_ROOT . '/Projects/createProject'; ?>"" method="POST" class="prj-form">
                 <h2 class="purple heading2B center">Let’s create your next welfare project at Petso!</h2>
                 
                 <!-- Project Cause Form -->    
@@ -78,8 +78,10 @@
                                 </div>
                             </div>
                         </div>
+                        <span class="invalidInput"><?php echo $data['causeError']; ?></span>
+
                         <div class="inputBx2" id="">
-                            <input name="cause" id="cause" type="text">
+                            <input name="otherCause" id="otherCause" type="text">
                             <span class="normalB">Other</span>
                         </div>
                         <span class="invalidInput"><?php echo '' ?></span>
@@ -107,20 +109,20 @@
                         <input name="title" id="title" type="text" required="required">
                         <span class="normalB">Project Title</span>
                     </div>
-                    <span class="invalidInput"><?php echo '' ?></span>
+                    <span class="invalidInput"><?php echo $data['titleError']; ?></span>
 
                     <div class="inputBx2" id="">
                         <input name="initDate" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                         <span class="normalB">Initiation date</span>
                     </div>
-                    <span class="invalidInput"><?php echo '' ?></span>
+                    <span class="invalidInput"><?php echo $data['initDateError']; ?></span>
 
                     <div class="textArea">
                         <span class="normalB">Project description</span>
                         <div class="text-box" id="">
                             <textarea rows="10" name="prjDescription"></textarea> 
                         </div>
-                        <span class="invalidInput"><?php echo '' ?></span>
+                        <span class="invalidInput"><?php echo $data['prjDescriptionError']; ?></span>
                     </div> 
 
                     <div>
@@ -148,10 +150,10 @@
                     <h2 class="grey subtitleB">Volunteer Enrollment</h2>
                     <hr>
 
-                    <div class="vol-bool">
+                    <div class="bool">
                         <p class="grey normalB">Would you like to enroll volunteers for the project?</p>
-                        <input type="radio" name="volunteering" value="Yes" id="isVolunteering"> Yes &nbsp;
-                        <input type="radio" name="volunteering" value="No" id="noVolunteering"> No
+                        <input type="radio" name="volunteering" value="Yes" id="isVolunteering"><label>Yes</label>
+                        <input type="radio" name="volunteering" value="No" id="noVolunteering"> <label>No</label>
                     </div>
 
                     <div id="vol-form">
@@ -160,7 +162,7 @@
                             <div class="text-box" id="">
                                 <textarea rows="10" name="volReason"></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo '' ?></span>
+                            <span class="invalidInput"><?php echo $data['volReasonError']; ?></span>
                         </div> 
 
                         <div class="textArea">
@@ -168,7 +170,7 @@
                             <div class="text-box" id="">
                                 <textarea rows="10" name="volDescription"></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo '' ?></span>
+                            <span class="invalidInput"><?php echo $data['volDescriptionError']; ?></span>
                         </div> 
 
                         <div class="vol-inputs">
@@ -208,6 +210,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <span class="invalidInput"><?php echo $data['districtError']; ?></span>
+
                                     <div class="selectBx" id="selectBx">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
                                         <div id="select-button">
@@ -220,25 +224,27 @@
                                         </div>
                                         <div id="options">
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="Area" value="Kandy">
-                                                <input class="s-c bottom" type="radio" name="Area" value="Kandy">
+                                                <input class="s-c top" type="radio" name="area" value="Kandy">
+                                                <input class="s-c bottom" type="radio" name="area" value="Kandy">
                                                 <span class="label">Kandy</span>
                                                 <span class="opt-val">Kandy</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="Area" value="Colombo">
-                                                <input class="s-c bottom" type="radio" name="Area" value="Colombo">
+                                                <input class="s-c top" type="radio" name="area" value="Colombo">
+                                                <input class="s-c bottom" type="radio" name="area" value="Colombo">
                                                 <span class="label">Colombo</span>
                                                 <span class="opt-val">Colombo</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="Area" value="Galle">
-                                                <input class="s-c bottom" type="radio" name="Area" value="Galle">
+                                                <input class="s-c top" type="radio" name="area" value="Galle">
+                                                <input class="s-c bottom" type="radio" name="area" value="Galle">
                                                 <span class="label">Galle</span>
                                                 <span class="opt-val">Galle</span>
                                             </div>
                                         </div>
                                     </div>
+                                    <span class="invalidInput"><?php echo $data['areaError']; ?></span>
+
                                 </div>
 
                                 <div class="row-title">
@@ -257,31 +263,33 @@
                                         </div>
                                         <div id="options">
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-from" value="Not specified">
-                                                <input class="s-c bottom" type="radio" name="work-from" value="Not specified">
+                                                <input class="s-c top" type="radio" name="workFrom" value="Not specified">
+                                                <input class="s-c bottom" type="radio" name="workFrom" value="Not specified">
                                                 <span class="label">Not specified</span>
                                                 <span class="opt-val">Not specified</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-from" value="8:00AM">
-                                                <input class="s-c bottom" type="radio" name="work-from" value="8:00AM">
+                                                <input class="s-c top" type="radio" name="workFrom" value="8:00AM">
+                                                <input class="s-c bottom" type="radio" name="workFrom" value="8:00AM">
                                                 <span class="label">8:00AM</span>
                                                 <span class="opt-val">8:00AM</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-from" value="9:00AM">
-                                                <input class="s-c bottom" type="radio" name="work-from" value="9:00AM">
+                                                <input class="s-c top" type="radio" name="workFrom" value="9:00AM">
+                                                <input class="s-c bottom" type="radio" name="workFrom" value="9:00AM">
                                                 <span class="label">9:00AM</span>
                                                 <span class="opt-val">9:00AM</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-from" value="10:00AM">
-                                                <input class="s-c bottom" type="radio" name="work-from" value="10:00AM">
+                                                <input class="s-c top" type="radio" name="workFrom" value="10:00AM">
+                                                <input class="s-c bottom" type="radio" name="workFrom" value="10:00AM">
                                                 <span class="label">10:00AM</span>
                                                 <span class="opt-val">10:00AM</span>
                                             </div>
                                         </div>
                                     </div>
+                                    <span class="invalidInput"><?php echo $data['workFromError']; ?></span>
+
                                     <div class="selectBx" id="selectBx">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
                                         <div id="select-button">
@@ -294,55 +302,57 @@
                                         </div>
                                         <div id="options">
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-to" value="Not specified">
-                                                <input class="s-c bottom" type="radio" name="work-to" value="Not specified">
+                                                <input class="s-c top" type="radio" name="workTo" value="Not specified">
+                                                <input class="s-c bottom" type="radio" name="workTo" value="Not specified">
                                                 <span class="label">Not specified</span>
                                                 <span class="opt-val">Not specified</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-to" value="3:00PM">
-                                                <input class="s-c bottom" type="radio" name="work-to" value="3:00PM">
+                                                <input class="s-c top" type="radio" name="workTo" value="3:00PM">
+                                                <input class="s-c bottom" type="radio" name="workTo" value="3:00PM">
                                                 <span class="label">3:00PM</span>
                                                 <span class="opt-val">3:00PM</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-to" value="4:00PM">
-                                                <input class="s-c bottom" type="radio" name="work-to" value="4:00PM">
+                                                <input class="s-c top" type="radio" name="workTo" value="4:00PM">
+                                                <input class="s-c bottom" type="radio" name="workTo" value="4:00PM">
                                                 <span class="label">4:00PM</span>
                                                 <span class="opt-val">4:00PM</span>
                                             </div>
                                             <div class="option">
-                                                <input class="s-c top" type="radio" name="work-to" value="5:00PM">
-                                                <input class="s-c bottom" type="radio" name="work-to" value="5:00PM">
+                                                <input class="s-c top" type="radio" name="workTo" value="5:00PM">
+                                                <input class="s-c bottom" type="radio" name="workTo" value="5:00PM">
                                                 <span class="label">5:00PM</span>
                                                 <span class="opt-val">5:00PM</span>
                                             </div>
                                         </div>
                                     </div>
+                                    <span class="invalidInput"><?php echo ''; ?></span>
+
                                 </div>
                                 <div class="textArea">
                                     <span class="normalB">Requirements</span>
                                     <div class="text-box" id="requirements">
                                         <textarea name="volRequirements" onInput="handleInput(event)" rows="12"></textarea> 
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <span class="invalidInput"><?php echo ''; ?></span>
                                 </div> 
                             </div>
                             <div class="vol-inputs-col">
                                 <div class="vol-inputs-col-row">
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="work-start" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <input name="workStart" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                                             <span class="normalB">Work Start date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo '' ?></span>
+                                        <span class="invalidInput"><?php echo $data['workStartError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="work-end" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <input name="workEnd" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                                             <span class="normalB">Work End date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo '' ?></span>
+                                        <span class="invalidInput"><?php echo ''; ?></span>
                                     </div>
                                 </div>
                                 <div class="vol-inputs-col-row" id="work-days">
@@ -383,29 +393,31 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <span class="invalidInput"><?php echo $data['daysError']; ?></span>
+
                                 </div>
                                 <div class="vol-inputs-col-row">
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="app-open" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <input name="appOpen" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                                             <span class="normalB">Application Opening date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo '' ?></span>
+                                        <span class="invalidInput"><?php echo $data['appOpenError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="app-close" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <input name="appClose" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                                             <span class="normalB">Application Closing date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo '' ?></span>
+                                        <span class="invalidInput"><?php echo ''; ?></span>
                                     </div>
                                 </div>
                                 <div class="textArea" id="notes">
                                     <span class="normalB">Additional Notes</span>
                                     <div class="text-box" id="">
-                                        <textarea name="volRequirements" onInput="handleInput(event)" rows="5"></textarea> 
+                                        <textarea name="addNotes" onInput="handleInput(event)" rows="5"></textarea> 
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <span class="invalidInput"><?php echo ''; ?></span>
                                 </div> 
                             </div>
                         </div>
@@ -437,10 +449,10 @@
                     <hr>
 
                     <div id="fund-form">
-                        <div class="fund-bool">
+                        <div class="bool">
                             <p class="grey normalB">Would you like to raise funds for the project?</p>
-                            <input type="radio" name="funding" value="Yes" id="isFunding"> Yes &nbsp;
-                            <input type="radio" name="funding" value="No" id="noFunding"> No
+                            <input type="radio" name="funding" value="Yes" id="isFunding"><label>Yes</label> 
+                            <input type="radio" name="funding" value="No" id="noFunding"><label>No</label> 
                         </div>
 
                         <div class="textArea">
@@ -448,7 +460,7 @@
                             <div class="text-box" id="">
                                 <textarea rows="10" name="prjFundsFor"></textarea> 
                             </div>
-                            <span class="invalidInput"><?php echo '' ?></span>
+                            <span class="invalidInput"><?php echo $data['prjFundsForError']; ?></span>
                         </div>
 
                         <div class="fund-inputs">
@@ -457,23 +469,23 @@
                                     <input name="targetAmount" id="title" type="number" required="required">
                                     <span class="normalB">Target Amount (LKR)</span>
                                 </div>
-                                <span class="invalidInput"><?php echo '' ?></span>
+                                <span class="invalidInput"><?php echo $data['targetAmountError']; ?></span>
                             </div>
                             <div class="fund-inputs-col">
                                 <div class="fund-inputs-col-row">
                                     <div id="fund-date">
                                         <div class="inputBx2" id="date">
-                                            <input name="work-start" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
-                                            <span class="normalB">Work Start date</span>
+                                            <input name="fundStart" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Fundraising Start date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo '' ?></span>
+                                        <span class="invalidInput"><?php echo $data['fundStartError']; ?></span>
                                     </div>
                                     <div id="fund-date">
                                         <div class="inputBx2" id="date">
-                                            <input name="work-end" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
-                                            <span class="normalB">Work End date</span>
+                                            <input name="fundEnd" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                            <span class="normalB">Fundraising End date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo '' ?></span>
+                                        <span class="invalidInput"><?php echo $data['fundEndError']; ?></span>
                                     </div>
                                 </div>
                             </div>
@@ -506,39 +518,39 @@
                     <h2 class="grey subtitleB">Bank account Details</h2>
                     <hr>
 
-                    <div class="fund-bool">
+                    <div class="bool">
                         <p class="purple normalB">Please note that the account details you mention here will not be made visible to any other users and we only need it to transfer the collected funds after the completion of the fundraiser.</p>
-                        <input type="radio" name="bankInfo" value="newAccount" id="newAccount"> Use a new bank account &nbsp;
-                        <input type="radio" name="bankInfo" value="savedAccount" id="savedAccount"> Select account details in my profile
+                        <input type="radio" name="bankInfo" value="newAccount" id="newAccount"> <label>Use a new bank account</label>
+                        <input type="radio" name="bankInfo" value="savedAccount" id="savedAccount"> <label>Select account details in my profile</label>
                     </div>
 
                     <div id="acnt-form">
                         <div class="acnt-inputs">
-                            <div class="acnt-inputs-col">
+                            <div class="acnt-inputs-col" id="new-account">
                                 <div id="">
                                     <div class="inputBx2" id="item">
                                         <input name="accountHolder" id="title" type="text" required="required">
                                         <span class="normalB">Account Holder’s Name</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <span class="invalidInput"><?php echo $data['accountHolderError']; ?></span>
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
                                         <input name="bank" id="title" type="text" required="required">
                                         <span class="normalB">Bank Name</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <span class="invalidInput"><?php echo $data['bankError']; ?></span>
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
                                         <input name="branch" id="branch" type="text" required="required">
                                         <span class="normalB">Branch Name</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <span class="invalidInput"><?php echo $data['branchError']; ?></span>
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
-                                        <input name="branchCode" id="branchCode" type="text" required="required">
+                                        <input name="branchCode" id="branchCode" type="text">
                                         <span class="normalB">Branch code</span>
                                     </div>
                                     <span class="invalidInput"><?php echo '' ?></span>
@@ -548,21 +560,23 @@
                                         <input name="accountNo" id="accountNo" type="number" required="required">
                                         <span class="normalB">Account Number</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <span class="invalidInput"><?php echo $data['accountNoError']; ?></span>
                                 </div>
-                                <div class="save-acnt">
+                                <!-- <div class="save-acnt">
                                     <input type="checkbox" name="saveAccount" value="True">
                                     <label class="">Save account details to profile</label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="acnt-inputs-col">
                                 <div class="acnt-card" id="">
-                                    <h3 class="grey normalB">Commercial Bank, Thimbirigasyaya</h3>
-                                    <p class="grey normal">Acc. No: 100825...</p>
-                                </div>
-                                <div class="acnt-card" id="">
-                                    <h3 class="grey normalB">Commercial Bank, Thimbirigasyaya</h3>
-                                    <p class="grey normal">Acc. No: 100825...</p>
+                                    <?php
+                                        foreach($data as $item) {
+                                            echo "
+                                            <h3 class='grey normalB'> $item->bank, $item->branch</h3>
+                                            <p class='grey normal'>Acc. No: $item->account_no</p>
+                                            ";
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>

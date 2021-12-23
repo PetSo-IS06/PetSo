@@ -81,10 +81,6 @@
     margin-top: 3rem;
 }
 
-.prj-form .form-sec .vol-bool input {       /*Not working*/
-    margin-left: 2rem;
-}
-
 .prj-form .form-sec .vol-inputs {
     display: flex;
     flex-direction: row;
@@ -178,6 +174,13 @@
 
 .prj-form .form-sec #acnt-form {
     display: block;
+}
+
+.prj-form .form-sec .bool label {
+    margin: 0 2rem 0 .5rem;
+    font-size: var(--normal-size);
+    color: var(--primary-grey-color);
+    /* cursor: pointer; */
 }
 
 .prj-form .form-sec .acnt-inputs {

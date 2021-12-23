@@ -34,6 +34,26 @@
             }
         }
 
+        public function saveProject($data) {
+            $this->db->query('INSERT INTO `petso`.`Project` 
+            (`title`, `org_id`, `cause`, `create_date`, `initiation_date`, `description`, `status`) 
+            VALUES (:title, :org_id, :cause, :create_date, :initiation_date, :description, :status)');
+            
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':org_id', $_SESSION['user_id']);
+            $this->db->bind(':cause', $data['cause']);
+            $this->db->bind(':create_date', $data['create-date']);
+            $this->db->bind(':initiation_date', $data['initDate']);
+            $this->db->bind(':description', $data['prjDescription']);
+            $this->db->bind(':status', 'Pending');
+
+            if($this->db->execute()) {
+                return $this->db->getLastInsertedId();
+            } else {
+                return -1;
+            }
+        }
+
         public function getOpportunities() {
             $this->db->query('SELECT * FROM `petso`.`Volunteer_Opportunity`');
 

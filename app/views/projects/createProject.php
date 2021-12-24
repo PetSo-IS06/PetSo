@@ -451,8 +451,8 @@
                     <div id="fund-form">
                         <div class="bool">
                             <p class="grey normalB">Would you like to raise funds for the project?</p>
-                            <input type="radio" onClick="showFundsForm()" name="funding" value="Yes" id="isFunding"><label>Yes</label> 
-                            <input type="radio" onClick="hideFundsForm()" name="funding" value="No" id="noFunding"><label>No</label> 
+                            <input type="radio" onClick="showFundsForm()" name="funding" value="Yes" id="funding"><label>Yes</label> 
+                            <input type="radio" onClick="hideFundsForm()" name="funding" value="No" id="funding"><label>No</label> 
                         </div>
 
                         <div class="fund-inputs" id="fund-inputs">
@@ -572,17 +572,17 @@
                                 </div> -->
                             </div>
                             <div class="acnt-inputs-col" id="saved-account">
-                                    <?php
-                                        foreach($data[0] as $item) {
-                                            echo "
-                                            <div class='acnt-card'>
-                                            <h3 class='grey normalB'> $item->bank, $item->branch</h3>
-                                            <p class='grey normal'>Acc. No: $item->account_no</p>
-                                            </div>
-                                            ";
-                                        }
-                                    ?>
-                                
+                                <ul class="bank-acnts">
+                                <?php foreach($data[0] as $item) { ?>
+                                    <li class='acnt-card'>
+                                        <input type="radio" id="<?php echo $item->id;?>" name="selectedAccount" value="<?php echo $item->id;?>"/>
+                                        <label for="<?php echo $item->id;?>">
+                                            <font class="grey normalB"><?php echo($item->bank . ', ' . $item->branch);?><br/></font>
+                                            <font class="grey normal">Acc. No: <?php echo $item->account_no;?></font>
+                                        </label>
+                                    </li>
+                                <?php } ?>
+                                </ul>                                
                             </div>
                         </div>
                     </div>

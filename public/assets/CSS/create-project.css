@@ -232,17 +232,56 @@
     margin: 1rem 30px;
     flex-direction: column;
     justify-content: flex-start;
-    border: 1px solid var(--primary-purple-color);
+    border: 1px solid var(--primary-light-grey-color);
     box-sizing: border-box;
-    box-shadow: -1px 0px 5px 4px #C4C4C4;
     border-radius: 10px;
     padding: 8px 16px 12px 16px;
     cursor: pointer;
     opacity: 1;
+    width: auto;
+    height: 70px;
+    position: relative;
 }
 
-.acnt-inputs-col .acnt-card h3 {
-    line-height: 5px;
+.bank-acnts {
+    list-style-type: none;
+}
+  
+.bank-acnts label,
+.bank-acnts input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 70px;
+}
+  
+.bank-acnts input[type="radio"] {
+    opacity: 0.01;
+    z-index: 100;
+}
+  
+.bank-acnts input[type="radio"]:checked+label,
+.Checked+label {
+    border: 1px solid var(--primary-purple-color);
+    border-radius: 10px;
+}
+  
+.bank-acnts label {
+    padding: 8px 16px 12px 16px;
+    cursor: pointer;
+    z-index: 90;
+    width: auto;
+    height: 70px;
+    line-height: 20px;
+}
+  
+.bank-acnts label:hover {
+    box-shadow: -1px 0px 5px 4px #C4C4C4;
+    border-radius: 10px;
 }
 
 /* =========== Styles for Mobile View ============= */

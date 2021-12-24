@@ -39,6 +39,7 @@ class Projects extends Controller {
             'branchCode' => '',
             'accountNo' => '',
             'saveAccount' => '',
+            'selectedAccount' => '',
             'causeError' => '',
             'titleError' => '',
             'initDateError' => '',
@@ -79,6 +80,7 @@ class Projects extends Controller {
                 'volReason' => trim($_POST['volReason']),
                 'volDescription' => trim($_POST['volDescription']),
                 'district' => trim($_POST['district']),
+                'area' => trim($_POST['area']),
                 'workFrom' => trim($_POST['workFrom']),
                 'workTo' => trim($_POST['workTo']),
                 'volRequirements' => trim($_POST['volRequirements']),
@@ -100,6 +102,7 @@ class Projects extends Controller {
                 'branchCode' => trim($_POST['branchCode']),
                 'accountNo' => trim($_POST['accountNo']),
                 'saveAccount' => trim($_POST['saveAccount']),       // if selected -> True
+                'selectedAccount' => trim($_POST['selectedAccount']),
                 'causeError' => '',
                 'titleError' => '',
                 'initDateError' => '',
@@ -138,7 +141,7 @@ class Projects extends Controller {
                 $data['prjDescriptionError'] = 'Please provide a brief description of the project';
             }
 
-            if(strcmp($data['volunteering'], 'Yes')){
+            if(strcmp($data['volunteering'], 'Yes') == 0){
                 if(empty($data['volReason'])) {
                     $data['volReasonError'] = 'Please describe why the project requires volunteers';
                 }
@@ -165,7 +168,7 @@ class Projects extends Controller {
                 }
             }
 
-            if(strcmp($data['funding'], 'Yes')) {
+            if(strcmp($data['funding'], 'Yes') == 0) {
                 if(empty($data['prjFundsFor'])) {
                     $data['prjFundsForError'] = 'Please describe what the funds will be used for';
                 }
@@ -181,7 +184,7 @@ class Projects extends Controller {
                     $data['fundEndError'] = 'Specify the date to close the fundaraiser';
                 }
 
-                if(strcmp($data['bankInfo'], 'newAccount')) {
+                if(strcmp($data['bankInfo'], 'newAccount') == 0) {
                     if(empty($data['accountHolder'])) {
                         $data['accountHolderError'] = 'Please provide the name of the account holder';
                     }
@@ -200,23 +203,23 @@ class Projects extends Controller {
             $prjID = $this->projectModel->saveProject($data);
 
             if($prjID != -1) {
-                if(strcmp($data['volunteering'], 'Yes')) {
+                if(strcmp($data['volunteering'], 'Yes') == 0) {
                     if($this->projectModel->saveVolunteeringOpportunity($data, $prjID)) {
                         echo 'Volunteering opportunity saved';
                     } else {
                         die('Could not save volunteering opportunity.');
                     }
                 }
-                if(strcmp($data['funding'], 'Yes')) {
-                    if(strcmp($data['bankInfo'], 'savedAccount')) {
-                        $bankID = ''; //get id as URL param
-                    } elseif(strcmp($data['bankInfo'], 'newAccount')) {
+                if(strcmp($data['funding'], 'Yes') == 0) {
+                    if(strcmp($data['bankInfo'], 'savedAccount') == 0) {
+                        $bankID = $data['selectedAccount'];
+                    } elseif(strcmp($data['bankInfo'], 'newAccount') == 0) {
                         $bankID = $this->organizationModel->saveBankAccount($data);
                     }
 
                     if($bankID != -1) {
                         if($this->projectModel->saveFundraiser($data, $prjID, $bankID)) {
-                            header('location:' . URL_ROOT . '/pages/index');
+                            echo 'Fundraising details saved';
                         } else {
                             die('Could not save fundraiser details.');
                         }
@@ -224,6 +227,8 @@ class Projects extends Controller {
                         die('Could not get Bank ID');
                     }                    
                 }
+
+                header('location:' . URL_ROOT . '/pages/index');
             } else {
                 die('Something went wrong.');
             }

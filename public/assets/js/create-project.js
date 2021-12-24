@@ -34,11 +34,15 @@ function showNewAccountForm() {
 
 function hideBankAccounts() {
     const targetDiv = document.getElementById("saved-account");
+    const buttons = targetDiv.getElementsByTagName("input");
+    const items = targetDiv.getElementsByTagName("label");
     const cards = targetDiv.getElementsByClassName("acnt-card");
     if (targetDiv.style.opacity !== "0.5") {
         targetDiv.style.opacity = "0.5";
         for(let i=0; i<cards.length; i++) {
+            buttons[i].disabled = true;
             cards[i].style.cursor = "not-allowed";
+            items[i].style.cursor = "not-allowed";
         }
         showNewAccountForm();
     }
@@ -46,11 +50,15 @@ function hideBankAccounts() {
 
 function showBankAccounts() {
     const targetDiv = document.getElementById("saved-account");
+    const buttons = targetDiv.getElementsByTagName("input");
+    const items = targetDiv.getElementsByTagName("label");
     const cards = targetDiv.getElementsByClassName("acnt-card");
     if (targetDiv.style.opacity !== "1") {
         targetDiv.style.opacity = "1";
         for(let i=0; i<cards.length; i++) {
+            buttons[i].disabled = false;
             cards[i].style.cursor = "pointer";
+            items[i].style.cursor = "pointer";
         }
     }
 }

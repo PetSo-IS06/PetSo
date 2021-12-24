@@ -92,10 +92,6 @@
     gap: 1rem;
 }
 
-.prj-form .form-sec #vol-form {
-    display: block;
-}
-
 .vol-inputs-col {
     display: flex;
     flex-direction: column;
@@ -221,6 +217,23 @@
 
 .acnt-inputs-col #item {
     width: 100%;
+}
+
+.acnt-inputs #saved-account {
+    opacity: 0.5;
+}
+
+.acnt-inputs #saved-account input[type="radio"] {
+    pointer-events:none;
+    cursor: not-allowed;
+}
+
+.acnt-inputs #saved-account label {
+    cursor: not-allowed;
+}
+
+.acnt-inputs .acnt-card {
+    cursor: not-allowed;
 }
 
 .acnt-inputs-col .save-acnt label{

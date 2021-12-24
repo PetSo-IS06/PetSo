@@ -26,7 +26,7 @@
                     <h1>Create an <font class="yellow">Impact</font> with Us</h1>
                     <p class="heading2 white">Publish your next welfare project in Petso and get help from more animal lovers out there</p>
                     <div class="action">
-                        <a href="" class="yellow-btn">Get Started</a>
+                        <a href="#prj-cause" class="yellow-btn">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
 
                     <div class="bool">
                         <p class="grey normalB">Would you like to enroll volunteers for the project?</p>
-                        <input type="radio" onClick="showVolForm()" name="volunteering" value="Yes" id="isVolunteering"><label>Yes</label>
+                        <input type="radio" onClick="showVolForm()" name="volunteering" value="Yes" id="isVolunteering" checked><label>Yes</label>
                         <input type="radio" onClick="hideVolForm()" name="volunteering" value="No" id="noVolunteering"> <label>No</label>
                     </div>
 
@@ -451,7 +451,7 @@
                     <div id="fund-form">
                         <div class="bool">
                             <p class="grey normalB">Would you like to raise funds for the project?</p>
-                            <input type="radio" onClick="showFundsForm()" name="funding" value="Yes" id="funding"><label>Yes</label> 
+                            <input type="radio" onClick="showFundsForm()" name="funding" value="Yes" id="funding" checked><label>Yes</label> 
                             <input type="radio" onClick="hideFundsForm()" name="funding" value="No" id="funding"><label>No</label> 
                         </div>
 
@@ -523,7 +523,7 @@
                     <div class="bool">
                         <p class="purple normalB">Please note that the account details you mention here will not be made visible to any other users and we only need it to transfer the collected funds after the completion of the fundraiser.</p>
                         <div class="bool-actions">
-                            <input type="radio" onClick="hideBankAccounts()" name="bankInfo" value="newAccount" id="newAccount"> <label>Use a new bank account</label>
+                            <input type="radio" onClick="hideBankAccounts()" name="bankInfo" value="newAccount" id="newAccount" checked> <label>Use a new bank account</label>
                             <input type="radio" onClick="hideNewAccountForm()" name="bankInfo" value="savedAccount" id="savedAccount"> <label>Select account details in my profile</label>
                         </div>
                     </div>

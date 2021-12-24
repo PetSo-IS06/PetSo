@@ -194,8 +194,7 @@ class Projects extends Controller {
                     if(empty($data['accountNo'])) {
                         $data['accountNoError'] = 'Please provide the account number';
                     }
-                }
-                
+                }    
             }
 
             $prjID = $this->projectModel->saveProject($data);
@@ -230,7 +229,10 @@ class Projects extends Controller {
             }
         }
 
-        $this->view('projects/createProject', $data);
+        $accounts = $this->organizationModel->getBankAccounts();
+        $results = array($accounts, $data);
+
+        $this->view('projects/createProject', $results);
     }
 
     public function createVolunteerOpportunity() {

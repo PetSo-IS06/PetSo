@@ -240,11 +240,11 @@
             $this->view('users/organization/orgDashboard', $data);
         }
 
-        public function getBankAccounts(){
-            $result = $this->organizationModel->getBankAccounts();
+        // public function getBankAccounts(){
+        //     $result = $this->organizationModel->getBankAccounts();
 
-            $data = $result;
+        //     $data = $result;
 
-            $this->view('projects/createProject', $data);
-        }
+        //     $this->view('projects/createProject', $data);
+        // }
     }

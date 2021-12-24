@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="invalidInput"><?php echo $data['causeError']; ?></span>
+                        <span class="invalidInput"><?php echo $data[1]['causeError']; ?></span>
 
                         <div class="inputBx2" id="">
                             <input name="otherCause" id="otherCause" type="text">
@@ -109,20 +109,20 @@
                         <input name="title" id="title" type="text" required="required">
                         <span class="normalB">Project Title</span>
                     </div>
-                    <span class="invalidInput"><?php echo $data['titleError']; ?></span>
+                    <span class="invalidInput"><?php echo $data[1]['titleError']; ?></span>
 
                     <div class="inputBx2" id="">
                         <input name="initDate" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                         <span class="normalB">Initiation date</span>
                     </div>
-                    <span class="invalidInput"><?php echo $data['initDateError']; ?></span>
+                    <span class="invalidInput"><?php echo $data[1]['initDateError']; ?></span>
 
                     <div class="textArea">
                         <span class="normalB">Project description</span>
                         <div class="text-box" id="">
                             <textarea rows="10" name="prjDescription"></textarea> 
                         </div>
-                        <span class="invalidInput"><?php echo $data['prjDescriptionError']; ?></span>
+                        <span class="invalidInput"><?php echo $data[1]['prjDescriptionError']; ?></span>
                     </div> 
 
                     <div>
@@ -152,17 +152,17 @@
 
                     <div class="bool">
                         <p class="grey normalB">Would you like to enroll volunteers for the project?</p>
-                        <input type="radio" name="volunteering" value="Yes" id="isVolunteering"><label>Yes</label>
-                        <input type="radio" name="volunteering" value="No" id="noVolunteering"> <label>No</label>
+                        <input type="radio" onClick="showVolForm()" name="volunteering" value="Yes" id="isVolunteering"><label>Yes</label>
+                        <input type="radio" onClick="hideVolForm()" name="volunteering" value="No" id="noVolunteering"> <label>No</label>
                     </div>
 
-                    <div id="vol-form">
+                    <div class="vol-form" id="vol-form">
                         <div class="textArea">
                             <span class="normalB">Why should people volunteer for this project?</span>
                             <div class="text-box" id="">
                                 <textarea rows="10" name="volReason"></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo $data['volReasonError']; ?></span>
+                            <span class="invalidInput"><?php echo $data[1]['volReasonError']; ?></span>
                         </div> 
 
                         <div class="textArea">
@@ -170,7 +170,7 @@
                             <div class="text-box" id="">
                                 <textarea rows="10" name="volDescription"></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo $data['volDescriptionError']; ?></span>
+                            <span class="invalidInput"><?php echo $data[1]['volDescriptionError']; ?></span>
                         </div> 
 
                         <div class="vol-inputs">
@@ -210,7 +210,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['districtError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['districtError']; ?></span>
 
                                     <div class="selectBx" id="selectBx">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
@@ -243,7 +243,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['areaError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['areaError']; ?></span>
 
                                 </div>
 
@@ -288,7 +288,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['workFromError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['workFromError']; ?></span>
 
                                     <div class="selectBx" id="selectBx">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
@@ -345,7 +345,7 @@
                                             <input name="workStart" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                                             <span class="normalB">Work Start date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data['workStartError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data[1]['workStartError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
@@ -393,7 +393,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['daysError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['daysError']; ?></span>
 
                                 </div>
                                 <div class="vol-inputs-col-row">
@@ -402,7 +402,7 @@
                                             <input name="appOpen" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
                                             <span class="normalB">Application Opening date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data['appOpenError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data[1]['appOpenError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
@@ -451,50 +451,52 @@
                     <div id="fund-form">
                         <div class="bool">
                             <p class="grey normalB">Would you like to raise funds for the project?</p>
-                            <input type="radio" name="funding" value="Yes" id="isFunding"><label>Yes</label> 
-                            <input type="radio" name="funding" value="No" id="noFunding"><label>No</label> 
+                            <input type="radio" onClick="showFundsForm()" name="funding" value="Yes" id="isFunding"><label>Yes</label> 
+                            <input type="radio" onClick="hideFundsForm()" name="funding" value="No" id="noFunding"><label>No</label> 
                         </div>
 
-                        <div class="textArea">
-                            <span class="normalB">What will the funds be used for?</span>
-                            <div class="text-box" id="">
-                                <textarea rows="10" name="prjFundsFor"></textarea> 
-                            </div>
-                            <span class="invalidInput"><?php echo $data['prjFundsForError']; ?></span>
-                        </div>
-
-                        <div class="fund-inputs">
-                            <div class="fund-inputs-col">
-                                <div class="inputBx2" id="">
-                                    <input name="targetAmount" id="title" type="number" required="required">
-                                    <span class="normalB">Target Amount (LKR)</span>
+                        <div class="fund-inputs" id="fund-inputs">
+                            <div class="textArea">
+                                <span class="normalB">What will the funds be used for?</span>
+                                <div class="text-box" id="">
+                                    <textarea rows="10" name="prjFundsFor"></textarea> 
                                 </div>
-                                <span class="invalidInput"><?php echo $data['targetAmountError']; ?></span>
+                                <span class="invalidInput"><?php echo $data[1]['prjFundsForError']; ?></span>
                             </div>
-                            <div class="fund-inputs-col">
-                                <div class="fund-inputs-col-row">
-                                    <div id="fund-date">
-                                        <div class="inputBx2" id="date">
-                                            <input name="fundStart" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
-                                            <span class="normalB">Fundraising Start date</span>
-                                        </div>
-                                        <span class="invalidInput"><?php echo $data['fundStartError']; ?></span>
+                            <div class="fund-inputs-bottom">
+                                <div class="fund-inputs-bottom-col">
+                                    <div class="inputBx2" id="">
+                                        <input name="targetAmount" id="title" type="number" required="required">
+                                        <span class="normalB">Target Amount (LKR)</span>
                                     </div>
-                                    <div id="fund-date">
-                                        <div class="inputBx2" id="date">
-                                            <input name="fundEnd" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
-                                            <span class="normalB">Fundraising End date</span>
+                                    <span class="invalidInput"><?php echo $data[1]['targetAmountError']; ?></span>
+                                </div>
+                                <div class="fund-inputs-bottom-col">
+                                    <div class="fund-inputs-bottom-col-row">
+                                        <div id="fund-date">
+                                            <div class="inputBx2" id="date">
+                                                <input name="fundStart" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                                <span class="normalB">Fundraising Start date</span>
+                                            </div>
+                                            <span class="invalidInput"><?php echo $data[1]['fundStartError']; ?></span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data['fundEndError']; ?></span>
+                                        <div id="fund-date">
+                                            <div class="inputBx2" id="date">
+                                                <input name="fundEnd" id="datefield" type="date" required="required" min='1899-01-01' max='2000-13-13'> 
+                                                <span class="normalB">Fundraising End date</span>
+                                            </div>
+                                            <span class="invalidInput"><?php echo $data[1]['fundEndError']; ?></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div>
+                                <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
+                                <input type="file" id="myFile" name="filename">
+                            </div>
                         </div>
 
-                        <div>
-                            <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
-                            <input type="file" id="myFile" name="filename">
-                        </div>
+                        
                     </div>
                     
 
@@ -520,8 +522,10 @@
 
                     <div class="bool">
                         <p class="purple normalB">Please note that the account details you mention here will not be made visible to any other users and we only need it to transfer the collected funds after the completion of the fundraiser.</p>
-                        <input type="radio" name="bankInfo" value="newAccount" id="newAccount"> <label>Use a new bank account</label>
-                        <input type="radio" name="bankInfo" value="savedAccount" id="savedAccount"> <label>Select account details in my profile</label>
+                        <div class="bool-actions">
+                            <input type="radio" onClick="hideBankAccounts()" name="bankInfo" value="newAccount" id="newAccount"> <label>Use a new bank account</label>
+                            <input type="radio" onClick="hideNewAccountForm()" name="bankInfo" value="savedAccount" id="savedAccount"> <label>Select account details in my profile</label>
+                        </div>
                     </div>
 
                     <div id="acnt-form">
@@ -532,21 +536,21 @@
                                         <input name="accountHolder" id="title" type="text" required="required">
                                         <span class="normalB">Account Holder’s Name</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['accountHolderError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['accountHolderError']; ?></span>
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
                                         <input name="bank" id="title" type="text" required="required">
                                         <span class="normalB">Bank Name</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['bankError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['bankError']; ?></span>
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
                                         <input name="branch" id="branch" type="text" required="required">
                                         <span class="normalB">Branch Name</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['branchError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['branchError']; ?></span>
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
@@ -560,24 +564,25 @@
                                         <input name="accountNo" id="accountNo" type="number" required="required">
                                         <span class="normalB">Account Number</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['accountNoError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data[1]['accountNoError']; ?></span>
                                 </div>
                                 <!-- <div class="save-acnt">
                                     <input type="checkbox" name="saveAccount" value="True">
                                     <label class="">Save account details to profile</label>
                                 </div> -->
                             </div>
-                            <div class="acnt-inputs-col">
-                                <div class="acnt-card" id="">
+                            <div class="acnt-inputs-col" id="saved-account">
                                     <?php
-                                        foreach($data as $item) {
+                                        foreach($data[0] as $item) {
                                             echo "
+                                            <div class='acnt-card'>
                                             <h3 class='grey normalB'> $item->bank, $item->branch</h3>
                                             <p class='grey normal'>Acc. No: $item->account_no</p>
+                                            </div>
                                             ";
                                         }
                                     ?>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

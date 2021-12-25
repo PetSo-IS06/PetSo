@@ -87,7 +87,7 @@
                         <span class="invalidInput"><?php echo '' ?></span>
 
                         <div class="prj-form-nav">
-                            <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
+                            <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
                             <div class="pagination">
                                 <a style="pointer-events: none">&laquo;</a>
                                 <a href="#" class="active">1</a>
@@ -131,7 +131,7 @@
                     </div>
 
                     <div class="prj-form-nav">
-                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
                         <div class="pagination">
                             <a onClick="showProjectCause()">&laquo;</a>
                             <a onClick="showProjectCause()">1</a>
@@ -429,7 +429,7 @@
                     </div>
 
                     <div class="prj-form-nav">
-                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
                         <div class="pagination">
                             <a onClick="showProjectDetails()">&laquo;</a>
                             <a onClick="showProjectCause()">1</a>
@@ -501,7 +501,7 @@
                     
 
                     <div class="prj-form-nav">
-                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
                         <div class="pagination">
                             <a onClick="showVolunteering()">&laquo;</a>
                             <a onClick="showProjectCause()">1</a>
@@ -587,7 +587,7 @@
                         </div>
                     </div>
                     <div class="prj-form-nav">
-                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="grey-btn">Cancel</a>
+                        <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
                         <div class="pagination">
                             <a onClick="showFunding()">&laquo;</a>
                             <a onClick="showProjectCause()">1</a>
@@ -598,7 +598,6 @@
                             <a href="#" style="pointer-events: none">&raquo;</a>
                         </div>
                         <input type="submit" class="purple-btn" value="Submit">
-                        <!-- <a href="" class="purple-btn">Submit</a> -->
                     </div>
                 </div>
             </form>

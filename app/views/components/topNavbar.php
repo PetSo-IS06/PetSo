@@ -65,7 +65,7 @@
                         if($_SESSION['user_type'] == 'user') :
                             echo URL_ROOT.'/users/dashboard';
                         elseif($_SESSION['user_type'] == 'org') :
-                            echo URL_ROOT.'/organizations/dashboard';
+                            echo URL_ROOT.'/OrgDashboards/dashboard';
                         endif;?>">My Dashboard</a>
                         <a href="#">My Complaints</a>
                         <a href="<?php echo URL_ROOT;?>/users/logout">Logout</a>

@@ -37,7 +37,7 @@
             } else {
                 return false;
             }
-         }
+        }
 
         public function createAccount($data, $type){
             $this->db->query(

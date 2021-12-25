@@ -77,7 +77,7 @@
                 <section>
                     <div class="content-head">
                         <h1 class="heading2B">Volunteering</h1>
-                        <h3 class="normal">21st Oct 2021</h3>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
                         <!-- <h3>Volunteering</h3> -->
@@ -108,8 +108,7 @@
                                     <tr class="table-head">
                                         <th><input type="checkbox" name=""></th>
                                         <th>ID</th>
-                                        <th>Description</th>
-                                        <th>Created Date</th>
+                                        <th id="col-desc">Description</th>
                                         <th>District</th>
                                         <th>Area</th>
                                         <th>Closing Date</th>
@@ -118,22 +117,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        foreach ($data as $item) {
-                                            echo "<tr>
+                                        <?php foreach ($data as $item) { ?>
+                                            <tr>
                                                 <td><input type='checkbox' name=''></td>
-                                                <td>$item->id</td>
-                                                <td>$item->description</td>
-                                                <td>$item->create_date</td>
-                                                <td>$item->district</td>
-                                                <td>$item->area</td>
-                                                <td>$item->app_close</td>
-                                                <td>$item->work_start</td>
-                                                <td>$item->work_end</td>
-                                            </tr>";
-                                        }
-                                        
-                                        ?>
+                                                <td><?php echo $item->id; ?></td>
+                                                <td id="col-desc"><?php echo $item->description; ?></td>
+                                                <td><?php echo $item->district; ?></td>
+                                                <td><?php echo $item->app_close; ?></td>
+                                                <td><?php echo $item->work_start; ?></td>
+                                                <td><?php echo $item->work_start; ?></td>
+                                                <td><?php echo $item->work_end; ?></td>
+                                            </tr>
+                                        <?php } ?>
                                     <tbody>
                                 </table>
                             </div>

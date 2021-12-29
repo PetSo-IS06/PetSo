@@ -2,324 +2,110 @@
 @import './variables/colors.css';
 @import './variables/screen_sizes.css';
 
-body {
-    background-repeat: no-repeat;
-}
-.animalReport {
-    margin-top: 50px;
-    margin-bottom: 50px;
+.report-form-container {
+    padding: 2rem calc((100vw - 1180px) / 2);
+    box-shadow: -1px 0px 5px 4px #C4C4C4;
+    border-radius: 25px;
+    color: var(--primary-grey-color);
+    margin: 2rem calc((100vw - 1200px)/2);
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
-}
-
-.container1 {
-    box-sizing: unset;
-    position: relative;
-    padding: 20px;
-    width:40%;
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
-    background: #FFFFFF;
+    /* justify-content: start; */
+    align-items: left;
+    margin-top: 0;
 }
 
-.container1 img {
-    width: 166px;
-    height: 166px;
-    border-radius: 50%;
-
-}
-.container1 h2 {
-    margin-bottom: 30px;
+.report-form-container .form-row {
+    display: flex;
+    margin-top: 1rem;
+    flex-direction: column;
+    justify-content: start;
 }
 
-.container1 h3 {
-    align-items: center;
-    font-family: Roboto;
-    font-style: normal;
+.form-input label {
+    padding-bottom: 0.5rem;
     font-weight: bold;
-    font-size: 30px;
-    line-height: 35px;
-    text-align: center;
+    margin-right: 0.5rem;
+    vertical-align: bottom;
 }
 
-.container1 button {
+.form-input {
+    margin-top: 1rem;
+}
+
+.form-input#col {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-input-col {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.form-input#col .input-box {
+    margin-right: 1rem;
+    padding-left: 1rem;
+}
+
+/* .form-row .form-col {
+    width: 50%;
+} */
+
+.form-input .input-box {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: .5rem;
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.form-input .input-box-area {
+    width: 100%;
+    height: 100px;
+    vertical-align: top;
+    padding: .5rem;
+    border-radius: 5px;
+    margin-top: .5rem;
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.form-btn-upload {
+    padding: 12px 24px;
+    text-decoration: none;
+    height: 15px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-very-light-grey-color);
+    color: var(--black-color );
+}
+
+.form-btn-cancel {
+    padding: 12px 24px;
+    text-decoration: none;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-light-grey-color);
+    color: var(--white-color);
+}
+
+.form-row input[type=submit] {
+    padding: 12px 24px;
+    cursor: pointer;
+    text-decoration: none;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
     background: var(--primary-purple-color);
     color: var(--white-color);
-    height: 40.900001525878906px;
-    width: 170.19696044921875px;
-    left: 8.901611328125px;
-    top: 8.099998474121094px;
-    border-radius: 12px;
-    padding: 8px 10px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 1.5s;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 10px 50px 10px;
 }
 
-.container1 .stats {
-    display: flex;
-    justify-content: space-between;
-}
-
-.container1Card {
-    height: 168px;
-    width: 45%;
-    position: relative;
-    padding: 25px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    background: #ffffff;
-    border: 1px solid #C4C4C4;
-    border-radius: 20px;
-    box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
-    margin-top: 50px;
-    align-items: center;
-}
-
-.container1Card h2 {
-    color: #555454;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 72px;
-    line-height: 84px;
-    text-align: center;
-    margin-bottom: 0px;
-}
-
-.container1Card description {
-    margin-bottom: 20px;
-    color: #555454;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    text-align: center;
-}
-
-.container1 .reportButton {
-    width: 100%;
-    justify-content: left;
-}
-.container1 text {
-    margin-bottom: 30px;
-    color: #555454;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-}
-
-.container1 hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 265px;
-    left: 100px;
-    top: 650px;
-    /* Very light grey */
-    border: 1px solid #C4C4C4;
-}
-
-.container1Bot {
-    margin-top: 15px;
-    align-items: flex-start;
-}
-.container1Bot .date {
-    align-items: flex-end;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-}
-.container1Bot span {
-    align-items: flex-start;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: right;
-}
-.container1Bot a {
-    align-items: flex-start;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-    margin-top: 25px;
-    cursor:pointer;
-}
-
-.container2 {
-    box-sizing: unset;
-    position: relative;
-    padding: 25px;
-    width: 35%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    background: #C4C4C4;
-    border: 1px solid #C4C4C4;
-    box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-}
-.container2 h2 {
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 23px;
-    color: #555454;
-}
-.container2 hr {
-    border: 1px solid #C4C4C4;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    width: 100%;
-}
-
-.container2 .profileBody text {
-    font-style: normal;
-    font-weight: bold;
-    color: #555454;
-    font-size: 16px;
-    line-height: 19px;
-    margin-bottom: 15px;
-}
-.container2 .profileBody {
-    margin-top: 40px;
-}
-.container2 .profileBody span {
-    font-style: normal;
-    font-weight: normal;
-    color: #555454;
-    font-size: 16px;
-    line-height: 19px;
-    margin-bottom: 15px;
-}
-.container2 .inputs {
-    margin-bottom: 20px;
-}
-.container2 a {
-    cursor: pointer;
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-}
-.container2 .infoUpper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.edit{
-    display: none;
-    flex-direction: column;
-}
-
-.container2 .editUpper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.edit_info_label{
-    font-style: normal;
-    font-weight: bold;
-    color: #555454;
-    font-size: 16px;
-    line-height: 19px;
-    margin-bottom: 15px;
-}
-
-.field{
-   margin-bottom: 20px;
-}
-
-input[type=text], select {
-    width: 50%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.container2 .field input {
-    margin-left: auto;
-}
-
-.account_info{
-    margin: 50px 30px 30px 30px;
-}
-
-#account_email{
-    text-align: center;
-    margin-top: 20px;
-    font-size: 25px;
-}
-
-#account_id{
-    text-align: center;
-    margin-top: 20px;
-    font-size: 20px;
-}
-
-.account_status{
-    margin-top: 30px;
-    font-size: 15px;
-}
-
-.container2Card {
-    position: relative;
-    padding: 25px;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    background: #ffffff;
-    border: 1px solid #C4C4C4;
-    box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    margin-top: 20px;
-}
-
-
-/* =========== Styles for Tablet View ============= */
-
-@media screen and (max-width: 768px) {
-    .animalReport {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .container1 {
-        width: auto;
-    }
-    .container2 {
-        width: auto;
-    }
-}
-
-/* =========== Styles for Mobile View ============= */
-
-@media screen and (max-width: 360px) {
-    .animalReport {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .container1 {
-        width: auto;
-    }
-    .container2 {
-        width: auto;
-    }
-
-}

@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Profile</title>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/organization_view_profile.css'>
 </head>
 <body>
+    <div id="top-nav">
+        <?php
+            require APP_ROOT . '/views/components/topNavbar.php';
+        ?>
+    </div>
     <div class="row">
         <?php
         $url = URL_ROOT."/organizations/organizationViewProfile";

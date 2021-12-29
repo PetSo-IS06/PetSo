@@ -8,75 +8,81 @@
         }
 
         public function organizationViewProfile() {
-            $data = [
-                'organization'     => $this->organizationModel->getOrganization()[0],
-                'animal_types'     => $this->organizationModel->getOrganizationAnimalTypes(),
-                "org_profile_img"  => $this->organizationModel->getOrganization()[0]->org_profile_img,
-            ];
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                if(isset($_POST['save'])){
-                    
-                    $data = [
-                        "org_name"               => isset($_POST['org_name']) ? trim($_POST['org_name']) : '',
-                        "org_mobile"             => isset($_POST['org_mobile']) ? trim($_POST['org_mobile']) : '',
-                        "org_landline"           => isset($_POST['org_landline']) ? trim($_POST['org_landline']) : '',
-                        "org_email"              => isset($_POST['org_email']) ? trim($_POST['org_email']) : '',
-                        "org_password"           => isset($_POST['org_password']) ? trim($_POST['org_password']) : '',
-                        "org_confirm_password"   => isset($_POST['org_confirm_password']) ? trim($_POST['org_confirm_password']) : '',
-                        "org_address1"           => isset($_POST['org_address1']) ? trim($_POST['org_address1']) : '',
-                        "org_address2"           => isset($_POST['org_address2']) ? trim($_POST['org_address2']) : '',
-                        "org_area"               => isset($_POST['org_area']) ? trim($_POST['org_area']) : '',
-                        "org_district"           => isset($_POST['org_district']) ? trim($_POST['org_district']) : '',
-                        "if_findhelp"            => isset($_POST['if_findhelp']) ? trim($_POST['if_findhelp']) : '',
-                        "org_website"            => isset($_POST['org_website']) ? trim($_POST['org_website']) : '',
-                        "org_facebook"           => isset($_POST['org_facebook']) ? trim($_POST['org_facebook']) : '',
-                        "org_insta"              => isset($_POST['org_insta']) ? trim($_POST['org_insta']) : '',
-                        "org_doc"                => isset($_POST['org_doc']) ? trim($_POST['org_doc']) : '',
-                    ];
-                    
-                    $this->organizationModel->updateOrganization($data);
-
-                    $data = [
-                        'organization' => $this->organizationModel->getOrganization()[0],
-                        'animal_types' => $this->organizationModel->getOrganizationAnimalTypes(),
-                        "org_profile_img"  => $this->organizationModel->getOrganization()[0]->org_profile_img,
-                    ];
-                } elseif(isset($_POST['upload_image'])) {
-                    if(!empty($_FILES['org_profile_img']['name'])){
-                        $output_dir = "uploads";//Path for file upload
-                        $RandomNum = time();
-                        $file_name = str_replace(' ','-',strtolower($_FILES['org_profile_img']['name']));
-                        $ImageType = $_FILES['org_profile_img']['type']; //"image/png", image/jpeg etc.
-                        $ImageExt = substr($file_name, strrpos($file_name, '.'));
-                        $ImageExt = str_replace('.','',$ImageExt);
-                        $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
-                        $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
-                        $ret[$Newfile_name]= $output_dir.$Newfile_name;
-                        move_uploaded_file($_FILES["org_profile_img"]["tmp_name"],$output_dir."/".$Newfile_name );
-                    
-                        $img_url = $output_dir."/".$Newfile_name;
-
-                        $this->organizationModel->updateOrgProfileImage($img_url);
+            if(isset( $_SESSION['user_id'])){
+                $org_id = $_SESSION['user_id'];
+                $data = [
+                    'organization'     => $this->organizationModel->getOrganization($org_id)[0],
+                    'animal_types'     => $this->organizationModel->getOrganizationAnimalTypes($org_id),
+                    "org_profile_img"  => $this->organizationModel->getOrganization($org_id)[0]->org_profile_img,
+                ];
+                if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    if(isset($_POST['save'])){
+                        
+                        $data = [
+                            "org_name"               => isset($_POST['org_name']) ? trim($_POST['org_name']) : '',
+                            "org_mobile"             => isset($_POST['org_mobile']) ? trim($_POST['org_mobile']) : '',
+                            "org_landline"           => isset($_POST['org_landline']) ? trim($_POST['org_landline']) : '',
+                            "org_email"              => isset($_POST['org_email']) ? trim($_POST['org_email']) : '',
+                            "org_password"           => isset($_POST['org_password']) ? trim($_POST['org_password']) : '',
+                            "org_confirm_password"   => isset($_POST['org_confirm_password']) ? trim($_POST['org_confirm_password']) : '',
+                            "org_address1"           => isset($_POST['org_address1']) ? trim($_POST['org_address1']) : '',
+                            "org_address2"           => isset($_POST['org_address2']) ? trim($_POST['org_address2']) : '',
+                            "org_area"               => isset($_POST['org_area']) ? trim($_POST['org_area']) : '',
+                            "org_district"           => isset($_POST['org_district']) ? trim($_POST['org_district']) : '',
+                            "if_findhelp"            => isset($_POST['if_findhelp']) ? trim($_POST['if_findhelp']) : '',
+                            "org_website"            => isset($_POST['org_website']) ? trim($_POST['org_website']) : '',
+                            "org_facebook"           => isset($_POST['org_facebook']) ? trim($_POST['org_facebook']) : '',
+                            "org_insta"              => isset($_POST['org_insta']) ? trim($_POST['org_insta']) : '',
+                            "org_doc"                => isset($_POST['org_doc']) ? trim($_POST['org_doc']) : '',
+                        ];
+                        
+                        $this->organizationModel->updateOrganization($data,$org_id);
 
                         $data = [
-                            'organization' => $this->organizationModel->getOrganization()[0],
-                            'animal_types' => $this->organizationModel->getOrganizationAnimalTypes(),
-                            "org_profile_img"  => $this->organizationModel->getOrganization()[0]->org_profile_img,
+                            'organization' => $this->organizationModel->getOrganization($org_id)[0],
+                            'animal_types' => $this->organizationModel->getOrganizationAnimalTypes($org_id),
+                            "org_profile_img"  => $this->organizationModel->getOrganization($org_id)[0]->org_profile_img,
+                        ];
+                    } elseif(isset($_POST['upload_image'])) {
+                        if(!empty($_FILES['org_profile_img']['name'])){
+                            $output_dir = "uploads";//Path for file upload
+                            $RandomNum = time();
+                            $file_name = str_replace(' ','-',strtolower($_FILES['org_profile_img']['name']));
+                            $ImageType = $_FILES['org_profile_img']['type']; //"image/png", image/jpeg etc.
+                            $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                            $ImageExt = str_replace('.','',$ImageExt);
+                            $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                            $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                            $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                            move_uploaded_file($_FILES["org_profile_img"]["tmp_name"],$output_dir."/".$Newfile_name );
+                        
+                            $img_url = $output_dir."/".$Newfile_name;
+
+                            $this->organizationModel->updateOrgProfileImage($img_url,$org_id);
+
+                            $data = [
+                                'organization' => $this->organizationModel->getOrganization($org_id)[0],
+                                'animal_types' => $this->organizationModel->getOrganizationAnimalTypes($org_id),
+                                "org_profile_img"  => $this->organizationModel->getOrganization($org_id)[0]->org_profile_img,
+                            ];
+                        }
+                    }elseif(isset($_POST['remove_image'])){
+                        $this->organizationModel->updateOrgProfileImage('',$org_id);
+
+                        $data = [
+                            'organization' => $this->organizationModel->getOrganization($org_id)[0],
+                            'animal_types' => $this->organizationModel->getOrganizationAnimalTypes($org_id),
+                            "org_profile_img"  => $this->organizationModel->getOrganization($org_id)[0]->org_profile_img,
                         ];
                     }
-                }elseif(isset($_POST['remove_image'])){
-                    $this->organizationModel->updateOrgProfileImage('');
-
-                    $data = [
-                        'organization' => $this->organizationModel->getOrganization()[0],
-                        'animal_types' => $this->organizationModel->getOrganizationAnimalTypes(),
-                        "org_profile_img"  => $this->organizationModel->getOrganization()[0]->org_profile_img,
-                    ];
                 }
+
+
+                $this->view('users/OrganizationViewProfile', $data);
+            }else{
+                $root = URL_ROOT;
+                header("Location: $root./users/login");    
             }
-
-
-            $this->view('users/OrganizationViewProfile', $data);
         }
 
         public function organizationSignUp() {

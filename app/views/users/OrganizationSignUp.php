@@ -125,7 +125,7 @@
                         <input type="text" placeholder="Street 1*" name="org_address1" value=<?php echo $data['org_address1'] ?>>
                     </div>
                     <div class="inputBx">
-                        <input type="text" placeholder="Street 2*" name="org_address2" value=<?php echo $data['org_address2'] ?>><br>
+                        <input type="text" placeholder="Street 2" name="org_address2" value=<?php echo $data['org_address2'] ?>><br>
                         <?php
                         if(!empty($data['address_error'])){
                             $msg = $data['address_error'];

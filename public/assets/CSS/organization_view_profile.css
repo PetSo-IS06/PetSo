@@ -1,0 +1,237 @@
+
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+.column1 {
+    float: left;
+    width: 60%;
+    margin-left: 3%;
+    height: 505px; 
+    padding-top: 20px;  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border: 2px solid grey;
+  } 
+
+  .column2 {
+    float: right;
+    width: 30%;
+    margin-right: 3%;
+    height: 500px; 
+    border-radius: 20px;
+  } 
+
+  .column3 {
+    float: left;
+    width: 60%;
+    margin-left: 3%;
+    margin-top: 3%;
+    height: 850px; 
+    padding-top: 20px;  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border: 2px solid grey;
+  }
+  
+  .column4 {
+    float: right;
+    width: 30%;
+    margin-right: 3%;
+    margin-top: 3%;
+    height: 500px; 
+    padding-top: 20px;  
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border: 2px solid grey;
+  }
+
+.row:after {
+    content: "";
+    clear: both;
+    padding-left: 10px;
+  }
+
+.row3:after {
+    content: "";
+    clear: both;
+    padding-left: 10px;
+  }
+
+.row1{
+    height: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border: 2px solid grey;
+}
+
+.row3{
+    height: 30px;
+}
+.row2{
+    height: 220px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    border: 2px solid grey;
+}
+
+.heading-hr{
+    /* margin-left: 17px; */
+    margin-right: 14px;
+}
+
+.title{
+    margin-top: 13px;
+    /* margin-left: 17px; */
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.content{
+  margin-left: 17px;
+}
+
+.organization_info{
+}
+
+.organization_info_label{
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 160px;
+}
+
+.field{
+  margin-top: 40px;
+}
+
+
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.account_info{
+  margin: 50px 30px 30px 30px;
+}
+
+#account_email{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+#account_id{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.account_status{
+  margin-top: 30px;
+  font-size: 15px;
+}
+
+.animal_in_care{
+  margin: 25px 25px 25px 20px;
+}
+
+.label {
+  color: white;
+  padding: 8px;
+  font-family: Arial;
+}
+
+.animal_name {
+  background-color: var(--primary-purple-color);
+  border-radius: 8px;
+} /* Blue */
+
+.button_save {
+  background-color: var(--primary-blue-color); /* Green */
+  border: none;
+  color: white;
+  padding: 13px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  float: right;
+  margin-right: 183px;
+}
+
+.button_uploaded {
+  background-color: var(--primary-very-light-grey-color); 
+  border: none;
+  color: white;
+  padding: 13px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: 420px;
+  margin-top: 20px;
+}
+
+.button_upload {
+  background-color: var(--primary-purple-color); 
+  border: none;
+  color: white;
+  padding: 13px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: 420px;
+  margin-top: 20px;
+}
+
+.button_remove{
+  background-color: var(--primary-very-light-grey-color); 
+  border: none;
+  color: white;
+  padding: 13px;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-left: 763px;
+  margin-top: 105px;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.upload_image_content{
+  margin-top: 210px;
+  text-align: center;
+}

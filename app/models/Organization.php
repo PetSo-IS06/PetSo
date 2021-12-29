@@ -56,6 +56,7 @@
             }
         }
 
+
         public function addOrganizationAnimal($id, $animal_type){
             $this->db->query('INSERT INTO `petso`.`Org_Animal` (org, animal_type) 
             values (:org, :animal_type)');
@@ -87,15 +88,15 @@
         //     } 
         // }
 
-        public function getOrganization(){
-            $this->db->query("SELECT * FROM `petso`.`Organization` WHERE org_id=1");
+        public function getOrganization($org_id){
+            $this->db->query("SELECT * FROM `petso`.`Organization` WHERE org_id=$org_id");
 
             $result = $this->db->resultSet(); 
             return $result;
         }
 
-        public function getOrganizationAnimalTypes(){
-            $this->db->query("SELECT * FROM `petso`.`Org_Animal` WHERE `org`=1");
+        public function getOrganizationAnimalTypes($org_id){
+            $this->db->query("SELECT * FROM `petso`.`Org_Animal` WHERE `org`=$org_id");
 
             $result = $this->db->resultSet(); 
             return $result;
@@ -133,6 +134,42 @@
 
             // bind value
         //    $this->db->bind();
+        }
+        
+        public function updateOrganization($data,$id) {
+            $this->db->query("UPDATE Organization SET org_name=:org_name, org_mobile=:org_mobile, org_email=:org_email,
+            org_address1=:org_address1, org_website=:org_website, org_facebook=:org_facebook, org_insta=:org_insta  WHERE org_id=$id");
+
+            $this->db->bind(':org_name', $data['org_name']);
+            $this->db->bind(':org_mobile', $data['org_mobile']);
+            $this->db->bind(':org_email', $data['org_email']);
+            $this->db->bind(':org_website', $data['org_website']);
+            $this->db->bind(':org_address1', $data['org_address1']);
+            $this->db->bind(':org_facebook', $data['org_facebook']);
+            $this->db->bind(':org_insta', $data['org_insta']);
+    
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function updateOrgProfileImage($img_url,$org_id){
+            $this->db->query("UPDATE Organization SET org_profile_img='$img_url'  WHERE org_id=$org_id");
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function getAccStatusByEmail($email){
+            $this->db->query("SELECT account_status FROM `petso`.`Organization` WHERE org_id='$email'");
+
+            $result = $this->db->single(); 
+            return $result;
+
         }
     }
     

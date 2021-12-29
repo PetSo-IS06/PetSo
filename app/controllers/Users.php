@@ -4,6 +4,107 @@
         public function __construct() {
             $this->authModel = $this->model('Authentication');
             $this->userModel = $this->model('User');
+            $this->organizationModel = $this->model('Organization');
+        }
+
+        public function login() {
+            // an associative array to handle user input
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => ' ',
+                'passwordError' => ' '
+            ];
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // sanitize post data
+                // filter_input_array() returns false if POST var is set to scalar value
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'password' => trim($_POST['password']),
+                    'emailError' => '',
+                    'passwordError' => ''
+                ];
+
+                $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
+
+                // validate email
+                if(empty($data['email'])) {
+                    $data['emailError'] = 'Please enter your email';
+                } elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['emailError'] = 'Please enter the correct format';
+                } else {
+                    // check if email already exists
+                    if(!$this->userModel->findUserByEmail($data['email']) && !$this->organizationModel->checkEmailExistance($data['email'])) {
+                        $data['emailError'] = 'Email not registered';
+                    }
+                }
+
+                //validate password
+                if(empty($data['password'])) {
+                    $data['passwordError'] = 'Please enter password';
+                } elseif(strlen(($data['password'])) < 8) {
+                    $data['passwordError'] = 'Password must have atleast 8 characters';
+                } elseif(!preg_match($passwordValidation, $data['password'])) {
+                    $data['passwordError'] = 'Password should contain atleast 1 numeric value';
+                }
+
+                // make sure errors are empty
+                if(empty($data['emailError']) && empty($data['passwordError'])){
+                        if($this->userModel->findUserByEmail($data['email'])){
+                            $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+                                if($loggedInUser) {
+                                    $this->createUserSession($loggedInUser);
+                                    // redirect to Index page
+                                    header('location:' . URL_ROOT . '/pages/index');
+                                } else {
+                                    $data['passwordError'] = 'Password or Username Incorrect';
+            
+                                    $this->view('users/login', $data);
+                                }  
+
+                        } elseif($this->organizationModel->checkEmailExistance($data['email'])) {
+                            $loggedInUser = $this->organizationModel->login($data['email'], $data['password']);
+                          
+                            if($loggedInUser) {
+                                $this->createOrgSession($loggedInUser);
+                                // redirect to Index page
+                                header('location:' . URL_ROOT . '/pages/index');
+                            } else {
+                                $data['passwordError'] = 'Password or Username Incorrect';
+                                $this->view('users/login', $data);
+                            }
+                        }
+                }
+            } else {
+                $data = [
+                    'email' => '',
+                    'password' => '',
+                    'emailError' => ' ',
+                    'passwordError' => ' '
+                ];
+            }
+
+            $this->view('users/login', $data);
+        }
+
+        public function createUserSession($user) {
+            session_start();
+            $_SESSION['user_id'] = $user->us_id;
+            $_SESSION['user_name'] = $user->us_name;
+            $_SESSION['user_email'] = $user->us_email;
+            $_SESSION['user_type'] = 'user';
+        }
+
+        public function createOrgSession($org) {
+            session_start();
+            $_SESSION['user_id'] = $org->org_id;
+            $_SESSION['user_name'] = $org->org_name;
+            $_SESSION['user_email'] = $org->org_email;
+            $_SESSION['user_type'] = 'organization';
         }
 
         public function index() {

@@ -34,10 +34,10 @@
         //     }
         // }
 
-        public function saveProject($data) {
+        public function saveProject($data, $vol, $fund) {
             $this->db->query('INSERT INTO `petso`.`Project` 
-            (`title`, `org_id`, `cause`, `create_date`, `initiation_date`, `description`, `status`) 
-            VALUES (:title, :org_id, :cause, :create_date, :initiation_date, :description, :status)');
+            (`title`, `org_id`, `cause`, `create_date`, `initiation_date`, `description`, `status`, `volunteering`, `fundraising`) 
+            VALUES (:title, :org_id, :cause, :create_date, :initiation_date, :description, :status, :vol, :fund)');
             
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':org_id', $_SESSION['user_id']);
@@ -46,6 +46,8 @@
             $this->db->bind(':initiation_date', $data['initDate']);
             $this->db->bind(':description', $data['prjDescription']);
             $this->db->bind(':status', 'Pending');
+            $this->db->bind(':vol', $vol);
+            $this->db->bind(':fund', $fund);
 
             if($this->db->execute()) {
                 return $this->db->getLastInsertedId();
@@ -99,7 +101,7 @@
             }
         }
 
-        public function getOpportunities() {
+        public function getAllVolOpportunities() {
             $this->db->query('SELECT * FROM `petso`.`Volunteer_Opportunity`');
 
             // $this->db->bind();

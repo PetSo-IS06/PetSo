@@ -126,6 +126,9 @@ class Projects extends Controller {
                 'accountNoError' => ''
             ];
 
+            $vol = 'False';
+            $fund = 'False';
+
             // Input Validation
 
             if(empty($data['cause'])) {
@@ -142,6 +145,7 @@ class Projects extends Controller {
             }
 
             if(strcmp($data['volunteering'], 'Yes') == 0){
+                $vol = 'True';
                 if(empty($data['volReason'])) {
                     $data['volReasonError'] = 'Please describe why the project requires volunteers';
                 }
@@ -169,6 +173,7 @@ class Projects extends Controller {
             }
 
             if(strcmp($data['funding'], 'Yes') == 0) {
+                $fund = 'True';
                 if(empty($data['prjFundsFor'])) {
                     $data['prjFundsForError'] = 'Please describe what the funds will be used for';
                 }
@@ -200,7 +205,7 @@ class Projects extends Controller {
                 }    
             }
 
-            $prjID = $this->projectModel->saveProject($data);
+            $prjID = $this->projectModel->saveProject($data, $vol, $fund);
 
             if($prjID != -1) {
                 if(strcmp($data['volunteering'], 'Yes') == 0) {

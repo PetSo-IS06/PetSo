@@ -13,9 +13,18 @@ class OrgDashboards extends Controller {
         $this->view('pages/index', $data);
     }
 
-    public function aboutUs() {
-        $this->view('pages/aboutUs');
-    }
+    public function dashboard(){
+        $projects = $this->orgDashboardModel->getMyProjects();
+        $volOpp = $this->orgDashboardModel->getMyVolOpportunities();
+        $funds = $this->orgDashboardModel->getMyFundraisers();
 
+        $data = [
+            "projects" => $projects,
+            "volOpp" => $volOpp,
+            "funds" => $funds,
+        ];
+
+        $this->view('users/organization/orgDashboard', $data);
+    }
     
 }

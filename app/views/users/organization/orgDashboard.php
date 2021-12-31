@@ -37,19 +37,19 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
                         <i class="fas fa-rocket"></i>
                         <span>My Projects</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#0" style="background: #f7f7f7; border-radius: 10px;">
+                        <a onClick="showVolunteerPanel()" id="vol-tag">
                         <i class="fas fa-hands-helping"></i>
                         <span>Volunteers</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a onClick="showFaundraisingPanel()" id="fund-tag">
                         <i class="fas fa-comment-dollar"></i>
                         <span>Fundraisers</span>
                         </a>
@@ -73,73 +73,158 @@
                         </a>
                     </li>
             </div>
-            <section class="page-content">
+
+            <!-- Projects Section -->
+            <section class="page-content" id="proj-sec">
                 <section>
                     <div class="content-head">
-                        <h1 class="heading2B">Volunteering</h1>
-                        <h3 class="normal">21st Oct 2021</h3>
+                        <h1 class="heading2B">My Welfare Projects</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <!-- <h3>Volunteering</h3> -->
                         <div class="search-sec-bar">
                                     <input type="search" placeholder="Search..." name="searchPrj" />
                                     <i class="fa fa-search"></i>
                                 </div>
                         <div class="btn">
-                            <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
-                            <a class="content-sub-head-btn" id="applications-btn" onClick="Show_Applications()">Applications</a>
-                            <a class="content-sub-head-btn" id="view-all-btn">View All</a>
+                            <a href="<?php echo URL_ROOT; ?>/projects/createProject" class="content-sub-head-btn" id="">Create Project</a>
                         </div>
                     </div>
                     </section>
 
                     <!-- Initial display -->
                     <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
-                        <div class="article-head">
-                            <!-- <h3>Volunteer Opportunities</h3> -->
-                                <!-- <div class="search-sec-bar">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th><input type="checkbox" name="">All</th>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Cause</th>
+                                    <th>Create Date</th>
+                                    <th>Initiation Date</th>
+                                    <th>Status</th>
+                                    <th>Volunteering</th>
+                                    <th>Fundraising</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["projects"] as $item) { ?>
+                                        <tr>
+                                            <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td><?php echo $item->title; ?></td>
+                                            <td><?php echo $item->cause; ?></td>
+                                            <td><?php echo $item->create_date; ?></td>
+                                            <td><?php echo $item->initiation_date; ?></td>
+                                            <td><?php 
+                                                if(strcmp($item->status, 'Pending') == 0) {
+                                                    echo "<p class='red'>$item->status</p>";
+                                                } elseif(strcmp($item->status, 'Ongoing') == 0) {
+                                                    echo "<p class='blue'>$item->status</p>";
+                                                } elseif(strcmp($item->status, 'Completed') == 0) {
+                                                    echo "<p class='green'>$item->status</p>";
+                                                }
+                                            ?></td>
+                                            <td><?php 
+                                                if(strcmp($item->volunteering, 'True') == 0) {
+                                                    echo "<input type='checkbox' checked style='display: block;'>";
+                                                } else {
+                                                    echo "<input type='checkbox'>";
+                                                }
+                                            ?></td>
+                                            <td><?php 
+                                                if(strcmp($item->fundraising, 'True') == 0) {
+                                                    echo "<input type='checkbox' checked>";
+                                                } else {
+                                                    echo "<input type='checkbox'>";
+                                                }
+                                            ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Volunteer Opportunities Section -->
+            <section class="page-content" id="vol-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Volunteer Opportunities</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
                                     <input type="search" placeholder="Search..." name="searchPrj" />
                                     <i class="fa fa-search"></i>
-                                </div> -->
-                            </div>
-                            <div class="table-wrapper">
-                                <table class="fl-table">
-                                    <thead>
-                                    <tr class="table-head">
-                                        <th><input type="checkbox" name=""></th>
-                                        <th>ID</th>
-                                        <th>Description</th>
-                                        <th>Created Date</th>
-                                        <th>District</th>
-                                        <th>Area</th>
-                                        <th>Closing Date</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        foreach ($data as $item) {
-                                            echo "<tr>
-                                                <td><input type='checkbox' name=''></td>
-                                                <td>$item->id</td>
-                                                <td>$item->description</td>
-                                                <td>$item->create_date</td>
-                                                <td>$item->district</td>
-                                                <td>$item->area</td>
-                                                <td>$item->app_close</td>
-                                                <td>$item->work_start</td>
-                                                <td>$item->work_end</td>
-                                            </tr>";
-                                        }
-                                        
-                                        ?>
-                                    <tbody>
-                                </table>
-                            </div>
+                                </div>
+                        <div class="btn">
+                            <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
+                            <a class="content-sub-head-btn" id="applications-btn" onClick="showVolApplications">Applications</a>
+                            <a class="content-sub-head-btn" id="view-all-btn">View All</a>
+                        </div>
                     </div>
+                    </section>
 
+                    <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th><input type="checkbox" name=""></th>
+                                    <th>ID</th>
+                                    <th id="col-desc">Description</th>
+                                    <th>District</th>
+                                    <th>Area</th>
+                                    <th>Closing Date</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["volOpp"] as $item) { ?>
+                                        <tr>
+                                            <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td id="col-desc"><?php echo $item->description; ?></td>
+                                            <td><?php echo $item->district; ?></td>
+                                            <td><?php echo $item->area; ?></td>
+                                            <td><?php echo $item->app_close; ?></td>
+                                            <td><?php echo $item->work_start; ?></td>
+                                            <td><?php echo $item->work_end; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </section>
 
+            <!-- Volunteer Applications Section -->
+            <section class="page-content" id="volApp-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Volunteer Applications</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
+                                    <input type="search" placeholder="Search..." name="searchPrj" />
+                                    <i class="fa fa-search"></i>
+                                </div>
+                        <div class="btn">
+                            <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
+                            <a class="content-sub-head-btn" id="applications-btn" onClick="showVolApplications">Applications</a>
+                            <a class="content-sub-head-btn" id="view-all-btn">View All</a>
+                        </div>
+                    </div>
+                    </section>
+                    
                     <!-- Applications Section -->
                     <section class="grid" id="article">
                         <article class="applications-section" id="applications-section">
@@ -226,6 +311,58 @@
                             </div>
                         </article>
                     </section>
+                </section>
+            </section>
+
+            <!-- Fundraiser Section -->
+            <section class="page-content" id="fund-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Fundraising</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
+                            <input type="search" placeholder="Search..." name="searchPrj" />
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+                    </section>
+
+                    <!-- Initial display -->
+                    <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th><input type="checkbox" name="">All</th>
+                                    <th>ID</th>
+                                    <th id="col-desc">Funds for</th>
+                                    <th>Target Amount</th>
+                                    <th>Raised Amount</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th>Bank Account id</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["funds"] as $item) { ?>
+                                        <tr>
+                                            <td><input type='checkbox' name='selectedFundraiser' value='<?php echo $item->id; ?>'></td>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td id="col-desc"><?php echo $item->funds_for; ?></td>
+                                            <td><?php echo $item->target_amount; ?></td>
+                                            <td><?php echo $item->raised_amount; ?></td>
+                                            <td><?php echo $item->funding_start; ?></td>
+                                            <td><?php echo $item->funding_end; ?></td>
+                                            <td><?php echo $item->bank_acnt_id; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
             </section>
         </div>
     </div>

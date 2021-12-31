@@ -4,7 +4,7 @@
 define('SITE_NAME', 'PetSo');
 
 //App Root (Dynamic Links)
-define('APP_ROOT', dirname(dirname(_FILE_)));
+define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', 'http://localhost/PetSo');
 define('URL_SUBFOLDER', 'PetSo');
 

@@ -102,6 +102,7 @@ input {
   align-items: center;
   font-size: var(--normal-size);
   font-weight: bold;
+  cursor: pointer;
 }
 
 .page-header .admin-menu i {
@@ -117,9 +118,20 @@ input {
   border-radius: 14px;
 }
 
+.active-tag {
+  background: var(--white-color);
+  outline: none;
+  border-radius: 10px;
+}
+
 /* PAGE CONTENT STYLES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+#vol-sec, #fund-sec, #volApp-sec {
+  display: none;
+}
+
 .page-content {
+  display: block;
   width: 100%;
   border-radius: 15px;
   min-height: 100vh;
@@ -276,8 +288,16 @@ input {
     padding: 8px;
 }
 
-.fl-table td:nth-child(2), .fl-table th:nth-child(2) {
-  width: 8%;
+.fl-table #col-desc {
+  display: block;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fl-table td:nth-child(1), .fl-table th:nth-child(2) {
+  width: 30px;
 }
 
 .fl-table td:last-child, .fl-table th:last-child {

@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a onClick="showProjectsPanel()" id="proj-tag">
+                        <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
                         <i class="fas fa-rocket"></i>
                         <span>My Projects</span>
                         </a>
@@ -154,7 +154,7 @@
             <section class="page-content" id="vol-sec">
                 <section>
                     <div class="content-head">
-                        <h1 class="heading2B">Volunteer Opportunities/h1>
+                        <h1 class="heading2B">Volunteer Opportunities</h1>
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">

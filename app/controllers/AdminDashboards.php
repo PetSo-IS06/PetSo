@@ -14,12 +14,12 @@ class AdminDashboards extends Controller {
     }
 
     public function dashboard(){
-        // $projects = $this->orgDashboardModel->getMyProjects();
+        $pendingProjects = $this->adminDashboardModel->getPendingProjects();
         // $volOpp = $this->orgDashboardModel->getMyVolOpportunities();
         // $funds = $this->orgDashboardModel->getMyFundraisers();
 
         $data = [
-            "projects" => '',
+            "pendProjects" => $pendingProjects,
             "volOpp" => '',
             "funds" => ''
         ];

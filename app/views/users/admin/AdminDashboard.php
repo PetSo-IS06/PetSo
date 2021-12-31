@@ -105,18 +105,24 @@
                                     <th>Title</th>
                                     <th>Cause</th>
                                     <th>Create Date</th>
-                                    <th>Initiation Date</th>
+                                    <th>Organization</th>
+                                    <th>District</th>
+                                    <th>Area</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data["projects"] as $item) { ?>
+                                    <?php foreach ($data["pendProjects"] as $item) { ?>
                                         <tr>
                                             <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
                                             <td><?php echo $item->id; ?></td>
-                                            <td><?php echo $item->title; ?></td>
-                                            <td><?php echo $item->cause; ?></td>
-                                            <td><?php echo $item->create_date; ?></td>
-                                            <td><?php echo $item->initiation_date; ?></td>
+                                            <th><?php echo $item->title; ?></th>
+                                            <th><?php echo $item->cause; ?></th>
+                                            <th><?php echo $item->create_date; ?></th>
+                                            <th><?php echo $item->org_id; ?></th>
+                                            <th>District</th>
+                                            <th>Area</th>
+                                            <th>Action</th>
                                         </tr>
                                     <?php } ?>
                                 <tbody>

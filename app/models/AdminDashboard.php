@@ -18,14 +18,14 @@
             // return $result;
         }
 
-        public function getAllProjects() {
-            // $this->db->query('SELECT * FROM `petso`.`Project` WHERE `org_id` = :org_id');
+        public function getPendingProjects() {
+            $this->db->query('SELECT * FROM `petso`.`Project` WHERE `status` = :status');
 
-            // $this->db->bind(':org_id', $_SESSION['user_id']);
+            $this->db->bind(':status', 'Pending');
 
-            // $result = $this->db->resultSet();
+            $result = $this->db->resultSet();
 
-            // return $result;
+            return $result;
         }
 
         public function getAllFundraisers() {

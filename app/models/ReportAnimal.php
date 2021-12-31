@@ -8,7 +8,9 @@ class ReportAnimal {
     }
 
     public function listOragnizations($data) {
-        $this->db->query('SELECT * FROM `petso`.`Organization` WHERE `org_district` = :org_district');
+        $this->db->query("SELECT * FROM `petso`.`Organization` WHERE `org_district` = :district");
+//        $this->db->query('SELECT * FROM `petso`.`Organization`');
+        $this->db->bind(':district', $data['district']);
 
         $result = $this->db->resultSet();    // resultSet returns an array of Objects
         return $result;
@@ -21,7 +23,7 @@ class ReportAnimal {
 //
 //        $this->db->bind(':title', $data['title']);
 //        $this->db->bind(':org_id', $_SESSION['user_id']);
-//        $this->db->bind(':cause', $data['cause']);
+//        $this->db->bind(':case', $data['case']);
 //        $this->db->bind(':create_date', $data['create-date']);
 //        $this->db->bind(':initiation_date', $data['initDate']);
 //        $this->db->bind(':description', $data['prjDescription']);

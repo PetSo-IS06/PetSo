@@ -16,8 +16,10 @@
 </div>
 
 <div>
-
-<!--    <text>Name: &nbsp;<span> --><?php //echo $data[]; ?><!--</span></text>-->
+<!--<h1>Head - --><?php
+//    foreach($data as $key=>$value)
+//        echo $key, '=>', $value; ?><!--</h1>-->
+    <text>Name: &nbsp;<span> <?php echo $data['org_name']; ?></span></text>
     <br>
 </div>
 <div id="footer">

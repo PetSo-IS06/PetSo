@@ -27,5 +27,8 @@ class Pages extends Controller {
         $this->view('pages/projectTopSection');
     }
 
-    
+    public function reportConfirmation(){
+        $this->view('animalReports/reportConfirmation');
+    }
+
 }

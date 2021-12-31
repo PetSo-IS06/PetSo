@@ -59,7 +59,12 @@
                             <h3><?php echo $_SESSION['user_name']; ?></h3>
                             <?php echo $_SESSION['user_email']; ?>
                         </label>
-                        <a href="<?php echo URL_ROOT;?>/organizations/organizationViewProfile">My Profile</a>
+                        <a href="<?php
+                        if($_SESSION['user_type'] == 'user') :
+                            echo URL_ROOT.'/users/userProfile';
+                        elseif($_SESSION['user_type'] == 'org') :
+                            echo URL_ROOT.'/organizations/organizationViewProfile';
+                        endif;?>">My Profile</a>
                         <a href="#">Notifications</a>
                         <a href="<?php 
                         if($_SESSION['user_type'] == 'user') :

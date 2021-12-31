@@ -130,7 +130,7 @@
             $_SESSION['user_id'] = $admin->ad_id;
             $_SESSION['user_name'] = $admin->ad_name;
             $_SESSION['user_email'] = $account->email;
-            $_SESSION['user_type'] = $account->email;
+            $_SESSION['user_type'] = $account->type;
         }
 
         public function resetPassword(){

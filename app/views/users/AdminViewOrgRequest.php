@@ -17,13 +17,21 @@
                 <tr>
                     <th>Organization Name</th> <th></th>
                     <th>Approve</th> <th></th>
-                    <th>Reject</th> <th></th>
-                    
+                    <th>Reject</th> <th></th>   
                     <th>Details</th> <th></th>
                     
                 </tr>
             </thead>
             <tbody>
+            <?php
+                // foreach ($data as $value) {
+                    // $name = $value['org_name'];
+                //   echo "$name";
+            //   }
+            print_r($data)
+
+            ?>
+
              
             <tr>
                 <td> Adopties.lk </td> <td></td>

@@ -132,14 +132,21 @@
 
             $this->view('users/signup', $data);
         }
-        
+
+        public function organizationSignUp() {
+            $data = [
+                'title' => 'Org Sign up'
+            ];
+            $this->view('users/OrganizationSignUp', $data);
+        }
+
+
         public function selectAccount() {
             $data = [
                 'title' => 'Select Account'
             ];
             $this->view('users/selectAccount', $data);
         }
-
 
         public function logout() {
             unset($_SESSION['user_id']);
@@ -148,13 +155,21 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
+
         public function notification(){
             $this->view('components/notification');
 
         public function adminViewOrgRequest() {
+
+      
+        public function adminViewPendingRequest(){
+            $data = $this->userModel->getPendingRequests();
+
+
             $data = [
-                'title' => 'Login Page'
+                
             ];
+            
             $this->view('users/AdminViewOrgRequest', $data);
 
         }

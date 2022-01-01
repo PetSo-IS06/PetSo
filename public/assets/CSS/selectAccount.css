@@ -13,7 +13,7 @@ body {
     background-image: url("../img/login.jpg");
 }
     
-  .select-left {
+  .left {
       background-color: var(--white-color);
       float: left;
       height: 35%;

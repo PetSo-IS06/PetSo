@@ -301,7 +301,12 @@ input {
 }
 
 .fl-table td:last-child, .fl-table th:last-child {
-  width: fit-content;
+  /* width: fit-content; */
+}
+
+.fl-table td:last-child i {
+  cursor: pointer;
+  font-size: large;
 }
 
 .fl-table td {
@@ -309,8 +314,21 @@ input {
     font-size: 12px;
 }
 
+.cell-nav a:hover {
+  text-decoration: underline;
+}
+
 .fl-table tr:nth-child(even) {
     background: #F8F8F8;
+}
+
+.fl-table .action-col {
+  display: flex;
+  flex-direction: row;
+}
+
+.action-col a {
+  padding: 8px 5px;
 }
 
 .table-action-btn {

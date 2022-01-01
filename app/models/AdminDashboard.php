@@ -19,7 +19,10 @@
         }
 
         public function getPendingProjects() {
-            $this->db->query('SELECT * FROM `petso`.`Project` WHERE `status` = :status');
+            $this->db->query('SELECT Project.*, Organization.org_name, Organization.org_district
+                                FROM Project
+                                JOIN Organization ON Project.org_id = Organization.org_id
+                                WHERE Project.status = :status');
 
             $this->db->bind(':status', 'Pending');
 

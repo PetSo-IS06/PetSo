@@ -115,6 +115,7 @@
                                     <th>Volunteering</th>
                                     <th>Fundraising</th>
                                     <th>Action</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -122,13 +123,17 @@
                                         <tr>
                                             <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
                                             <td><?php echo $item->id; ?></td>
-                                            <th><?php echo $item->title; ?></th>
-                                            <th><?php echo $item->cause; ?></th>
-                                            <th><?php echo $item->create_date; ?></th>
-                                            <th><?php echo $item->org_id; ?></th>
-                                            <th><input type="checkbox" name=""></th>
-                                            <th><input type="checkbox" name=""></th>
-                                            <th>Action</th>
+                                            <td class="cell-nav"><a href=""><?php echo $item->title; ?></a></td>
+                                            <td><?php echo $item->cause; ?></td>
+                                            <td><?php echo $item->create_date; ?></td>
+                                            <td><?php echo $item->org_name; ?></td>
+                                            <td><input type="checkbox" name=""></td>
+                                            <td><input type="checkbox" name=""></td>
+                                            <td class="action-col">
+                                                <a href="" class="green-btn cell-btn" id="cell-btn">Approve</a>
+                                                <a href="" class="grey-btn cell-btn">Reject</a>
+                                            </td>
+                                            <td><i class="fas fa-ellipsis-v"></i></td>
                                         </tr>
                                     <?php } ?>
                                 <tbody>

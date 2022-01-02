@@ -115,7 +115,7 @@
                                     <th>Volunteering</th>
                                     <th>Fundraising</th>
                                     <th>Action</th>
-                                    <th></th>
+                                    <!-- <th></th> -->
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -133,8 +133,15 @@
                                                 <a onClick="showApproveOverlay(<?php echo $item->id; ?>)" class="green-btn cell-btn" id="cell-btn">Approve</a>
                                                 <a onClick="showRejectOverlay(<?php echo $item->id; ?>)" class="grey-btn cell-btn">Reject</a>
                                             </td>
-                                            <td><i class="fas fa-ellipsis-v"></i></td>
-                                            
+                                            <!-- <td><label class="row-dd"><i class="fas fa-ellipsis-v"></i>
+                                                <div id="dropdown<?php echo $item->id; ?>" class="dropdown">
+                                                    <a href="#">Welfare Projects</a>
+                                                    <a href="#">Animals Reported</a>
+                                                    <a href="#">Adoption</a>
+                                                    <a href="#">Sposorships</a>
+                                                </div>
+                                            </label></td> -->
+
                                             <!-- Approval Popup -->
                                             <div id="popup<?php echo $item->id; ?>" class="overlay">
                                                 <div class="popup">

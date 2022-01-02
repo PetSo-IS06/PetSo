@@ -353,6 +353,45 @@ input {
   margin-right: 10px;
 }
 
+.fl-table .row-dd {
+  /* color: var(--primary-grey-color); */
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 10px 30px;
+  position: relative;
+  display: inline-block;
+}
+.fl-table .row-dd .dropdown {
+  display: none;
+  position: absolute;
+  /* top: 0; */
+  right: 0;
+  /* left: 0; */
+  background-color: var(--white-color);
+  min-width: 200px;
+  border-radius: 15px;
+  padding: .8rem 0;
+  box-shadow: -1px 0px 5px 4px var(--primary-light-grey-color);
+  z-index: 50;
+}
+
+.fl-table .row-dd .dropdown a {
+  color: var(--primary-grey-color);
+  padding: 5px 24px;
+  font-size: var(--normal-size);
+  float: left;
+  text-decoration: none;
+  display: block;
+}
+
+.fl-table .row-dd .dropdown a:hover {
+  color: var(--primary-purple-color);
+}
+
+.row-dd:hover .dropdown {display: block;}
+
 .overlay {
   position: fixed;
   top: 0;

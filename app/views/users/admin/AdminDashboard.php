@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
-    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/organization-dashboard.js"></script>
+    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/admin-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
 <body>
@@ -109,9 +109,9 @@
                                     <th><input type="checkbox" name="">All</th>
                                     <th>ID</th>
                                     <th>Title</th>
-                                    <th>Cause</th>
+                                    <th id="col-desc" style="width: 130px">Cause</th>
                                     <th>Create Date</th>
-                                    <th>Organization</th>
+                                    <th id="col-desc" style="width: 100px">Organization</th>
                                     <th>Volunteering</th>
                                     <th>Fundraising</th>
                                     <th>Action</th>
@@ -124,16 +124,49 @@
                                             <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
                                             <td><?php echo $item->id; ?></td>
                                             <td class="cell-nav"><a href=""><?php echo $item->title; ?></a></td>
-                                            <td><?php echo $item->cause; ?></td>
+                                            <td id="col-desc" style="width: 130px"><?php echo $item->cause; ?></td>
                                             <td><?php echo $item->create_date; ?></td>
-                                            <td><?php echo $item->org_name; ?></td>
+                                            <td id="col-desc" style="width: 100px"><?php echo $item->org_name; ?></td>
                                             <td><input type="checkbox" name=""></td>
                                             <td><input type="checkbox" name=""></td>
                                             <td class="action-col">
-                                                <a href="" class="green-btn cell-btn" id="cell-btn">Approve</a>
-                                                <a href="" class="grey-btn cell-btn">Reject</a>
+                                                <a onClick="showApproveOverlay(<?php echo $item->id; ?>)" class="green-btn cell-btn" id="cell-btn">Approve</a>
+                                                <a onClick="showRejectOverlay(<?php echo $item->id; ?>)" class="grey-btn cell-btn">Reject</a>
                                             </td>
                                             <td><i class="fas fa-ellipsis-v"></i></td>
+                                            
+                                            <!-- Approval Popup -->
+                                            <div id="popup<?php echo $item->id; ?>" class="overlay">
+                                                <div class="popup">
+                                                <h2 class="heading2B">Approve Project</h2>
+                                                <a class="close" onClick="hideApproveOverlay(<?php echo $item->id; ?>)">×</a>
+                                                <form action="<?php echo URL_ROOT . '/Projects/approveProject/' . $item->id; ?>" method="GET">
+                                                    <div class="content">
+                                                        <p class="subtitle">Are you sure that you want to allow <?php echo $item->org_name; ?> to carry out the project with ID <?php echo $item->id; ?> in <?php echo SITE_NAME; ?>?</p>
+                                                        <div class="ov-actions">
+                                                            <a onClick="hideApproveOverlay(<?php echo $item->id; ?>)" class="grey-btn">Cancel</a>
+                                                            <input type="submit" id="approve" class="green-btn" value="Approve">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                            <!-- Reject Popup -->
+                                            <div id="rej-popup<?php echo $item->id; ?>" class="overlay">
+                                                <div class="popup">
+                                                <h2 class="heading2B">Reject Project</h2>
+                                                <a class="close" onClick="hideRejectOverlay(<?php echo $item->id; ?>)">×</a>
+                                                <form action="<?php echo URL_ROOT . '/Projects/rejectProject/' . $item->id; ?>" method="GET">
+                                                    <div class="content">
+                                                        <p class="subtitle">Are you sure that you want to reject <?php echo $item->org_name; ?>'s request to carry out the project with ID <?php echo $item->id; ?> in <?php echo SITE_NAME; ?>?</p>
+                                                        <div class="ov-actions">
+                                                            <a onClick="hideRejectOverlay(<?php echo $item->id; ?>)" class="grey-btn">Cancel</a>
+                                                            <input type="submit" id="reject" class="red-btn" value="Reject">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
                                         </tr>
                                     <?php } ?>
                                 <tbody>

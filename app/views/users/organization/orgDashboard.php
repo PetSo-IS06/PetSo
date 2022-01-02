@@ -177,7 +177,7 @@
                                 <tr class="table-head">
                                     <th><input type="checkbox" name=""></th>
                                     <th>ID</th>
-                                    <th id="col-desc">Description</th>
+                                    <th id="col-desc" style="width: 300px">Description</th>
                                     <th>District</th>
                                     <th>Area</th>
                                     <th>Closing Date</th>
@@ -190,7 +190,7 @@
                                         <tr>
                                             <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
                                             <td><?php echo $item->id; ?></td>
-                                            <td id="col-desc"><?php echo $item->description; ?></td>
+                                            <td id="col-desc" style="width: 300px"><?php echo $item->description; ?></td>
                                             <td><?php echo $item->district; ?></td>
                                             <td><?php echo $item->area; ?></td>
                                             <td><?php echo $item->app_close; ?></td>
@@ -337,7 +337,7 @@
                                 <tr class="table-head">
                                     <th><input type="checkbox" name="">All</th>
                                     <th>ID</th>
-                                    <th id="col-desc">Funds for</th>
+                                    <th id="col-desc" style="width: 300px">Funds for</th>
                                     <th>Target Amount</th>
                                     <th>Raised Amount</th>
                                     <th>Start</th>
@@ -350,7 +350,7 @@
                                         <tr>
                                             <td><input type='checkbox' name='selectedFundraiser' value='<?php echo $item->id; ?>'></td>
                                             <td><?php echo $item->id; ?></td>
-                                            <td id="col-desc"><?php echo $item->funds_for; ?></td>
+                                            <td id="col-desc" style="width: 300px"><?php echo $item->funds_for; ?></td>
                                             <td><?php echo $item->target_amount; ?></td>
                                             <td><?php echo $item->raised_amount; ?></td>
                                             <td><?php echo $item->funding_start; ?></td>

@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <form action="<?php echo URL_ROOT . '/Projects/createProject'; ?>"" method="POST" class="prj-form">
+            <form action="<?php echo URL_ROOT . '/Projects/createProject'; ?>" method="POST" class="prj-form">
                 <h2 class="purple heading2B center">Let’s create your next welfare project at Petso!</h2>
                 
                 <!-- Project Cause Form -->    

@@ -146,6 +146,7 @@
     align-items: center;
     min-width: var(--min-btn-width);
     padding: 12px 26px;
+    cursor: pointer;
     text-decoration: none;
     border: solid 3px var(--primary-purple-color);
     outline: none;
@@ -166,6 +167,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     min-width: var(--min-btn-width);
     padding: 12px 26px;
     text-decoration: none;
@@ -214,6 +216,7 @@
     min-width: var(--min-btn-width);
     padding: 12px 26px;
     text-decoration: none;
+    cursor: pointer;
     border: none;
     outline: none;
     border-radius: 10px;
@@ -236,6 +239,7 @@
     min-width: var(--min-btn-width);
     padding: 12px 26px;
     text-decoration: none;
+    cursor: pointer;
     border: none;
     outline: none;
     border-radius: 10px;
@@ -248,6 +252,29 @@
 }
 .green-btn:hover {
     background: var(--primary-green-color);
+    color: var(--white-color);
+}
+
+.red-btn {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--min-btn-width);
+    padding: 12px 26px;
+    cursor: pointer;
+    text-decoration: none;
+    border: solid 3px var(--primary-red-color);
+    outline: none;
+    border-radius: 10px;
+    background: var(--white-color);
+    color: var(--primary-red-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out;
+    -webkit-transition: background-color 0.3s ease-out;
+}
+.red-btn:hover {
+    background: var(--primary-red-color);
     color: var(--white-color);
 }
 

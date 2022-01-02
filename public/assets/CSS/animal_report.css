@@ -109,3 +109,10 @@
     color: var(--white-color);
 }
 
+.noneEmergency {
+    display: flex;
+}
+.emergency {
+    display: none;
+    margin: 5px;
+}

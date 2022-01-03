@@ -132,26 +132,20 @@
 
             $this->view('users/signup', $data);
         }
-        
+
+        public function organizationSignUp() {
+            $data = [
+                'title' => 'Org Sign up'
+            ];
+            $this->view('users/OrganizationSignUp', $data);
+        }
+
+
         public function selectAccount() {
             $data = [
                 'title' => 'Select Account'
             ];
             $this->view('users/selectAccount', $data);
-        }
-
-        public function userProfile() {
-            $result = $this->userModel->getUser();
-
-            $data = [
-                'username' => $result -> us_name,
-                'mobile' => $result -> us_mobile,
-                'address' => $result -> us_address,
-                'city' => $result -> us_city,
-                'district' => $result -> us_district,
-            ];
-
-            $this->view('users/userProfile', $data);
         }
 
         public function logout() {
@@ -161,66 +155,118 @@
             header('location:' . URL_ROOT . '/pages/index');
         }
 
-        public function userProfileEdit() {
-            $data = [
-                'username' => '',
-                'mobile' => '',
-                'address' => '',
-                'city' => '',
-                'district' => '',
-                'nameError' => '',
-                'mobileError' => ''
-            ];
 
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                // sanitize post data
-                // filter_input_array() returns false if POST is set to scalar value
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-                // trim() removes white space on either sides of input strings
-                $data = [
-                    'username' => trim($_POST['username']),
-                    'mobile' => trim($_POST['mobile']),
-                    'address' => trim($_POST['address']),
-                    'city' => trim($_POST['city']),
-                    'district' => trim($_POST['district']),
-                    'nameError' => '',
-                    'mobileError' => '',
-                ];
-
-                // regular expressions
-                $nameValidation = "/^[a-zA-Z0-9]*$/";
-                $mobileValidation = "/^[0-9]*$/";
-//                $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
-
-                // validate characters in username
-//                if(empty($data['username'])) {
-//                    $data['usernameError'] = 'Please enter your name';
-//                } elseif(!preg_match($nameValidation, $data['username'])) {
-//                    $data['usernameError'] = 'Name should only contain letters/numbers';
-//                }
-
-                // validate mobile number (length & numbers only)
-//                if(strlen(($data['mobile'])) != 10) {
-//                    $data['mobileError'] = 'Number should contain 10 digits';
-//                } elseif(!preg_match($mobileValidation, $data['mobile'])) {
-//                    $data['mobileError'] = 'Mobile number should contain only numbers';
-//                }
-
-                // make sure errors are empty
-                if(empty($data['usernameError']) && empty($data['mobileError'])) {
-
-                    // register user from model function
-                    if($this->userModel->editUserProfile($data)) {
-                        // redirect to profile page
-                        header('location:' . URL_ROOT . '/users/userProfile');
-                    } else {
-                        die('Something went wrong.');
-                    }
-                }
-            }
-            $this->view('users/userProfile', $data);
+        public function notification(){
+            $this->view('components/notification');
         }
 
+        public function adminViewOrgRequest() {
+
+            $data = $this->userModel->getpendingRequests();
+
+            $this->view('users/AdminViewOrgRequest', $data);
+        }
+      
+        public function adminViewPendingRequest(){
+            $data = $this->userModel->getPendingRequests();
+            // if (isset($_POST['approve'])) {
+            //   if(  $this->userModel->changeStatus('approved')){
+
+            //     $data = $this->userModel->getPendingRequests();
+            //   }
+            // }
+            // if (isset($_POST['reject'])) {
+
+            //    if( $this->userModel->changeStatus('rejected')){
+            //     $data = $this->userModel->getPendingRequests();
+            //    }
+            // }
+
+            $this->view('users/AdminViewOrgRequest', $data);
+
+        }
+            public function orgDetails(){
+            $data = $this->userModel->getOrgDetails();
+
+            $this->view('users/orgDetails', $data[0]);
+        }
+
+        public function changeStatus($id){
+            if (isset($_POST['approve'])) {
+                if(  $this->userModel->changeStatus('approved',$id)){
+                    // header("Location: $root./users/adminViewPendingRequest");
+
+                    $data = $this->userModel->getPendingRequests();
+
+                    $this->view('users/AdminViewOrgRequest', $data);
+                //   $data = $this->userModel->getPendingRequests();
+                }
+              }
+              if (isset($_POST['reject'])) {
+  
+                 if( $this->userModel->changeStatus('rejected',$id)){
+                    // header("Location: $root./users/adminViewPendingRequest");
+                    $data = $this->userModel->getPendingRequests();
+
+                    $this->view('users/AdminViewOrgRequest', $data);
+                //   $data = $this->userModel->getPendingRequests();
+                 }
+                //  $root = URL_ROOT;      
+
+        }
     }
+
+    public function projectOverview(){
+        $data = [
+            "title"               => '',
+            "initiation_date"       => '',
+            "desctription"          => '',
+            "coverImage"     => '',
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if(isset($_POST['submit'])){
+                $data = [
+                    "title"               => isset($_POST['title']) ? trim($_POST['title']) : '',
+                    "initiation_date"     => isset($_POST['initiation_date']) ? trim($_POST['initiation_date']) : '',
+                    "description"         => isset($_POST['description']) ? trim($_POST['description']) : '',
+
+                ];
+                  
+                if(!empty($_FILES['coverImage']['name'])){ 
+                   
+                    $output_dir = "uploads";//Path for file upload
+                    $RandomNum = time();
+                    $file_name = str_replace(' ','-',strtolower($_FILES['coverImage']['name']));
+                    $ImageType = $_FILES['coverImage']['type']; //"image/png", image/jpeg etc.
+                    $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                    $ImageExt = str_replace('.','',$ImageExt);
+                    $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                    $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                    $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                    move_uploaded_file($_FILES["coverImage"]["tmp_name"],$output_dir."/".$Newfile_name );
+
+                    $data["coverImage"] = $output_dir."/".$Newfile_name;
+                     
+                $this->userModel->getProjectOverviewForm($data);
+                }
+            else{
+                $this->userModel->getProjectOverviewForm($data);
+            }
+             
+
+    }
+    $this->view('users/projectOverviewForm', $data);
+}
+$this->view('users/projectOverviewForm', $data);
+    }
+
+
+    
+public function projectView() {
+    
+    $data = $this->userModel->getprojectView();
+    $this->view('users/projectView', $data[0]);
+}
+}
    

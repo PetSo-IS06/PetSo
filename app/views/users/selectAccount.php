@@ -13,11 +13,8 @@
 </center>
 
 <body>
-<div id="top-nav">
-    <?php
-    require APP_ROOT . '/views/components/topNavbar.php';
-    ?>
-</div>
+
+
 <div class = "step">
 <h3>Create an Account</h3>  
         <ul class="stepNo">
@@ -52,10 +49,5 @@
     </a>
 </center> <br> <br>
 
-<div id="footer">
-    <?php
-    require APP_ROOT . '/views/components/footer.php';
-    ?>
-</div>
 </body>
   </html>

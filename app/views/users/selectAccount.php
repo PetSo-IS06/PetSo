@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title> <?php echo SITE_NAME; ?> Select Account</title>  </head>
-<link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/selectAccount.css'/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
 <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'/> 
+<link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/selectAccount.css'/> 
 </center>
 
 <body>
@@ -28,7 +30,8 @@
 <a href="<?php echo URL_ROOT; ?>/users/organizationSignUp">
   <div class="left"> <center>
     <h3> Welfare Organization </h3> <br>
-      <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/organization.png" height="75px" width="75px">
+    <i class="fas fa-hotel fa-customize fa-color"></i>
+      
 </center>
   </div>
 </a>
@@ -36,7 +39,7 @@
   <a href="<?php echo URL_ROOT; ?>/users/signup">
     <div class="right">  <center>
       <h3> User  </h3> <br>  
-      <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/user.svg" height="75px" width="75px"> 
+      <i class="fas fa-user fa-customize fa-color"></i>
 </center>
     </div>
   </a>

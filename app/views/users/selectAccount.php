@@ -39,7 +39,7 @@
   <a href="<?php echo URL_ROOT; ?>/users/signup">
     <div class="right">  <center>
       <h3> User  </h3> <br>  
-      <i class="fas fa-user fa-customize fa-color"></i>
+      <i class="fas fa-user fa-customize fa-color"></i> 
 </center>
     </div>
   </a>

@@ -56,6 +56,14 @@ body {
    color: var(--primary-purple-color);
    align-content:center ;
  }
+
+  .fa-customize{
+    font-size: 100px;
+  } 
+
+   .fa-color{
+    color: var(--primary-purple-color);
+   }
   .btn-cancel{
    margin-top: 300px;
    color: #f8f8f8;

@@ -245,6 +245,57 @@ class Projects extends Controller {
         $this->view('projects/createProject', $results);
     }
 
+    public function projectOverview(){
+        $data = [
+            "title"               => '',
+            "initiation_date"       => '',
+            "desctription"          => '',
+            "coverImage"     => '',
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if(isset($_POST['submit'])){
+                $data = [
+                    "title"               => isset($_POST['title']) ? trim($_POST['title']) : '',
+                    "initiation_date"     => isset($_POST['initiation_date']) ? trim($_POST['initiation_date']) : '',
+                    "description"         => isset($_POST['description']) ? trim($_POST['description']) : '',
+
+                ];
+                  
+                if(!empty($_FILES['coverImage']['name'])){ 
+                   
+                    $output_dir = "uploads";//Path for file upload
+                    $RandomNum = time();
+                    $file_name = str_replace(' ','-',strtolower($_FILES['coverImage']['name']));
+                    $ImageType = $_FILES['coverImage']['type']; //"image/png", image/jpeg etc.
+                    $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                    $ImageExt = str_replace('.','',$ImageExt);
+                    $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                    $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                    $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                    move_uploaded_file($_FILES["coverImage"]["tmp_name"],$output_dir."/".$Newfile_name );
+
+                    $data["coverImage"] = $output_dir."/".$Newfile_name;
+                     
+                $this->userModel->getProjectOverviewForm($data);
+                }
+            else{
+                $this->userModel->getProjectOverviewForm($data);
+            }
+             
+
+    }
+    $this->view('users/organization/projectOverviewForm', $data);
+}
+$this->view('users/organization/projectOverviewForm', $data);
+    }
+  
+    public function projectView() {
+    
+        $data = $this->projectModel->getprojectView();
+        $this->view('users/organization/projectView', $data[0]);
+    }
+
     public function createVolunteerOpportunity() {
         $data = [
             'volunteers' => '',

@@ -36,4 +36,27 @@
                return false;
            }
          }
+
+         public function getPendingRequests() {
+            $this->db->query("SELECT * FROM organization where account_status ='pending'");
+            
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
+
+        
+        public function changeStatus($status, $id) {
+            $this->db->query("UPDATE organization  SET account_status='$status' where org_id=$id");
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function getOrgDetails() {
+            $this->db->query("SELECT * FROM organization where org_id=1");
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
     }

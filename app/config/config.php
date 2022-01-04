@@ -14,9 +14,3 @@ define('DB_HOST', '54.151.148.143:3306');
 define('DB_USER', 'petsodev');
 define('DB_PASS', "Azma123&*^");
 define('DB_NAME', 'petso');
-    //Site Info
-   
-    
-    
-
- 

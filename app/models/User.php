@@ -91,7 +91,8 @@
             $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_id` = :id');
             $this->db->bind(':id', $_SESSION['user_id']);
 
-            
+        }
+
         public function getPendingRequests() {
             $this->db->query("SELECT * FROM organization where account_status ='pending'");
             
@@ -139,5 +140,4 @@
             return $result;
         }
 
-    
     }

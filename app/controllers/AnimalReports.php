@@ -56,7 +56,7 @@ class AnimalReports extends Controller {
             $this->view('animalReports/listOrganizations', $data);
         }
 
-        $this->view('animalReports/listOrganizations');
+        $this->view('animalReports/reportAnimalForm');
     }
 
 //    public function reportConfirmation() {

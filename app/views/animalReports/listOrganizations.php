@@ -19,16 +19,17 @@
 
 <div id="body" class="pg-body">
     <section class="page-content" id="proj-sec" style="min-height: 75vh">
+        <h1 style="font-size: 24px">Organization listing</h1>
         <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
             <div class="table-wrapper">
                 <table class="fl-table">
                     <thead>
-                    <tr class="table-head" style="font-size: 20px">
+                    <tr class="table-head" style="font-size: 18px">
                         <th>Organization name</th>
                         <th>Address</th>
                         <th>District</th>
                         <th>Area</th>
-                        <th>Mobile</th>
+                        <th>Mobile number</th>
                         <th>Telephone</th>
                         <th>Email</th>
                     </tr>
@@ -36,16 +37,16 @@
                     <tbody>
                     <?php foreach ($data["organizations"] as $item) { ?>
                     <tr>
-                        <td style="font-size: 17px"><?php echo $item->org_name; ?></td>
-                        <td style="font-size: 17px"><?php echo $item->org_address1; ?></td>
-                        <td style="font-size: 17px"><?php echo $item->org_district; ?></td>
-                        <td style="font-size: 17px"><?php echo $item->org_area; ?></td>
-                        <td style="font-size: 17px"><?php echo $item->org_mobile; ?></td>
+                        <td style="font-size: 16px"><?php echo $item->org_name; ?></td>
+                        <td style="font-size: 16px"><?php echo $item->org_address1; ?></td>
+                        <td style="font-size: 16px"><?php echo $item->org_district; ?></td>
+                        <td style="font-size: 16px"><?php echo $item->org_area; ?></td>
+                        <td style="font-size: 16px"><?php echo $item->org_mobile; ?></td>
                         <td style="text-align: center">
-                            <button class="blue-btn" href="<?php echo $item->org_mobile; ?>"> Call</button>
+                            <button class="blue-btn" href="tel:<?php echo $item->org_mobile; ?>"> Call</button>
                         </td>
                         <td style="flex-direction: row;">
-                            <button class="red-btn" href="<?php echo $item->org_email; ?>"> Email</button>
+                            <button class="red-btn" href="email:<?php echo $item->org_email; ?>"> Email</button>
                         </td>
                         <!--                    <td><a href="-->
                         <?php //echo $item->org_email; ?><!--"> Email</a></td>-->

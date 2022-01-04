@@ -3,7 +3,6 @@
 class Pages extends Controller {
     public function __construct() {
         $this->userModel = $this->model('User');
-        $this->reportModel = $this->model('ReportAnimal');
     }
 
     public function index() {
@@ -26,9 +25,4 @@ class Pages extends Controller {
     public function projectTopSection(){
         $this->view('pages/projectTopSection');
     }
-
-    public function reportConfirmation(){
-        $this->view('animalReports/reportConfirmation');
-    }
-
 }

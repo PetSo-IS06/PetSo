@@ -1,15 +1,20 @@
 <?php
 
-class ReportAnimal {
+class ReportAnimal
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
-    public function listOragnizations($data) {
+    public function listOrganization($data)
+    {
 //        $this->db->query("SELECT * FROM `petso`.`Organization` WHERE `org_district` = :district");
-        $this->db->query('SELECT * FROM `petso`.`Organization`');
+        $this->db->query('SELECT * FROM `petso`.`Organization`
+                                WHERE `org_district` = :district');
+
         $this->db->bind(':district', $data['district']);
 
         $result = $this->db->resultSet();    // resultSet returns an array of Objects

@@ -17,42 +17,38 @@
 <div id="body" class="pgbody">
     <div>
         <tbody>
-        <?php foreach ($data["projects"] as $item) { ?>
+        <?php foreach ($data["organizations"] as $item) { ?>
             <tr>
-                <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
-                <td><?php echo $item->district; ?></td>
-                <!--            <td>--><?php //echo $item->id; ?><!--</td>-->
-                <!--            <td>--><?php //echo $item->title; ?><!--</td>-->
-                <!--            <td>--><?php //echo $item->cause; ?><!--</td>-->
-                <!--            <td>--><?php //echo $item->create_date; ?><!--</td>-->
-                <!--            <td>--><?php //echo $item->initiation_date; ?><!--</td>-->
-                <!--            <td>--><?php
-                //                if(strcmp($item->status, 'Pending') == 0) {
-                //                    echo "<p class='red'>$item->status</p>";
-                //                } elseif(strcmp($item->status, 'Ongoing') == 0) {
-                //                    echo "<p class='blue'>$item->status</p>";
-                //                } elseif(strcmp($item->status, 'Completed') == 0) {
-                //                    echo "<p class='green'>$item->status</p>";
-                //                }
-                //                ?><!--</td>-->
-                <!--            <td>--><?php
-                //                if(strcmp($item->volunteering, 'True') == 0) {
-                //                    echo "<input type='checkbox' checked style='display: block;'>";
-                //                } else {
-                //                    echo "<input type='checkbox'>";
-                //                }
-                //                ?><!--</td>-->
-                <!--            <td>--><?php
-                //                if(strcmp($item->fundraising, 'True') == 0) {
-                //                    echo "<input type='checkbox' checked>";
-                //                } else {
-                //                    echo "<input type='checkbox'>";
-                //                }
-                //                ?><!--</td>-->
+                <td><input type='checkbox' name='selectedProject' value='<?php echo $item->org_id; ?>'></td>
+                <td><?php echo $item->org_name; ?></td>
+                <td><?php echo $item->org_mobile; ?></td>
+                <td><?php echo $item->org_address1; ?></td>
+                <td><?php echo $item->org_area; ?></td>
+<!--                <td>--><?php
+//                    if (strcmp($item->status, 'Pending') == 0) {
+//                        echo "<p class='red'>$item->status</p>";
+//                    } elseif (strcmp($item->status, 'Ongoing') == 0) {
+//                        echo "<p class='blue'>$item->status</p>";
+//                    } elseif (strcmp($item->status, 'Completed') == 0) {
+//                        echo "<p class='green'>$item->status</p>";
+//                    }
+//                    ?><!--</td>-->
+<!--                <td>--><?php
+//                    if (strcmp($item->volunteering, 'True') == 0) {
+//                        echo "<input type='checkbox' checked style='display: block;'>";
+//                    } else {
+//                        echo "<input type='checkbox'>";
+//                    }
+//                    ?><!--</td>-->
+<!--                <td>--><?php
+//                    if (strcmp($item->fundraising, 'True') == 0) {
+//                        echo "<input type='checkbox' checked>";
+//                    } else {
+//                        echo "<input type='checkbox'>";
+//                    }
+//                    ?><!--</td>-->
             </tr>
         <?php } ?>
-
-
     </div>
 </div>
 

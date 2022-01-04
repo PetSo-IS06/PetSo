@@ -22,7 +22,8 @@ class AnimalReports extends Controller {
             'animal' => '',
             'districtError' => '',
             'areaError' => '',
-            'animalError' => ''
+            'animalError' => '',
+            'organizations' => ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -45,6 +46,12 @@ class AnimalReports extends Controller {
             if(empty($data['animal'])) {
                 $data['animalError'] = 'Please provide the animal type';
             }
+
+            $organizations = $this->reportModel->listOrganization($data);
+
+            $data = [
+                "organizations" => $organizations
+            ];
 
             $this->view('animalReports/listOrganizations', $data);
         }

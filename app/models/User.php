@@ -86,21 +86,11 @@
             }
         }
 
-        public function getPendingRequests() {
-            $this->db->query("SELECT * FROM organization where account_status ='pending'");
-            
-            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+        public function getUser() {
+            $this->db->query('SELECT * FROM `petso`.`User` WHERE `us_id` = :id');
+            $this->db->bind(':id', $_SESSION['user_id']);
+
+            $result = $this->db->single();    // resultSet returns an array of Objects
             return $result;
         }
-
-        public function changeStatus($status, $id) {
-            $this->db->query("UPDATE organization  SET account_status='$status' where org_id=$id");
-            if($this->db->execute()){
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-
     }

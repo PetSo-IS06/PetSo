@@ -10,13 +10,11 @@
     
 </head>
 <body background="<?php echo URL_ROOT; ?>/public/assets/img/bg.png">
-
 <div id="top-nav">
         <?php
             require APP_ROOT . '/views/components/topNavbar.php';
         ?>
     </div>
-
 
      <center>
            <div class="center"> <br>
@@ -35,6 +33,5 @@
             require APP_ROOT . '/views/components/footer.php';
         ?>
     </div>
-
     </body>
 </html>

@@ -164,15 +164,13 @@
       
         public function adminViewPendingRequest(){
             $data = $this->userModel->getPendingRequests();
-
-
-            $data = [
-                
-            ];
-            
             $this->view('users/AdminViewOrgRequest', $data);
 
         }
+            public function orgDetails(){
+            $data = $this->userModel->getOrgDetails();
 
+            $this->view('users/orgDetails', $data[0]);
+        }
     }
    

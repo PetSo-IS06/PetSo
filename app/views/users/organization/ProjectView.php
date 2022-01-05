@@ -10,41 +10,56 @@
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css'/>
 </head>
 <body>
-    <div class="row">
-        <div class="column" style="background-color:white;"> <br>
+<div id="top-nav">
+            <?php
+            require APP_ROOT . '/views/components/topNavbar.php';
+            ?>
+        </div>
+    <div class="flexcontainer">
+        <div class="columns"> <br>
             <center> <br>
          <div class="heading2B purple "> Looking For Funds </div> <br><br>
-       <P> <b>150LKR </b> raised of 500K </P> <br><br>
-       
-       <div class="slidecontainer" >
-        <input type="range" min="1" max="500" value="150" >
-               </div>      
+         <div class="normalB grey">150LKR raised of 500K </div>
+         <div>
+
+        <Input class="range" type="range" name "" value="150" min="150" max="500" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></Input>
+    </div>
+     
+    <script type="text/javascript">
+        function rangeSlide(value) {
+            document.getElementById('rangeValue').innerHTML = value;
+        }
+    </script>
+    
          <br>
-        <p>Check donation section below for more details </p> <br> <br> 
-         <!-- <button type="submit" class="-btn"> Donate Now </button> -->
-         <a href= "" class="purple-btn">donate now </a>
-        </center>
-        </div>
-        <div class="column" style="background-color :white;">
-        <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/strayDog.png" width="400px" height="300px">
-        </div> <br><br>
-        <div class="column" style="background-color:white;"> 
-            <center>
-            <div class="heading2"> Volunteers Needed  </div> <br>
-          <div class="heading1" > 20 </div> <br>
-            Vacancies Left <br>
-           <p> Check volunteer section below for more details </p> <br>
-            <p>30 have applied already </p> <br> <br>
-            <button type="button" class="button"> Volunteer Now </button>
-        </center>
-        </div>
-        </div>
+         <div class="normal grey">Check donation section below for more details </div> <br> <br> <br>
         
-            <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/image 3.png" width="100px" height="100px" border-radius="50px"><br>
-           Sterilizing 50 Stray dogs <br>
-           Charley's Home by "Save a Paw" 
-           16 days 14 hours Left <br> 
-           for Project Initiation
-</div>
+         <a href= "" class="purple-btn">Donate now </a>
+        </center>
+        </div>
+        <div class="columns" >
+        <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/strayDog.png" width="650px" height="350px">
+        </div> 
+        <div class="columns"> <center> <br><br>
+            <div class="heading2B purple"> Volunteers Needed  </div>
+          <div class="title grey"> 20 </div>
+          <div class="subtitleB grey">Vacancies Left  </div>
+          <div class="normal grey">Check volunteer section below for more details <br><br>
+            30 have applied already </div> <br>
+            <a href= "" class="yellow-btn">Volunteer Now </a>
+        </center>
+        </div>
+        </div>
+        <div class="container">
+        <div class="col1">
+            <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/image 3.png" width="100px" height="100px" border-radius="50px"> </div>
+            <div class="col2">
+            <div class="heading2B grey"> Sterilizing 50 Stray dogs </div> 
+          <div class="normal grey"> Charley's Home by "Save a Paw" </div> </div>
+          <div class="col3">
+          <div class="heading1B grey" >16 days 14 hours Left </div> <br> 
+           <div class="heading2 grey">for Project Initiation </div> </div>
+    </div>
+
 
 </body>

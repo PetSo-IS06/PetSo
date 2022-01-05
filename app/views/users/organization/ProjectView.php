@@ -15,6 +15,7 @@
             require APP_ROOT . '/views/components/topNavbar.php';
             ?>
         </div>
+        <div id="body" class="pg-body">
     <div class="flexcontainer">
         <div class="columns"> <br>
             <center> <br>
@@ -38,7 +39,7 @@
         </center>
         </div>
         <div class="columns" >
-        <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/strayDog.png" width="650px" height="350px">
+        <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/strayDog.png" width="100%" height="350px">
         </div> 
         <div class="columns"> <center> <br><br>
             <div class="heading2B purple"> Volunteers Needed  </div>
@@ -60,6 +61,13 @@
           <div class="heading1B grey" >16 days 14 hours Left </div> <br> 
            <div class="heading2 grey">for Project Initiation </div> </div>
     </div>
-
+    </div>
+    <div id="footer">
+        <?php
+            require APP_ROOT . '/views/components/footer.php';
+        ?>
+    </div>
 
 </body>
+    </head>
+    </html>

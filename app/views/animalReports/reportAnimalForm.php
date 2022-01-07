@@ -225,7 +225,7 @@
                     <div class="form-input" id="col">
                         <div class="form-input-col">
                             <label class="input-label">Location</label>
-                            <!--                                <input class="input-box" name="district" id="district" type="text" placeholder="District">-->
+                            <!--<input class="input-box" name="district" id="district" type="text" placeholder="District">-->
                             <div class="selectBx" id="selectBx" style="width: 250px">
                                 <input type="checkbox" id="options-view-button" name="selectbox">
                                 <div id="select-button">
@@ -263,46 +263,48 @@
                                     </div>
                                 </div>
                             </div>
-<!--                            <span class="invalidInput">--><?php //echo $data[1]['districtError']; ?><!--</span>-->
+                            <span class="invalidInput"><?php echo $data['districtError']; ?></span>
                         </div>
-                        <div class="selectBx" id="selectBx" style="width: 250px; margin-top: 25px">
-                            <input type="checkbox" id="options-view-button" name="selectbox">
-                            <div id="select-button">
-                                <div id="selected-value">
-                                    <span class="normalB">Select your Area</span>
+                        <div>
+                            <div class="selectBx" id="selectBx" style="width: 250px; margin-top: 25px">
+                                <input type="checkbox" id="options-view-button" name="selectbox">
+                                <div id="select-button">
+                                    <div id="selected-value">
+                                        <span class="normalB">Select your Area</span>
+                                    </div>
+                                    <div id="chevrons">
+                                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                    </div>
                                 </div>
-                                <div id="chevrons">
-                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                <div id="options">
+                                    <div class="option">
+                                        <input class="s-c top" type="radio" name="area" value="c1">
+                                        <input class="s-c bottom" type="radio" name="area" value="c1">
+                                        <span class="label">c1</span>
+                                        <span class="opt-val">c1</span>
+                                    </div>
+                                    <div class="option">
+                                        <input class="s-c top" type="radio" name="area" value="c2">
+                                        <input class="s-c bottom" type="radio" name="area" value="c2">
+                                        <span class="label">c2</span>
+                                        <span class="opt-val">c2</span>
+                                    </div>
+                                    <div class="option">
+                                        <input class="s-c top" type="radio" name="area" value="c3">
+                                        <input class="s-c bottom" type="radio" name="area" value="c3">
+                                        <span class="label">c3</span>
+                                        <span class="opt-val">c3</span>
+                                    </div>
+                                    <div class="option">
+                                        <input class="s-c top" type="radio" name="area" value="c4">
+                                        <input class="s-c bottom" type="radio" name="area" value="c4">
+                                        <span class="label">c4</span>
+                                        <span class="opt-val">c4</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="options">
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c1">
-                                    <input class="s-c bottom" type="radio" name="area" value="c1">
-                                    <span class="label">c1</span>
-                                    <span class="opt-val">c1</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c2">
-                                    <input class="s-c bottom" type="radio" name="area" value="c2">
-                                    <span class="label">c2</span>
-                                    <span class="opt-val">c2</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c3">
-                                    <input class="s-c bottom" type="radio" name="area" value="c3">
-                                    <span class="label">c3</span>
-                                    <span class="opt-val">c3</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c4">
-                                    <input class="s-c bottom" type="radio" name="area" value="c4">
-                                    <span class="label">c4</span>
-                                    <span class="opt-val">c4</span>
-                                </div>
-                            </div>
+                            <span class="invalidInput"><?php echo $data['areaError']; ?></span>
                         </div>
-<!--                        <span class="invalidInput">--><?php //echo $data[1]['areaError']; ?><!--</span>-->
                     </div>
                 </div>
                 <div class="form-row">
@@ -347,7 +349,7 @@
                                     </div>
                                 </div>
                             </div>
-<!--                            <span class="invalidInput">--><?php //echo $data[1]['animalError']; ?><!--</span>-->
+                            <span class="invalidInput"><?php echo $data['animalError']; ?></span>
                         </div>
                     </div>
                 </div>

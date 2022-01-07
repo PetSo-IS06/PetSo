@@ -12,10 +12,17 @@ class AnimalReports extends Controller {
     }
 
     public function reportAnimalForm() {
-        $this->view('animalReports/reportAnimalForm');
+        error_reporting(E_ALL ^ E_WARNING);
+        $data = [
+            'districtError' => '',
+            'areaError' => '',
+            'animalError' => ''
+        ];
+        $this->view('animalReports/reportAnimalForm' , $data);
     }
 
     public function listOrganizations() {
+        error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'district' => '',
             'area' => '',
@@ -32,31 +39,41 @@ class AnimalReports extends Controller {
             $data = [
                 'district' => trim($_POST['district']),
                 'area' => trim($_POST['area']),
-                'animal' => trim($_POST['animal'])
+                'animal' => trim($_POST['animal']),
+                'districtError' => '',
+                'areaError' => '',
+                'animalError' => ''
             ];
 
             // Input Validation
 
             if(empty($data['district'])) {
-                $data['districtError'] = 'Please provide your district';
+                $data['districtError'] = 'Please provide the district';
             }
             if(empty($data['area'])) {
-                $data['areaError'] = 'Please provide your area';
+                $data['areaError'] = 'Please provide the area';
             }
             if(empty($data['animal'])) {
                 $data['animalError'] = 'Please provide the animal type';
             }
 
-            $organizations = $this->reportModel->listOrganization($data);
+            if(empty($data['districtError']) && empty($data['areaError']) && empty($data['animalError'])) {
 
-            $data = [
-                "organizations" => $organizations
-            ];
+                if($this->reportModel->listOrganization($data)){
+                    $organizations = $this->reportModel->listOrganization($data);
 
-            $this->view('animalReports/listOrganizations', $data);
+                    $data = [
+                        "organizations" => $organizations
+                    ];
+                    $this->view('animalReports/listOrganizations', $data);
+                } else {
+                    $this->view('animalReports/reportAnimalForm', $data);
+                    die('Could not register user');
+                }
+            }
         }
 
-        $this->view('animalReports/reportAnimalForm');
+        $this->view('animalReports/reportAnimalForm', $data);
     }
 
 //    public function reportConfirmation() {

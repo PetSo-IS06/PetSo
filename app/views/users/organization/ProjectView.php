@@ -50,12 +50,12 @@
             <a href= "" class="yellow-btn">Volunteer Now </a>
         </center>
         </div>
-        </div>
+        </div> <br>
         <div class="container">
         <div class="col1">
             <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/image 3.png" width="100px" height="100px" border-radius="50px"> </div>
             <div class="col2">
-            <div class="heading2B grey"> Sterilizing 50 Stray dogs </div> 
+            <div class="subtitleB grey"> Sterilizing 50 Stray dogs </div> 
           <div class="normal grey"> Charley's Home by "Save a Paw" </div> </div>
           <div class="col3">
           <div class="heading1B grey" >16 days 14 hours Left </div> <br> 

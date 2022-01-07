@@ -24,8 +24,8 @@
         </ul> 
     </div>
 </center>
-<a href="<?php echo URL_ROOT; ?>/users/organizationSignUp">
-  <div class="left"> <center>
+<a href="<?php echo URL_ROOT; ?>/users/organizationSignUp" class="">
+  <div class="left"><center>
     <h3> Welfare Organization </h3> <br>
     <i class="fas fa-hotel fa-customize fa-color"></i>
       

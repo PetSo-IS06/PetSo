@@ -132,7 +132,15 @@
 
             $this->view('users/signup', $data);
         }
-        
+
+        public function organizationSignUp() {
+            $data = [
+                'title' => 'Org Sign up'
+            ];
+            $this->view('users/OrganizationSignUp', $data);
+        }
+
+
         public function selectAccount() {
             $data = [
                 'title' => 'Select Account'
@@ -154,13 +162,14 @@
             $this->view('users/userProfile', $data);
         }
 
+
         public function logout() {
             unset($_SESSION['user_id']);
             unset($_SESSION['user_email']);
 
             header('location:' . URL_ROOT . '/pages/index');
         }
-
+         
         public function userProfileEdit() {
             $data = [
                 'username' => '',
@@ -191,7 +200,7 @@
                 // regular expressions
                 $nameValidation = "/^[a-zA-Z0-9]*$/";
                 $mobileValidation = "/^[0-9]*$/";
-//                $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
+//                $passwordValidation = "/^(.{0.7}|[^a-z]|[^\d])*$/i";
 
                 // validate characters in username
 //                if(empty($data['username'])) {
@@ -222,5 +231,11 @@
             $this->view('users/userProfile', $data);
         }
 
-    }
+        public function notification(){
+            $this->view('components/notification');
+        }
+
+       
+
+}
    

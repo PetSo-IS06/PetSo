@@ -93,4 +93,14 @@
             $result = $this->db->single();    // resultSet returns an array of Objects
             return $result;
         }
+    
+
+
+        public function getprojectView() {
+            $this->db->query("SELECT * FROM welfare_project where project_ID=12");
+
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
+
     }

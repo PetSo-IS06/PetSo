@@ -1,5 +1,6 @@
 <?php
 
+
 //Site Info
 define('SITE_NAME', 'PetSo');
 

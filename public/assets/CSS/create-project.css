@@ -53,6 +53,10 @@
  width: 100%;
 }
 
+.prj-form .form-sec .invalidInput {
+    padding-left: 0 !important;
+}
+
 #prj-cause {
     display: block;
 }

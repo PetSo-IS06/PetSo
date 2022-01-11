@@ -7,6 +7,7 @@ class Projects extends Controller {
     }
 
     public function createProject() {
+        error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'cause' => '',
             'otherCause' => '',
@@ -44,6 +45,7 @@ class Projects extends Controller {
             'titleError' => '',
             'initDateError' => '',
             'prjDescriptionError' => '',
+            'prjImageError' => '',
             'volReasonError' => '',
             'volDescriptionError' => '',
             'districtError' => '',
@@ -69,6 +71,46 @@ class Projects extends Controller {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+            //File Upload
+            $output_dir = "uploads/projects";//Path for file upload
+            $RandomNum = time();
+
+            if(!empty($_FILES['prj-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['prj-image']['name']));
+                // $ImageType = $_FILES['prj-image']['type']; //"image/png", image/jpeg etc.
+                $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                $ImageExt = str_replace('.','',$ImageExt);
+                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                move_uploaded_file($_FILES["prj-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $prj_img = $output_dir."/".$Newfile_name;
+            }
+
+            if(!empty($_FILES['vol-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['vol-image']['name']));
+                // $ImageType = $_FILES['vol-image']['type']; //"image/png", image/jpeg etc.
+                $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                $ImageExt = str_replace('.','',$ImageExt);
+                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                move_uploaded_file($_FILES["vol-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $vol_img = $output_dir."/".$Newfile_name;
+            }
+
+            if(!empty($_FILES['fund-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['fund-image']['name']));
+                // $ImageType = $_FILES['fund-image']['type']; //"image/png", image/jpeg etc.
+                $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                $ImageExt = str_replace('.','',$ImageExt);
+                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                move_uploaded_file($_FILES["fund-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $fund_img = $output_dir."/".$Newfile_name;
+            }
+            
             $data = [
                 'create-date' => date("Y-m-d"),
                 'cause' => trim($_POST['cause']),
@@ -76,6 +118,7 @@ class Projects extends Controller {
                 'title' => trim($_POST['title']),
                 'initDate' => trim($_POST['initDate']),
                 'prjDescription' => trim($_POST['prjDescription']),
+                'prj-image' => $prj_img,
                 'volunteering' => trim($_POST['volunteering']),
                 'volReason' => trim($_POST['volReason']),
                 'volDescription' => trim($_POST['volDescription']),
@@ -90,11 +133,13 @@ class Projects extends Controller {
                 'appOpen' => trim($_POST['appOpen']),
                 'appClose' => trim($_POST['appClose']),
                 'addNotes' => trim($_POST['addNotes']),
+                'vol-image' => $vol_img,
                 'funding' => trim($_POST['funding']),
                 'prjFundsFor' => trim($_POST['prjFundsFor']),
                 'targetAmount' => trim($_POST['targetAmount']),
                 'fundStart' => trim($_POST['fundStart']),
                 'fundEnd' => trim($_POST['fundEnd']),
+                'fund-image' => $fund_img,
                 'bankInfo' => trim($_POST['bankInfo']),
                 'accountHolder' => trim($_POST['accountHolder']),
                 'bank' => trim($_POST['bank']),
@@ -107,14 +152,17 @@ class Projects extends Controller {
                 'titleError' => '',
                 'initDateError' => '',
                 'prjDescriptionError' => '',
+                'prjImageError' => '',
                 'volReasonError' => '',
                 'volDescriptionError' => '',
                 'districtError' => '',
                 'areaError' => '',
                 'workFromError' => '',
                 'workStartError' => '',
+                'workEndError' => '',
                 'daysError' => '',
                 'appOpenError' => '',
+                'appCloseError' => '',
                 'prjFundsForError' => '',
                 'targetAmountError' => '',
                 'fundStartError' => '',
@@ -139,6 +187,14 @@ class Projects extends Controller {
             }
             if(empty($data['initDate'])) {
                 $data['initDateError'] = 'Please mention when the project is to be implmented';
+            }else{
+                $initDate = strtotime($data['initDate']);
+                $date_now = time();
+                
+                // Check if it's a future date
+                if($date_now > $initDate) {
+                    $data['initDateError'] = 'Please select an upcoming day';
+                }
             }
             if(empty($data['prjDescription'])) {
                 $data['prjDescriptionError'] = 'Please provide a brief description of the project';
@@ -163,12 +219,52 @@ class Projects extends Controller {
                 }
                 if(empty($data['workStart'])) {
                     $data['workStartError'] = 'Mention the start date for volunteers';
+                }else {
+                    $workStart = strtotime($data['workStart']);
+                    $date_now = time();
+                    
+                    // Check if it's a future date
+                    if($date_now > $workStart) {
+                        $data['workStartError'] = 'Please select an upcoming day';
+                    }
+                }
+                if(!empty($data['workEnd'])) {
+                    $workEnd = strtotime($data['workEnd']);
+                    $date_now = time();
+                    
+                    // Check if it's a future date
+                    if($date_now > $workEnd) {
+                        $data['workEndError'] = 'Please select an upcoming day';
+                    } elseif($workEnd < strtotime($data['workStart'])) {
+                        $data['workEndError'] = 'Please make sure the date is set after start date';
+                    }
                 }
                 if(empty($data['days'])) {
                     $data['daysError'] = 'Please specify the workdays';
                 }
                 if(empty($data['appOpen'])) {
                     $data['appOpenError'] = 'Specify opening date for applications';
+                }else {
+                    $appOpen = strtotime($data['appOpen']);
+                    $date_now = time();
+                    
+                    // Check if it's a future date
+                    if($date_now > $appOpen) {
+                        $data['appOpenError'] = 'Please select an upcoming day';
+                    } elseif($appOpen > strtotime($data['workStart'])) {
+                        $data['appOpenError'] = 'Please make sure the date is set to before work starts';
+                    }
+                }
+                if(!empty($data['appClose'])) {
+                    $appClose = strtotime($data['appClose']);
+                    $date_now = time();
+                    
+                    // Check if it's a future date
+                    if($date_now > $appClose) {
+                        $data['appCloseError'] = 'Please select an upcoming day';
+                    } elseif($appClose < strtotime($data['appOpen'])) {
+                        $data['appCloseError'] = 'Please make sure the date is set to after open date';
+                    }
                 }
             }
 
@@ -184,9 +280,27 @@ class Projects extends Controller {
                 }
                 if(empty($data['fundStart'])) {
                     $data['fundStartError'] = 'Specify the date to start raising funds';
+                }else {
+                    $fundStart = strtotime($data['fundStart']);
+                    $date_now = time();
+                    
+                    // Check if it's a future date
+                    if($date_now > $fundStart) {
+                        $data['fundStartError'] = 'Please select an upcoming day';
+                    }
                 }
                 if(empty($data['fundEnd'])) {
                     $data['fundEndError'] = 'Specify the date to close the fundaraiser';
+                }else {
+                    $fundEnd = strtotime($data['fundEnd']);
+                    $date_now = time();
+                    
+                    // Check if it's a future date
+                    if($date_now > $fundEnd) {
+                        $data['fundEndError'] = 'Please select an upcoming day';
+                    }elseif($fundEnd < strtotime($data['fundStart'])) {
+                        $data['fundEndError'] = 'Please make sure the date is set to after start date';
+                    }
                 }
 
                 if(strcmp($data['bankInfo'], 'newAccount') == 0) {
@@ -205,37 +319,49 @@ class Projects extends Controller {
                 }    
             }
 
-            $prjID = $this->projectModel->saveProject($data, $vol, $fund);
+            if(empty($data['causeError']) && empty($data['titleError']) && empty($data['initDateError']) 
+            && empty($data['prjDescriptionError']) && empty($data['volReasonError'])
+            && empty($data['volDescriptionError']) && empty($data['districtError'])
+            && empty($data['areaError']) && empty($data['workFromError'])
+            && empty($data['workStartError']) && empty($data['daysError'])
+            && empty($data['appOpenError']) && empty($data['prjFundsForError'])
+            && empty($data['targetAmountError']) && empty($data['fundStartError'])
+            && empty($data['fundEndError']) && empty($data['accountHolderError'])
+            && empty($data['bankError']) && empty($data['branchError'])
+            && empty($data['branchCodeError']) && empty($data['accountNoError'])) {
+                
+                $prjID = $this->projectModel->saveProject($data, $vol, $fund);
 
-            if($prjID != -1) {
-                if(strcmp($data['volunteering'], 'Yes') == 0) {
-                    if($this->projectModel->saveVolunteeringOpportunity($data, $prjID)) {
-                        echo 'Volunteering opportunity saved';
-                    } else {
-                        die('Could not save volunteering opportunity.');
-                    }
-                }
-                if(strcmp($data['funding'], 'Yes') == 0) {
-                    if(strcmp($data['bankInfo'], 'savedAccount') == 0) {
-                        $bankID = $data['selectedAccount'];
-                    } elseif(strcmp($data['bankInfo'], 'newAccount') == 0) {
-                        $bankID = $this->organizationModel->saveBankAccount($data);
-                    }
-
-                    if($bankID != -1) {
-                        if($this->projectModel->saveFundraiser($data, $prjID, $bankID)) {
-                            echo 'Fundraising details saved';
+                if($prjID != -1) {
+                    if(strcmp($data['volunteering'], 'Yes') == 0) {
+                        if($this->projectModel->saveVolunteeringOpportunity($data, $prjID)) {
+                            echo 'Volunteering opportunity saved';
                         } else {
-                            die('Could not save fundraiser details.');
+                            die('Could not save volunteering opportunity.');
                         }
-                    } else {
-                        die('Could not get Bank ID');
-                    }                    
-                }
+                    }
+                    if(strcmp($data['funding'], 'Yes') == 0) {
+                        if(strcmp($data['bankInfo'], 'savedAccount') == 0) {
+                            $bankID = $data['selectedAccount'];
+                        } elseif(strcmp($data['bankInfo'], 'newAccount') == 0) {
+                            $bankID = $this->organizationModel->saveBankAccount($data);
+                        }
 
-                header('location:' . URL_ROOT . '/pages/index');
-            } else {
-                die('Something went wrong.');
+                        if($bankID != -1) {
+                            if($this->projectModel->saveFundraiser($data, $prjID, $bankID)) {
+                                echo 'Fundraising details saved';
+                            } else {
+                                die('Could not save fundraiser details.');
+                            }
+                        } else {
+                            die('Could not get Bank ID');
+                        }                    
+                    }
+
+                    header('location:' . URL_ROOT . '/pages/index');
+                } else {
+                    die('Something went wrong.');
+                }
             }
         }
 

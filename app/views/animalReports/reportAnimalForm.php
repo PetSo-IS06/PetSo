@@ -29,17 +29,17 @@
         <hr/>
         <br>
         <div>
-            <label class="input-label">Is this an emergency case? </label><br/><br>
+            <label class="input-label">Is this an emergency situation? </label><br/><br>
             <input name="emergency" id="yes" value="yes" type="radio" onclick="Emergency();"> Yes &nbsp;
             <input name="emergency" id="no" value="no" type="radio" onclick="NoneEmergency();" checked> No
         </div>
         <!--        None Emergency-->
         <div id="noneEmergency" class="noneEmergency">
-            <form id="reportForm" action="<?php echo URL_ROOT . '/animalReports/reportConfirmation'; ?>" method="POST">
+            <form id="reportForm" action="<?php echo URL_ROOT . '/animalReports/createReport'; ?>" method="POST">
                 <div class="form-row">
                     <div class="form-input">
-                        <label class="input-label">Please describe the situation breifly. </label><br/>
-                        <textarea class="input-box-area" rows="4" cols="50" name="case" id="case"></textarea>
+                        <label class="input-label">Please describe the situation briefly. </label><br/>
+                        <textarea class="input-box-area" rows="4" cols="50" name="situation" id="situation"></textarea>
                     </div>
                     <div class="form-row">
                         <div class="form-input" id="col">

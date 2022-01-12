@@ -21,23 +21,24 @@ class ReportAnimal
         return $result;
     }
 
-//    public function saveReport($data) {
-//        $this->db->query('INSERT INTO `petso`.`Reports`
-//            (`title`, `org_id`, `cause`, `create_date`, `initiation_date`, `description`, `status`)
-//            VALUES (:title, :org_id, :cause, :create_date, :initiation_date, :description, :status)');
-//
-//        $this->db->bind(':title', $data['title']);
-//        $this->db->bind(':org_id', $_SESSION['user_id']);
-//        $this->db->bind(':case', $data['case']);
-//        $this->db->bind(':create_date', $data['create-date']);
-//        $this->db->bind(':initiation_date', $data['initDate']);
-//        $this->db->bind(':description', $data['prjDescription']);
-//        $this->db->bind(':status', 'Pending');
-//
-//        if($this->db->execute()) {
-//            return $this->db->getLastInsertedId();
-//        } else {
-//            return -1;
-//        }
-//    }
+    public function saveReport($data) {
+        $this->db->query('INSERT INTO `petso`.`Animal_Report`
+            (`situation`, `district`, `area`, `animal_type`, `reporter_name`, `reporter_number`,`reporter_email`,`user_id`)
+            VALUES (:situation, :district, :area, :animal_type, :reporter_name, :reporter_number, :reporter_email, :user_id)');
+
+        $this->db->bind(':situation', $data['situation']);
+        $this->db->bind(':district', $data['district']);
+        $this->db->bind(':area', $data['area']);
+        $this->db->bind(':animal_type', $data['animal']);
+        $this->db->bind(':reporter_name', $data['name']);
+        $this->db->bind(':reporter_number', $data['mobile']);
+        $this->db->bind(':reporter_email', $data['email']);
+        $this->db->bind(':user_id', $_SESSION['user_id']);
+
+        if($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

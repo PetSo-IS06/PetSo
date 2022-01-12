@@ -457,6 +457,17 @@ margin: 0;
     pointer-events: none;
 }
 
+.form-btn-upload {
+    padding: 12px 24px;
+    text-decoration: none;
+    height: 15px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-very-light-grey-color);
+    color: var(--black-color );
+}
+
 /* --------------------- Pagination ----------------------------- */
 
 .pagination {

@@ -180,7 +180,7 @@
                                     <label class="grey normalB">Location</label>
                                 </div>
                                 <div class="vol-inputs-col-row">
-                                    <div class="selectBx" id="selectBx">
+                                    <div class="selectBx" id="sel-district">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
                                         <div id="select-button">
                                             <div id="selected-value">
@@ -190,25 +190,19 @@
                                                 <i class="fas fa-chevron-down dropdown-arrow"></i>
                                             </div>
                                         </div>
-                                        <div id="options">
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="district" value="Kandy">
-                                                <input class="s-c bottom" type="radio" name="district" value="Kandy">
-                                                <span class="label">Kandy</span>
-                                                <span class="opt-val">Kandy</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="district" value="Colombo">
-                                                <input class="s-c bottom" type="radio" name="district" value="Colombo">
-                                                <span class="label">Colombo</span>
-                                                <span class="opt-val">Colombo</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="district" value="Galle">
-                                                <input class="s-c bottom" type="radio" name="district" value="Galle">
-                                                <span class="label">Galle</span>
-                                                <span class="opt-val">Galle</span>
-                                            </div>
+                                        <div id="options" >
+                                            <?php
+                                                $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
+                                                $district = json_decode($str_district, true);
+                                                foreach ($district as $item) {
+                                            ?>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="district" value="<?php echo $item; ?>">
+                                                    <input class="s-c bottom" type="radio" name="district" value="<?php echo $item; ?>">
+                                                    <span class="label"><?php echo $item; ?></span>
+                                                    <span class="opt-val"><?php echo $item; ?></span>
+                                                </div>
+                                            <?php }?>
                                         </div>
                                     </div>
                                     <span class="invalidInput"><?php echo $data[1]['districtError']; ?></span>

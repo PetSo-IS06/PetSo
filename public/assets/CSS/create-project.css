@@ -129,6 +129,13 @@
     flex-grow: 1;
 }
 
+.scrollable {
+    max-height: 250px; 
+    /* z-index: 200; */
+    overflow-y: scroll; 
+    /* pointer-events: auto; */
+}
+
 .vol-inputs-col-row .inputBx2 {
     width: 100%;
 }

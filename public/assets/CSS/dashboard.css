@@ -126,7 +126,14 @@ input {
 
 /* PAGE CONTENT STYLES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Organization Dashboard */
 #vol-sec, #fund-sec, #volApp-sec {
+  display: none;
+}
+
+/* Admin Dashboard */
+#req-sec {
   display: none;
 }
 
@@ -316,6 +323,7 @@ input {
 
 .cell-nav a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .fl-table tr:nth-child(even) {
@@ -415,12 +423,39 @@ input {
   transition: all 5s ease-in-out;
 }
 
+.details-popup {
+  margin: 10vh auto;
+  z-index: 101;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  width: 80%;
+  height: 80vh;
+  /* overflow: auto; */
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.details-popup .content {
+  max-height: 85%;
+  overflow: auto;
+  text-align: left;
+}
+
+.details-popup .content .ov-actions {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .popup h2 {
   margin-top: 0;
   color: var(--primary-grey-color);
 }
 
-.popup .close {
+.details-popup .close, .popup .close {
   position: absolute;
   top: 20px;
   right: 30px;
@@ -432,7 +467,7 @@ input {
   color: var(--primary-grey-color);
 }
 
-.popup .close:hover {
+.details-popup .close, .popup .close:hover {
   color: var(--primary-purple-color);
 }
 
@@ -450,9 +485,16 @@ input {
   margin-top: 2rem;
 }
 
+
 .popup .content .ov-actions #reject {
   background: var(--primary-red-color);
   color: var(--white-color);
+}
+
+.popup .content .ov-actions #reject1 {
+  background: var(--primary-red-color);
+  color: var(--white-color);
+  margin-top: 500px;
 }
 
 .popup .content .ov-actions #approve {
@@ -460,9 +502,17 @@ input {
   color: var(--white-color);
 }
 
+.popup .content .ov-actions #approve1 {
+  background: var(--primary-green-color);
+  color: var(--white-color);
+  margin-top: 1000px;
+}
+
+
 .popup .content .ov-actions input[type="submit"]:hover {
   opacity: 0.8;
 }
+
 
 /* Responsive */
 

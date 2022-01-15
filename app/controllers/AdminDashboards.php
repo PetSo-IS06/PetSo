@@ -15,16 +15,19 @@ class AdminDashboards extends Controller {
 
     public function dashboard(){
         $pendingProjects = $this->adminDashboardModel->getPendingProjects();
-        // $volOpp = $this->orgDashboardModel->getMyVolOpportunities();
-        // $funds = $this->orgDashboardModel->getMyFundraisers();
-
+        $pendingRequests = $this->adminDashboardModel->getPendingRequests();
+        
         $data = [
             "pendProjects" => $pendingProjects,
-            "volOpp" => '',
+            "pendRequests" => $pendingRequests,
             "funds" => ''
         ];
 
         $this->view('users/admin/adminDashboard', $data);
     }
+
+    
+    
     
 }
+

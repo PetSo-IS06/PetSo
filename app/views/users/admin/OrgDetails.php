@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Profile Request</title>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/orgDetail.css'>
+    <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css'/>
 </head>
 
 <body>
@@ -15,21 +16,6 @@
             <h2> DashBoard</h2> <br><br>
             <h3> Organizations</h3> <br>
 
-            <div class="row">
-                <div class="column">
-                    back
-
-                </div>
-                <div class="column">
-                    <button type='submit' class='btn-approve' name='approve'>
-                        Approve
-                    </button>
-
-                    <button type='submit' class='btn-reject' name='reject'>
-                        Reject
-                    </button>
-                </div>
-            </div>
 
 
             <div class="column">

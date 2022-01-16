@@ -1,0 +1,133 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+html {
+    height: 100%
+}
+
+body {
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    /*background-image: url("../img/login.jpg");*/
+}
+
+.left {
+    background-color: var(--white-color);
+    float: left;
+    /*height: 20%;*/
+    /*width: 20%;*/
+    overflow-x: hidden;
+    padding: 50px 50px;
+    margin-right: 25px;
+    border-radius: 30px;
+    margin-top: 30px;
+    align-content: center;
+    flex: 1;
+
+}
+
+a {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+.right {
+    background-color: var(--white-color);
+    float: right;
+    /*height: 20%;*/
+    /*width: 20%;*/
+    overflow-x: hidden;
+    padding: 50px 50px;
+    margin-left: 25px;
+    border-radius: 30px;
+    margin-top: 30px;
+    align-content: center;
+    flex: 1;
+
+}
+
+.right:hover, .left:hover {
+    box-shadow: 0 0 8px rgba(122, 26, 93, 1.2);
+
+}
+
+h3 {
+    color: var(--primary-purple-color);
+    align-content: center;
+}
+
+.fa-customize {
+    font-size: 75px;
+}
+
+.fa-color {
+    color: var(--primary-purple-color);
+}
+
+.btn-cancel {
+    margin-top: 30px;
+    color: #f8f8f8;
+    background-color: var(--primary-light-grey-color);
+    width: 120px;
+    height: 40px;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: none;
+    font-size: large;
+}
+
+.btn-cancel:hover {
+    cursor: pointer;
+}
+
+/* .............................. */
+@media screen and (max-width: 450px) {
+
+    body {
+
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        /*background-image: url("../img/login.jpg");*/
+    }
+
+    .right {
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: 95%;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 15px;
+        padding: 2rem 2rem;
+        margin-left: 0px;
+        /*padding-bottom: 3rem;*/
+        /*margin-right: 100px;*/
+
+    }
+
+    .left {
+        flex-grow: 1;
+        flex-shrink: 1;
+        width: 95%;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 15px;
+        padding: 2rem 2rem;
+        padding-bottom: 3rem;
+        margin-right : 0px;
+        /*margin-left: 100px;*/
+
+    }
+
+    .btn-cancel {
+        /*margin-top: 250px;*/
+        color: #f8f8f8;
+        background-color: var(--primary-light-grey-color);
+        width: 120px;
+        height: 40px;
+        align-content: center;
+    }
+
+}

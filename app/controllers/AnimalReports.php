@@ -11,14 +11,18 @@ class AnimalReports extends Controller {
         $this->view('pages/index');
     }
 
-    public function reportAnimalForm() {
+    public function reportAnimal() {
+        $this->view('animalReports/reportAnimal');
+    }
+
+    public function emergencyReportForm() {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'districtError' => '',
             'areaError' => '',
             'animalError' => ''
         ];
-        $this->view('animalReports/reportAnimalForm' , $data);
+        $this->view('animalReports/emergencyReportForm' , $data);
     }
 
     public function listOrganizations() {
@@ -74,6 +78,16 @@ class AnimalReports extends Controller {
         }
 
         $this->view('animalReports/reportAnimalForm', $data);
+    }
+
+    public function nonEmergencyReportForm() {
+        error_reporting(E_ALL ^ E_WARNING);
+        $data = [
+            'districtError' => '',
+            'areaError' => '',
+            'animalError' => ''
+        ];
+        $this->view('animalReports/nonEmergencyReportForm' , $data);
     }
 
     public function createReport() {

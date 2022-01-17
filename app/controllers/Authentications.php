@@ -102,7 +102,8 @@
                     'email' => '',
                     'password' => '',
                     'emailError' => ' ',
-                    'passwordError' => ' '
+                    'passwordError' => ' ',
+                    'attentionMessage' => 'Welcome to PetSo'
                 ];
             }
 

@@ -87,7 +87,22 @@ class AnimalReports extends Controller {
             'areaError' => '',
             'animalError' => ''
         ];
-        $this->view('animalReports/nonEmergencyReportForm' , $data);
+
+        if(isset($_SESSION["user_id"])){
+            $this->view('animalReports/nonEmergencyReportForm' , $data);
+        }
+        else {
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => ' ',
+                'passwordError' => ' ',
+                'attentionMessage' => 'Please login to continue!'
+            ];
+
+            $this->view('pages/login', $data);
+//            header('location:' . URL_ROOT . '/authentications/login');
+        }
     }
 
     public function createReport() {
@@ -163,6 +178,6 @@ class AnimalReports extends Controller {
                 }
             }
         }
-        $this->view('animalReports/reportAnimalForm', $data);
+        $this->view('animalReports/nonEmergencyReportForm', $data);
     }
 }

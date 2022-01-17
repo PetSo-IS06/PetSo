@@ -56,7 +56,7 @@
 } */
 
 .form-input .input-box {
-    width: 100%;
+    /*width: 100%;*/
     height: 30px;
     border-radius: 5px;
     margin-top: .5rem;
@@ -73,17 +73,6 @@
     margin-top: .5rem;
     outline: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.2);
-}
-
-.form-btn-upload {
-    padding: 12px 24px;
-    text-decoration: none;
-    height: 15px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    background: var(--primary-very-light-grey-color);
-    color: var(--black-color);
 }
 
 .form-btn-cancel {
@@ -109,17 +98,26 @@
     color: var(--white-color);
 }
 
-.noneEmergency {
-    display: flex;
-}
+/*.noneEmergency {*/
+/*    display: flex;*/
+/*    justify-content: flex-start;*/
+/*}*/
 
 .emergency {
     display: flex;
     margin: 5px;
 }
 
-/* .............................. */
-@media screen and (max-width: 450px) {
+.half-width {
+    width: 350px;
+}
+
+/* =========== Styles for mobile View ============= */
+@media screen and (max-width: 768px) {
+
+    .half-width {
+        width: 300px;
+    }
 
     .report-form-container {
         /*padding: 2rem calc((100vw - 1180px) / 2);*/
@@ -134,4 +132,6 @@
         /*align-items: left;*/
         margin: 20px;
     }
+
+
 }

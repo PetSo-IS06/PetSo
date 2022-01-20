@@ -239,4 +239,23 @@
     background-color: var(--primary-purple-color); 
     border-radius: 4px;
   }
-  
+
+@media screen and (max-width: 768px) {
+
+  #selectBx {
+    position: relative;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 300px;
+    height: 42px;
+    /* margin: 100px auto 0 auto; */
+    border: 1px solid var(--primary-grey-color);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 0 1.5rem 0 0;
+  }
+
+
+}

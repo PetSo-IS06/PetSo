@@ -92,8 +92,8 @@
                 "org_name"               => '',
                 "org_mobile"             => '',
                 "org_landline"           => '',
-                "email"              => '',
-                "password"           => '',
+                "email"                  => '',
+                "password"               => '',
                 "org_confirm_password"   => '',
                 "org_address1"           => '',
                 "org_address2"           => '',
@@ -115,19 +115,20 @@
                 "confirm_password_error" => '',
                 "password_match_error"   => '',
                 "address_error"          => '',
-                "org_district"         => '',
+                "animal_error"           => '',
+                "district_area_error"    => '',
+                "animals"                => []
             ];
 
 
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 if(isset($_POST['submit'])){
-
                     $data = [
                         "org_name"               => isset($_POST['org_name']) ? trim($_POST['org_name']) : '',
                         "org_mobile"             => isset($_POST['org_mobile']) ? trim($_POST['org_mobile']) : '',
                         "org_landline"           => isset($_POST['org_landline']) ? trim($_POST['org_landline']) : '',
-                        "email"              => isset($_POST['email']) ? trim($_POST['email']) : '',
-                        "password"           => isset($_POST['password']) ? trim($_POST['password']) : '',
+                        "email"                  => isset($_POST['email']) ? trim($_POST['email']) : '',
+                        "password"               => isset($_POST['password']) ? trim($_POST['password']) : '',
                         "org_confirm_password"   => isset($_POST['org_confirm_password']) ? trim($_POST['org_confirm_password']) : '',
                         "org_address1"           => isset($_POST['org_address1']) ? trim($_POST['org_address1']) : '',
                         "org_address2"           => isset($_POST['org_address2']) ? trim($_POST['org_address2']) : '',
@@ -139,8 +140,10 @@
                         "org_insta"              => isset($_POST['org_insta']) ? trim($_POST['org_insta']) : '',
                         "org_profile_img"        => isset($_POST['org_profile_img']) ? trim($_POST['org_profile_img']) : '',
                         "org_doc"                => isset($_POST['org_doc']) ? trim($_POST['org_doc']) : '',
+                        "animals"                => isset($_POST['animals']) ? $_POST['animals'] : []
                     ];
 
+                    
                     if(empty($data['org_name'])){
                         $data["name_error"] = "Please enter organization name";
                     }
@@ -189,6 +192,16 @@
                         $data["address_error"] = "Please enter at least one address";
                     }
 
+                    if(empty($data['org_district']) or empty($data['org_area'])){
+                        $data["district_area_error"] = "Please select your district and area";
+                    }
+
+
+                    
+                    if(count($data['animals']) == 0){
+                        $data["animal_error"] = "Please select animal type";
+                    }
+
                     if(empty($data['name_error']) && empty($data['contact_error']) && empty($data['password_error']) 
                     && empty($data['confirm_password_error']) && empty($data['password_match_error']) && empty($data['address_error'])){
 
@@ -226,8 +239,8 @@
                                 "org_name"               => '',
                                 "org_mobile"             => '',
                                 "org_landline"           => '',
-                                "email"              => '',
-                                "password"           => '',
+                                "email"                  => '',
+                                "password"               => '',
                                 "org_confirm_password"   => '',
                                 "org_address1"           => '',
                                 "org_address2"           => '',
@@ -249,7 +262,7 @@
                                 "confirm_password_error" => '',
                                 "password_match_error"   => '',
                                 "address_error"          => '',
-                                "district_error"         => '',
+                                "district_area_error"    => '',
                             ];
 
                             // $organization_id = $this->organizationModel->getLastInsertedId();

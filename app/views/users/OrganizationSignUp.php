@@ -6,212 +6,329 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo SITE_NAME; ?> | Register</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />   
+    <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/organization_signup.css'>
+    <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/form-container.css'>
+    <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/select-box.css'>
 </head>
 
 <body>
-    <center>
-        <h3>Request for an Account</h3>
+        <div class="step">
+            <h3>Request an account</h3>
+            <ul class="stepNo">
+                <li>1</li>
+                <li class="active">2</li>
+                <li>3</li>
+            </ul>
+        </div>
 
-        <ul>
-            <li>1</li>
-            <li class="Active">2</li>
-            <li>3</li>
-        </ul>
+        <div class="frm-container">
+
+        <div class="row" style="text-align: center;">
+            <h3>Tell us about your Organization</h3> <br>
+            <p style="color: #9F2884;">Please note that your account will only be created after verifying the
+                details
+                you enter here.</p>
+                <br>
+            <span>Already Have an account <a href="<?php echo URL_ROOT; ?>/Authentications/login">Sign In</a></span>
+        </div>
 
 
-        <div class="center">
+        <div class="cmt">
             <div>
-                <h3>Tell us about your Organization</h3> <br>
-                <p style="color: #9F2884;">Please note that your account will only be created after verifying the
-                    details
-                    you enter here.</p>
-                    <br>
-                <span>Already Have an account <a href="<?php echo URL_ROOT; ?>/Authentications/login">Sign In</a></span>
+                <h2>Contact Information</h2><br>
+                <hr size="4">
             </div>
-            <br><br>
-            <!-- <form class="form" action="<?php echo URL_ROOT; ?>/organizations/organizationSignUp" method="POST" enctype="multipart/form-data"> -->
-                <form class="form">
-            <div class="left">
-                    <span class="label">Name Of the Organization</span>
 
-                    <div class="inputBx">
-                        <input type="text" placeholder="Name*" name="org_name" value=<?php echo $data['org_name'] ?>> <br>
-                        <?php
-                            if(!empty($data['name_error'])){
-                                $msg = $data['name_error'];
-                                echo "<span class='error'>$msg";
-                            }
-                        ?>
-                        
-                    </div>
+            <form action="<?php echo URL_ROOT; ?>/organizations/organizationSignUp" method="POST" enctype="multipart/form-data">
+            <div class="p3-frm-clmn input-icons ">
+                <label for="fname">Name of the organization</label><br>
+                <i class="fa fa-user icon"></i>
+                <div class="inputBx placeholder-color" style="margin-bottom:2%">
+                    <input type="text" placeholder="Name*" name="org_name" value=<?php echo $data['org_name'] ?>>
+                </div><br>
+                <?php
+                    if(!empty($data['name_error'])){
+                        $msg = $data['name_error'];
+                        echo "<span class='invalidInput'>$msg</span><br><br>";
+                    }
+                ?>
+                
 
-                    <span class="label"> Contact Numbers </span>
-                    <div class="inputBx">
-                        <input type="number" placeholder="Mobile*" name="org_mobile" value=<?php echo $data['org_mobile'] ?>>
-                    </div>
-                    <div class="inputBx" style="padding-top: 1px;">
-                        <input type="number" placeholder="Landline*" name="org_landline" value=<?php echo $data['org_mobile'] ?>><br>
-                        <?php
+                <label for="fname" style="margin-top:3%">Contact Numbers</label><br>
+                <i class="fas fa-phone-alt icon"></i>
+                <div class="inputBx placeholder-color" style="margin-top:4%">
+                    <input type="number" placeholder="Mobile Number*" id="title" name="org_mobile" value=<?php echo $data['org_mobile'] ?>><br>
+                </div>
+
+                <i class="fas fa-phone-office icon" style="margin-top:6px"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="number" placeholder="Landline Number" id="title" name="org_landline" value=<?php echo $data['org_landline'] ?>><br>
+                </div>
+                <span class="invalidInput">
+                    <?php
                         if(!empty($data['contact_error'])){
                             $msg = $data['contact_error'];
                             echo "<span class='error'>$msg</span>";
                         }
                     ?>
-                    </div><br>
-                    
+                </span><br>
+            </div>
 
 
-                    <span class="label"> What Type of Animals Do you take care of? </span><br><br>
+            <div class="p3-frm-clmn input-icons ">
+                <label for="fname">Address</label><br>
+                <i class="fas fa-map-marker-alt icon"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="text" placeholder="Address 1*" id="title" name="org_address1" value=<?php echo $data['org_address1'] ?>><br>
+                </div>
 
-                    Cats &nbsp<input type="checkbox" name="animals[]" value="Cats"/> &nbsp &nbsp
-                    Dogs &nbsp<input type="checkbox" name="animals[]" value="Dogs"/> &nbsp &nbsp
-                    Rabbits &nbsp<input type="checkbox" name="animals[]" value="Rabbits"/>
+                <i class="fas fa-map-marker-alt icon" style="margin-top:6px"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="text" placeholder="Address 2" id="title" name="org_address2" value=<?php echo $data['org_address2'] ?>><br>
+                </div><br>
+
+                <?php
+                    if(!empty($data['address_error'])){
+                        $msg = $data['address_error'];
+                        echo "<span class='invalidInput'>$msg</span><br><br>";
+                    }
+                ?>
+
+                <div class="div dropcon">
+                    <label class="drop-lable">Select District</label> <br>
+                    <select name="org_district" class="adptxtbox" id="">
+                        <option value="volvo">Kandy</option>
+                        <option value="saab">Colombo</option>
+                        <option value="opel">Galle</option>
+                        <option value="audi">Polonnaruwa</option>
+                    </select>
+                </div>
+            
+                <div class="div dropcon">
+                    <label class="drop-lable">Select Area</label> <br>
+                    <select name="org_area" class="adptxtbox" id=" ">
+                        <option value="volvo ">Dehiwela</option>
+                        <option value="saab ">Wellawatta</option>
+                        <option value="opel ">Colombo 7</option>
+                    </select>
+                </div>
+                <?php
+                    if(!empty($data['district_area_error'])){
+                        $msg = $data['district_area_error'];
+                        echo "<span class='invalidInput'>$msg</span>";
+                    }
+                ?>
+            </div>
 
 
-                    <br><br><br><br>
-                    <span class="label">Would you respond to requests made <br>by the public regarding <br> animals in
-                        need of help nearby your
-                        location?</span> <br><br>
-                    <input type="radio" id="yes" value=1 name="if_findhelp">
-                    <label for="yes">Yes</label> &nbsp; &nbsp; &nbsp; 
-                    <input type="radio" id="No" value=0 name="if_findhelp">
-                    <label for="no">No</label>
-                    <br><br><br>
-                    <h3>Account Credentials</h3>
-                    <hr><br>
-                    <span class="label">Email Address </span>
-                    <div class="inputBx">
-                        <input type="text" placeholder="Email Address*" name="email" value=<?php echo $data['email'] ?>><br>
-                        <?php
-                        if(!empty($data['email_error'])){
-                            $msg = $data['email_error'];
-                            echo "<span class='error'>$msg</span>";
-                        }
-                    ?><br>
-                    </div>
-                    <span class="label">Password </span>
-                    <div class="inputBx">
-                        <input type="password" placeholder="Password*" name="password" value=<?php echo $data['password'] ?>><br>
-                        <?php
-                        if(!empty($data['password_error'])){
-                            $msg = $data['password_error'];
-                            echo "<span class='error'>$msg</span>";
+            <div class="p3-frm-clmn-2 input-icons">
+                <label for="fname" style="margin-top:10%">What type of animals do you take care of?</label><br>   <br> 
+
+                <div class="radio-left">
+                    <label class="container">Cats
+                        <?php 
+                            if(in_array("Cats",$data['animals'])){
+                                echo "<input type='checkbox' name='animals[]' checked value='Cats'>";    
+                            }else {
+                                echo "<input type='checkbox' name='animals[]' value='Cats'>";    
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Dogs
+                        <?php 
+                            if(in_array("Dogs",$data['animals'])){
+                                echo "<input type='checkbox' name='animals[]' checked value='Dogs'>";
+                            }else{
+                                echo "<input type='checkbox' name='animals[]' value='Dogs'>";
+                            }
+                        ?>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="radio-right">
+                    <label class="container">Rabbits
+                    <?php 
+                        if(in_array("Rabbits",$data['animals'])){
+                            echo "<input type='checkbox' name='animals[]' checked value='Rabbits'>";
+                        }else{
+                            echo "<input type='checkbox' name='animals[]' value='Rabbits'>";
                         }
                     ?>
-                    </div>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Turtles
+                    <?php 
+                        if(in_array("Turtles",$data['animals'])){
+                            echo "<input type='checkbox' name='animals[]' checked value='Turtles'>";
+                        }else{
+                            echo "<input type='checkbox' name='animals[]' value='Turtles'>";
+                        }
+                    ?>
+                    <span class="checkmark"></span>
+                </label>
+                </div>
+                <?php
+                    if(!empty($data['animal_error'])){
+                        $msg = $data['animal_error'];
+                        echo "<span class='invalidInput'>$msg</span><br><br>";
+                    }
+                ?>
 
-                    <span class="label">Confirm Password</span>
-                    <div class="inputBx">
-                        <input type="password" placeholder="Confirm Password*" name="org_confirm_password" value=<?php echo $data['org_confirm_password'] ?>><br>
-                        <?php
+                <div style="margin-top:2.5%">
+                    <label for="fname">Would you responed to emergency requests</label><br><br>
+                    <label class="container-radio">Yes
+                        <?php 
+                            if(isset($data['if_findhelp']) && $data['if_findhelp'] == "yes"){
+                                echo "<input type='radio' value='yes' checked name='if_findhelp'>";
+                            }else{
+                                echo "<input type='radio' value='yes' name='if_findhelp'>";
+                            }
+                        ?>    
+                        <span class="checkmark-radio"></span>
+                    </label>
+
+                    <label class="container-radio">No
+                        <?php 
+                            if(isset($data['if_findhelp']) && $data['if_findhelp'] == "no"){
+                                echo "<input type='radio' value='no' checked name='if_findhelp'>";
+                            }else{
+                                echo "<input type='radio' value='no' name='if_findhelp'>";
+                            }
+                        ?> 
+                        <span class="checkmark-radio"></span>
+                    </label>
+                    <?php
+                    if(!empty($data['if_findhelp_error'])){
+                        $msg = $data['if_findhelp_error'];
+                        echo "<span class='invalidInput'>$msg</span><br><br>";
+                    }
+                ?>
+                </div>
+            </div>
+
+        </div><br>
+
+        <div class="cmt">
+            <div class="p3-frm-clmn input-icons ">
+                <h2>Account Credentials</h2><br>
+                <hr size="4"><br>
+                <label for="fname">Email Address</label><br>
+                <i class="fa fa-user icon"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="text" placeholder="Email*" id="title" name="email" value=<?php echo $data['email'] ?>><br>
+                </div><br>
+                <?php
+                    if(!empty($data['email_error'])){
+                        $msg = $data['email_error'];
+                        echo "<span class='invalidInput'>$msg</span><br><br>";
+                    }
+                ?>
+
+                <label for="fname">Password</label><br>
+                <i class="fa fa-user icon"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="password" placeholder="Password*" id="title" name="password" value=<?php echo $data['password'] ?>><br>
+                </div><br>
+                <?php
+                    if(!empty($data['password_error'])){
+                        $msg = $data['password_error'];
+                        echo "<span class='invalidInput'>$msg</span><br><br>";
+                    }
+                ?>
+
+                <label for="fname">Confirm Password</label><br>
+                <i class="fa fa-user icon"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="password" placeholder="Re-enter Password*" id="title" name="org_confirm_password" value=<?php echo $data['org_confirm_password'] ?>><br>
+                </div>
+                    <?php
                         if(!empty($data['confirm_password_error'])){
                             $msg = $data['confirm_password_error'];
-                            echo "<span class='error'>$msg</span>";
+                            echo "<span class='invalidInput'>$msg</span><br>";
                         }
-                    ?><br>
+                    ?>
                     <?php
                         if(!empty($data['password_match_error'])){
                             $msg = $data['password_match_error'];
-                            echo "<span class='error'>$msg</span>";
-                        }
-                    ?><br>
-                    </div>
-                </div>
-
-
-                <div class="right">
-                    <span class="label">Address</span>
-                    <div class="inputBx">
-                        <input type="text" placeholder="Street 1*" name="org_address1" value=<?php echo $data['org_address1'] ?>>
-                    </div>
-                    <div class="inputBx">
-                        <input type="text" placeholder="Street 2" name="org_address2" value=<?php echo $data['org_address2'] ?>><br>
-                        <?php
-                        if(!empty($data['address_error'])){
-                            $msg = $data['address_error'];
-                            echo "<span class='error'>$msg</span>";
+                            echo "<span class='invalidInput'>$msg</span><br>";
                         }
                     ?>
-                    </div>
-                    <div>
-                        <span class="label">Select District</span>
-                        <div class="selectBx">
-                            <select id="Select Animals" name="org_district" >
-                                <option value="Colombo">Colombo</option>
-                                <option value="Kandy">Kandy</option>
-                                <option value="Maatar">Matara</option>
-                                <option value="Galle">Galle</option>
-                                <option value="Kurnegala">Kurnegala</option>
-                            </select><br>
-                        </div>
-                    </div>
+            </div>
 
-                    <div style="padding-top: 252px;">
-                        <h3>Other Accounts</h3>
-                        <hr><br>
-                        <span class="label">Web Link </span>
-                        <div class="inputBx">
-                            <input type="text" placeholder="Link" name="org_website">
-                        </div><br>
-                        <span class="label">Facebook Page Link </span>
-                        <div class="inputBx">
-                            <input type="text" placeholder="Link" name="org_facebook">
-                        </div>
 
-                        <span class="label">Instagram ID</span>
-                        <div class="inputBx">
-                            <input type="text" placeholder="ID" name="org_insta">
-                        </div>
+            <div class=" p3-frm-clmn input-icons ">
+                <h2>Other Accounts</h2><br>
+                <hr size="4"><br>
+                <label for="fname">Website Link</label><br>
+                <i class="fa fa-user icon"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="text" placeholder="Website Link" id="title" name="org_website" value=<?php echo $data['org_website'] ?>><br>
+                </div><br>
+                
 
-                    </div>
-                    </p>
-                </div>
-                <br><br><br><br><br><br><br><br><br>
-                <div class="documents">
-                    <h3 style="float: left;"> Supporting Documents(Optional)</h3>
-                    <br><br>
-                    <hr>
-                    <br>
-                    If you have any documents that will help us verify you as a recognized welfare organization in the
+                <label for="fname">Facebook Page Link</label><br>
+                <i class="fa fa-user icon"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="text" placeholder="Facebook Link" id="title" name="org_facebook" value=<?php echo $data['org_facebook'] ?>><br>
+                </div><br>
+
+                <label for="fname">Instagram ID</label><br>
+                <i class="fa fa-user icon"></i>
+                <div class="inputBx placeholder-color">
+                    <input type="text" placeholder="Instagram ID" id="title" name="org_insta" value=<?php echo $data['org_insta'] ?>><br>
+                </div><br><br><br><br><br><br><br>
+                <br>
+            </div>
+            <!--  -->
+        </div><br>
+
+        <div class="cmt">
+            <br>
+            <div class="">
+                <br><br><br>
+                <h2>Supporting Documents (Optional)</h2><br>
+                <hr size="4">
+            </div><br>
+
+            <div class="lastcnt" style="padding: 10px 10px 100px 10px;">
+                <p> If you have any documents that will help us verify you as a recognized welfare organization in the
                     community, please upload them here.
+                </p><br>
 
-                    <br><br>
-                    <input type="file" style="float: left;" placeholder="Choose File" name="org_doc" id="org_doc">
-                    <br><br>
+                <input type="file" placeholder="Choose file" name="org_doc"><br><br>
 
-                    By clicking 'Requesting Account', you are agreeing to our <a href>terms of service </a> and <a
-                        href>privacy policy.</a>
+                <p>By clicking 'Requesting Account', you are agreeing to our <a href>terms of service </a> and <a
+                        href>privacy policy.</a> </p><br>
 
-                    <br>
-                     <button type="button" class="btn-cancel">
-                        Cancel
-                    </button>
-                    <button type="button" class="btn-request" id="myBtn">
-                        Request Account
-                    </button>
-
+                <div class="p3-btn">
+                    <button style="float: left; background-color: rgb(44, 39, 32);" class="button"
+                        type="button">Cancel</button>
+                    <input class="button" type="submit" name="submit" value="Request Account"/>
                 </div>
-            </form>
+            </div>
+            
         </div>
+        </form>       
 
-
+    </div>
+    
         <div id="myModal" class="modal">
         <div class="modal-content">
-<!-- <div class="modal-content"> -->
-<div class="modal_center"> <br>
-               <h2> Thank you for Registering Petso</h2>
-               <br><br>
-               <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/checked.png" height="170px" width="170px"> <br>
-               <h3> You will be notified via email once <br> your account has been verified</h3> <br>
-               <button type="submit" class="back_btn"> 
+        <div class="modal_center"> <br>
+            <h2> Thank you for Registering Petso</h2>
+            <br><br>
+            <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/checked.png" height="170px" width="170px"> <br>
+            <h3> You will be notified via email once <br> your account has been verified</h3> <br>
+            <button type="submit" class="back_btn"> 
                 Back to Home page 
-              </button>
-           </div>
-<!-- </div> -->
-
+            </button>
+        </div>
 </div>
-                    </center>
     
     
 
@@ -246,7 +363,3 @@ window.onclick = function(event) {
 </body>
 
 </html>
-
-
-
-

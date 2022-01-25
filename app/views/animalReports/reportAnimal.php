@@ -20,34 +20,22 @@
     ?>
 </div>
 <div id="body" class="pgbody">
-    <div>
+    <div class="hero-section">
         <img src="<?php echo URL_ROOT; ?>/public/assets/img/animalReportHeader.svg" alt="" style="width: 100%;">
     </div>
 
-    <div class="report-form-container" style="margin-top: 100px; margin-bottom: 100px">
-        <h2 class="form-title">Report</h2>
-        <hr/>
+    <div class="report-form-container" style="margin-top: 100px; margin-bottom: 100px; text-align: center">
+        <h2 class="form-title">Are you looking to report an Emergency Situation?</h2>
         <br>
-        <div>
-            <label class="input-label" style="font-size: large">Is this an emergency situation? </label><br/><br>
-        </div>
+        <!--        <div>-->
+        <!--            <label class="input-label" style="font-size: large;">Are you looking to report an Emergency Situation? </label><br/><br>-->
+        <!--        </div>-->
         <div style="display: flex; align-self: center">
-            <a href="<?php echo URL_ROOT; ?>/animalReports/emergencyReportForm" class="">
-                <div class="left">
-                    <center>
-                        <h3> Emergency </h3> <br>
-                        <!--                        <i class="fas fa-hotel fa-customize fa-color"></i>-->
-                    </center>
-                </div>
+            <a class="left" href="<?php echo URL_ROOT; ?>/animalReports/emergencyReportForm">
+                <h3> Yes, it’s an Emergency </h3>
             </a>
-
-            <a href="<?php echo URL_ROOT; ?>/animalReports/nonEmergencyReportForm">
-                <div class="right">
-                    <center>
-                        <h3> Non Emergency </h3> <br>
-                        <!--                        <i class="fas fa-user fa-customize fa-color"></i>-->
-                    </center>
-                </div>
+            <a class="right" href="<?php echo URL_ROOT; ?>/animalReports/nonEmergencyReportForm">
+                <h3> No, it’s not an Emergency </h3> <br>
             </a>
         </div>
         <div>

@@ -43,7 +43,7 @@
 .form-input-col {
     display: flex;
     flex-direction: column;
-    margin-right: 1rem;
+    /*margin-right: 1rem;*/
 }
 
 .form-input#col .input-box {
@@ -105,6 +105,7 @@
 
 .emergency {
     display: flex;
+    pading: 5px;
     margin: 5px;
 }
 
@@ -112,8 +113,22 @@
     width: 350px;
 }
 
+.box-width{
+    width: 350px;
+}
+
+.location-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.direction{
+    display: flex;
+    flex-direction: row;
+}
+
 /* =========== Styles for mobile View ============= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 450px) {
 
     .half-width {
         width: 300px;
@@ -133,5 +148,32 @@
         margin: 20px;
     }
 
+    .form-input#col{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-input-col{
+        margin: 0px;
+    }
+
+    .location-row{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top-margin{
+        margin-top: 20px;
+    }
+
+    .direction{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .upload-button{
+        margin-top: 20px;
+    }
 
 }

@@ -21,10 +21,27 @@
 </div>
 <div id="body" class="pgbody">
     <div class="hero-section">
-        <img src="<?php echo URL_ROOT; ?>/public/assets/img/animalReportHeader.svg" alt="" style="width: 100%;">
+        <img src="<?php echo URL_ROOT; ?>/public/assets/img/animalReportHeader.svg" alt="" class="hero-img">
     </div>
 
-    <div class="report-form-container" style="margin-top: 100px; margin-bottom: 100px; text-align: center">
+    <div class="instructions">
+        <h1 class="instructions-heading">How it Works</h1>
+        <ol type="1" class="instructions-items">
+            <li>Submit an Animal Report by uploading your contact details, location and an image of the animal in need of shelter.</li>
+            <li>We will notify all the nearby Animal Welfare Organizations registered at Petso regarding your case.</li>
+            <li>Your animal report will be posted at our forum and will be made visible to the users of Petso.</li>
+            <li>Once an organization chooses to respond to your case, you will be notified via an SMS.</li>
+        </ol>
+        <br style="margin-top: 20px">
+        <h3>Note:</h3>
+        <ul>
+            <li>Users are required to sign in to submit an Animal report.</li>
+            <li>This platform is to find shelter for an animal and <span>not for Emergency situations.</span></li>
+            <li>If your case is an emergency, you may find the contact details of the nearby Animal Welfare Organizations and contact them personally get help.</li>
+        </ul>
+    </div>
+
+    <div class="report-form-container" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
         <h2 class="form-title">Are you looking to report an Emergency Situation?</h2>
         <br>
         <!--        <div>-->

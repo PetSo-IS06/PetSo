@@ -105,6 +105,66 @@ h3 {
     cursor: pointer;
 }
 
+.instructions{
+    margin: 2rem calc((100vw - 1200px) / 2);
+}
+.instructions-heading{
+    /*position: absolute;*/
+    width: auto;
+    height: auto;
+    left: 185px;
+    top: 832px;
+
+    /* Subtitle bold */
+
+    font-style: normal;
+    font-weight: bold;
+    /*font-size: 24px;*/
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 20px;
+
+    /* Purple */
+
+    color: var(--primary-purple-color);
+}
+
+.instructions-items{
+    /*position: absolute;*/
+    width: auto;
+    height: auto;
+    /*left: 185px;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*top: 881px;*/
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.7em;
+}
+
+.instructions h3{
+    color: var(--primary-purple-color);
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.instructions ul{
+    color: var(--primary-purple-color);
+    line-height: 1.5em;
+}
+
+.instructions span{
+    font-weight: bold;
+}
+
+.hero-img{
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* .............................. */
 @media screen and (max-width: 450px) {
 
@@ -160,4 +220,14 @@ h3 {
         margin: 10px ;
     }
 
+    .hero-img{
+        width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .instructions{
+        margin : 50px;
+    }
 }

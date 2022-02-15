@@ -48,7 +48,7 @@
                         <div class="form-input-col">
                             <label class="input-label">Location</label>
                             <!--                                <input class="input-box" name="district" id="district" type="text" placeholder="District">-->
-                            <div class="selectBx" id="selectBx" style="width: 350px">
+                            <div class="selectBx" id="selectBx" style="width: 300px">
                                 <input type="checkbox" id="options-view-button" name="selectbox">
                                 <div id="select-button">
                                     <div id="selected-value">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="selectBx" id="selectBx" style="width: 350px; margin-top: 25px">
+                        <div class="selectBx" id="selectBx" style="width: 300px; margin-top: 25px;margin-left: 15px">
                             <input type="checkbox" id="options-view-button" name="selectbox">
                             <div id="select-button">
                                 <div id="selected-value">
@@ -130,7 +130,7 @@
                         <div class="form-input-col">
                             <label class="input-label">Animal Type</label>
                             <!--                                <input class="input-box" name="animal" id="animal" type="text" placeholder="Animal Type">-->
-                            <div class="selectBx input-box half-width" style="width: 350px" id="selectBx"">
+                            <div class="selectBx input-box half-width" style="width: 300px" id="selectBx"">
                                 <input type="checkbox" id="options-view-button" name="selectbox">
                                 <div id="select-button">
                                     <div id="selected-value">
@@ -171,9 +171,11 @@
                     </div>
                 </div>
                 <div class="form-row" style="margin-bottom:2rem;">
-                    <div class="form-input">
+                    <div class="form-input direction">
                         <label class="input-label">Upload Some clear images as if possible. </label>
-                        <a href="<?php echo URL_ROOT; ?>/pages/index" class="form-btn-upload">Choose File</a>
+                        <div class="upload-button">
+                            <a href="<?php echo URL_ROOT; ?>/pages/index" class="form-btn-upload">Choose File</a>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row" style="flex-direction: column; justify-content: left">

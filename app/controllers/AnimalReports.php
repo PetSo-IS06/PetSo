@@ -72,8 +72,10 @@ class AnimalReports extends Controller {
                     $this->view('animalReports/listOrganizations', $data);
                 } else {
                     $this->view('animalReports/reportAnimalForm', $data);
-                    die('Could not register user');
+                    die('Could not list organizations');
                 }
+            } else {
+                $this->view('animalReports/reportAnimalForm', $data);
             }
         }
 

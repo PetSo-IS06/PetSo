@@ -24,7 +24,16 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     padding: 0 1.5rem 0 0;
   }
-  
+
+  .selectBx .select-cat {
+    font-size: var(--normal-size);
+    color: var(--primary-grey-color);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 15px;
+    width: 100%;
+  }
+
   #select-button {
     position: relative;
     height: 16px;

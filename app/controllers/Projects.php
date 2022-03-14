@@ -370,7 +370,6 @@ class Projects extends Controller {
 
         $this->view('projects/createProject', $results);
     }
-
   
     public function projectView() {
     

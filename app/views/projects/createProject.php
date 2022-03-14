@@ -180,63 +180,31 @@
                                     <label class="grey normalB">Location</label>
                                 </div>
                                 <div class="vol-inputs-col-row">
-                                    <div class="selectBx" id="sel-district">
-                                        <input type="checkbox" id="options-view-button" name="selectbox">
-                                        <div id="select-button">
-                                            <div id="selected-value">
-                                                <span class="normalB">District*</span>
-                                            </div>
-                                            <div id="chevrons">
-                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                            </div>
-                                        </div>
-                                        <div id="options" >
-                                            <?php
-                                                $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
-                                                $district = json_decode($str_district, true);
-                                                foreach ($district as $item) {
-                                            ?>
-                                                <div class="option">
-                                                    <input class="s-c top" type="radio" name="district" value="<?php echo $item; ?>">
-                                                    <input class="s-c bottom" type="radio" name="district" value="<?php echo $item; ?>">
-                                                    <span class="label"><?php echo $item; ?></span>
-                                                    <span class="opt-val"><?php echo $item; ?></span>
-                                                </div>
-                                            <?php }?>
-                                        </div>
+                                    <div class="selectBx">
+                                        <input name="district" type="text" list="districts" class="select-cat">
+                                            <datalist id="districts">
+                                                <?php
+                                                    $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
+                                                    $district = json_decode($str_district, true);
+                                                    foreach ($district as $item) {
+                                                ?>
+                                                <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+                                                <?php }?>
+                                            </datalist>
                                     </div>
                                     <span class="invalidInput"><?php echo $data[1]['districtError']; ?></span>
 
-                                    <div class="selectBx" id="selectBx">
-                                        <input type="checkbox" id="options-view-button" name="selectbox">
-                                        <div id="select-button">
-                                            <div id="selected-value">
-                                                <span class="normalB">Area*</span>
-                                            </div>
-                                            <div id="chevrons">
-                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                            </div>
-                                        </div>
-                                        <div id="options">
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="area" value="Kandy">
-                                                <input class="s-c bottom" type="radio" name="area" value="Kandy">
-                                                <span class="label">Kandy</span>
-                                                <span class="opt-val">Kandy</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="area" value="Colombo">
-                                                <input class="s-c bottom" type="radio" name="area" value="Colombo">
-                                                <span class="label">Colombo</span>
-                                                <span class="opt-val">Colombo</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="area" value="Galle">
-                                                <input class="s-c bottom" type="radio" name="area" value="Galle">
-                                                <span class="label">Galle</span>
-                                                <span class="opt-val">Galle</span>
-                                            </div>
-                                        </div>
+                                    <div class="selectBx">
+                                        <input name="area" type="text" list="areas" class="select-cat">
+                                            <datalist id="areas">
+                                            <?php
+                                                $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
+                                                $area = json_decode($str_areas, true);
+                                                foreach ($area as $item) {
+                                            ?>
+                                            <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+                                            <?php }?>
+                                            </datalist>
                                     </div>
                                     <span class="invalidInput"><?php echo $data[1]['areaError']; ?></span>
 

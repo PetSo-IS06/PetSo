@@ -517,10 +517,10 @@
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
-                                        <input name="branchCode" id="branchCode" type="text" value="<?php echo $data[1]['branchCode']; ?>">
-                                        <span class="normalB">Branch code</span>
+                                        <input name="branchCode" id="branchCode" type="text" required="required" value="<?php echo $data[1]['branchCode']; ?>">
+                                        <span class="normalB">Branch Code</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo '' ?></span>
+                                    <span class="invalidInput"><?php echo ''; ?></span>
                                 </div>
                                 <div id="">
                                     <div class="inputBx2" id="item">
@@ -529,10 +529,6 @@
                                     </div>
                                     <span class="invalidInput"><?php echo $data[1]['accountNoError']; ?></span>
                                 </div>
-                                <!-- <div class="save-acnt">
-                                    <input type="checkbox" name="saveAccount" value="True">
-                                    <label class="">Save account details to profile</label>
-                                </div> -->
                             </div>
                             <div class="acnt-inputs-col" id="saved-account">
                                 <ul class="bank-acnts">

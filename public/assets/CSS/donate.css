@@ -83,17 +83,31 @@
     padding: 2rem 1rem;
 }
 
-.main .sec1 {
+.main .sec {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
+    height: 100%;
 }
 
-.main .sec1 .amnts {
+.main #sec1 {
+    display: block;
+    margin-top: 2rem;
+}
+
+.main #sec2 {
+    display: none;
+}
+
+.main .sec .amnts {
     display: flex;
     flex-direction: column;
+    row-gap: 30px;
+    justify-content: space-around;
+    align-content: space-around;
 }
 
-.main .sec1 .amnts .fixed{
+.main .sec .amnts .fixed{
     width: 100%;
     flex-direction: row;
     display: inline-flex;
@@ -105,7 +119,7 @@
 .option{
     flex-grow: 1;
     color: var(--black-color);
-    background: var(--primary-light-grey-color);
+    background: var(--primary-very-light-grey-color);
     height: 100%;
     width: 100%;
     border-radius: 5px;
@@ -132,31 +146,76 @@ input[type="radio"]{
     color: #fff;
 }
 
-.amnt-btn {
-    background-color: var(--primary-very-light-grey-color);
-    width: 100px;
-    height: 50px;
-    border-radius: 15px;
-}
-
-.fixed input[type=radio] {
-    /* opacity: 0; */
-    /* visibility: hidden; */
-    height: 100%;
-    width: 100%;
-    z-index: -2;
-}
-
-.main .sec1 .amnts .other {
+.main .sec .amnts .other {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.main .sec1 .note {
-
+.main .sec .amnts .other input{
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+    padding: 0 10px;
+    outline: none;
+    background-color: var(--primary-very-light-grey-color);
 }
-.main .sec1 .action {
 
+.main .sec .note {
+    margin: 1rem 0;
+    font-size: 12px;
+}
+.main .sec .action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.sec2-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.sec2-row .row-in {
+    display: flex;
+    flex-direction: column;
+}
+
+.sec2-row input {
+    border: none;
+    border-radius: 5px;
+    min-height: 40px;
+    width: 100%;
+    padding: 0 10px;
+    outline: none;
+    background-color: var(--primary-very-light-grey-color);
+}
+
+.sec2-row textarea {
+    border: none;
+    border-radius: 5px;
+    min-height: 40px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    resize: none;
+    background-color: var(--primary-very-light-grey-color);
+}
+
+.main .sec .action-sec2 {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.main .sec .action-sec2 .back {
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.main .sec .action-sec2 .back:hover {
+    text-decoration: underline;
 }
 
 .msg-sec {

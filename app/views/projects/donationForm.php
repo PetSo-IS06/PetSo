@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/donate.css">
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/step.css'/>
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
+    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/donate.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title><?php echo SITE_NAME; ?> | Home</title>
@@ -52,39 +53,68 @@
                         <div class="title">
                             <h1 class="subtitleB grey center">Project title</h1>
                         </div>
-                        <div class="sec1">
-                            <div class="amnts">
-                                <div class="fixed">
-                                    <input type="radio" name="amount" value="5000" id="option-1" checked>
-                                    <label for="option-1" class="option option-1">
-                                        <span>LKR 5000</span>
-                                    </label>
-                                    <input type="radio" name="amount" value="2500" id="option-2">
-                                    <label for="option-2" class="option option-2">
-                                        <span>LKR 2500</span>
-                                    </label>
+                        <!-- Section 1 -->
+                        <div id="sec1">
+                            <div class="sec">
+                                <div class="amnts">
+                                    <div class="fixed">
+                                        <input type="radio" name="amount" value="5000" id="option-1" checked>
+                                        <label for="option-1" class="option option-1">
+                                            <span>LKR 5000</span>
+                                        </label>
+                                        <input type="radio" name="amount" value="2500" id="option-2">
+                                        <label for="option-2" class="option option-2">
+                                            <span>LKR 2500</span>
+                                        </label>
 
-                                    <input type="radio" name="amount" value="1500" id="option-3" checked>
-                                    <label for="option-3" class="option option-3">
-                                        <span>LKR 1500</span>
-                                    </label>
-                                    
-                                    <input type="radio" name="amount" value="500" id="option-4">
-                                    <label for="option-4" class="option option-4">
-                                        <span>LKR 500</span>
-                                    </label>
+                                        <input type="radio" name="amount" value="1500" id="option-3" checked>
+                                        <label for="option-3" class="option option-3">
+                                            <span>LKR 1500</span>
+                                        </label>
+                                        
+                                        <input type="radio" name="amount" value="500" id="option-4">
+                                        <label for="option-4" class="option option-4">
+                                            <span>LKR 500</span>
+                                        </label>
+                                    </div>
+                                    <div class="other">
+                                        <h3 class="normalB">Other (Type here): &nbsp; &nbsp; LKR &nbsp;</h3>
+                                        <input type="number" min="500" max="500000" name="otherAmount">
+                                    </div>
+                                    <span class="invalidInput center"><?php echo ''; ?></span>
+
                                 </div>
-                                <div class="other">
-
+                                <div class="note">
+                                    <p class="light-grey">**Please note that the mininum amount you can donate is LKR 500.</p>
                                 </div>
-                            </div>
-                            <div class="note">
-
-                            </div>
-                            <div class="action">
-
+                                <div class="action">
+                                    <a id="donate-cont-btn" onClick="showSec2()" class="blue-btn">Continue</a>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Section 2 -->
+                        <div id="sec2">
+                            <div class="sec">
+                                <div class="sec2-row">
+                                    <div class="row-in">
+                                        <h3 class="normalB">Name to appear on page (Optional)</h3>
+                                        <input type="text" name="name" maxlength="20">
+                                        <span class="invalidInput center"><?php echo ''; ?></span>
+                                    </div>
+                                    <div class="row-in">
+                                        <h3 class="normalB">Message</h3>
+                                        <textarea rows="5" name="message" maxlength="100" placeholder="Max 100 characters"></textarea> 
+                                        <span class="invalidInput center"><?php echo ''; ?></span>
+                                    </div>
+                                </div>
+                                <div class="action-sec2">
+                                    <a onClick="showSec1()" class="back normalB">Back</a>
+                                    <a id="donate-cont-btn" onClick="" class="blue-btn">Proceed to Pay</a>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </form>
                 </div>
                 <div class="msg-sec">

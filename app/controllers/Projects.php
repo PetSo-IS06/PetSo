@@ -425,6 +425,27 @@ class Projects extends Controller {
         $this->view('users/organization/createVolunteerOpportunity', $data);
     }
 
+    public function donate($id) {
+        $data = [
+            'title' => ''
+        ];
+
+        // if($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+        //     $data = [
+        //         'title' => ''
+        //     ];
+
+        //     if($this->projectModel->approveProject($id)) {
+        //         header('location:' . URL_ROOT . '/pages/index');
+        //     } else {
+        //         die('Something went wrong.');
+        //     }
+        // }
+
+        $this->view('projects/donationForm', $data);
+    }
+
     public function approveProject($id) {
         // $data = [
         //     'title' => ''

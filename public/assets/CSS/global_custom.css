@@ -120,7 +120,7 @@
 
 .subtitleB {
     font-size: var(--subtitle-size);
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
     font-weight: bold;
 }
 

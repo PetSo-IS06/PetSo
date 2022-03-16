@@ -53,6 +53,10 @@
  width: 100%;
 }
 
+.prj-form .form-sec .invalidInput {
+    padding-left: 0 !important;
+}
+
 #prj-cause {
     display: block;
 }
@@ -123,6 +127,13 @@
     width: 100%;
     margin: 0;
     flex-grow: 1;
+}
+
+.scrollable {
+    max-height: 250px; 
+    /* z-index: 200; */
+    overflow-y: scroll; 
+    /* pointer-events: auto; */
 }
 
 .vol-inputs-col-row .inputBx2 {

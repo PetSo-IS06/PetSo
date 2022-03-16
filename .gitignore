@@ -3,6 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+./public/uploads/projects/*
 
 ### STS ###
 .apt_generated
@@ -38,3 +39,5 @@ build/
 ### DB Credentials ##
 config/
 
+### Uploads ###
+public/uploads/

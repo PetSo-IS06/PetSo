@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: flex-start;
     column-gap: 20px;
-    margin: 2rem
+    margin: 80px 0;
 }
 
 .prj-card {
@@ -180,6 +180,11 @@ input[type="radio"]{
 .sec2-row .row-in {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.sec2-row .row-in h3{
+    margin-bottom: 10px;
 }
 
 .sec2-row input {
@@ -219,11 +224,53 @@ input[type="radio"]{
 }
 
 .msg-sec {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1.5;
     height: 400px;
     max-width: 30%;
+    overflow-y: scroll;
+    row-gap: 10px;
+}
+
+.msg-sec .msg-card {
+    display: flex;
+    flex-direction: column;
     border-radius: 25px;
-    overflow-y: auto;
-    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    min-height: 120px;
+    background: var(--primary-very-light-grey-color);
     box-shadow: 0px 7px 6px rgba(0, 0, 0, 0.4);
+}
+
+.msg-sec .msg-card .msg-head{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.msg-sec .msg-card .msg-head img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.msg-sec .msg-card .msg-head .date{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    color: var(--primary-grey-color);
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.msg-sec .msg-card .msg-body {
+    padding: 10px 10px;
+}
+
+.msg-sec .msg-card .msg-body p{
+    text-align: center;
+    font-style: italic;
 }

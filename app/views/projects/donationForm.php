@@ -19,13 +19,13 @@
             ?>
         </div>
         <div id="body" class="pg-body">
-            <div class="step">
+            <!-- <div class="step">
                 <ul class="stepNo">
                     <li class="active">1</li>
                     <li>2</li>
                     <li>3</li>
                 </ul>
-            </div>
+            </div> -->
             <div class="container">
                 <div class="prj-card">
                     <div class="image">
@@ -78,7 +78,7 @@
                                         </label>
                                     </div>
                                     <div class="other">
-                                        <h3 class="normalB">Other (Type here): &nbsp; &nbsp; LKR &nbsp;</h3>
+                                        <h3 class="normalB grey">Other (Type here): &nbsp; &nbsp; LKR &nbsp;</h3>
                                         <input type="number" min="500" max="500000" name="otherAmount">
                                     </div>
                                     <span class="invalidInput center"><?php echo ''; ?></span>
@@ -98,12 +98,12 @@
                             <div class="sec">
                                 <div class="sec2-row">
                                     <div class="row-in">
-                                        <h3 class="normalB">Name to appear on page (Optional)</h3>
+                                        <h3 class="normalB grey">Name to appear on page (Optional)</h3>
                                         <input type="text" name="name" maxlength="20">
                                         <span class="invalidInput center"><?php echo ''; ?></span>
                                     </div>
                                     <div class="row-in">
-                                        <h3 class="normalB">Message</h3>
+                                        <h3 class="normalB grey">Message</h3>
                                         <textarea rows="5" name="message" maxlength="100" placeholder="Max 100 characters"></textarea> 
                                         <span class="invalidInput center"><?php echo ''; ?></span>
                                     </div>
@@ -114,11 +114,61 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </form>
                 </div>
                 <div class="msg-sec">
-
+                    <div class="msg-card">
+                        <div class="msg-head">
+                            <div style="flex-grow: 1;"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt=""></div>
+                            <div class="user-info" style="flex-grow: 3;">
+                                <h2 class="normalB grey">Sunile Perera</h2>
+                                <h4 class="normal grey">LKR 10, 500</h4>
+                            </div>
+                            <div class="date" style="flex-grow: 1;"><p>Feb 02</p></div>
+                        </div>
+                        <div class="msg-body">
+                            <p class="normal grey">“Honored to be able to contribute to a great cause.”</p>
+                        </div>
+                    </div>
+                    <div class="msg-card">
+                        <div class="msg-head">
+                            <div style="flex-grow: 1;"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt=""></div>
+                            <div class="user-info" style="flex-grow: 3;">
+                                <h2 class="normalB grey">Sunile Perera</h2>
+                                <h4 class="normal grey">LKR 10, 500</h4>
+                            </div>
+                            <div class="date" style="flex-grow: 1;"><p>Feb 02</p></div>
+                        </div>
+                        <div class="msg-body">
+                            <p class="normal grey">“Honored to be able to contribute to a great cause.”</p>
+                        </div>
+                    </div>
+                    <div class="msg-card">
+                        <div class="msg-head">
+                            <div style="flex-grow: 1;"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt=""></div>
+                            <div class="user-info" style="flex-grow: 3;">
+                                <h2 class="normalB grey">Sunile Perera</h2>
+                                <h4 class="normal grey">LKR 10, 500</h4>
+                            </div>
+                            <div class="date" style="flex-grow: 1;"><p>Feb 02</p></div>
+                        </div>
+                        <div class="msg-body">
+                            <p class="normal grey">“Honored to be able to contribute to a great cause.”</p>
+                        </div>
+                    </div>
+                    <div class="msg-card">
+                        <div class="msg-head">
+                            <div style="flex-grow: 1;"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt=""></div>
+                            <div class="user-info" style="flex-grow: 3;">
+                                <h2 class="normalB grey">Sunile Perera</h2>
+                                <h4 class="normal grey">LKR 10, 500</h4>
+                            </div>
+                            <div class="date" style="flex-grow: 1;"><p>Feb 02</p></div>
+                        </div>
+                        <div class="msg-body">
+                            <p class="normal grey">“Honored to be able to contribute to a great cause.”</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -46,6 +46,7 @@ function showVolunteerPanel() {
         tag.classList.add("active-tag");
         hideProjectPanel();
         hideFaundraisingPanel();
+        hideAnimalProfilesPanel();
     }
 }
 
@@ -66,7 +67,8 @@ function showProjectsPanel() {
         tag.classList.add("active-tag");
         hideVolunteerPanel();
         hideFaundraisingPanel();
-        hideVolApplications()
+        hideVolApplications();
+        hideAnimalProfilesPanel();
     }
 }
 
@@ -87,13 +89,36 @@ function showFaundraisingPanel() {
         tag.classList.add("active-tag");
         hideVolunteerPanel();
         hideProjectPanel();
-        hideVolApplications()
+        hideVolApplications();
+        hideAnimalProfilesPanel();
     }
 }
 
 function hideFaundraisingPanel() {
     var x = document.getElementById("fund-sec");
     var tag = document.getElementById("fund-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
+function showAnimalProfilesPanel() {
+    var x = document.getElementById("animal-sec");
+    var tag = document.getElementById("animal-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideVolunteerPanel();
+        hideProjectPanel();
+        hideVolApplications();
+        hideFaundraisingPanel();
+    }
+}
+
+function hideAnimalProfilesPanel() {
+    var x = document.getElementById("animal-sec");
+    var tag = document.getElementById("animal-tag");
     if (x.style.display !== "none") {
         x.style.display = "none";
         tag.classList.remove("active-tag");
@@ -109,6 +134,7 @@ function showVolApplications() {
         hideVolunteerPanel();
         hideProjectPanel();
         hideFaundraisingPanel();
+        hideAnimalProfilesPanel();
     }
 }
 

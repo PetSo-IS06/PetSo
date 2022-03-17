@@ -1,0 +1,108 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+.form-sec {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    margin: 50px 0;
+}
+
+.form-sec .title-sec{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.form-sec .input-sec{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    margin: 0 2rem;
+}
+
+.input-sec .input-col{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.input-col .type-box .selectBx {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.gender{
+    display: inline-flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 30px;
+    margin-top: 10px;
+}
+.gender .option{
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid var(--primary-light-grey-color);
+    transition: all 0.3s ease;
+}
+
+.gender .option:hover{
+    border-radius: 10px;    
+}
+
+input[type="radio"]{
+    display: none;
+}
+#option-1:checked:checked ~ .option-1,
+#option-2:checked:checked ~ .option-2{
+    border-color: var(--primary-purple-color);
+    background: var(--primary-purple-color);
+}
+
+.gender .option span{
+    font-size: 20px;
+    color: var(--primary-grey-color);
+}
+#option-1:checked:checked ~ .option-1 span,
+#option-2:checked:checked ~ .option-2 span{
+    color: var(--white-color);
+}
+
+.input-col .check {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.input-col .check input[type="checkbox"]{
+    height: 20px;
+    width: 20px;
+}
+
+.input-col #sponsor-fee {
+    margin-top: 30px;
+}
+
+.form-sec .action-sec{
+    display: flex;
+    width: 100%;
+    margin: 0 2rem;
+    margin-top: 2rem;
+    justify-content: space-between;
+}

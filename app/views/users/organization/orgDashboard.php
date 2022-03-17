@@ -382,14 +382,15 @@
                         </div> -->
                     </div>
                     </section> 
-
-                    <!-- Initial display -->
+                    
                     <div class="opportunities" id="animalProfiles" style="display:flex; flex-direction: column;">
                         <div class="prof-panel">
-                            <div onClick="" class="create-prof-card">
-                                <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/paw-with-plus.png" alt="Create Icon">
-                                <h3 class="normalB grey center">Create Profile</h3>
-                            </div>
+                            <a href="<?php echo URL_ROOT; ?>/AnimalProfiles/create">
+                                <div class="create-prof-card">
+                                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/paw-with-plus.png" alt="Create Icon">
+                                    <h3 class="normalB grey center">Create Profile</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </section>

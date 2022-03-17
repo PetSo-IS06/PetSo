@@ -57,7 +57,7 @@
             }
         }
 
-        public function saveDonation($data) {
+        public function saveTransaction($data) {
             $this->db->query('');
             
             $this->db->bind(':title', $data['title']);

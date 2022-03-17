@@ -10,7 +10,7 @@
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/donate.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <title><?php echo SITE_NAME; ?> | Home</title>
+    <title><?php echo SITE_NAME; ?> | Donate</title>
 </head>
     <body>
         <div id="top-nav">
@@ -56,10 +56,10 @@
 
                         <div style="display:none;">
                             <input type="hidden" name="merchant_id" value="1219957">   
-                            <input type="hidden" name="return_url" value="<?php echo URL_ROOT.'/Projects/donate/2'; ?>">
-                            <input type="hidden" name="cancel_url" value="<?php echo URL_ROOT.'/Pages/index'; ?>">
-                            <input type="hidden" name="notify_url" value="">  
-                            <input type="text" name="order_id" value="ItemNo12345">
+                            <input type="hidden" name="return_url" value="<?php echo URL_ROOT.'/Pages/index'; ?>">
+                            <input type="hidden" name="cancel_url" value="<?php echo URL_ROOT.'/Projects/donate/2'; ?>">
+                            <input type="hidden" name="notify_url" value="<?php echo URL_ROOT.'/Projects/saveTransaction'; ?>">  
+                            <input type="text" name="order_id" value="2">  <!-- Set value to fundraiser ID -->
                             <input type="text" name="items" value="Door bell wireless"><br>
                             <input type="text" name="currency" value="LKR">
                             <!-- <input type="text" name="amount" value="1000">   -->
@@ -119,12 +119,12 @@
                                 <div class="sec2-row">
                                     <div class="row-in">
                                         <h3 class="normalB grey">Name to appear on page (Optional)</h3>
-                                        <input type="text" name="name" maxlength="20">
+                                        <input type="text" name="custom_1" maxlength="20">
                                         <span class="invalidInput center"><?php echo ''; ?></span>
                                     </div>
                                     <div class="row-in">
                                         <h3 class="normalB grey">Message</h3>
-                                        <textarea rows="5" name="message" maxlength="100" placeholder="Max 100 characters"></textarea> 
+                                        <textarea rows="5" name="custom_2" maxlength="100" placeholder="Max 100 characters"></textarea> 
                                         <span class="invalidInput center"><?php echo ''; ?></span>
                                     </div>
                                 </div>

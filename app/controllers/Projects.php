@@ -426,36 +426,48 @@ class Projects extends Controller {
     }
 
     public function donate($id) {
+
+        //Retrieve donation messages from DB
+
+        $results = '';
+
+        $this->view('projects/donationForm', $results);
+    }
+
+    public function saveTransaction() {
         
-        if(ISSET($_POST['merchant_id'], $_POST['order_id'], $_POST['payhere_amount'], $_POST['payhere_currency'], $_POST['status_code'], )) {
+        if(ISSET($_POST['merchant_id'], $_POST['order_id'], $_POST['payhere_amount'], $_POST['payhere_currency'], $_POST['status_code'])) {
             $merchant_id         = $_POST['merchant_id'];
-            $order_id             = $_POST['order_id'];
+            $fundraiser_id      = $_POST['order_id'];
             $payhere_amount     = $_POST['payhere_amount'];
             $payhere_currency    = $_POST['payhere_currency'];
             $status_code         = $_POST['status_code'];
+            $card_holder_name   = $_POST['card_holder_name'];
+            $method    = $_POST['method'];
+            $name    = $_POST['custom_1'];
+            $message    = $_POST['custom_2'];
+            $date = date("d M Y");
+
             // $md5sig                = $_POST['md5sig'];
 
             // $merchant_secret = '8RiHfcJMTcB4krnVrzkOFk4EtK4shHNcx4OXHTtUtVNR';
 
-            // $local_md5sig = strtoupper (md5 ( $merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
+            // $local_md5sig = strtoupper (md5 ( $merchant_id . $fundraiser_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
 
-            $data = array($order_id, $payhere_amount, $payhere_currency);
+            $data = array($merchant_id, $fundraiser_id, $payhere_amount, $payhere_currency, $card_holder_name, $method, $name, $message, $date);
 
             if($status_code == 2){
-                $this->view('pages/index');
-                // if($this->projectModel->saveDonation($data)) {
-                //     header('location:' . URL_ROOT . '/pages/index');
-                // } else {
-                //     die('Something went wrong.');
-                // }
+                if($this->projectModel->saveTransaction($data)) {
+                    die('Transaction completed successfully!');
+                } else {
+                    die('Something went wrong.');
+                }
             } else {
                 // Payment Error
-                $this->view('projects/donationForm');
+                die('Something went wrong.');
             }
 
         }
-
-        $this->view('projects/donationForm');
     }
 
     public function approveProject($id) {

@@ -426,24 +426,36 @@ class Projects extends Controller {
     }
 
     public function donate($id) {
-        $data = [
-            'title' => ''
-        ];
+        
+        if(ISSET($_POST['merchant_id'], $_POST['order_id'], $_POST['payhere_amount'], $_POST['payhere_currency'], $_POST['status_code'], )) {
+            $merchant_id         = $_POST['merchant_id'];
+            $order_id             = $_POST['order_id'];
+            $payhere_amount     = $_POST['payhere_amount'];
+            $payhere_currency    = $_POST['payhere_currency'];
+            $status_code         = $_POST['status_code'];
+            // $md5sig                = $_POST['md5sig'];
 
-        // if($_SERVER['REQUEST_METHOD'] == 'GET') {
+            // $merchant_secret = '8RiHfcJMTcB4krnVrzkOFk4EtK4shHNcx4OXHTtUtVNR';
 
-        //     $data = [
-        //         'title' => ''
-        //     ];
+            // $local_md5sig = strtoupper (md5 ( $merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
 
-        //     if($this->projectModel->approveProject($id)) {
-        //         header('location:' . URL_ROOT . '/pages/index');
-        //     } else {
-        //         die('Something went wrong.');
-        //     }
-        // }
+            $data = array($order_id, $payhere_amount, $payhere_currency);
 
-        $this->view('projects/donationForm', $data);
+            if($status_code == 2){
+                $this->view('pages/index');
+                // if($this->projectModel->saveDonation($data)) {
+                //     header('location:' . URL_ROOT . '/pages/index');
+                // } else {
+                //     die('Something went wrong.');
+                // }
+            } else {
+                // Payment Error
+                $this->view('projects/donationForm');
+            }
+
+        }
+
+        $this->view('projects/donationForm');
     }
 
     public function approveProject($id) {

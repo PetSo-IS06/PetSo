@@ -57,6 +57,18 @@
             }
         }
 
+        public function saveDonation($data) {
+            $this->db->query('');
+            
+            $this->db->bind(':title', $data['title']);
+
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function saveVolunteeringOpportunity($data, $prjID) {
             $this->db->query('INSERT INTO `petso`.`Volunteer_Opportunity` 
             (`prj_id`, `reason`, `description`, `district`, `area`, `work_start`, `work_end`, `work_from`, `work_to`, `days`, `requirements`, `app_open`, `app_close`, `add_note`, `image`) 

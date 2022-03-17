@@ -49,16 +49,36 @@
                     </div>
                 </div>
                 <div class="main">
-                    <form action="<?php echo URL_ROOT . '/Projects/donate'; ?>" method="POST">
+                    <form action="https://sandbox.payhere.lk/pay/checkout" method="POST">
                         <div class="title">
                             <h1 class="subtitleB grey center">Project title</h1>
                         </div>
+
+                        <div style="display:none;">
+                            <input type="hidden" name="merchant_id" value="1219957">   
+                            <input type="hidden" name="return_url" value="<?php echo URL_ROOT.'/Projects/donate/2'; ?>">
+                            <input type="hidden" name="cancel_url" value="<?php echo URL_ROOT.'/Pages/index'; ?>">
+                            <input type="hidden" name="notify_url" value="">  
+                            <input type="text" name="order_id" value="ItemNo12345">
+                            <input type="text" name="items" value="Door bell wireless"><br>
+                            <input type="text" name="currency" value="LKR">
+                            <!-- <input type="text" name="amount" value="1000">   -->
+                            <br><br>Customer Details<br>
+                            <input type="text" name="first_name" value="Saman">
+                            <input type="text" name="last_name" value="Perera"><br>
+                            <input type="text" name="email" value="samanp@gmail.com">
+                            <input type="text" name="phone" value="0771234567"><br>
+                            <input type="text" name="address" value="No.1, Galle Road">
+                            <input type="text" name="city" value="Colombo">
+                            <input type="hidden" name="country" value="Sri Lanka"><br><br> 
+                        </div>
+
                         <!-- Section 1 -->
                         <div id="sec1">
                             <div class="sec">
                                 <div class="amnts">
                                     <div class="fixed">
-                                        <input type="radio" name="amount" value="5000" id="option-1" checked>
+                                        <input type="radio" name="amount" value="5000" id="option-1">
                                         <label for="option-1" class="option option-1">
                                             <span>LKR 5000</span>
                                         </label>
@@ -67,7 +87,7 @@
                                             <span>LKR 2500</span>
                                         </label>
 
-                                        <input type="radio" name="amount" value="1500" id="option-3" checked>
+                                        <input type="radio" name="amount" value="1500" id="option-3">
                                         <label for="option-3" class="option option-3">
                                             <span>LKR 1500</span>
                                         </label>
@@ -110,7 +130,7 @@
                                 </div>
                                 <div class="action-sec2">
                                     <a onClick="showSec1()" class="back normalB">Back</a>
-                                    <a id="donate-cont-btn" onClick="" class="blue-btn">Proceed to Pay</a>
+                                    <input type="submit" class="blue-btn" value="Proceed to Pay">
                                 </div>
                             </div>
                         </div>

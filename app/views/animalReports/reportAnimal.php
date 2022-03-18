@@ -41,7 +41,7 @@
         </ul>
     </div>
 
-    <div class="report-form-container" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
+    <div class="report-form-container" style="margin-top: 75px; margin-bottom: 75px; text-align: center">
         <h2 class="form-title">Are you looking to report an Emergency Situation?</h2>
         <br>
         <!--        <div>-->

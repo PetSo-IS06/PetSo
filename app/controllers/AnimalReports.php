@@ -108,6 +108,7 @@ class AnimalReports extends Controller {
     }
 
     public function createReport() {
+        error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'situation' => '',
             'district' => '',
@@ -122,13 +123,54 @@ class AnimalReports extends Controller {
             'animalError' => '',
             'nameError' => '',
             'mobileError' => '',
-            'emailError' => ''
+            'emailError' => '',
+            'imgError' => ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // sanitize post data
             // filter_input_array() returns false if POST is set to scalar value
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //File Upload
+            $output_dir = "uploads/projects";//Path for file upload
+            $RandomNum = time();
+
+            if(!empty($_FILES['prj-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['prj-image']['name']));
+                // $ImageType = $_FILES['prj-image']['type']; //"image/png", image/jpeg etc.
+                $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                $ImageExt = str_replace('.','',$ImageExt);
+                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                move_uploaded_file($_FILES["prj-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $prj_img = $output_dir."/".$Newfile_name;
+            }
+
+            if(!empty($_FILES['vol-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['vol-image']['name']));
+                // $ImageType = $_FILES['vol-image']['type']; //"image/png", image/jpeg etc.
+                $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                $ImageExt = str_replace('.','',$ImageExt);
+                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                move_uploaded_file($_FILES["vol-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $vol_img = $output_dir."/".$Newfile_name;
+            }
+
+            if(!empty($_FILES['fund-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['fund-image']['name']));
+                // $ImageType = $_FILES['fund-image']['type']; //"image/png", image/jpeg etc.
+                $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                $ImageExt = str_replace('.','',$ImageExt);
+                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                move_uploaded_file($_FILES["fund-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $fund_img = $output_dir."/".$Newfile_name;
+            }
 
             // trim() removes white space on either sides of input strings
             $data = [

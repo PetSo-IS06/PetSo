@@ -58,7 +58,7 @@
                             <input type="hidden" name="merchant_id" value="1219957">   
                             <input type="hidden" name="return_url" value="<?php echo URL_ROOT.'/Pages/index'; ?>">
                             <input type="hidden" name="cancel_url" value="<?php echo URL_ROOT.'/Projects/donate/2'; ?>">
-                            <input type="hidden" name="notify_url" value="<?php echo URL_ROOT.'/Projects/saveTransaction'; ?>">  
+                            <input type="hidden" name="notify_url" value="https://ulwzz9maje.execute-api.ap-southeast-1.amazonaws.com/prod/">  
                             <input type="text" name="order_id" value="2">  <!-- Set value to fundraiser ID -->
                             <input type="text" name="items" value="Door bell wireless"><br>
                             <input type="text" name="currency" value="LKR">

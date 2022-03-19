@@ -435,21 +435,23 @@ class Projects extends Controller {
     }
 
     public function saveTransaction() {
-        
-        if(ISSET($_POST['merchant_id'], $_POST['order_id'], $_POST['payhere_amount'], $_POST['payhere_currency'], $_POST['status_code'])) {
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
             $data = [
                 'merchant_id' => trim($_POST['merchant_id']),
                 'fundraiser_id' => trim($_POST['order_id']),
                 'amount' => trim($_POST['payhere_amount']),
                 'currency' => trim($_POST['payhere_currency']),
                 'status_code' => trim($_POST['status_code']),
-                // 'card_holder_name' => trim($_POST['card_holder_name']),
-                // 'method' => trim($_POST['method']),
-                // 'name' => trim($_POST['custom_1']),
-                // 'message' => trim($_POST['custom_2']),
-                // 'date' => date("d M Y")
+                'card_holder_name' => trim($_POST['card_holder_name']),
+                'method' => trim($_POST['method']),
+                'name' => trim($_POST['custom_1']),
+                'message' => trim($_POST['custom_2']),
+                'date' => date("d M Y")
             ];
-            $status_code         = $_POST['status_code'];
 
             // $md5sig                = $_POST['md5sig'];
 
@@ -457,9 +459,7 @@ class Projects extends Controller {
 
             // $local_md5sig = strtoupper (md5 ( $merchant_id . $fundraiser_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
 
-            // $data = array($merchant_id, $fundraiser_id, $amount, $card_holder_name, $method, $name, $message, $date);
-
-            if($status_code == 2){
+            if($data['status_code'] == 2){
                 if($this->projectModel->saveTransaction($data)) {
 
                     die('Transaction completed successfully!');

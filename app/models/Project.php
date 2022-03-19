@@ -58,10 +58,17 @@
         }
 
         public function saveTransaction($data) {
-            $this->db->query('INSERT INTO `petso`.`Donation` (`fundraiser_id`, `amount`) VALUES (:fund_id, :amount)');
+            $this->db->query('INSERT INTO `petso`.`Donation` (`fundraiser_id`, `amount`, `currency`, `card_holder_name`, `method`, `donor_name`, `message`, `date`) 
+            VALUES (:fund_id, :amount, :currency, :card_holder, :method, :donor_name, :message, :date)');
             
             $this->db->bind(':fund_id', $data['fundraiser_id']);
             $this->db->bind(':amount', $data['amount']);
+            $this->db->bind(':currency', $data['currency']);
+            $this->db->bind(':card_holder', $data['card_holder_name']);
+            $this->db->bind(':method', $data['amount']);
+            $this->db->bind(':donor_name', $data['name']);
+            $this->db->bind(':message', $data['message']);
+            $this->db->bind(':date', $data['date']);
 
             if($this->db->execute()) {
                 return true;

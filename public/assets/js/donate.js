@@ -35,3 +35,15 @@ function hideSec2() {
         x.style.display = "none";
     }
 }
+
+function setAmount() {
+    var ele = document.getElementsByName("amount");
+    for(var i=0;i<ele.length;i++)
+        ele[i].checked = false;
+
+    const customInput = document.getElementsByName("otherAmount");
+    
+    for(var i=0;i<ele.length;i++)
+        ele[i].value = customInput.value;
+    
+}

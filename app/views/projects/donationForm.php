@@ -60,9 +60,8 @@
                             <input type="hidden" name="cancel_url" value="<?php echo URL_ROOT.'/Projects/donate/2'; ?>">
                             <input type="hidden" name="notify_url" value="https://ulwzz9maje.execute-api.ap-southeast-1.amazonaws.com/prod/">  
                             <input type="text" name="order_id" value="2">  <!-- Set value to fundraiser ID -->
-                            <input type="text" name="items" value="Door bell wireless"><br>
+                            <input type="text" name="items" value="Donation"><br>
                             <input type="text" name="currency" value="LKR">
-                            <!-- <input type="text" name="amount" value="1000">   -->
                             <br><br>Customer Details<br>
                             <input type="text" name="first_name" value="Saman">
                             <input type="text" name="last_name" value="Perera"><br>
@@ -99,7 +98,7 @@
                                     </div>
                                     <div class="other">
                                         <h3 class="normalB grey">Other (Type here): &nbsp; &nbsp; LKR &nbsp;</h3>
-                                        <input type="number" min="500" max="500000" name="otherAmount">
+                                        <input type="number" id="otherAmount" min="500" max="500000" name="otherAmount">
                                     </div>
                                     <span class="invalidInput center"><?php echo ''; ?></span>
 

@@ -425,6 +425,55 @@ class Projects extends Controller {
         $this->view('users/organization/createVolunteerOpportunity', $data);
     }
 
+    public function donate($id) {
+
+        //Retrieve donation messages from DB
+
+        $results = '';
+
+        $this->view('projects/donationForm', $results);
+    }
+
+    public function saveTransaction() {
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'merchant_id' => trim($_POST['merchant_id']),
+                'fundraiser_id' => trim($_POST['order_id']),
+                'amount' => trim($_POST['payhere_amount']),
+                'currency' => trim($_POST['payhere_currency']),
+                'status_code' => trim($_POST['status_code']),
+                'card_holder_name' => trim($_POST['card_holder_name']),
+                'method' => trim($_POST['method']),
+                'name' => trim($_POST['custom_1']),
+                'message' => trim($_POST['custom_2']),
+                'date' => date("d M Y")
+            ];
+
+            // $md5sig                = $_POST['md5sig'];
+
+            // $merchant_secret = '8RiHfcJMTcB4krnVrzkOFk4EtK4shHNcx4OXHTtUtVNR';
+
+            // $local_md5sig = strtoupper (md5 ( $merchant_id . $fundraiser_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
+
+            if($data['status_code'] == 2){
+                if($this->projectModel->saveTransaction($data)) {
+
+                    die('Transaction completed successfully!');
+                } else {
+                    die('Something went wrong.');
+                }
+            } else {
+                // Payment Error
+                die('Something went wrong.');
+            }
+
+        }
+    }
+
     public function approveProject($id) {
         // $data = [
         //     'title' => ''

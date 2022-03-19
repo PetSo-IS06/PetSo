@@ -171,5 +171,12 @@
             return $result;
 
         }
+
+        public function getOrganizationsCount(){
+            $this->db->query("SELECT * FROM `petso`.`Organization` WHERE account_status!='pending'");
+
+            $result = $this->db->rowCount(); 
+            return $result;
+        }
     }
     

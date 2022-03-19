@@ -40,7 +40,7 @@
             <a href="<?php echo URL_ROOT;?>/pages/services" class="nav-menu-main-links">Services</a>
             <label class="nav-menu-main-links-explore" id="explore">Explore 
                 <div class="dropdown-content-explore" id="explore">
-                    <a href="#">Welfare Projects</a>
+                    <a href="<?php echo URL_ROOT;?>/projects/viewAllProjects">Welfare Projects</a>
                     <a href="#">Animals Reported</a>
                     <a href="#">Adoption</a>
                     <a href="#">Sposorships</a>

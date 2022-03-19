@@ -41,3 +41,9 @@ config/
 
 ### Uploads ###
 public/uploads/
+public/uploads/projects/cat_in_hand.jpg
+public/uploads/projects/clean.jpg
+public/uploads/projects/cover.jpg
+public/uploads/projects/cover1.jpg
+public/uploads/projects/hands.jpg
+public/uploads/projects/images.jpg

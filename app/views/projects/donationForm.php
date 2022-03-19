@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="other">
                                         <h3 class="normalB grey">Other (Type here): &nbsp; &nbsp; LKR &nbsp;</h3>
-                                        <input type="number" id="otherAmount" min="500" max="500000" name="otherAmount">
+                                        <input type="number" onChange="setAmount()" id="otherAmount" min="500" max="500000" name="amount">
                                     </div>
                                     <span class="invalidInput center"><?php echo ''; ?></span>
 

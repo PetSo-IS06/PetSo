@@ -39,11 +39,5 @@ function hideSec2() {
 function setAmount() {
     var ele = document.getElementsByName("amount");
     for(var i=0;i<ele.length;i++)
-        ele[i].checked = false;
-
-    const customInput = document.getElementsByName("otherAmount");
-    
-    for(var i=0;i<ele.length;i++)
-        ele[i].value = customInput.value;
-    
+        ele[i].checked = false;    
 }

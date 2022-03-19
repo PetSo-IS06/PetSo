@@ -13,9 +13,12 @@ class ReportAnimal
     {
 //        $this->db->query("SELECT * FROM `petso`.`Organization` WHERE `org_district` = :district");
         $this->db->query('SELECT * FROM `petso`.`Organization`
-                                WHERE `org_district` = :district');
+                                WHERE `org_district` = :district  AND `org_area` = :area');
+//        OR `animal` = :animal
 
         $this->db->bind(':district', $data['district']);
+        $this->db->bind(':area', $data['area']);
+//        $this->db->bind(':animal', $data['animal']);
 
         $result = $this->db->resultSet();    // resultSet returns an array of Objects
         return $result;

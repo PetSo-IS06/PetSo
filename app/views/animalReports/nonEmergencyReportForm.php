@@ -39,186 +39,118 @@
             <form id="reportForm" action="<?php echo URL_ROOT . '/animalReports/createReport'; ?>" method="POST">
                 <div class="form-row">
                     <div class="form-input" style="width: 100%>
-                        <label class="input-label">Please describe the situation briefly. </label><br/>
-                        <textarea class="input-box-area" rows="4" cols="50" name="situation" id="situation""></textarea>
+                        <label class=" input-label
+                    ">Please describe the situation briefly. </label><br/>
+                    <textarea class="input-box-area" rows="4" cols="50" name="situation" id="situation""></textarea>
+                </div>
+        </div>
+        <div class="form-row">
+            <div class="form-input" id="col" style="justify-content: flex-start">
+                <div class="form-input-col">
+                    <label class="input-label">Location</label>
+                    <!--                                <input class="input-box" name="district" id="district" type="text" placeholder="District">-->
+                    <div class="location-row vol-inputs-col-row">
+                        <div class="selectBx" style="width: auto">
+                            <input name="district" type="text" list="districts" class="select-cat"
+                                   placeholder="Select Your District">
+                            <datalist id="districts">
+                                <?php
+                                $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
+                                $district = json_decode($str_district, true);
+                                foreach ($district as $item) {
+                                    ?>
+                                    <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+                                <?php } ?>
+                            </datalist>
+                        </div>
+                        <span class="invalidInput"><?php echo $data['districtError']; ?></span>
+
+                        <div class="selectBx" style="width: auto">
+                            <input name="area" type="text" list="areas" class="select-cat"
+                                   placeholder="Select Your Area">
+                            <datalist id="areas">
+                                <?php
+                                $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
+                                $area = json_decode($str_areas, true);
+                                foreach ($area as $item) {
+                                    ?>
+                                    <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+                                <?php } ?>
+                            </datalist>
+                        </div>
+                        <span class="invalidInput"><?php echo $data['areaError']; ?></span>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-input" id="col"  style="justify-content: flex-start">
-                        <div class="form-input-col">
-                            <label class="input-label">Location</label>
-                            <!--                                <input class="input-box" name="district" id="district" type="text" placeholder="District">-->
-                            <div class="selectBx" id="selectBx" style="width: 300px">
-                                <input type="checkbox" id="options-view-button" name="selectbox">
-                                <div id="select-button">
-                                    <div id="selected-value">
-                                        <span class="normalB">Select your District</span>
-                                    </div>
-                                    <div id="chevrons">
-                                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                    </div>
-                                </div>
-                                <div id="options">
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="district" value="Colombo">
-                                        <input class="s-c bottom" type="radio" name="district" value="Colombo">
-                                        <span class="label">Colombo</span>
-                                        <span class="opt-val">Colombo</span>
-                                    </div>
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="district" value="Kandy">
-                                        <input class="s-c bottom" type="radio" name="district" value="Kandy">
-                                        <span class="label">Kandy</span>
-                                        <span class="opt-val">Kandy</span>
-                                    </div>
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="district" value="Galle">
-                                        <input class="s-c bottom" type="radio" name="district" value="Galle">
-                                        <span class="label">Galle</span>
-                                        <span class="opt-val">Galle</span>
-                                    </div>
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="district" value="Other">
-                                        <input class="s-c bottom" type="radio" name="district" value="Other">
-                                        <span class="label">Other</span>
-                                        <span class="opt-val">Other</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selectBx" id="selectBx" style="width: 300px; margin-top: 25px;margin-left: 15px">
-                            <input type="checkbox" id="options-view-button" name="selectbox">
-                            <div id="select-button">
-                                <div id="selected-value">
-                                    <span class="normalB">Select your Area</span>
-                                </div>
-                                <div id="chevrons">
-                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                </div>
-                            </div>
-                            <div id="options">
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c1">
-                                    <input class="s-c bottom" type="radio" name="area" value="c1">
-                                    <span class="label">c1</span>
-                                    <span class="opt-val">c1</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c2">
-                                    <input class="s-c bottom" type="radio" name="area" value="c2">
-                                    <span class="label">c2</span>
-                                    <span class="opt-val">c2</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c3">
-                                    <input class="s-c bottom" type="radio" name="area" value="c3">
-                                    <span class="label">c3</span>
-                                    <span class="opt-val">c3</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="area" value="c4">
-                                    <input class="s-c bottom" type="radio" name="area" value="c4">
-                                    <span class="label">c4</span>
-                                    <span class="opt-val">c4</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-input" id="col" style="justify-content: flex-start; margin-bottom:2rem;">
+                <div class="selectBx" style="width: auto">
+                    <input name="animal" type="text" list="animals" class="select-cat" placeholder="Select Animal Type">
+                    <datalist id="animals">
+                        <?php
+                        $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/animals.json');
+                        $area = json_decode($str_areas, true);
+                        foreach ($area as $item) {
+                            ?>
+                            <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+                        <?php }?>
+                    </datalist>
                 </div>
-                <div class="form-row">
-                    <div class="form-input" id="col" style="justify-content: flex-start; margin-bottom:2rem;">
-                        <div class="form-input-col">
-                            <label class="input-label">Animal Type</label>
-                            <!--                                <input class="input-box" name="animal" id="animal" type="text" placeholder="Animal Type">-->
-                            <div class="selectBx input-box half-width" style="width: 300px" id="selectBx"">
-                                <input type="checkbox" id="options-view-button" name="selectbox">
-                                <div id="select-button">
-                                    <div id="selected-value">
-                                        <span class="normalB">Select the animal Type</span>
-                                    </div>
-                                    <div id="chevrons">
-                                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                    </div>
-                                </div>
-                                <div id="options">
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="animal" value="Dogs">
-                                        <input class="s-c bottom" type="radio" name="animal" value="Dogs">
-                                        <span class="label">Dogs</span>
-                                        <span class="opt-val">Dogs</span>
-                                    </div>
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="animal" value="Cats">
-                                        <input class="s-c bottom" type="radio" name="animal" value="Cats">
-                                        <span class="label">Cats</span>
-                                        <span class="opt-val">Cats</span>
-                                    </div>
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="animal" value="Turtles">
-                                        <input class="s-c bottom" type="radio" name="animal" value="Turtles">
-                                        <span class="label">Turtles</span>
-                                        <span class="opt-val">Turtles</span>
-                                    </div>
-                                    <div class="option">
-                                        <input class="s-c top" type="radio" name="animal" value="Other">
-                                        <input class="s-c bottom" type="radio" name="animal" value="Other">
-                                        <span class="label">Other</span>
-                                        <span class="opt-val">Other</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row" style="margin-bottom:2rem;">
-                    <div class="form-input direction">
-                        <label class="input-label">Upload Some clear images as if possible. </label>
-                        <div class="upload-button">
-                            <a href="<?php echo URL_ROOT; ?>/pages/index" class="form-btn-upload">Choose File</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row" style="flex-direction: column; justify-content: left">
-                    <div class="form-input" id="col" style="flex-direction: row; justify-content: left">
-                        <div class="form-input-col">
-                            <label class="input-label">Your name</label>
-                            <textarea class="input-box half-width"  name="name" id="name"
-                                      type="text"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-input" id="col" style="flex-direction: row; justify-content: left">
-                        <div class="form-input-col">
-                            <label class="input-label">Your Telephone number</label>
-                            <textarea class="input-box half-width" name="mobile" id="mobile"
-                                      type="text"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-input" id="col" style="flex-direction: row; justify-content: left">
-                        <div class="form-input-col">
-                            <label class="input-label">Your Email</label>
-                            <textarea class="input-box half-width" name="email" id="email"
-                                      type="text"></textarea>
-                        </div>
-                    </div>
-                    <!--                <div class="form-input" style="width: 100%; margin-left: 2rem;">-->
-                    <!--                    <div class="form-input-col" id="col">-->
-                    <!--                        <label class="input-label">Telephone number</label>-->
-                    <!--                        <input class="input-box" name="telephone" type="date">-->
-                    <!--                    </div>-->
-                    <!--                    <div class="form-input-col">-->
-                    <!--                        <label class="input-label">Your Eemail</label>-->
-                    <!--                        <input class="input-box" name="Email" type="date">-->
-                    <!--                    </div>-->
-                    <!--                </div>-->
-                </div>
-                <div class="form-row" style="flex-direction:row; justify-content: space-between;">
-                    <a href="<?php echo URL_ROOT; ?>/" class="form-btn-cancel">Cancel</a>
-                    <input id="submit" type="submit" value="Submit"
-                           onclick="document.getElementById('reportForm').submit();">
-                </div>
-            </form>
+                <span class="invalidInput"><?php echo $data['animalError']; ?></span>
+
+            </div>
         </div>
     </div>
+    <div class="form-row" style="margin-bottom:2rem;">
+        <div class="form-input direction">
+            <label class="input-label">Upload Some clear images as if possible. </label>
+            <div class="upload-button">
+                <a href="<?php echo URL_ROOT; ?>/pages/index" class="form-btn-upload">Choose File</a>
+            </div>
+        </div>
+    </div>
+    <div class="form-row" style="flex-direction: column; justify-content: left">
+        <div class="form-input" id="col" style="flex-direction: row; justify-content: left">
+            <div class="form-input-col">
+                <label class="input-label">Your name</label>
+                <textarea class="input-box half-width" name="name" id="name"
+                          type="text"></textarea>
+            </div>
+        </div>
+        <div class="form-input" id="col" style="flex-direction: row; justify-content: left">
+            <div class="form-input-col">
+                <label class="input-label">Your Telephone number</label>
+                <textarea class="input-box half-width" name="mobile" id="mobile"
+                          type="text"></textarea>
+            </div>
+        </div>
+        <div class="form-input" id="col" style="flex-direction: row; justify-content: left">
+            <div class="form-input-col">
+                <label class="input-label">Your Email</label>
+                <textarea class="input-box half-width" name="email" id="email"
+                          type="text"></textarea>
+            </div>
+        </div>
+        <!--                <div class="form-input" style="width: 100%; margin-left: 2rem;">-->
+        <!--                    <div class="form-input-col" id="col">-->
+        <!--                        <label class="input-label">Telephone number</label>-->
+        <!--                        <input class="input-box" name="telephone" type="date">-->
+        <!--                    </div>-->
+        <!--                    <div class="form-input-col">-->
+        <!--                        <label class="input-label">Your Eemail</label>-->
+        <!--                        <input class="input-box" name="Email" type="date">-->
+        <!--                    </div>-->
+        <!--                </div>-->
+    </div>
+    <div class="form-row" style="flex-direction:row; justify-content: space-between;">
+        <a href="<?php echo URL_ROOT; ?>/" class="form-btn-cancel">Cancel</a>
+        <input id="submit" type="submit" value="Submit"
+               onclick="document.getElementById('reportForm').submit();">
+    </div>
+    </form>
+</div>
+</div>
 </div>
 
 <div id="footer">

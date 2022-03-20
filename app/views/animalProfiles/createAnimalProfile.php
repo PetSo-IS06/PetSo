@@ -19,7 +19,7 @@
             ?>
         </div>
         <div id="body" class="pg-body">
-            <form action="<?php echo URL_ROOT . '/Projects/createProject'; ?>" method="POST" class="prj-form" enctype="multipart/form-data">
+            <form action="<?php echo URL_ROOT . '/AnimalProfiles/create'; ?>" method="POST" class="prj-form" enctype="multipart/form-data">
                 <div class="form-sec card2" id="">
                     <div class="title-sec">
                         <h2 class="purple heading2B center">Add a new member to your family at Petso </h2>
@@ -28,10 +28,10 @@
                         <div class="input-col">
                             <div>
                                 <div class="inputBx2" id="">
-                                    <input name="name" id="name" type="text" value="<?php echo ''; ?>" maxlength="32">
-                                    <span class="normalB">Name</span>
+                                    <input name="name" id="name" type="text" value="<?php echo $data['name']; ?>" maxlength="32">
+                                    <span class="normalB">Name*</span>
                                 </div>
-                                <span class="invalidInput"><?php echo '' ?></span>
+                                <span class="invalidInput"><?php echo $data['nameError']; ?></span>
                             </div>
 
                             <div class="">
@@ -45,26 +45,26 @@
                                         <option value="Other">Other</option>
                                     </datalist>
                                 </div>
-                                <span class="invalidInput"><?php echo ''; ?></span>
+                                <span class="invalidInput"><?php echo $data['typeError']; ?></span>
                             </div>
 
                             <div>
                                 <div class="inputBx2" id="">
-                                    <input name="breed" id="breed" type="text" value="<?php echo ''; ?>">
+                                    <input name="breed" id="breed" type="text" value="<?php echo $data['breed']; ?>">
                                     <span class="normalB">Breed</span>
                                 </div>
                                 <span class="invalidInput"><?php echo '' ?></span>
                             </div>
                             <div>
                                 <div class="inputBx2" id="">
-                                    <input name="age" id="age" type="text" value="<?php echo ''; ?>">
-                                    <span class="normalB">Age</span>
+                                    <input name="age" id="age" type="text" value="<?php echo $data['age']; ?>">
+                                    <span class="normalB">Age*</span>
                                 </div>
-                                <span class="invalidInput"><?php echo '' ?></span>
+                                <span class="invalidInput"><?php echo $data['ageError']; ?></span>
                             </div>
 
                             <div>
-                                <label class="normalB grey">Gender</label>
+                                <label class="normalB grey">Gender*</label>
                                 <div class="gender">
                                     <input type="radio" name="gender" value="Male" id="option-1">
                                     <input type="radio" name="gender" value="Female" id="option-2">
@@ -75,6 +75,7 @@
                                         <span>Female</span>
                                     </label>
                                 </div>
+                                <span class="invalidInput"><?php echo $data['genderError']; ?></span>
                             </div>
 
                             <div>
@@ -88,7 +89,7 @@
                             <div class="textArea">
                                 <span class="normalB">Profile description</span>
                                 <div class="text-box" id="">
-                                    <textarea rows="8" name="description" maxlength="60"><?php echo ''; ?></textarea> 
+                                    <textarea rows="8" name="description" maxlength="200"><?php echo $data['description']; ?></textarea> 
                                 </div>
                                 <span class="invalidInput"><?php echo ''; ?></span>
                             </div>
@@ -101,7 +102,7 @@
                             <div class="textArea" id="adoption-req">
                                 <span class="normalB">Requirements for adoption (if any)</span>
                                 <div class="text-box" id="">
-                                    <textarea rows="8" name="description" maxlength="60"><?php echo ''; ?></textarea> 
+                                    <textarea rows="8" name="requirements" maxlength="200"><?php echo $data['requirements']; ?></textarea> 
                                 </div>
                                 <span class="invalidInput"><?php echo ''; ?></span>
                             </div> 
@@ -113,10 +114,10 @@
 
                             <div id="sponsor-info">
                                 <div class="inputBx2" id="sponsor-fee">
-                                    <input name="monthlyCost" id="monthlyCost" type="number" value="<?php echo ''; ?>">
+                                    <input name="monthlyCost" id="monthlyCost" type="number" value="<?php echo $data['monthlyCost']; ?>" max="100000">
                                     <span class="normalB">Monthly Cost(LKR)</span>
                                 </div>
-                                <span class="invalidInput"><?php echo '' ?></span>
+                                <span class="invalidInput"><?php echo $data['monthlyCostError']; ?></span>
                             </div>
                         </div>
                         

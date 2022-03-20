@@ -75,7 +75,7 @@ class AnimalReports extends Controller {
                     die('Could not list organizations');
                 }
             } else {
-                $this->view('animalReports/reportAnimalForm', $data);
+                $this->view('animalReports/emergencyReportForm', $data);
             }
         }
 
@@ -133,43 +133,19 @@ class AnimalReports extends Controller {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             //File Upload
-            $output_dir = "uploads/projects";//Path for file upload
+            $output_dir = "uploads/reports";//Path for file upload
             $RandomNum = time();
 
-            if(!empty($_FILES['prj-image']['name'])) {
-                $file_name = str_replace(' ','-',strtolower($_FILES['prj-image']['name']));
-                // $ImageType = $_FILES['prj-image']['type']; //"image/png", image/jpeg etc.
+            if(!empty($_FILES['report-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['report-image']['name']));
+                // $ImageType = $_FILES['report-image']['type']; //"image/png", image/jpeg etc.
                 $ImageExt = substr($file_name, strrpos($file_name, '.'));
                 $ImageExt = str_replace('.','',$ImageExt);
                 $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
                 $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
                 $ret[$Newfile_name]= $output_dir.$Newfile_name;
-                move_uploaded_file($_FILES["prj-image"]["tmp_name"], $output_dir."/".$Newfile_name );
-                $prj_img = $output_dir."/".$Newfile_name;
-            }
-
-            if(!empty($_FILES['vol-image']['name'])) {
-                $file_name = str_replace(' ','-',strtolower($_FILES['vol-image']['name']));
-                // $ImageType = $_FILES['vol-image']['type']; //"image/png", image/jpeg etc.
-                $ImageExt = substr($file_name, strrpos($file_name, '.'));
-                $ImageExt = str_replace('.','',$ImageExt);
-                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
-                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
-                $ret[$Newfile_name]= $output_dir.$Newfile_name;
-                move_uploaded_file($_FILES["vol-image"]["tmp_name"], $output_dir."/".$Newfile_name );
-                $vol_img = $output_dir."/".$Newfile_name;
-            }
-
-            if(!empty($_FILES['fund-image']['name'])) {
-                $file_name = str_replace(' ','-',strtolower($_FILES['fund-image']['name']));
-                // $ImageType = $_FILES['fund-image']['type']; //"image/png", image/jpeg etc.
-                $ImageExt = substr($file_name, strrpos($file_name, '.'));
-                $ImageExt = str_replace('.','',$ImageExt);
-                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
-                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
-                $ret[$Newfile_name]= $output_dir.$Newfile_name;
-                move_uploaded_file($_FILES["fund-image"]["tmp_name"], $output_dir."/".$Newfile_name );
-                $fund_img = $output_dir."/".$Newfile_name;
+                move_uploaded_file($_FILES["report-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $report_img = $output_dir."/".$Newfile_name;
             }
 
             // trim() removes white space on either sides of input strings
@@ -181,6 +157,7 @@ class AnimalReports extends Controller {
                 'name' => trim($_POST['name']),
                 'mobile' => trim($_POST['mobile']),
                 'email' => trim($_POST['email']),
+                'report-image' => $report_img,
                 'situationError' => '',
                 'districtError' => '',
                 'areaError' => '',

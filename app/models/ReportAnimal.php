@@ -12,13 +12,14 @@ class ReportAnimal
     public function listOrganization($data)
     {
 //        $this->db->query("SELECT * FROM `petso`.`Organization` WHERE `org_district` = :district");
-        $this->db->query('SELECT * FROM `petso`.`Organization`
-                                WHERE `org_district` = :district  AND `org_area` = :area');
-//        OR `animal` = :animal
+        $this->db->query('SELECT Organization.* 
+                                FROM `petso`.`Organization` AS Organization , `petso`.`Org_animal` AS animal
+                                JOIN Organization ON Org_Animal.org_id = Org_Animal.org
+                                WHERE Organization.org_district = :district  AND Organization.org_area = :area AND animal.animal_type = : animal');
 
         $this->db->bind(':district', $data['district']);
         $this->db->bind(':area', $data['area']);
-//        $this->db->bind(':animal', $data['animal']);
+        $this->db->bind(':animal', $data['animal']);
 
         $result = $this->db->resultSet();    // resultSet returns an array of Objects
         return $result;
@@ -26,8 +27,8 @@ class ReportAnimal
 
     public function saveReport($data) {
         $this->db->query('INSERT INTO `petso`.`Animal_Report`
-            (`situation`, `district`, `area`, `animal_type`, `reporter_name`, `reporter_number`,`reporter_email`,`user_id`)
-            VALUES (:situation, :district, :area, :animal_type, :reporter_name, :reporter_number, :reporter_email, :user_id)');
+            (`situation`, `district`, `area`, `animal_type`, `reporter_name`, `reporter_number`,`reporter_email`,`user_id`,`image`)
+            VALUES (:situation, :district, :area, :animal_type, :reporter_name, :reporter_number, :reporter_email, :user_id, :image)');
 
         $this->db->bind(':situation', $data['situation']);
         $this->db->bind(':district', $data['district']);
@@ -37,6 +38,7 @@ class ReportAnimal
         $this->db->bind(':reporter_number', $data['mobile']);
         $this->db->bind(':reporter_email', $data['email']);
         $this->db->bind(':user_id', $_SESSION['user_id']);
+        $this->db->bind(':image',  $data['report-image']);
 
         if($this->db->execute()) {
             return true;

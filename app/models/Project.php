@@ -185,4 +185,33 @@
             $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;
         }
+
+        public function getAllProjects() {
+            $this->db->query("SELECT * FROM Project WHERE status!='Pending'");
+
+            $result = $this->db->resultSet();   
+            return $result;
+        }
+
+        public function getProjectByStatus($status) {
+            $this->db->query("SELECT Project.id, title, cause, create_date, initiation_date, status, image, Organization.org_name, Organization.org_district FROM Project 
+            INNER JOIN Organization ON Project.org_id=Organization.org_id WHERE Project.status='$status'");
+
+            $result = $this->db->resultSet();   
+            return $result;
+        }
+
+        public function getCountByStatus($status){
+            $this->db->query("SELECT * FROM Project WHERE status='$status'");
+
+            $result = $this->db->rowCount();   
+            return $result;
+        }
+
+        public function getProjectCount() {
+            $this->db->query("SELECT * FROM Project WHERE status!='Pending'");
+
+            $result = $this->db->rowCount();   
+            return $result;
+        }
     }

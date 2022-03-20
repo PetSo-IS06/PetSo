@@ -1,0 +1,380 @@
+.header {
+    padding: 60px;
+    text-align: center;
+    background-image: url(./../img/Mask\ Group.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 30px;
+    height: 100%;
+}
+              
+h2{
+  color: white;
+}
+  
+#header-search {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 12px;
+    border-radius: 15px;
+    width: 350px;
+}
+               
+.count-col {
+    float: left;
+    width: 25%;
+    height: 150px; 
+    font-size: 23px;
+}
+          
+.row:after {
+    content: "";
+    clear: both;
+    padding-left: 10px;
+    float: none;
+}
+
+
+
+
+/* * {
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+} */
+
+
+/* Create three equal columns that floats next to each other */
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 1px;
+    height: 100%;
+}
+
+.column1 {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 100%;
+    text-align: center;
+}
+
+.column1 img {
+    border-radius: 50%;
+}
+
+.columnt {
+    float: right;
+    width: 67%;
+}
+
+
+/* input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    box-sizing: border-box;
+} */
+
+.adptxtbox {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.adptxtbox-1 {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.dropcon {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    float: left;
+}
+
+.drop {
+    width: 50%;
+    display: inline-block;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.button {
+    background-color: #9F2884;
+    float: right;
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+
+/* -------------------page 2 css */
+
+.container-2 {
+    width: 90%;
+    /* padding-top: 700px; */
+    margin: auto;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column-p2 {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.txt-clm {
+    text-align: left;
+}
+
+
+/* containet with cards */
+
+.container-p2 {
+    padding: 5%;
+    /* padding-bottom: 10%; */
+    width: 100%;
+    /* margin: auto; */
+    height: auto;
+    margin-bottom: 400px;
+    /* display: flex; */
+    display: block;
+}
+
+.cards{
+    margin-left: 2%;
+}
+
+.card {
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.514);
+    transition: 0.3s;
+    width: 400px;
+    border-radius: 20px;
+    height: 280px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+}
+
+.card img {
+    border-radius: 20px 20px 0px 0px;
+    -webkit-border-radius: 20px 20px 0px 0px;
+    -moz-border-radius: 20px 20px 0px 0px;
+    -ms-border-radius: 20px 20px 0px 0px;
+    -o-border-radius: 20px 20px 0px 0px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-see-all {
+    padding: 120px;
+    text-align: center;
+    /* box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.514); */
+    transition: 0.3s;
+    width: 355px;
+    border-radius: 20px;
+    height: auto;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+}
+
+.card_title {
+    text-align: center;
+    padding-bottom: 10px;
+    margin-top: -19px;
+}
+
+.card_title p {
+    text-align: center;
+    padding-bottom: 10px;
+    margin-top: -19px;
+}
+
+.search-container {
+    /* float: right; */
+    padding: 6px;
+    /* margin-top: 8px; */
+    /* margin-right: 16px; */
+    background: #ddd;
+    /* font-size: 17px; */
+    /* border: none; */
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.search-container-txt {
+    background: #ddd;
+    /*cursor: pointer;
+    */
+    border-radius: 20px;
+    border: #000000;
+}
+
+.dropcon1 {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    float: left;
+}
+
+.image-box {
+    display: grid;
+    margin: auto;
+    text-align: center;
+}
+
+.imag-box-item:first-of-type {
+    grid-column: 2 / span 6;
+    grid-row: 1 /span 2;
+}
+
+.imag-box-item:last-of-type {
+    grid-column: 1 / span 4;
+    grid-row: 2 /span 2;
+}
+
+.column-oo {
+    float: left;
+    width: 50%;
+    /* padding: 1px; */
+    height: 100%;
+}
+
+
+/* ------------------------page 3 */
+
+.frm-container {
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.514);
+    border-radius: 20px;
+    height: 100%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    width: 80%;
+    margin: 10%;
+    background-color: rgba(255, 255, 255, 0.911);
+    padding-top: 3%;
+}
+
+.p3-frm-clmn {
+    width: 50%;
+    float: left;
+}
+
+.cmt {
+    padding: 00px 10% 00px 10%;
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons {
+    /* width: 100%; */
+    /* margin-bottom: 10px; */
+    padding: 20px;
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+    margin-top: 10px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+input {
+    text-indent: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+    .column1 {
+        width: 100%;
+    }
+    .columnt {
+        float: right;
+        width: 100%;
+        text-align: center;
+    }
+    /* --- */
+    .column-p2 {
+        width: 100%;
+    }
+    .column-oo {
+        width: 100%;
+    }
+    .image-box {
+        width: 100%;
+    }
+    /* -----page 3--- */
+    .p3-frm-clmn {
+        width: 100%;
+    }
+    .input-icons {
+        width: 100%;
+    }
+    .cmt {
+        width: 100%;
+    }
+    .input-field {
+        width: 100%;
+    }
+    .lastcnt {
+        max-width: 100%;
+    }
+}

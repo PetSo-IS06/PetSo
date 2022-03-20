@@ -515,4 +515,23 @@ class Projects extends Controller {
 
         $this->view('pages/index');
     }
+
+    public function viewAllProjects() {
+
+        $data = [
+            'projects' => $this->projectModel->getAllProjects(),
+            'on_going_projects' => $this->projectModel->getProjectByStatus('ongoing'),
+            'completed_projects' => $this->projectModel->getProjectByStatus('completed'),
+            'upcoming_projects' => $this->projectModel->getProjectByStatus('ongoing'),
+
+            'on_going_projects_count' => $this->projectModel->getCountByStatus('ongoing'),
+            'upcoming_projects_count' => $this->projectModel->getCountByStatus('completed'),
+            'completed_projects_count' => $this->projectModel->getCountByStatus('Completed'),
+            'total_projects_count' => $this->projectModel->getProjectCount(),
+
+            'organizations_count' => $this->organizationModel->getOrganizationsCount()
+        ];
+
+        $this->view('projects/viewAllProjects', $data);
+    }
 }

@@ -179,10 +179,26 @@
 
         }
 
-        public function getprojectView() {
-            $this->db->query("SELECT * FROM Project where id=19");
+        public function getprojectView($id) {
+            $this->db->query("SELECT org_name, id, title, cause, create_date, initiation_date, description, status, volunteering, fundraising,image FROM Project 
+           INNER JOIN Organization on Project.org_id=Organization.org_id 
+             where Project.id=$id");
 
-            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            $result = $this->db->single();    // resultSet returns an array of Objects
+            return $result;
+        }
+
+        public function getVolunteerOpportunity($id) {
+            $this->db->query("SELECT * FROM Volunteer_Opportunity where prj_id=$id");
+
+            $result = $this->db->single();    // resultSet returns an array of Objects
+            return $result;
+        }
+
+        public function getFundraiser($id) {
+            $this->db->query("SELECT * FROM Fundraiser where prj_id=$id");
+
+            $result = $this->db->single();    // resultSet returns an array of Objects
             return $result;
         }
 

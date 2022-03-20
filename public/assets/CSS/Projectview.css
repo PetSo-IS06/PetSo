@@ -71,7 +71,6 @@ div.columns:nth-of-type(even){
  }
 .col1 {
   margin-left: 20px;
- 
   flex-grow: 2;
 }
 .col2{
@@ -80,8 +79,43 @@ div.columns:nth-of-type(even){
   flex-grow: 2;
 }
 .col3{
- 
   margin-left: 200px;
+  flex-grow: 2;
+}
+
+.container {
+  content: "";
+  display: flex;
+  flex-direction: row;
+}
+.colum1 {
+  width: 50%;
+  flex-grow: 2;
+}
+
+.max_height{
+  max-height: 100px;
+}
+
+.v-btn_width{
+  width: 200px;
+}
+
+.d-btn_width{
+  width: 200px;
+}
+
+.donate_col1 {
+  margin-left: 50px;
+  flex-grow: 2;
+}
+.donate_col2{
+  
+  margin-left: 20px;
+  flex-grow: 2;
+}
+.donate_col3{
+  margin-left: 70px;
   flex-grow: 2;
 }
 

@@ -63,6 +63,8 @@
           </div>
        </div>
       </div>
+
+      <!-- story -->
    
 <div id="body" class="pg-body">
     <div class="subtitleB grey"> Story </div> 
@@ -72,9 +74,9 @@
         <div class="col1">
         <div class="normalB"> Title: </div> <?php echo $data['project']->title ?> 
         <div class="normalB max_height"> Description:</div> <?php echo $data['project']->description ?> 
-    <div class="normalB"> Cause: </div> <?php echo $data['project']->cause ?> 
-    <div class="normalB"> Initiation Date: </div> <?php echo $data['project']->initiation_date ?>
-    <div class="normalB"> Run by: </div> <?php echo $data['project']->org_name ?>
+        <div class="normalB"> Cause: </div> <?php echo $data['project']->cause ?> 
+        <div class="normalB"> Initiation Date: </div> <?php echo $data['project']->initiation_date ?>
+        <div class="normalB"> Run by: </div> <?php echo $data['project']->org_name ?>
         </div>
 
             <div class="col2">     
@@ -87,6 +89,8 @@
            </div>
      </div>
     <br>
+    
+    <!-- volunteering -->
 
     <?php
     if($data['project']->volunteering=="True"){
@@ -114,24 +118,28 @@
         $volunteer->add_note 
     </div> 
 
-            <div class='col2'>
+      <div class='col2'>
             <img src='$img_url' width='350px' height='200px' border-radius='20px'>
 
       <div class='container'>
-        <div class='col1'>
+      <div class='col1'>
         <div class='subtitleB grey'> Vacancies Left </div>
         <center><div class='subtitleB grey'> 20 </div> </center>
        </div>
-    <div class='col2'>
-    <div class='subtitleB grey'> People Applied </div>
-     <div class='subtitleB grey'> 100 </div> 
-    </div> 
- </div> <br><br><center>
- <a href= '' class='purple-btn v-btn_width'>volunteer Now </a> </center>
- </div>
+        <div class='col2'>
+        <div class='subtitleB grey'> People Applied </div>
+        <div class='subtitleB grey'> 100 </div> 
+      </div> 
+    </div> <br><br><center>
+       <a href= '' class='purple-btn v-btn_width'>volunteer Now </a> </center>
+   </div>
 </div> "; }?>
+</div>
 
        <br> 
+
+       <!-- fundraising -->
+       <div id="body" class="pg-body">
        <?php
        if($data['project']->fundraising=="True"){
            $fundraiser= $data['fundraiser'];
@@ -163,14 +171,15 @@
 
       <center>  <a href='' class='blue-btn d-btn_width'>Donate Now </a> </center>
 
-        <div class='colum1'>
-         <div class='subtitleB grey'> Donors </div> <hr width=90%> 
-
+        <div class='colum2'>
+         <div class='subtitleB grey'> Donors </div> <hr> 
+         <img src='<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/image 3.png'>
        </div>
     </div>
 </div>";}?>
 </div>
 </div>
+
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

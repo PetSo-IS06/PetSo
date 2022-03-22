@@ -158,4 +158,5 @@
 
             $this->view('users/verifyOTP', $data);
         }
+
     }

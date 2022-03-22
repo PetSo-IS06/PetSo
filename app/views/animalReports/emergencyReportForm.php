@@ -20,13 +20,11 @@
     ?>
 </div>
 <div id="body" class="pgbody">
-    <!--    <div>-->
-    <!--        <img src="-->
-    <?php //echo URL_ROOT; ?><!--/public/assets/img/animalReportHeader.svg" alt="" style="width: 100%;">-->
-    <!--    </div>-->
-    <div>
-        <img src="<?php echo URL_ROOT; ?>/public/assets/img/animalReport2Header.svg" alt="" style="width: 100%;">
-    </div>
+    <br>
+    <br>
+<!--    <div>-->
+<!--        <img src="--><?php //echo URL_ROOT; ?><!--/public/assets/img/animalReport2Header.svg" alt="" style="width: 100%;">-->
+<!--    </div>-->
 
     <div class="report-form-container" style="margin-top: 30px">
         <h2 class="form-title">Emergency Situations</h2>

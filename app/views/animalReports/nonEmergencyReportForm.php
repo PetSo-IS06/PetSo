@@ -36,7 +36,7 @@
 
         <!--        Non-Emergency-->
         <div id="noneEmergency" class="noneEmergency">
-            <form id="reportForm" action="<?php echo URL_ROOT . '/animalReports/createReport'; ?>" method="POST">
+            <form id="reportForm" action="<?php echo URL_ROOT . '/animalReports/createReport'; ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                     <!--                    <div class="form-input" style="width: 100%">-->
                     <!--                        <label class="input-label">Please describe the situation briefly. </label><br/>-->

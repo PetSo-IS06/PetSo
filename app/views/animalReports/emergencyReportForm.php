@@ -47,7 +47,7 @@
                                 <div style="margin-right: 50px">
                                     <div class="selectBx" style="width: auto">
                                         <input name="district" type="text" list="districts" class="select-cat"
-                                               placeholder="Select Your District" required>
+                                               placeholder="Select Your District">
                                         <datalist id="districts">
                                             <?php
                                             $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
@@ -63,7 +63,7 @@
                                 <div style="margin-right: 50px">
                                     <div class="selectBx" style="width: auto">
                                         <input name="area" type="text" list="areas" class="select-cat"
-                                               placeholder="Select Your Area" required>
+                                               placeholder="Select Your Area">
                                         <datalist id="areas">
                                             <?php
                                             $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
@@ -86,7 +86,7 @@
                             <label class="input-label">Animal Type</label>
                             <div class="selectBx" style="width: auto">
                                 <input name="animal" type="text" list="animals" class="select-cat"
-                                       placeholder="Select Animal Type" required>
+                                       placeholder="Select Animal Type">
                                 <datalist id="animals">
                                     <?php
                                     $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/animals.json');

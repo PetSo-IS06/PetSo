@@ -1,31 +1,37 @@
 <?php
 
-class AnimalReports extends Controller {
+class AnimalReports extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->authModel = $this->model('Authentication');
         $this->reportModel = $this->model('ReportAnimal');
     }
 
-    public function index() {
+    public function index()
+    {
         $this->view('pages/index');
     }
 
-    public function reportAnimal() {
+    public function reportAnimal()
+    {
         $this->view('animalReports/reportAnimal');
     }
 
-    public function emergencyReportForm() {
+    public function emergencyReportForm()
+    {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'districtError' => '',
             'areaError' => '',
             'animalError' => ''
         ];
-        $this->view('animalReports/emergencyReportForm' , $data);
+        $this->view('animalReports/emergencyReportForm', $data);
     }
 
-    public function listOrganizations() {
+    public function listOrganizations()
+    {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'district' => '',
@@ -37,7 +43,7 @@ class AnimalReports extends Controller {
             'organizations' => ''
         ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
@@ -51,19 +57,19 @@ class AnimalReports extends Controller {
 
             // Input Validation
 
-            if(empty($data['district'])) {
+            if (empty($data['district'])) {
                 $data['districtError'] = 'Please provide the district';
             }
-            if(empty($data['area'])) {
+            if (empty($data['area'])) {
                 $data['areaError'] = 'Please provide the area';
             }
-            if(empty($data['animal'])) {
+            if (empty($data['animal'])) {
                 $data['animalError'] = 'Please provide the animal type';
             }
 
-            if(empty($data['districtError']) && empty($data['areaError']) && empty($data['animalError'])) {
+            if (empty($data['districtError']) && empty($data['areaError']) && empty($data['animalError'])) {
 
-                if($this->reportModel->listOrganization($data)){
+                if ($this->reportModel->listOrganization($data)) {
                     $organizations = $this->reportModel->listOrganization($data);
 
                     $data = [
@@ -71,7 +77,7 @@ class AnimalReports extends Controller {
                     ];
                     $this->view('animalReports/listOrganizations', $data);
                 } else {
-                    $this->view('animalReports/reportAnimalForm', $data);
+                    $this->view('animalReports/listOrganizations', 'Could not list organizations');
                     die('Could not list organizations');
                 }
             } else {
@@ -82,7 +88,8 @@ class AnimalReports extends Controller {
         $this->view('animalReports/reportAnimalForm', $data);
     }
 
-    public function nonEmergencyReportForm() {
+    public function nonEmergencyReportForm()
+    {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'districtError' => '',
@@ -90,10 +97,9 @@ class AnimalReports extends Controller {
             'animalError' => ''
         ];
 
-        if(isset($_SESSION["user_id"])){
-            $this->view('animalReports/nonEmergencyReportForm' , $data);
-        }
-        else {
+        if (isset($_SESSION["user_id"])) {
+            $this->view('animalReports/nonEmergencyReportForm', $data);
+        } else {
             $data = [
                 'email' => '',
                 'password' => '',
@@ -107,7 +113,8 @@ class AnimalReports extends Controller {
         }
     }
 
-    public function createReport() {
+    public function createReport()
+    {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
             'situation' => '',
@@ -127,7 +134,7 @@ class AnimalReports extends Controller {
             'imgError' => ''
         ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // sanitize post data
             // filter_input_array() returns false if POST is set to scalar value
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -136,16 +143,16 @@ class AnimalReports extends Controller {
             $output_dir = "uploads/reports";//Path for file upload
             $RandomNum = time();
 
-            if(!empty($_FILES['report-image']['name'])) {
-                $file_name = str_replace(' ','-',strtolower($_FILES['report-image']['name']));
+            if (!empty($_FILES['report-image']['name'])) {
+                $file_name = str_replace(' ', '-', strtolower($_FILES['report-image']['name']));
                 // $ImageType = $_FILES['report-image']['type']; //"image/png", image/jpeg etc.
                 $ImageExt = substr($file_name, strrpos($file_name, '.'));
-                $ImageExt = str_replace('.','',$ImageExt);
+                $ImageExt = str_replace('.', '', $ImageExt);
                 $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
-                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
-                $ret[$Newfile_name]= $output_dir.$Newfile_name;
-                move_uploaded_file($_FILES["report-image"]["tmp_name"], $output_dir."/".$Newfile_name );
-                $report_img = $output_dir."/".$Newfile_name;
+                $Newfile_name = $file_name . '-' . $RandomNum . '.' . $ImageExt;
+                $ret[$Newfile_name] = $output_dir . $Newfile_name;
+                move_uploaded_file($_FILES["report-image"]["tmp_name"], $output_dir . "/" . $Newfile_name);
+                $report_img = $output_dir . "/" . $Newfile_name;
             }
 
             // trim() removes white space on either sides of input strings
@@ -173,25 +180,25 @@ class AnimalReports extends Controller {
 //                $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
 
             // validate characters in username
-                if(empty($data['name'])) {
-                    $data['usernameError'] = 'Please enter your name';
-                } elseif(!preg_match($nameValidation, $data['name'])) {
-                    $data['nameError'] = 'Name should only contain letters/numbers';
-                }
+            if (empty($data['name'])) {
+                $data['usernameError'] = 'Please enter your name';
+            } elseif (!preg_match($nameValidation, $data['name'])) {
+                $data['nameError'] = 'Name should only contain letters/numbers';
+            }
 
             // validate mobile number (length & numbers only)
-                if(strlen(($data['mobile'])) != 10) {
-                    $data['mobileError'] = 'Number should contain 10 digits';
-                } elseif(!preg_match($mobileValidation, $data['mobile'])) {
-                    $data['mobileError'] = 'Mobile number should contain only numbers';
-                }
+            if (strlen(($data['mobile'])) != 10) {
+                $data['mobileError'] = 'Number should contain 10 digits';
+            } elseif (!preg_match($mobileValidation, $data['mobile'])) {
+                $data['mobileError'] = 'Mobile number should contain only numbers';
+            }
 
 
             // make sure errors are empty
-            if(empty($data['usernameError']) && empty($data['mobileError'])) {
+            if (empty($data['usernameError']) && empty($data['mobileError'])) {
 
                 // register user from model function
-                if($this->reportModel->saveReport($data)) {
+                if ($this->reportModel->saveReport($data)) {
                     // redirect to confirmation page
                     header('location:' . URL_ROOT . '/animalReports/reportConfirmation');
                 } else {

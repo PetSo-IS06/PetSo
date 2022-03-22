@@ -10,6 +10,7 @@
 
         public function login() {
             error_reporting(E_ALL ^ E_WARNING);
+            error_reporting(E_ALL ^ E_NOTICE);
             // an associative array to handle user input
             $data = [
                 'email' => '',

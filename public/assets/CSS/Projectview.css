@@ -85,7 +85,7 @@ div.columns:nth-of-type(even){
 
 .container {
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: row; 
 }
 .colum1 {
   width: 50%;
@@ -93,12 +93,9 @@ div.columns:nth-of-type(even){
 }
  .colum2{
   flex-grow: 2;
- flex-direction: column; 
+   width: 50%;
  }
 
-.max_height{
-  max-height: 100px;
-}
 
 .v-btn_width{
   width: 200px;
@@ -122,9 +119,8 @@ div.columns:nth-of-type(even){
   flex-grow: 2;
 }
 
-.avatar {
-  vertical-align: middle;
-  width: 50px;
+div.normalB x {
   height: 50px;
-  border-radius: 50%;
+  
 }
+

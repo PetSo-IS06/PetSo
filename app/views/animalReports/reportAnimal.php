@@ -20,34 +20,39 @@
     ?>
 </div>
 <div id="body" class="pgbody">
-    <div>
-        <img src="<?php echo URL_ROOT; ?>/public/assets/img/animalReportHeader.svg" alt="" style="width: 100%;">
+    <div class="hero-section">
+        <img src="<?php echo URL_ROOT; ?>/public/assets/img/animalReportHeader.svg" alt="" class="hero-img">
     </div>
 
-    <div class="report-form-container" style="margin-top: 100px; margin-bottom: 100px">
-        <h2 class="form-title">Report</h2>
-        <hr/>
-        <br>
-        <div>
-            <label class="input-label" style="font-size: large">Is this an emergency situation? </label><br/><br>
-        </div>
-        <div style="display: flex; align-self: center">
-            <a href="<?php echo URL_ROOT; ?>/animalReports/emergencyReportForm" class="">
-                <div class="left">
-                    <center>
-                        <h3> Emergency </h3> <br>
-                        <!--                        <i class="fas fa-hotel fa-customize fa-color"></i>-->
-                    </center>
-                </div>
-            </a>
+    <div class="instructions">
+        <h1 class="instructions-heading">How it Works</h1>
+        <ol type="1" class="instructions-items">
+            <li>Submit an Animal Report by uploading your contact details, location and an image of the animal in need of shelter.</li>
+            <li>We will notify all the nearby Animal Welfare Organizations registered at Petso regarding your case.</li>
+            <li>Your animal report will be posted at our forum and will be made visible to the users of Petso.</li>
+            <li>Once an organization chooses to respond to your case, you will be notified via an SMS.</li>
+        </ol>
+        <br style="margin-top: 20px">
+        <h3>Note:</h3>
+        <ul>
+            <li>Users are required to sign in to submit an Animal report.</li>
+            <li>This platform is to find shelter for an animal and <span>not for Emergency situations.</span></li>
+            <li>If your case is an emergency, you may find the contact details of the nearby Animal Welfare Organizations and contact them personally get help.</li>
+        </ul>
+    </div>
 
-            <a href="<?php echo URL_ROOT; ?>/animalReports/nonEmergencyReportForm">
-                <div class="right">
-                    <center>
-                        <h3> Non Emergency </h3> <br>
-                        <!--                        <i class="fas fa-user fa-customize fa-color"></i>-->
-                    </center>
-                </div>
+    <div class="report-form-container" style="margin-top: 75px; margin-bottom: 75px; text-align: center">
+        <h2 class="form-title">Are you looking to report an Emergency Situation?</h2>
+        <br>
+        <!--        <div>-->
+        <!--            <label class="input-label" style="font-size: large;">Are you looking to report an Emergency Situation? </label><br/><br>-->
+        <!--        </div>-->
+        <div style="display: flex; align-self: center">
+            <a class="left" href="<?php echo URL_ROOT; ?>/animalReports/emergencyReportForm">
+                <h3> Yes, it’s an Emergency </h3>
+            </a>
+            <a class="right" href="<?php echo URL_ROOT; ?>/animalReports/nonEmergencyReportForm">
+                <h3> No, it’s not an Emergency </h3> <br>
             </a>
         </div>
         <div>

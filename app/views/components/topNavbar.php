@@ -12,7 +12,7 @@
 <body>
    <nav class="nav pg-body">
        <div class="nav-logo">
-            <a href="/">
+            <a href="<?php echo URL_ROOT;?>/">
             <img src="<?php echo URL_ROOT; ?>/public/assets/img/petso_logo.png"> 
             </a>
        </div>

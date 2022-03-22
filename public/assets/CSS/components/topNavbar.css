@@ -12,13 +12,15 @@
 }
 
 .nav {
-    height: 80px;
+    /*height: 80px;*/
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     z-index: 10;
     position: relative;
+    border-bottom: 10px;
+    border-bottom-color: black;
 }
 
 .nav-logo img {

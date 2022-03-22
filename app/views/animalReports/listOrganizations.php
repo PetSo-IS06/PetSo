@@ -46,7 +46,7 @@
                             <button class="blue-btn" href="tel:<?php echo $item->org_mobile; ?>"> Call</button>
                         </td>
                         <td style="flex-direction: row;">
-                            <button class="red-btn" href="email:<?php echo $item->org_email; ?>"> Email</button>
+                            <button class="red-btn" href="mailto:<?php echo $item->org_email; ?>"> Email</button>
                         </td>
                         <!--                    <td><a href="-->
                         <?php //echo $item->org_email; ?><!--"> Email</a></td>-->

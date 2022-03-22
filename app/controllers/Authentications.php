@@ -10,12 +10,14 @@
 
         public function login() {
             error_reporting(E_ALL ^ E_WARNING);
+            error_reporting(E_ALL ^ E_NOTICE);
             // an associative array to handle user input
             $data = [
                 'email' => '',
                 'password' => '',
                 'emailError' => ' ',
-                'passwordError' => ' '
+                'passwordError' => ' ',
+                'attentionMessage' => 'Welcome to PetSo'
             ];
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,7 +29,8 @@
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
                     'emailError' => '',
-                    'passwordError' => ''
+                    'passwordError' => '',
+                    'attentionMessage' => 'Welcome to PetSo'
                 ];
 
                 $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
@@ -103,7 +106,7 @@
                     'password' => '',
                     'emailError' => ' ',
                     'passwordError' => ' ',
-                    'attentionMessage' => 'Welcome to PetSo'
+                    'attentionMessage' => 'Welcome to PetSo',
                 ];
             }
 
@@ -155,4 +158,5 @@
 
             $this->view('users/verifyOTP', $data);
         }
+
     }

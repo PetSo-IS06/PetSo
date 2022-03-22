@@ -422,7 +422,7 @@ margin: 0;
 }
 
 .textArea {
-    margin-top: .8rem;
+    /* margin-top: .8rem; */
     color: var(--primary-grey-color);
 }
 

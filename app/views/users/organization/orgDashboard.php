@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a onClick="showAnimalProfilesPanel()" id="animal-tag">
                         <i class="fas fa-paw"></i>
                         <span>My Animals</span>
                         </a>
@@ -364,6 +364,38 @@
                     </div>
                 </section>
             </section>
+
+            <!-- Animal Profiles Section -->
+            <section class="page-content" id="animal-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Animal Profiles</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
+                                    <input type="search" placeholder="Search..." name="searchAnimalProfile" />
+                                    <i class="fa fa-search"></i>
+                                </div> 
+                        <!-- <div class="btn">
+                            <a href="<?php echo URL_ROOT; ?>/projects/createProject" class="content-sub-head-btn" id="">Create Project</a>
+                        </div> -->
+                    </div>
+                    </section> 
+                    
+                    <div class="opportunities" id="animalProfiles" style="display:flex; flex-direction: column;">
+                        <div class="prof-panel">
+                            <a href="<?php echo URL_ROOT; ?>/AnimalProfiles/create">
+                                <div class="create-prof-card">
+                                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/paw-with-plus.png" alt="Create Icon">
+                                    <h3 class="normalB grey center">Create Profile</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
         </div>
     </div>
     <div id="footer">

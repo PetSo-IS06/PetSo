@@ -97,7 +97,6 @@
     
     <!-- volunteering -->
 
-
     <?php
     if($data['project']->volunteering=="True"){
         $volunteer=$data['volunteer_opportunity'];
@@ -140,6 +139,7 @@
        <a href= '' class='purple-btn v-btn_width'>volunteer Now </a> </center>
    </div>
 </div> "; }?>
+</div>
 
 
        <br> 
@@ -187,6 +187,7 @@
         </div>
     </div>
 </div>";}?>
+
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

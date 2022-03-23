@@ -23,8 +23,8 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // sanitize post data
                 // filter_input_array() returns false if POST var is set to scalar value
-                // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $_POST = filter_input_array(INPUT_POST);
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+               
 
                 $data = [
                     'email' => trim($_POST['email']),

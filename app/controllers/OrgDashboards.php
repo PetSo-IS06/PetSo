@@ -17,11 +17,13 @@ class OrgDashboards extends Controller {
         $projects = $this->orgDashboardModel->getMyProjects();
         $volOpp = $this->orgDashboardModel->getMyVolOpportunities();
         $funds = $this->orgDashboardModel->getMyFundraisers();
+        $animalProfiles = $this->orgDashboardModel->getMyAnimalProfiles();
 
         $data = [
             "projects" => $projects,
             "volOpp" => $volOpp,
             "funds" => $funds,
+            "an-profiles" => $animalProfiles
         ];
 
         $this->view('users/organization/orgDashboard', $data);

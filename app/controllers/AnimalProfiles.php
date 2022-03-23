@@ -73,6 +73,8 @@ class AnimalProfiles extends Controller {
                 }
             }
             //Check if animal type exists in json file
+
+            
             if(empty($data['nameError']) && empty($data['typeError']) 
             && empty($data['ageError']) && empty($data['genderError']) && empty($data['monthlyCostError'])){
 

@@ -9,8 +9,8 @@
         }
 
         public function createProfile($data) {
-            $this->db->query('INSERT INTO `petso`.`Animal_Profile` (`org_id`, `name`, `type`, `age`, `breed`, `gender`, `description`, `image`, `adoption`, `requirements`, `sponsorship`, `monthly_cost`, `create_date`) 
-            VALUES (:org_id, :name, :type, :age, :breed, :gender, :description, :image, :adoption, :requirements, :sponsorship, :monthly_cost, :create_date)');
+            $this->db->query('INSERT INTO `petso`.`Animal_Profile` (`org_id`, `name`, `type`, `age`, `breed`, `gender`, `description`, `image`, `adoption_status`, `requirements`, `sponsorship_status`, `monthly_cost`, `create_date`) 
+            VALUES (:org_id, :name, :type, :age, :breed, :gender, :description, :image, :adoption_status, :requirements, :sponsorship_status, :monthly_cost, :create_date)');
             
             $this->db->bind(':org_id', $_SESSION['user_id']);
             $this->db->bind(':name', $data['name']);
@@ -21,15 +21,15 @@
             $this->db->bind(':description', $data['description']);
             $this->db->bind(':image', $data['prof-image']);
             if($data['adoption'] == 'true') {
-                $this->db->bind(':adoption', true);
+                $this->db->bind(':adoption_status', 'Available');
             }else {
-                $this->db->bind(':adoption', false);
+                $this->db->bind(':adoption_status', 'Not Available');
             }
             $this->db->bind(':requirements', $data['requirements']);
             if($data['sponsorship'] == 'true') {
-                $this->db->bind(':sponsorship', true);
+                $this->db->bind(':sponsorship_status', 'Available');
             }else {
-                $this->db->bind(':sponsorship', false);
+                $this->db->bind(':sponsorship_status', 'Not Available');
             }
             $this->db->bind(':monthly_cost', $data['monthlyCost']);
             $this->db->bind(':create_date', $data['create-date']);

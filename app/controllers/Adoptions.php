@@ -12,6 +12,7 @@ class Adoptions extends Controller {
             'fullname'=>'',
             'address'=>'',
             'mobileNo'=>'',
+            'requirements'=>'',
 
         ];
 
@@ -22,6 +23,7 @@ class Adoptions extends Controller {
                 'fullname'=>trim(($_POST['fullname'])),
                 'address'=>trim(($_POST['address'])),
                 'mobileNo'=>trim(($_POST['mobileNo'])),
+                'requirements'=>trim(($_POST['requirements'])),
     
             ];
 

@@ -18,7 +18,7 @@
         </div>  
             <center>
             <h2>Adoption Application</h2>
-            <hr width="18%"> </center>
+            <hr width="18%"> </center><br>
 
     <div class="row">
         <div class="column1">
@@ -35,13 +35,13 @@
             <input type="text" placeholder="text" id="address" name="address" required="required" value="<?php echo $data['address']; ?>"> <br>
             <label> Mobile Number</label><br>
             <input type="text" placeholder="text" id="mobile" name="mobileNo" required="required" value="<?php echo $data['mobileNo']; ?>" ><br>
-            <label> Requirements</label><br> <br>
-            <input type="text area"><br><br>
+            <label> Requirements</label><br> 
+            <input type="textarea" placeholder="textarea" id="textarea" name="textarea" required="required" value="<?php echo $data['requirements']; ?>"><br><br>
             <input type="checkbox" id="Requirements">  I confirm that I am eligible for this Adoption <br><br>
             <button type="submit" name = "submit" class="purple-btn">Apply </a>
         </div>
      </div>
-  <br><br><br><br>
+  <br><br><br>
 
     <div id="footer">
         <?php

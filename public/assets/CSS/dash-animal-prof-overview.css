@@ -82,7 +82,7 @@
     margin-bottom: 10px;
 }
 
-.view-all a {
+.view-all a:hover {
     text-decoration: underline;
 }
   

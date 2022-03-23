@@ -392,24 +392,24 @@
                                 <div class="shel-cont">
                                     <div class="animals-card">
                                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/dog-bubbles.png" alt="Dogs">
-                                        <p class="normalB grey">15 Dogs</p>
+                                        <p class="normalB grey"><?php echo $data["an-profiles"]['dogs-total']; ?> Dogs</p>
                                     </div>
                                     <div class="animals-card">
                                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/cat-bubbles.png" alt="Cats">
-                                        <p class="normalB grey">09 Cats</p>
+                                        <p class="normalB grey"><?php echo $data["an-profiles"]['cats-total']; ?> Cats</p>
                                     </div>
                                     <div class="animals-card">
                                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/bird-bubbles.png" alt="Birds">
-                                        <p class="normalB grey">03 Birds</p>
+                                        <p class="normalB grey"><?php echo $data["an-profiles"]['birds-total']; ?> Birds</p>
                                     </div>
                                     <div class="animals-card">
                                         <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/other-bubbles.png" alt="Others">
-                                        <p class="normalB grey">05 Others</p>
+                                        <p class="normalB grey"><?php echo $data["an-profiles"]['others-total']; ?> Others</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="view-all card3">
-                                <h1 class="heading1B grey">32</h1>
+                                <h1 class="heading1B grey"><?php echo $data["an-profiles"]['animals-total']; ?></h1>
                                 <h3  class="normalB grey">Profiles available currently</h3>
                                 <a  class="normalB purple" href="">View all &rarr;</a>
                             </div>
@@ -452,26 +452,26 @@
                                 <div class="sum-cont">
                                     <div class="sum-row1">
                                         <div class="avail-tot">
-                                            <h1 class="heading1B purple">28</h1>
+                                            <h1 class="heading1B purple"><?php echo $data["an-profiles"]['to-adopt-total']; ?></h1>
                                             <h3  class="normalB purple">Available for Adoption</h3>
                                         </div>
                                         <div class="avail-tot">
-                                            <h1 class="heading1B purple">10</h1>
+                                            <h1 class="heading1B purple"><?php echo $data["an-profiles"]['to-sponsor-total']; ?></h1>
                                             <h3  class="normalB purple">Available for Sponsoring</h3>
                                         </div>
                                     </div>
                                     <div class="sum-row2">
                                         <div class="totals">
-                                            <h1 class="heading1B">05</h1>
+                                            <h1 class="heading1B"><?php echo $data["an-profiles"]['adopted-total']; ?></h1>
                                             <h3  class="normalB">Adopted</h3>
                                         </div>
                                         <div class="totals">
-                                            <h1 class="heading1B">08</h1>
+                                            <h1 class="heading1B"><?php echo $data["an-profiles"]['sponsored-total']; ?></h1>
                                             <h3  class="normalB">Sponsored</h3>
                                         </div>
                                         <div class="totals">
-                                            <h1 class="heading1B">19</h1>
-                                            <h3  class="normalB">Awaiting</h3>
+                                            <h1 class="heading1B"><?php echo $data["an-profiles"]['in-shelter']; ?></h1>
+                                            <h3  class="normalB">In Shelter</h3>
                                         </div>
                                     </div>
                                 </div>

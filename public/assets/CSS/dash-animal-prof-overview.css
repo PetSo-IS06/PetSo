@@ -1,0 +1,199 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+.btn .content-sub-head-btn {
+ background-color: var(--primary-blue-color);
+}
+
+#prof-overview {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.main-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    column-gap: 10px;
+}
+
+.main-row:first-child {
+    flex-grow: 1;
+}
+
+.main-row:last-child {
+    flex-grow: 2;
+}
+
+
+#top-row {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+#bottom-row {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.shelter {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 20px;
+}
+
+.shel-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.shel-cont .animals-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-row .view-all {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 170px;
+    row-gap: 10px;
+    align-items: center;
+    padding: 20px;
+    padding-top: 30px;
+}
+
+.view-all h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.view-all a {
+    text-decoration: underline;
+}
+  
+.create-prof-card {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 130px;
+    background-color: #FFFFFF;
+    border: 1px solid var(--primary-very-light-grey-color);
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+  
+.create-prof-card:hover {
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+}
+  
+.create-prof-card img {
+    height: 60px;
+    width: 60px;
+    align-self: center;
+    border-radius: 50%;
+    margin: .5rem 0;
+}
+
+.main-row .recent{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    row-gap: 10px;
+    height: 50vh;
+    /* min-height: 244px;
+    max-height: 405px; */
+    overflow-y: scroll;
+}
+
+.recent .activities{
+    display: flex;
+    flex-direction: column;
+}
+
+.activities .activity{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    align-items: center;
+    padding-bottom: 7px;
+    margin-top: 10px;
+    border-bottom: 1px solid var(--primary-very-light-grey-color);
+}
+
+.activities .activity img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-very-light-grey-color);
+}
+
+.activity .act-cap {
+    display: flex;
+    flex-direction:column;
+    row-gap: 5px;
+}
+
+.main-row .summary{
+    flex-grow: 1;
+    display: flex;
+    padding: 10px 20px;
+    flex-direction: column;
+    row-gap:10px;
+}
+
+.summary .sum-cont {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.sum-cont .sum-row1{
+    flex-grow: 1;
+    border-bottom: 1px solid var(--primary-very-light-grey-color);
+    display: flex;
+    flex-direction: row;
+}
+
+.avail-tot {
+    flex-grow: 1;
+    display: flex;
+    row-gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sum-cont .sum-row2{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.sum-row2 .totals{
+    flex-grow: 1;
+    display: flex;
+    row-gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

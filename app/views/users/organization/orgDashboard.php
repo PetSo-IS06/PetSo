@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-prof-overview.css">
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/organization-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
@@ -377,20 +378,104 @@
                                     <input type="search" placeholder="Search..." name="searchAnimalProfile" />
                                     <i class="fa fa-search"></i>
                                 </div> 
-                        <!-- <div class="btn">
-                            <a href="<?php echo URL_ROOT; ?>/projects/createProject" class="content-sub-head-btn" id="">Create Project</a>
-                        </div> -->
+                        <div class="btn">
+                            <a href="" class="content-sub-head-btn" style="background-color: #1D67BE;" id="">View all</a>
+                        </div>
                     </div>
                     </section> 
-                    
-                    <div class="opportunities" id="animalProfiles" style="display:flex; flex-direction: column;">
-                        <div class="prof-panel">
+
+                    <!-- Initial display -->
+                    <div class="opportunities" id="prof-overview">
+                        <div class="main-row" id="top-row">
+                            <div class="shelter card3">
+                                <h3 class="subtitleB grey">At your Shelter</h3>
+                                <div class="shel-cont">
+                                    <div class="animals-card">
+                                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/dog-bubbles.png" alt="Dogs">
+                                        <p class="normalB grey">15 Dogs</p>
+                                    </div>
+                                    <div class="animals-card">
+                                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/cat-bubbles.png" alt="Cats">
+                                        <p class="normalB grey">09 Cats</p>
+                                    </div>
+                                    <div class="animals-card">
+                                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/bird-bubbles.png" alt="Birds">
+                                        <p class="normalB grey">03 Birds</p>
+                                    </div>
+                                    <div class="animals-card">
+                                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/other-bubbles.png" alt="Others">
+                                        <p class="normalB grey">05 Others</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="view-all card3">
+                                <h1 class="heading1B grey">32</h1>
+                                <h3  class="normalB grey">Profiles available currently</h3>
+                                <a  class="normalB purple" href="">View all &rarr;</a>
+                            </div>
                             <a href="<?php echo URL_ROOT; ?>/AnimalProfiles/create">
                                 <div class="create-prof-card">
                                     <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/paw-with-plus.png" alt="Create Icon">
                                     <h3 class="normalB grey center">Create Profile</h3>
                                 </div>
                             </a>
+                        </div>
+                        <div class="main-row" id="bottom-row">
+                            <div class="recent card3">
+                                <h3 class="subtitleB grey">Recent Activities</h3>
+                                <div class="activities">
+                                    <div class="activity">
+                                        <img src="<?php echo URL_ROOT; ?>/public/uploads/animals/default-img.jpg" alt="Profile image">
+                                        <div class="act-cap">
+                                            <p class="normal"><b>Benny</b> was adopted by <b>Anura</b></p>
+                                            <p class="normal light-grey">Date: 02/03/2022</p>
+                                        </div>
+                                    </div>
+                                    <div class="activity">
+                                        <img src="<?php echo URL_ROOT; ?>/public/uploads/animals/default-img.jpg" alt="Profile image">
+                                        <div class="act-cap">
+                                            <p class="normal"><b>Benny</b> was adopted by <b>Anura</b></p>
+                                            <p class="normal light-grey">Date: 02/03/2022</p>
+                                        </div>
+                                    </div>
+                                    <div class="activity">
+                                        <img src="<?php echo URL_ROOT; ?>/public/uploads/animals/default-img.jpg" alt="Profile image">
+                                        <div class="act-cap">
+                                            <p class="normal"><b>Benny</b> was adopted by <b>Anura</b></p>
+                                            <p class="normal light-grey">Date: 02/03/2022</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="summary card3">
+                                <h3 class="subtitleB grey">Summary</h3>
+                                <div class="sum-cont">
+                                    <div class="sum-row1">
+                                        <div class="avail-tot">
+                                            <h1 class="heading1B purple">28</h1>
+                                            <h3  class="normalB purple">Available for Adoption</h3>
+                                        </div>
+                                        <div class="avail-tot">
+                                            <h1 class="heading1B purple">10</h1>
+                                            <h3  class="normalB purple">Available for Sponsoring</h3>
+                                        </div>
+                                    </div>
+                                    <div class="sum-row2">
+                                        <div class="totals">
+                                            <h1 class="heading1B">05</h1>
+                                            <h3  class="normalB">Adopted</h3>
+                                        </div>
+                                        <div class="totals">
+                                            <h1 class="heading1B">08</h1>
+                                            <h3  class="normalB">Sponsored</h3>
+                                        </div>
+                                        <div class="totals">
+                                            <h1 class="heading1B">19</h1>
+                                            <h3  class="normalB">Awaiting</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

@@ -303,6 +303,15 @@
     padding: 2rem 3rem;
 }
 
+.card3 {
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid var(--primary-very-light-grey-color);
+    box-sizing: border-box;
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
 /* --------------------- Form Styles ----------------------------- */
 
 .invalidInput {

@@ -143,7 +143,8 @@
                 'email' => '',
                 'mobile' => '',
                 'emailError' => '',
-                'mobileError' => ''
+                'mobileError' => '',
+                'otp' => ''
             ];
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -155,7 +156,8 @@
                     'email' => trim($_POST['email']),
                     'mobile' => trim($_POST['mobile']),
                     'emailError' => '',
-                    'mobileError' => ''
+                    'mobileError' => '',
+                    'otp' => ''
                 ];
 
                 $mobileValidation = "/^[0-9]*$/";
@@ -203,8 +205,24 @@
                 'email' => '',
                 'mobile' => '',
                 'emailError' => '',
-                'mobileError' => ''
+                'mobileError' => '',
+                'otp' => ''
             ];
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // sanitize post data
+                // filter_input_array() returns false if POST var is set to scalar value
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $num1 = trim($_POST['num1']);
+                $num2 = trim($_POST['num2']);
+                $num3 = trim($_POST['num3']);
+                $num4 = trim($_POST['num4']);
+
+                $data['otp'] = strval($num1).strval($num2).strval($num3).strval($num4);
+
+                
+            }
 
             $this->view('users/verifyOTP', $data);
         }

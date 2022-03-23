@@ -138,13 +138,62 @@
             $_SESSION['user_type'] = $account->type;
         }
 
-        public function resetPassword(){
+        public function verifyEmailMobile(){
             $data = [
                 'email' => '',
                 'mobile' => '',
                 'emailError' => '',
                 'mobileError' => ''
             ];
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // sanitize post data
+                // filter_input_array() returns false if POST var is set to scalar value
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'mobile' => trim($_POST['mobile']),
+                    'emailError' => '',
+                    'mobileError' => ''
+                ];
+
+                $mobileValidation = "/^[0-9]*$/";
+
+                // validate email
+                if(empty($data['email'])) {
+                    $data['emailError'] = 'Please enter your email';
+                } elseif(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                    $data['emailError'] = 'Please enter the correct format';
+                } else {
+                    // check if email already exists
+                    if(!$this->authModel->ifEmailExists($data['email'])) {
+                        $data['emailError'] = 'Email not registered';
+                    }
+                }
+
+                // validate mobile number (length & numbers only)
+                if(empty($data['mobile'])) {
+                    $data['mobileError'] = 'Please enter your mobile number';
+                } elseif(strlen(($data['mobile'])) != 10) {
+                    $data['mobileError'] = 'Number should contain 10 digits';
+                } elseif(!preg_match($mobileValidation, $data['mobile'])) {
+                    $data['mobileError'] = 'Mobile number should contain only numbers';
+                }
+
+                if(empty($data['emailError']) && empty($data['mobileError'])){
+                    $DBmobile = $this->authModel->getMobile($data);
+                    if($DBmobile != -1) {
+                        if(strcmp($data['mobile'], $DBmobile) == 0){
+                            $this->view('users/verifyOTP', $data);
+                        } else {
+                            $data['mobileError'] = 'Email and Mobile Number do not match';
+                        }
+                    } else {
+                        $data['mobileError'] = 'Email and Mobile Number do not match';
+                    }
+                }
+            }
 
             $this->view('users/resetPassword', $data);
         }

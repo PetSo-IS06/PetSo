@@ -117,6 +117,7 @@ class AnimalReports extends Controller
     public function createReport()
     {
         error_reporting(E_ALL ^ E_WARNING);
+        error_reporting(E_ALL ^ E_NOTICE);
         $data = [
             'heading' => '',
             'situation' => '',
@@ -203,7 +204,7 @@ class AnimalReports extends Controller
                 // register user from model function
                 if ($this->reportModel->saveReport($data)) {
                     // redirect to confirmation page
-                    header('location:' . URL_ROOT . '/animalReports/reportConfirmation');
+                    header('location:' . URL_ROOT . '/pages/index');
                 } else {
                     die('Something went wrong.');
                 }

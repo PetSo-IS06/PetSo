@@ -44,13 +44,13 @@
                         </a>
                     </li>
                     <li>
-                        <a onClick="showRequestsPanel()" id="req-tag">
+                        <a  onClick="showRequestsPanel()" id="req-tag">
                         <i class="fas fa-hands-helping"></i>
                         <span>Account Requests</span>
                         </a>
                     </li>
                     <li>
-                        <a onClick="showProjectsPanel()" id="proj-tag">
+                        <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
                         <i class="fas fa-comment-dollar"></i>
                         <span>Welfare Projects</span>
                         </a>

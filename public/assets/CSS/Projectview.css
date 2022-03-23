@@ -27,15 +27,13 @@ div.columns{
 
 }
 div.columns:nth-of-type(even){
-    flex: 1.5;
-      
+    flex: 1.5;    
 }
 
 .title{
   font-size: var(--title-size);
   color: var(--primary-light-grey-color);
 }
-
 
   .columns .purple-btn{
     width: 200px;
@@ -71,7 +69,6 @@ div.columns:nth-of-type(even){
  }
 .col1 {
   margin-left: 20px;
- 
   flex-grow: 2;
 }
 .col2{
@@ -80,8 +77,47 @@ div.columns:nth-of-type(even){
   flex-grow: 2;
 }
 .col3{
- 
   margin-left: 200px;
   flex-grow: 2;
+}
+
+.container {
+  display: flex;
+  flex-direction: row; 
+}
+.colum1 {
+  width: 50%;
+  flex-grow: 2;
+}
+ .colum2{
+  flex-grow: 2;
+   width: 50%;
+ }
+
+
+.v-btn_width{
+  width: 200px;
+}
+
+.d-btn_width{
+  width: 200px;
+}
+
+.donate_col1 {
+  margin-left: 50px;
+  flex-grow: 2;
+}
+
+.donate_col2{
+  margin-left: 20px;
+  flex-grow: 2;
+}
+.donate_col3{
+  margin-left: 70px;
+  flex-grow: 2;
+}
+
+div.normalB x {
+  height: 50px;
 }
 

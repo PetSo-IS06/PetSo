@@ -372,10 +372,14 @@ class Projects extends Controller {
         $this->view('projects/createProject', $results);
     }
   
-    public function projectView() {
+    public function projectView($id) {
     
-        $data = $this->projectModel->getprojectView();
-        $this->view('users/organization/projectView', $data[0]);
+        $data = [
+            'project'=>$this->projectModel->getprojectView($id),
+            'volunteer_opportunity'=> $this->projectModel->getVolunteerOpportunity($id),
+            'fundraiser'=> $this->projectModel->getFundraiser($id),
+        ];
+        $this->view('projects/viewSingleProject', $data);
     }
 
     public function createVolunteerOpportunity() {

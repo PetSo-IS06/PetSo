@@ -13,6 +13,10 @@ class Adoptions extends Controller {
             'address'=>'',
             'mobileNo'=>'',
             'requirements'=>'',
+            'fullnameError' => '',
+            'addressError' => '',
+            'mobileNoError' => '',
+            
 
         ];
 
@@ -24,10 +28,30 @@ class Adoptions extends Controller {
                 'address'=>trim(($_POST['address'])),
                 'mobileNo'=>trim(($_POST['mobileNo'])),
                 'requirements'=>trim(($_POST['requirements'])),
+                'fullnameError' => '',
+                'addressError' => '',
+                'mobileNoError' => '',
+            
+               
     
             ];
 
-            $this->adoptionModel->getAdoptionApplication($data);
+            if(empty($data['fullname'])) {
+                $data['fullnameError'] = 'Please enter your Full name';
+            }
+            if(empty($data['address'])) {
+                $data['addressError'] = 'Please enter the Address';
+            }
+            if(empty($data['mobileNo'])) {
+                $data['mobileNoError'] = 'Please enter the mobile Number';
+
+            }
+            if(empty($data['fullnameError']) && empty($data['addressError']) && empty($data['monileNoError'])){
+
+                $this->adoptionModel->createAdoptionApplication($data);
+              
+                header('location:' . URL_ROOT . '/pages/index');
+            }
         }
 
        

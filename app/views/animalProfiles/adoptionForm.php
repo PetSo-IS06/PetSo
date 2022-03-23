@@ -29,14 +29,37 @@
         </div>
         <form action="<?php echo URL_ROOT; ?>/Adoptions/adoptionApplication" method="POST" enctype="multipart/form-data">
         <div class="column2">
-            <label for="fname">Full Name</label><br>
-            <input type="text" placeholder="text" id="fname" name="fullname" required="required" value="<?php echo $data['fullname'];?>"><br>
-            <label> Address</label><br>
-            <input type="text" placeholder="text" id="address" name="address" required="required" value="<?php echo $data['address']; ?>"> <br>
-            <label> Mobile Number</label><br>
-            <input type="text" placeholder="text" id="mobile" name="mobileNo" required="required" value="<?php echo $data['mobileNo']; ?>" ><br>
-            <label> Requirements</label><br> 
-            <input type="textarea" placeholder="textarea" id="textarea" name="textarea" required="required" value="<?php echo $data['requirements']; ?>"><br><br>
+        
+            <div class="inputBx2" id="">
+                            <input name="fullname" id="fullname" type="text" value="<?php echo $data['fullname']; ?>">
+                            <span class="normalB">Full Name</span>
+                        </div>
+                        <span class="invalidInput"><?php echo $data['fullnameError']; ?></span>
+
+                        <div class="textArea">
+                        <span class="normalB">Address</span>
+                        <div class="text-box" id="">
+                            <textarea rows="3" name="address"><?php echo $data['address']; ?></textarea> 
+                        </div>
+                        <span class="invalidInput"><?php echo $data['addressError'];; ?></span>
+                    </div>
+            
+          
+            <div class="inputBx2" id="">
+                            <input name="mobileNo" id="mobileNo" type="text" value="<?php echo $data['mobileNo']; ?>">
+                            <span class="normalB">Mobile Number</span>
+                        </div>
+                        <span class="invalidInput"><?php echo $data['mobileNoError']; ?></span>
+
+            
+            <div class="textArea">
+                        <span class="normalB">Requirements</span>
+                        <div class="text-box" id="">
+                            <textarea rows="5" name="requirements"><?php echo $data['requirements']; ?></textarea> 
+                        </div>
+                        <span class="invalidInput"><?php echo ""; ?></span>
+                    </div>
+                    <br>
             <input type="checkbox" id="Requirements">  I confirm that I am eligible for this Adoption <br><br>
             <button type="submit" name = "submit" class="purple-btn">Apply </a>
         </div>

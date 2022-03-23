@@ -8,7 +8,7 @@
             $this->db = new Database;
         }
 
-        public function getAdoptionApplication($data) {
+        public function createAdoptionApplication($data) {
             $this->db->query("INSERT INTO `petso`.`Adoption` (`fullname`,`address`,`mobileNo`, `requirements`) VALUES (:fullname,:address, :mobileNo, :requirements)");
             
          

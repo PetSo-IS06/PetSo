@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/hero-section.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/indexAnimalReport.css">
-    <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/form-container.css'>
+<!--    <link rel='stylesheet' href='--><?php //echo URL_ROOT; ?><!--/public/assets/CSS/components/form-container.css'>-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title><?php echo SITE_NAME; ?> | Home</title>
@@ -19,9 +19,9 @@
     require APP_ROOT . '/views/components/topNavbar.php';
     ?>
 
-<!--    <div class="hero">-->
-<!--    </div>-->
-<!--    <br><br>-->
+    <!--    <div class="hero">-->
+    <!--    </div>-->
+    <!--    <br><br>-->
     <div class="hero-banner">
         <div class="hero-banner-contents">
             <div class="hero-banner-contents-icon">
@@ -71,7 +71,7 @@
 </div>
 
 <div>
-    <div class="animalReport">
+    <div class="animalReportSection">
 
         <!--1-->
         <div class="container1">
@@ -104,27 +104,40 @@
         <div class="container2">
             <!--Display division-->
             <div class="info" id="info">
-                <div class="infoUpper">
-                    <h2>Latest Reports</h2>
-                    <a onclick="Content_edit();">
-                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit.png">
-                    </a>
-                </div>
+                <!--                <div class="infoUpper">-->
+                <h2>Latest Reports</h2>
+<!--                                    <a onclick="Content_edit();">-->
+<!--                                        <img src="-->
+<!--                --><?php //echo URL_ROOT; ?><!--/public/assets/img/icons/edit.png">-->
+<!--                                    </a>-->
+<!--                                </div>-->
             </div>
 
+            <!-- Card display division-->
+
             <div class="container2Card">
-                <!--Display division-->
                 <div class="info" id="info">
-                    <div class="infoUpper">
-                        <h2>Latest Reports</h2>
-                        <a onclick="Content_edit();">
-                            <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit.png">
-                        </a>
+                    <div href="<?php echo URL_ROOT; ?>/" class="reportVerticalCard">
+                        <h2 style="font-weight: bold">A Female Kitten is looking for help</h2>
+                        <hr>
+                        <div class="cardBody">
+                            <div class="cardBodyInner">
+                                <div class="cardBodyInner1 paddingBot paddingRight">
+                                    <div> <span>Animal:</span> Cat</div>
+                                    <div> <span>Location:</span> area, district</div>
+                                </div>
+                                <div class="paddingBot"> <span>Desription:</span> Amet minim mollit non officia consequat ...</div>
+                                <div class="paddingBot"> <span>Conversations:</span> 0</div>
+                            </div>
+                            <div class="cardBodyImage">
+                                <img src="<?php echo URL_ROOT; ?>/public/assets/img/dog.jpg">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
 </div>

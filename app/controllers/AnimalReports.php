@@ -9,10 +9,10 @@ class AnimalReports extends Controller
         $this->reportModel = $this->model('ReportAnimal');
     }
 
-    public function index()
-    {
-        $this->view('pages/index');
-    }
+//    public function index()
+//    {
+//        $this->view('pages/index');
+//    }
 
     public function reportAnimal()
     {

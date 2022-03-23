@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li>
-                        <a  onClick="" id="">
+                        <a class="active-tag" onClick="" id="">
                         <i class="fas fa-rocket"></i>
                         <span>Users</span>
                         </a>

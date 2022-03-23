@@ -31,8 +31,8 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // sanitize post data
                 // filter_input_array() returns false if POST is set to scalar value
-                // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-                $_POST = filter_input_array(INPUT_POST);
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+               
 
                 // trim() removes white space on either sides of input strings
                 $data = [

@@ -9,10 +9,10 @@ class AnimalReports extends Controller
         $this->reportModel = $this->model('ReportAnimal');
     }
 
-//    public function index()
-//    {
-//        $this->view('pages/index');
-//    }
+    public function index()
+    {
+        $this->view('pages/index');
+    }
 
     public function reportAnimal()
     {
@@ -33,6 +33,7 @@ class AnimalReports extends Controller
     public function listOrganizations()
     {
         error_reporting(E_ALL ^ E_WARNING);
+        error_reporting(E_ALL ^ E_NOTICE);
         $data = [
             'district' => '',
             'area' => '',
@@ -117,6 +118,7 @@ class AnimalReports extends Controller
     {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
+            'heading' => '',
             'situation' => '',
             'district' => '',
             'area' => '',
@@ -157,6 +159,7 @@ class AnimalReports extends Controller
 
             // trim() removes white space on either sides of input strings
             $data = [
+                'heading' => trim($_POST['heading']),
                 'situation' => trim($_POST['situation']),
                 'district' => trim($_POST['district']),
                 'area' => trim($_POST['area']),

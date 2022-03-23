@@ -277,7 +277,7 @@ input[type=text], select {
 
 .container2Card {
     position: relative;
-    padding: 25px;
+    padding: 20px;
     width: 100%;
     /*display: flex;*/
     align-items: flex-start;
@@ -324,11 +324,12 @@ input[type=text], select {
 
 .cardBodyImage{
     width: 25%;
+    height: 100px;
 }
 .cardBodyImage img {
     width: 100%;
-    padding: 10px;
-    height: auto;
+    padding: 5px;
+    height: 100%;
     border-radius: 20px;
 }
 

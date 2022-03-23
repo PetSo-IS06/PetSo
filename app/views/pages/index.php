@@ -89,12 +89,12 @@
             <div class="stats">
                 <div class="container1Card">
                     <!--Display division-->
-                    <h2>50</h2>
+                    <h2>5</h2>
                     <description>Reports monthly</description>
                 </div>
                 <div class="container1Card">
                     <!--Display division-->
-                    <h2>36</h2>
+                    <h2>3</h2>
                     <description>Animals impacted</description>
                 </div>
             </div>
@@ -115,27 +115,29 @@
 
             <!-- Card display division-->
 
-            <div class="container2Card">
-                <div class="info" id="info">
-                    <div href="<?php echo URL_ROOT; ?>/" class="reportVerticalCard">
-                        <h2 style="font-weight: bold">A Female Kitten is looking for help</h2>
-                        <hr>
-                        <div class="cardBody">
-                            <div class="cardBodyInner">
-                                <div class="cardBodyInner1 paddingBot paddingRight">
-                                    <div> <span>Animal:</span> Cat</div>
-                                    <div> <span>Location:</span> area, district</div>
+            <?php foreach ($data["reports"] as $item) { ?>
+                <div class="container2Card">
+                    <div class="info" id="info">
+                        <div href="<?php echo URL_ROOT; ?>/" class="reportVerticalCard">
+                            <h2 style="font-weight: bold"><?php echo $item->heading; ?></h2>
+                            <hr>
+                            <div class="cardBody">
+                                <div class="cardBodyInner">
+                                    <div class="cardBodyInner1 paddingBot paddingRight">
+                                        <div> <span>Animal:</span> <?php echo $item->animal_type; ?></div>
+                                        <div> <span>Location:</span><?php echo $item->area; ?>, <?php echo $item->district; ?></div>
+                                    </div>
+                                    <div class="paddingBot"> <span>Description:</span> <?php echo $item->situation; ?></div>
+                                    <div class="paddingBot"> <span>Conversations:</span> 0</div>
                                 </div>
-                                <div class="paddingBot"> <span>Desription:</span> Amet minim mollit non officia consequat ...</div>
-                                <div class="paddingBot"> <span>Conversations:</span> 0</div>
-                            </div>
-                            <div class="cardBodyImage">
-                                <img src="<?php echo URL_ROOT; ?>/public/assets/img/dog.jpg">
+                                <div class="cardBodyImage">
+                                    <img src="<?php echo $item->image; ?>">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
 
         </div>
     </div>

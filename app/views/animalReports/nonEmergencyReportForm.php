@@ -42,6 +42,16 @@
                     <!--                        <label class="input-label">Please describe the situation briefly. </label><br/>-->
                     <!--                        <textarea class="input-box-area" rows="4" cols="50" name="situation" id="situation""></textarea>-->
                     <!--                    </div>-->
+
+                    <div class="textArea" style="margin-bottom: 10px">
+                        <span class="normalB" style="padding-bottom: 10px; left: 0px">Small heading for your report </span>
+                        <div class="text-box" id="heading">
+                            <textarea rows="2" name="heading" required></textarea>
+                        </div>
+                        <!--                        <span class="invalidInput">-->
+                        <?php //echo $data[1]['reportSituation']; ?><!--</span>-->
+                    </div>
+
                     <div class="textArea">
                         <span class="normalB" style="padding-bottom: 10px; left: 0px">Please describe the situation briefly </span>
                         <div class="text-box" id="situation">

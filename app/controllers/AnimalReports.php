@@ -249,4 +249,5 @@ class AnimalReports extends Controller
         $this->view('animalReports/viewAllAnimalReports', $data);
     }
 
+
 }

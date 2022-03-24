@@ -162,14 +162,6 @@
 
             $this->view('users/userProfile', $data);
         }
-
-
-        public function logout() {
-            unset($_SESSION['user_id']);
-            unset($_SESSION['user_email']);
-
-            header('location:' . URL_ROOT . '/pages/index');
-        }
          
         public function userProfileEdit() {
             $data = [

@@ -27,7 +27,7 @@
                 <i class="fas fa-bell notify"></i>
             </a>
             <?php if(isset($_SESSION['user_id'])) : ?>
-                <a href="<?php echo URL_ROOT;?>/users/logout" class="nav-menu-main-links">Log out</a>
+                <a href="<?php echo URL_ROOT;?>/Authentications/logout" class="nav-menu-main-links">Log out</a>
                 <a href="<?php echo URL_ROOT;?>/" class="nav-menu-profile-tag" id="tag1">My Profile</a>
             <?php else : ?>
                 <a href="<?php echo URL_ROOT;?>/Authentications/login" class="nav-menu-main-links">Log in</a>

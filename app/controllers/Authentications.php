@@ -115,7 +115,6 @@
         }
 
         public function createUserSession($account, $user) {
-            session_start();
             $_SESSION['user_id'] = $user->us_id;
             $_SESSION['user_name'] = $user->us_name;
             $_SESSION['user_email'] = $account->email;
@@ -123,7 +122,6 @@
         }
 
         public function createOrgSession($account, $org) {
-            session_start();
             $_SESSION['user_id'] = $org->org_id;
             $_SESSION['user_name'] = $org->org_name;
             $_SESSION['user_email'] = $account->email;
@@ -131,11 +129,19 @@
         }
 
         public function createAdminSession($account, $admin) {
-            session_start();
             $_SESSION['user_id'] = $admin->ad_id;
             $_SESSION['user_name'] = $admin->ad_name;
             $_SESSION['user_email'] = $account->email;
             $_SESSION['user_type'] = $account->type;
+        }
+
+        public function logout() {
+            unset($_SESSION['user_id']);
+            unset($_SESSION['user_name']);
+            unset($_SESSION['user_email']);
+            unset($_SESSION['user_type']);
+
+            header('location:' . URL_ROOT . '/pages/index');
         }
 
         public function verifyEmailMobile(){

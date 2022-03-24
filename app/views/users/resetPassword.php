@@ -11,27 +11,27 @@
     <body class="body1">
         <h2 class="heading2B grey center" id="title">Reset Password</h2>
         <div class="card1">
-            <form action="<?php echo URL_ROOT; ?>" method="POST">
+            <form action="<?php echo URL_ROOT . '/Authentications/verifyEmailMobile'; ?>" method="POST">
                 <div class="rp-header">
                     <h3 class="subtitleB grey">Please enter your email & mobile number</h3>
                     <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/password-key.svg" class="rp-header-img" alt="password key">
                 </div>
                 <div class="inputBx">
-                    <input name="email" id="email" type="email" required="required">
+                    <input name="email" id="email" type="email" required="required" value="<?php echo $data['email'] ?>">
                     <span class="normalB">Email</span>
                     <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/email.png" alt="email">
                 </div>
                 <span class="invalidInput"><?php echo $data['emailError'] ?></span>
                 
                 <div class="inputBx">
-                    <input name="mobile" id="mobile" type="number" required="required">
+                    <input name="mobile" id="mobile" type="number" required="required" value="<?php echo $data['mobile'] ?>">
                     <span class="normalB">Mobile</span>
                     <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/mobile.jpg" alt="mobile">
                 </div>
                 <span class="invalidInput"><?php echo $data['mobileError'] ?></span>
                 <div class="rp-bottom">
                     <a href="<?php echo URL_ROOT; ?>/authentications/login" class="grey-btn">Cancel</a>
-                    <a href="<?php echo URL_ROOT;?>/authentications/verifyOTP" class="purple-btn">Confirm</a>
+                    <input type="submit" class="purple-btn" value="Confirm">
                 </div>
             </form>
         </div>

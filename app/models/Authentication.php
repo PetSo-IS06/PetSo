@@ -57,6 +57,20 @@
             }
         }
 
+        public function setNewPassword($email, $password){
+            $this->db->query('UPDATE `petso`.`Account` SET `password` = :password WHERE (`email` = :email)');
+
+            $this->db->bind(':password', $password);
+            $this->db->bind(':email', $email);
+
+            // execute function
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function getAccountID($email){
             $this->db->query('SELECT * FROM `petso`.`Account` WHERE `email` = :email');
              // bind value
@@ -68,6 +82,44 @@
                 return $row->id;
             } else {
                 return false;
+            }
+        }
+
+        public function getMobile($data){
+            $this->db->query('SELECT `type`, `id` FROM `petso`.`Account` WHERE `email` = :email');
+            $this->db->bind(':email', $data['email']);
+
+            $row = $this->db->single();
+
+            $acnt_id = $row->id;
+            $type = $row->type;
+ 
+            if($type == 'admin') {
+                $this->db->query('SELECT * FROM `petso`.`Admin` WHERE `account_id` = :id');
+                $this->db->bind(':id', $acnt_id);
+
+                $row = $this->db->single();
+                $DB_mobile = $row->ad_mobile;
+
+            } else if($type == 'org') {
+                $this->db->query('SELECT * FROM `petso`.`Organization` WHERE `account_id` = :id');
+                $this->db->bind(':id', $acnt_id);
+
+                $row = $this->db->single();
+                $DB_mobile = $row->org_mobile;
+
+            } else {
+                $this->db->query('SELECT * FROM `petso`.`User` WHERE `account_id` = :id');
+                $this->db->bind(':id', $acnt_id);
+
+                $row = $this->db->single();
+                $DB_mobile = $row->us_mobile;
+            }
+
+            if($DB_mobile){
+                return $DB_mobile;
+            } else {
+                return -1;
             }
         }
 

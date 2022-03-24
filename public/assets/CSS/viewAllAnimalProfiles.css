@@ -1,0 +1,321 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+body {
+    background-repeat: no-repeat;
+}
+
+.hero-img{
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.animalReportSection {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.container2 {
+    box-sizing: unset;
+    position: relative;
+    padding: 25px;
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    /*background: var(--white-color);*/
+    /*border: 1px solid #C4C4C4;*/
+    /*box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);*/
+    /*border-radius: 15px;*/
+}
+
+.container2 h2 {
+    font-weight: normal;
+    /*font-size: 20px;*/
+    line-height: 23px;
+    color: #555454;
+}
+
+.container2 hr {
+    border: 1px solid #C4C4C4;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.container2 .profileBody text {
+    font-style: normal;
+    font-weight: bold;
+    color: #555454;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 15px;
+}
+
+.container2 .profileBody {
+    margin-top: 40px;
+}
+
+.container2 .profileBody span {
+    font-style: normal;
+    font-weight: normal;
+    color: #555454;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 15px;
+}
+
+.container2 .inputs {
+    margin-bottom: 20px;
+}
+
+.container2 a {
+    cursor: pointer;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container2 .infoUpper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.headingText {
+    width: 60%;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.cardsUpper {
+    display: flex;
+    flex-direction: column;
+    /*align-content: space-between;*/
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container2Card {
+    position: relative;
+    padding: 20px;
+    width: 30%;
+    /*display: flex;*/
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: #ffffff;
+    /*border: 1px solid #C4C4C4;*/
+    /*box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.15);*/
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+.cardBody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardBodyInner {
+    width: 75%;
+}
+
+.cardBodyInner span {
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 75%;
+}
+
+.cardBodyInner1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardBodyImage {
+    width: 75%;
+    /*height: 80px;*/
+}
+
+.cardBodyImage img {
+    width: 100%;
+    padding: 2px;
+    height: 100%;
+    /*border-radius: 50%;*/
+    clip-path: circle();
+    /*clip-path: circle(50.0% at 50% 50%);*/
+}
+
+.conversation {
+    color: #8f8f8f;
+}
+
+.paddingBot {
+    padding-bottom: 0.55rem;
+}
+
+.paddingTop {
+    padding-top: 0.55rem;
+}
+
+.paddingRight {
+    padding-right: 5px;
+}
+
+.cardButtons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.btn-sponsor{
+    color: #f8f8f8;
+    background-color: var( --primary-yellow-color);
+    width: 120px;
+    height: 40px;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: none;
+    font-size: large;
+}
+
+.btn-adopt{
+    color: #f8f8f8;
+    background-color: var( --primary-blue-color);
+    width: 120px;
+    height: 40px;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: none;
+    font-size: large;
+}
+
+/* =========== Styles for Tablet View ============= */
+
+@media screen and (max-width: 768px) {
+    .animalReportSection {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container1 {
+        width: auto;
+    }
+
+    .container2 {
+        width: auto;
+    }
+
+    .cards {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .searchForm {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .search-container {
+        padding: 6px;
+        background: #ddd;
+        cursor: pointer;
+        border-radius: 20px;
+        /*width: 70%;*/
+    }
+
+    .search-container-txt {
+        width: 75px;
+    }
+
+    .container2Card {
+        position: relative;
+        padding: 20px;
+        width: 90%;
+        /*display: flex;*/
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        background: #ffffff;
+        border-radius: 15px;
+        margin-top: 100px;
+    }
+
+    .hero-img{
+        width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* =========== Styles for Mobile View ============= */
+
+@media screen and (max-width: 360px) {
+    .animalReportSection {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container1 {
+        width: auto;
+    }
+
+    .container2 {
+        width: auto;
+    }
+
+    .cards {
+        width: 100%;
+    }
+
+    .info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .hero-img{
+        width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

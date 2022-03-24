@@ -40,4 +40,13 @@
                 return false;
             }
         }
+
+        public function getAllAnimalProfile()
+            {
+                $this->db->query('SELECT * FROM `petso`.`Animal_Profile` ');
+
+                $result = $this->db->resultSet();    // resultSet returns an array of Objects
+                return $result;
+        }
+
     }

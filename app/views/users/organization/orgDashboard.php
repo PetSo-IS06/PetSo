@@ -379,7 +379,7 @@
                                     <i class="fa fa-search"></i>
                                 </div> 
                         <div class="btn">
-                            <a href="" class="content-sub-head-btn" style="background-color: #1D67BE;" id="">View all</a>
+                            <a href="<?php echo URL_ROOT; ?>/animalProfiles/viewAllAnimalProfiles" class="content-sub-head-btn" style="background-color: #1D67BE;" id="">View all</a>
                         </div>
                     </div>
                     </section> 

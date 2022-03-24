@@ -13,7 +13,10 @@
         <div class="card1">
             <form action="<?php echo URL_ROOT . '/Authentications/verifyOTP'; ?>" method="POST">
                 <div class="rp-header">
-                    <h3 class="subtitleB grey">Enter the OTP sent to <?php echo $data['mobile'] ?></h3>
+                    <h3 class="subtitleB grey">Enter the OTP sent to <?php echo $data['mobile']; ?></h3>
+                    <h4 class="invalidInput"><?php echo $data['otpError']; ?></h4>
+                    <input type="text" name="email" value="<?php echo $data['email'];?>" style="display: none;">
+                    <input type="text" name="mobile" value="<?php echo $data['mobile'];?>" style="display: none;">
                     <div id="app"></div>
                 </div>
                 <div class="passcode-wrapper">
@@ -27,7 +30,7 @@
                 </div>
                 <div class="rp-bottom">
                     <a href="<?php echo URL_ROOT; ?>/authentications/login" class="grey-btn">Cancel</a>
-                    <a href="<?php echo URL_ROOT;?>/authentications/resetPassword" class="purple-btn">Verify</a>
+                    <input type="submit" class="purple-btn" value="Verify">
                 </div>
             </form>
         </div>

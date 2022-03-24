@@ -163,7 +163,7 @@
                     'mobile' => trim($_POST['mobile']),
                     'emailError' => '',
                     'mobileError' => '',
-                    'otp' => ''
+                    'otpError' => ''
                 ];
 
                 $mobileValidation = "/^[0-9]*$/";
@@ -193,8 +193,12 @@
                     $DBmobile = $this->authModel->getMobile($data);
                     if($DBmobile != -1) {
                         if(strcmp($data['mobile'], $DBmobile) == 0){
-                            $this->sendOTP($data['mobile']);
-                            $this->view('users/verifyOTP', $data);
+                            if($this->sendOTP($data['mobile'])){
+                                $this->view('users/verifyOTP', $data);
+                                return 0;
+                            } else{
+                                $data['mobileError'] = 'An Error occured. Please try again.';
+                            }
                         } else {
                             $data['mobileError'] = 'Email and Mobile Number do not match';
                         }
@@ -202,50 +206,46 @@
                         $data['mobileError'] = 'Email and Mobile Number do not match';
                     }
                 }
-                return 0;
             }
-
             $this->view('users/resetPassword', $data);
         }
 
         
         public function sendOTP($mobile) {
-            $curl = curl_init();
-
+            
             $randomNum = substr(str_shuffle("0123456789"), 0, 4);
             $_SESSION['otp'] = $randomNum;
-
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://send.ozonedesk.com/api/v2/send.php?user_id=104457&api_key=va5uxwwg3xaywp374&sender_id=ozoneDEMO&to='.$mobile.'&message='.$randomNum,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'GET',
-            ));
-
-            $response = curl_exec($curl);
-
-            curl_close($curl);
-            echo $response;
-
+            $_SESSION['otp_start'] = time();
+            $message = 'ATTENTION! Your OTP for Passoword Reset at Petso is'.$randomNum;
+           
+            //Send SMS
+            if(sendSMS($message, $mobile)){
+                return true;
+            } else {
+                return false;
+            }
+            
         }
 
         public function verifyOTP(){
             $data = [
                 'email' => '',
                 'mobile' => '',
-                'emailError' => '',
-                'mobileError' => '',
-                'otp' => ''
+                'otp' => '',
+                'otpError' => ''
             ];
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // sanitize post data
                 // filter_input_array() returns false if POST var is set to scalar value
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'mobile' => trim($_POST['mobile']),
+                    'otp' => '',
+                    'otpError' => ''
+                ];
 
                 $num1 = trim($_POST['num1']);
                 $num2 = trim($_POST['num2']);
@@ -254,7 +254,21 @@
 
                 $data['otp'] = strval($num1).strval($num2).strval($num3).strval($num4);
 
-                
+                if (time() - $_SESSION['otp_start'] < 300) { // 300 seconds = 5 minutes
+                    if(strcmp($data['otp'], $_SESSION['otp']) == 0) { // 0 = Strings match 
+                        // header('location:' . URL_ROOT . '/users/newPassword');
+                        $this->view('users/newPassword', $data);
+                        return 0;
+                    } else {
+                        unset($_SESSION['otp_start']);
+                        unset($_SESSION['otp']);
+                        $data['otpError'] = 'Incorrect OTP. Request new OTP.';
+                    }
+                } else {
+                   unset($_SESSION['otp_start']);
+                   unset($_SESSION['otp']);
+                   $data['otpError'] = 'OTP Expired. Request new OTP.';
+                }
             }
 
             $this->view('users/verifyOTP', $data);

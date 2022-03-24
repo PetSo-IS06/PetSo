@@ -237,9 +237,9 @@
                 // validate password (length & numeric values)
                 if(empty($data['newPassword'])) {
                     $data['newPasswordError'] = 'Please enter password';
-                } elseif(strlen(($data['password'])) < 8) {
+                } elseif(strlen(($data['newPassword'])) < 8) {
                     $data['newPasswordError'] = 'Password must have atleast 8 characters';
-                } elseif(!preg_match($passwordValidation, $data['password'])) {
+                } elseif(!preg_match($passwordValidation, $data['newPassword'])) {
                     $data['newPasswordError'] = 'Password should contain atleast 1 numeric value';
                 }
 
@@ -272,7 +272,7 @@
             $randomNum = substr(str_shuffle("0123456789"), 0, 4);
             $_SESSION['otp'] = $randomNum;
             $_SESSION['otp_start'] = time();
-            $message = 'ATTENTION! Your OTP for Passoword Reset at Petso is'.$randomNum;
+            $message = 'ATTENTION! Your OTP for Passoword Reset at Petso is '.$randomNum;
            
             //Send SMS
             if(sendSMS($message, $mobile)){

@@ -163,7 +163,7 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    background: #C4C4C4;
+    background: var(--primary-very-light-grey-color);
     border: 1px solid #C4C4C4;
     box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -226,6 +226,29 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.viewAllButton {
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.viewAllButton button {
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0);
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 23px;
+}
+
+.viewAllButton button:hover{
+    cursor: pointer;
 }
 
 .edit_info_label{
@@ -328,9 +351,13 @@ input[type=text], select {
 }
 .cardBodyImage img {
     width: 100%;
-    padding: 5px;
+    padding: 2px;
     height: 100%;
     border-radius: 20px;
+}
+
+.conversation {
+    color: #8f8f8f;
 }
 
 .paddingBot {

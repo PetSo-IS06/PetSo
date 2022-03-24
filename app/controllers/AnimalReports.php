@@ -93,9 +93,23 @@ class AnimalReports extends Controller
     {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
+            'heading' => '',
+            'situation' => '',
+            'district' => '',
+            'area' => '',
+            'animal' => '',
+            'name' => '',
+            'mobile' => '',
+            'email' => '',
+            'headingError' => '',
+            'situationError' => '',
             'districtError' => '',
             'areaError' => '',
-            'animalError' => ''
+            'animalError' => '',
+            'nameError' => '',
+            'mobileError' => '',
+            'emailError' => '',
+            'imgError' => ''
         ];
 
         if (isset($_SESSION["user_id"])) {
@@ -127,6 +141,7 @@ class AnimalReports extends Controller
             'name' => '',
             'mobile' => '',
             'email' => '',
+            'headingError' => '',
             'situationError' => '',
             'districtError' => '',
             'areaError' => '',
@@ -169,6 +184,7 @@ class AnimalReports extends Controller
                 'mobile' => trim($_POST['mobile']),
                 'email' => trim($_POST['email']),
                 'report-image' => $report_img,
+                'headingError' => '',
                 'situationError' => '',
                 'districtError' => '',
                 'areaError' => '',

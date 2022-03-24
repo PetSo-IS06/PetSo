@@ -187,7 +187,7 @@ class Projects extends Controller {
                 $data['titleError'] = 'Please provide a title for the project';
             }
             if(empty($data['initDate'])) {
-                $data['initDateError'] = 'Please mention when the project is to be implmented';
+                $data['initDateError'] = 'Please mention when the project is to be implemented';
             }else{
                 $initDate = strtotime($data['initDate']);
                 $date_now = time();

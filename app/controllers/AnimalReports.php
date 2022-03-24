@@ -228,4 +228,63 @@ class AnimalReports extends Controller
         }
         $this->view('animalReports/nonEmergencyReportForm', $data);
     }
+
+    public function viewAllAnimalReports()
+    {
+        error_reporting(E_ALL ^ E_WARNING);
+        $data = [
+            'district' => '',
+            'area' => '',
+            'animal' => '',
+            'districtError' => '',
+            'areaError' => '',
+            'animalError' => '',
+            'organizations' => ''
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'district' => trim($_POST['district']),
+                'area' => trim($_POST['area']),
+                'animal' => trim($_POST['animal']),
+                'districtError' => '',
+                'areaError' => '',
+                'animalError' => ''
+            ];
+
+            // Input Validation
+
+            if (empty($data['district'])) {
+                $data['districtError'] = 'Please provide the district';
+            }
+            if (empty($data['area'])) {
+                $data['areaError'] = 'Please provide the area';
+            }
+            if (empty($data['animal'])) {
+                $data['animalError'] = 'Please provide the animal type';
+            }
+
+            if (empty($data['districtError']) && empty($data['areaError']) && empty($data['animalError'])) {
+
+                if ($this->reportModel->listOrganization($data)) {
+                    $organizations = $this->reportModel->listOrganization($data);
+
+                    $data = [
+                        "organizations" => $organizations
+                    ];
+                    $this->view('animalReports/listOrganizations', $data);
+                } else {
+                    $this->view('animalReports/listOrganizations', 'Could not list organizations');
+                    die('Could not list organizations');
+                }
+            } else {
+                $this->view('animalReports/emergencyReportForm', $data);
+            }
+        }
+
+        $this->view('animalReports/reportAnimalForm', $data);
+    }
+
 }

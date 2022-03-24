@@ -9,26 +9,35 @@
         <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css'>
     </head>
     <body class="body1">
-        <h2 class="heading2B grey center" id="title">Reset Password</h2>
+        <h2 class="heading2B grey center" id="title">Enter New Password</h2>
         <div class="card1">
-            <form action="<?php echo URL_ROOT . '/Authentications/verifyEmailMobile'; ?>" method="POST">
+            <form action="<?php echo URL_ROOT . '/Authentications/setNewPassword'; ?>" method="POST">
                 <div class="rp-header">
-                    <h3 class="subtitleB grey">Please enter your email & mobile number</h3>
-                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/password-key.svg" class="rp-header-img" alt="password key">
+                    <h3 class="subtitleB grey" style="margin-bottom: 30px;">Account email: <?php echo $data['email'] ?></h3>
+                    <input type="text" name="email" value="<?php echo $data['email'];?>" style="display: none;">
                 </div>
-                <div class="inputBx">
-                    <input name="email" id="email" type="email" required="required" value="<?php echo $data['email'] ?>">
-                    <span class="normalB">Email</span>
-                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/email.png" alt="email">
+                <div class="inputBx password">
+                    <input name="newPassword" id="newPassword" type="password" required="required">
+                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lock.png" alt="lock">
+                    <span class="normalB">New password</span>
+                    <a href="#" class="password-control" onclick="return show_hide_password(this);">
+                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/ShowPw.webp" alt="SPW"
+                                id="imgClickAndChange" onclick="changeImage(this);">
+                    </a>
                 </div>
-                <span class="invalidInput"><?php echo $data['emailError'] ?></span>
+                <span class="invalidInput"><?php echo $data['newPasswordError'] ?></span>
                 
-                <div class="inputBx">
-                    <input name="mobile" id="mobile" type="number" required="required" value="<?php echo $data['mobile'] ?>">
-                    <span class="normalB">Mobile</span>
-                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/mobile.jpg" alt="mobile">
+                <div class="inputBx password">
+                    <input name="confirmNewPassword" id="confirmNewPassword" type="password" required="required">
+                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/lock.png" alt="lock">
+                    <span class="normalB">Confirm new password</span>
+                    <a href="#" class="password-control" onclick="return show_hide_password(this);">
+                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/login_img/ShowPw.webp" alt="SPW"
+                                id="imgClickAndChange" onclick="changeImage(this);">
+                    </a>
                 </div>
-                <span class="invalidInput"><?php echo $data['mobileError'] ?></span>
+                <span class="invalidInput"><?php echo $data['confirmNewPasswordError'] ?></span>
+
                 <div class="rp-bottom">
                     <a href="<?php echo URL_ROOT; ?>/authentications/login" class="grey-btn">Cancel</a>
                     <input type="submit" class="purple-btn" value="Confirm">

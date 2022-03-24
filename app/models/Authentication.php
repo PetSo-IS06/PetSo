@@ -57,6 +57,20 @@
             }
         }
 
+        public function setNewPassword($email, $password){
+            $this->db->query('UPDATE `petso`.`Account` SET `password` = :password WHERE (`email` = :email)');
+
+            $this->db->bind(':password', $password);
+            $this->db->bind(':email', $email);
+
+            // execute function
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function getAccountID($email){
             $this->db->query('SELECT * FROM `petso`.`Account` WHERE `email` = :email');
              // bind value

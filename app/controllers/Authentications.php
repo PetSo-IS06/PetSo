@@ -210,6 +210,62 @@
             $this->view('users/resetPassword', $data);
         }
 
+        public function setNewPassword(){
+            $data = [
+                'email' => '',
+                'newPassword' => '',
+                'confirmNewPassword' => '',
+                'newPasswordError' => '',
+                'confirmNewPasswordError' => ''
+            ];
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // sanitize post data
+                // filter_input_array() returns false if POST var is set to scalar value
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'newPassword' => trim($_POST['newPassword']),
+                    'confirmNewPassword' => trim($_POST['confirmNewPassword']),
+                    'newPasswordError' => '',
+                    'confirmNewPasswordError' => ''
+                ];
+
+                $passwordValidation = "/^(.{0.7}|[^a-z]*|[^\d]*)*$/i";
+
+                // validate password (length & numeric values)
+                if(empty($data['newPassword'])) {
+                    $data['newPasswordError'] = 'Please enter password';
+                } elseif(strlen(($data['password'])) < 8) {
+                    $data['newPasswordError'] = 'Password must have atleast 8 characters';
+                } elseif(!preg_match($passwordValidation, $data['password'])) {
+                    $data['newPasswordError'] = 'Password should contain atleast 1 numeric value';
+                }
+
+                // validate confirm password
+                if(empty($data['confirmNewPassword'])) {
+                    $data['confirmNewPasswordError'] = 'Please re-enter password';
+                } else {
+                    if($data['newPassword'] != $data['confirmNewPassword']) {
+                        $data['confirmNewPasswordError'] = 'Passwords do not match'; 
+                    }
+                }
+
+                if(empty($data['newPasswordError']) && empty($data['confirmNewPasswordError'])){
+                    // hash password
+                    $data['newPassword'] = password_hash($data['newPassword'], PASSWORD_DEFAULT);
+                    
+                    if($this->authModel->setNewPassword($data['email'], $data['newPassword'])){
+                        header('location:' . URL_ROOT . '/authentications/login');
+                    } else {
+                        die('Something went wrong.');
+                    }
+                }
+            }
+            $this->view('users/newPassword', $data);
+        }
+
         
         public function sendOTP($mobile) {
             
@@ -244,7 +300,9 @@
                     'email' => trim($_POST['email']),
                     'mobile' => trim($_POST['mobile']),
                     'otp' => '',
-                    'otpError' => ''
+                    'otpError' => '',
+                    'newPasswordError' => '',
+                    'confirmNewPasswordError' => ''
                 ];
 
                 $num1 = trim($_POST['num1']);
@@ -256,19 +314,18 @@
 
                 if (time() - $_SESSION['otp_start'] < 300) { // 300 seconds = 5 minutes
                     if(strcmp($data['otp'], $_SESSION['otp']) == 0) { // 0 = Strings match 
-                        // header('location:' . URL_ROOT . '/users/newPassword');
+                        unset($_SESSION['otp_start']);
+                        unset($_SESSION['otp']);
                         $this->view('users/newPassword', $data);
                         return 0;
                     } else {
-                        unset($_SESSION['otp_start']);
-                        unset($_SESSION['otp']);
                         $data['otpError'] = 'Incorrect OTP. Request new OTP.';
                     }
                 } else {
-                   unset($_SESSION['otp_start']);
-                   unset($_SESSION['otp']);
                    $data['otpError'] = 'OTP Expired. Request new OTP.';
                 }
+                unset($_SESSION['otp_start']);
+                unset($_SESSION['otp']);
             }
 
             $this->view('users/verifyOTP', $data);

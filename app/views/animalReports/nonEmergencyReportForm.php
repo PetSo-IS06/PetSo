@@ -42,13 +42,21 @@
                     <!--                        <label class="input-label">Please describe the situation briefly. </label><br/>-->
                     <!--                        <textarea class="input-box-area" rows="4" cols="50" name="situation" id="situation""></textarea>-->
                     <!--                    </div>-->
+
+                    <div class="textArea" style="margin-bottom: 10px">
+                        <span class="normalB" style="padding-bottom: 10px; left: 0px">Small heading for your report </span>
+                        <div class="text-box" id="heading">
+                            <textarea rows="2" name="heading" required><?php echo $data['heading']; ?></textarea>
+                        </div>
+                        <span class="invalidInput"><?php echo $data['headingError']; ?></span>
+                    </div>
+
                     <div class="textArea">
                         <span class="normalB" style="padding-bottom: 10px; left: 0px">Please describe the situation briefly </span>
                         <div class="text-box" id="situation">
-                            <textarea rows="4" name="situation" required></textarea>
+                            <textarea rows="4" name="situation" required><?php echo $data['situation']; ?></textarea>
                         </div>
-                        <!--                        <span class="invalidInput">-->
-                        <?php //echo $data[1]['reportSituation']; ?><!--</span>-->
+                        <span class="invalidInput"><?php echo $data['situationError']; ?></span>
                     </div>
                 </div>
                 <div class="form-row">
@@ -61,6 +69,7 @@
                                     <input name="district" type="text" list="districts" class="select-cat"
                                            placeholder="Select Your District" required>
                                     <datalist id="districts">
+<!--                                        --><?php //echo $data['district']; ?>
                                         <?php
                                         $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
                                         $district = json_decode($str_district, true);
@@ -114,7 +123,7 @@
             <div class="form-input direction">
                 <label class="input-label">Upload Some clear images as if possible. </label>
                 <div class="upload-button">
-                    <input type="file" accept="image/*" id="report-image" name="report-image">
+                    <input type="file" accept="image/*" id="report-image" name="report-image" required>
 <!--                    <a href="--><?php //echo URL_ROOT; ?><!--/pages/index" class="form-btn-upload">Choose File</a>-->
                 </div>
             </div>
@@ -122,28 +131,25 @@
         <div class="textArea">
             <span class="normalB" style="padding-bottom: 10px; left: 0px">Your Name </span>
             <div class="text-box" id="name">
-                <textarea rows="2" name="name" required></textarea>
+                <textarea rows="2" name="name" required><?php echo $data['name']; ?></textarea>
             </div>
-            <!--                        <span class="invalidInput">-->
-            <?php //echo $data[1]['reportSituation']; ?><!--</span>-->
+            <span class="invalidInput"><?php echo $data['nameError']; ?></span>
         </div>
 
         <div class="textArea">
             <span class="normalB" style="padding-bottom: 10px; left: 0px">Your Telephone Number </span>
             <div class="text-box" id="mobile">
-                <textarea rows="2" name="mobile" required></textarea>
+                <textarea rows="2" name="mobile" required><?php echo $data['mobile']; ?></textarea>
             </div>
-            <!--                        <span class="invalidInput">-->
-            <?php //echo $data[1]['reportSituation']; ?><!--</span>-->
+            <span class="invalidInput"><?php echo $data['mobileError']; ?></span>
         </div>
 
         <div class="textArea">
             <span class="normalB" style="padding-bottom: 10px; left: 0px">Your Email </span>
             <div class="text-box" id="email">
-                <textarea rows="2" name="email"></textarea>
+                <textarea rows="2" name="email"><?php echo $data['email']; ?></textarea>
             </div>
-            <!--                        <span class="invalidInput">-->
-            <?php //echo $data[1]['reportSituation']; ?><!--</span>-->
+            <span class="invalidInput"><?php echo $data['emailError']; ?></span>
         </div>
         <!--        </div>-->
         <div class="form-row" style="flex-direction:row; justify-content: space-between;">

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/hero-section.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/indexAnimalReport.css">
-    <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/components/form-container.css'>
+    <!--    <link rel='stylesheet' href='-->
+    <?php //echo URL_ROOT; ?><!--/public/assets/CSS/components/form-container.css'>-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title><?php echo SITE_NAME; ?> | Home</title>
@@ -19,9 +20,9 @@
     require APP_ROOT . '/views/components/topNavbar.php';
     ?>
 
-<!--    <div class="hero">-->
-<!--    </div>-->
-<!--    <br><br>-->
+    <!--    <div class="hero">-->
+    <!--    </div>-->
+    <!--    <br><br>-->
     <div class="hero-banner">
         <div class="hero-banner-contents">
             <div class="hero-banner-contents-icon">
@@ -71,7 +72,7 @@
 </div>
 
 <div>
-    <div class="animalReport">
+    <div class="animalReportSection">
 
         <!--1-->
         <div class="container1">
@@ -89,12 +90,12 @@
             <div class="stats">
                 <div class="container1Card">
                     <!--Display division-->
-                    <h2>50</h2>
+                    <h2>5</h2>
                     <description>Reports monthly</description>
                 </div>
                 <div class="container1Card">
                     <!--Display division-->
-                    <h2>36</h2>
+                    <h2>3</h2>
                     <description>Animals impacted</description>
                 </div>
             </div>
@@ -104,27 +105,54 @@
         <div class="container2">
             <!--Display division-->
             <div class="info" id="info">
-                <div class="infoUpper">
-                    <h2>Latest Reports</h2>
-                    <a onclick="Content_edit();">
-                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit.png">
-                    </a>
-                </div>
+                <!--                <div class="infoUpper">-->
+                <h2 style="font-weight: bolder">Latest Reports</h2>
+                <!--                                    <a onclick="Content_edit();">-->
+                <!--                                        <img src="-->
+                <!--                --><?php //echo URL_ROOT; ?><!--/public/assets/img/icons/edit.png">-->
+                <!--                                    </a>-->
+                <!--                                </div>-->
             </div>
 
-            <div class="container2Card">
-                <!--Display division-->
-                <div class="info" id="info">
-                    <div class="infoUpper">
-                        <h2>Latest Reports</h2>
-                        <a onclick="Content_edit();">
-                            <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit.png">
-                        </a>
+            <!-- Card display division-->
+
+            <?php foreach ($data["reports"] as $item) { ?>
+                <div class="container2Card">
+                    <div class="info" id="info">
+                        <div href="<?php echo URL_ROOT; ?>/" class="reportVerticalCard">
+                            <h2 style="font-weight: bold"><?php echo $item->heading; ?></h2>
+                            <hr>
+                            <div class="cardBody">
+                                <div class="cardBodyInner">
+                                    <div class="cardBodyInner1 paddingBot paddingRight">
+                                        <div><span>Animal:</span> <?php echo $item->animal_type; ?></div>
+                                        <div><span>Location:</span><?php echo $item->area; ?>
+                                            , <?php echo $item->district; ?></div>
+                                    </div>
+                                    <div class="paddingBot"><span>Description:</span> <?php echo $item->situation; ?>
+                                    </div>
+                                    <div class="paddingBot conversation"><span>Conversations:</span> 0</div>
+                                </div>
+                                <div class="cardBodyImage">
+                                    <!--                                    <img src="-->
+                                    <?php //echo $item->image; ?><!--">-->
+                                    <img src="<?php echo URL_ROOT; ?>/public/uploads/reports/dog.jpg">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            <?php } ?>
 
+            <div class="viewAllButton">
+                <a href="<?php echo URL_ROOT; ?>/pages/index">
+                    <button type="submit" cur>
+                        View All
+                    </button>
+                </a>
+            </div>
+
+        </div>
     </div>
 </div>
 </div>

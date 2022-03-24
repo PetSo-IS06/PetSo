@@ -33,6 +33,7 @@ class AnimalReports extends Controller
     public function listOrganizations()
     {
         error_reporting(E_ALL ^ E_WARNING);
+        error_reporting(E_ALL ^ E_NOTICE);
         $data = [
             'district' => '',
             'area' => '',
@@ -92,9 +93,23 @@ class AnimalReports extends Controller
     {
         error_reporting(E_ALL ^ E_WARNING);
         $data = [
+            'heading' => '',
+            'situation' => '',
+            'district' => '',
+            'area' => '',
+            'animal' => '',
+            'name' => '',
+            'mobile' => '',
+            'email' => '',
+            'headingError' => '',
+            'situationError' => '',
             'districtError' => '',
             'areaError' => '',
-            'animalError' => ''
+            'animalError' => '',
+            'nameError' => '',
+            'mobileError' => '',
+            'emailError' => '',
+            'imgError' => ''
         ];
 
         if (isset($_SESSION["user_id"])) {
@@ -116,7 +131,9 @@ class AnimalReports extends Controller
     public function createReport()
     {
         error_reporting(E_ALL ^ E_WARNING);
+        error_reporting(E_ALL ^ E_NOTICE);
         $data = [
+            'heading' => '',
             'situation' => '',
             'district' => '',
             'area' => '',
@@ -124,6 +141,7 @@ class AnimalReports extends Controller
             'name' => '',
             'mobile' => '',
             'email' => '',
+            'headingError' => '',
             'situationError' => '',
             'districtError' => '',
             'areaError' => '',
@@ -157,6 +175,7 @@ class AnimalReports extends Controller
 
             // trim() removes white space on either sides of input strings
             $data = [
+                'heading' => trim($_POST['heading']),
                 'situation' => trim($_POST['situation']),
                 'district' => trim($_POST['district']),
                 'area' => trim($_POST['area']),
@@ -165,6 +184,7 @@ class AnimalReports extends Controller
                 'mobile' => trim($_POST['mobile']),
                 'email' => trim($_POST['email']),
                 'report-image' => $report_img,
+                'headingError' => '',
                 'situationError' => '',
                 'districtError' => '',
                 'areaError' => '',
@@ -200,7 +220,7 @@ class AnimalReports extends Controller
                 // register user from model function
                 if ($this->reportModel->saveReport($data)) {
                     // redirect to confirmation page
-                    header('location:' . URL_ROOT . '/animalReports/reportConfirmation');
+                    header('location:' . URL_ROOT . '/pages/index');
                 } else {
                     die('Something went wrong.');
                 }

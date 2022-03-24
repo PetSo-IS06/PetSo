@@ -9,7 +9,7 @@ class page
         $this->db = new Database;
     }
 
-    public function listReports($data)
+    public function listReports()
     {
         $this->db->query('SELECT * FROM `petso`.`Animal_Report` ');
 

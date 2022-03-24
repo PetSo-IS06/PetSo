@@ -231,60 +231,22 @@ class AnimalReports extends Controller
 
     public function viewAllAnimalReports()
     {
-        error_reporting(E_ALL ^ E_WARNING);
         $data = [
-            'district' => '',
-            'area' => '',
-            'animal' => '',
-            'districtError' => '',
-            'areaError' => '',
-            'animalError' => '',
-            'organizations' => ''
+            "empty" => 'No reports to show here'
         ];
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if ($this->reportModel->listAllReports()) {
+            $reports = $this->reportModel->listAllReports();
 
             $data = [
-                'district' => trim($_POST['district']),
-                'area' => trim($_POST['area']),
-                'animal' => trim($_POST['animal']),
-                'districtError' => '',
-                'areaError' => '',
-                'animalError' => ''
+                "reports" => $reports
             ];
+            $this->view('animalReports/viewAllAnimalReports', $data);
 
-            // Input Validation
-
-            if (empty($data['district'])) {
-                $data['districtError'] = 'Please provide the district';
-            }
-            if (empty($data['area'])) {
-                $data['areaError'] = 'Please provide the area';
-            }
-            if (empty($data['animal'])) {
-                $data['animalError'] = 'Please provide the animal type';
-            }
-
-            if (empty($data['districtError']) && empty($data['areaError']) && empty($data['animalError'])) {
-
-                if ($this->reportModel->listOrganization($data)) {
-                    $organizations = $this->reportModel->listOrganization($data);
-
-                    $data = [
-                        "organizations" => $organizations
-                    ];
-                    $this->view('animalReports/listOrganizations', $data);
-                } else {
-                    $this->view('animalReports/listOrganizations', 'Could not list organizations');
-                    die('Could not list organizations');
-                }
-            } else {
-                $this->view('animalReports/emergencyReportForm', $data);
-            }
+        } else {
+            $this->view('animalReports/viewAllAnimalReports',  $data);
         }
-
-        $this->view('animalReports/reportAnimalForm', $data);
+        $this->view('animalReports/viewAllAnimalReports', $data);
     }
 
 }

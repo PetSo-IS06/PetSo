@@ -82,7 +82,7 @@
             </text>
             <div class="reportButton">
                 <a href="<?php echo URL_ROOT; ?>/animalReports/reportAnimal">
-                    <button style="text-decoration: unset">Report Now</button>
+                    <button>Report Now</button>
                 </a>
             </div>
             <h4>With the help of all you animal lovers, Petso has manged to save many lives</h4>
@@ -146,7 +146,8 @@
 
             <div class="viewAllButton">
                 <a href="<?php echo URL_ROOT; ?>/pages/index">
-                    <button type="submit" cur>
+                <a href="<?php echo URL_ROOT; ?>/AnimalReports/viewAllAnimalReports">
+                    <button type="submit">
                         View All
                     </button>
                 </a>

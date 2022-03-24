@@ -1,0 +1,59 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 100%;
+}
+
+.column1 {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 100%;
+    text-align: center;
+}
+
+img {
+    border-radius: 50%;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+
+    .column1 {
+        width: 100%;
+    }
+
+    .purple-btn{
+        width: 75px;
+    }
+}

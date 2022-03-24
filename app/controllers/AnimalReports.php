@@ -228,4 +228,25 @@ class AnimalReports extends Controller
         }
         $this->view('animalReports/nonEmergencyReportForm', $data);
     }
+
+    public function viewAllAnimalReports()
+    {
+        $data = [
+            "empty" => 'No reports to show here'
+        ];
+
+        if ($this->reportModel->listAllReports()) {
+            $reports = $this->reportModel->listAllReports();
+
+            $data = [
+                "reports" => $reports
+            ];
+            $this->view('animalReports/viewAllAnimalReports', $data);
+
+        } else {
+            $this->view('animalReports/viewAllAnimalReports',  $data);
+        }
+        $this->view('animalReports/viewAllAnimalReports', $data);
+    }
+
 }

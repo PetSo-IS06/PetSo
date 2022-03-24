@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/components/topNavbar.css">
 </head>
 <body>
-   <nav class="nav pg-body">
+   <nav class="nav pg-body border">
        <div class="nav-logo">
             <a href="<?php echo URL_ROOT;?>/">
             <img src="<?php echo URL_ROOT; ?>/public/assets/img/petso_logo.png"> 

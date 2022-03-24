@@ -16,7 +16,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    /*margin-bottom: 1rem;*/
     z-index: 10;
     position: relative;
     border-bottom: 10px;
@@ -199,6 +199,12 @@
 
 .dropdown-content a:hover {
     color: var(--primary-purple-color);
+}
+
+.border {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--primary-light-grey-color);
 }
 
 .nav-menu-profile-tag:hover .dropdown-content {display: block;}

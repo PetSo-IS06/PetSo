@@ -14,8 +14,8 @@ class Pages extends Controller {
             'users' => ''
         ];
 
-        if ($this->reportModel->listReports($data)) {
-            $reports = $this->reportModel->listReports($data);
+        if ($this->reportModel->listReports()) {
+            $reports = $this->reportModel->listReports();
 
             $data = [
                 "reports" => $reports

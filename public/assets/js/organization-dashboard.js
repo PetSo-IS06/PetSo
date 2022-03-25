@@ -101,6 +101,44 @@ function showProfileOverlay(id) {
     }
 }
 
+function enableProfileEdit(){
+    const targetDiv = document.getElementById("edit-animal-prof");
+    const inputFields = targetDiv.getElementsByTagName("input");
+    const textFields = targetDiv.getElementsByTagName("textarea");
+    for(let i=0; i<inputFields.length; i++) {
+        inputFields[i].disabled = false;
+    }
+    for(let i=0; i<textFields.length; i++) {
+        textFields[i].disabled = false;
+    }
+    hideEditBtn();
+    showSaveBtn();
+}
+
+function hideEditBtn(){
+    var x = document.getElementById('edit-btn');
+    x.style.display = 'none'
+}
+
+function showEditBtn(){
+    var x = document.getElementById('edit-btn');
+    x.style.display = 'block'
+}
+
+function hideSaveBtn(){
+    var x = document.getElementById('save-btn');
+    x.style.display = 'none'
+}
+
+function showSaveBtn(){
+    var x = document.getElementById('save-btn');
+    x.style.display = 'block'
+}
+
+$('#save-btn').click(function(){
+    $('#edit-an-prof').submit();
+ });
+
 /************ Side panel Navigation************/
 
 function showVolunteerPanel() {

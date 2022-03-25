@@ -534,8 +534,8 @@
                                             <div id="popup<?php echo $item->id; ?>" class="overlay">
                                                 <div class="popup" id="animal-prof-popup">
                                                     <a class="close" onClick="hideProfileOverlay(<?php echo $item->id; ?>)">×</a>
-                                                    <form action="" method="GET">
-                                                    <div class="prof-content">
+                                                    <form action="<?php echo URL_ROOT . '/AnimalProfiles/editProfile'; ?>" method="POST" id="edit-an-prof">
+                                                    <div class="prof-content" id="edit-animal-prof">
                                                         <div class="prof-info">
                                                             <div class="prof-view">
                                                                 <img src="<?php if(!empty($item->image)) echo(URL_ROOT.'/'.$item->image);
@@ -551,7 +551,8 @@
                                                             <div class="prof-details">
                                                                 <div class="form-title">
                                                                     <h3>Profile Details</h3>
-                                                                    <a onCLick="enableProfileEdit()"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit-grey.png" alt="edit"></a>
+                                                                    <a onclick="enableProfileEdit()"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit-grey.png" id="edit-btn" alt="edit"></a>
+                                                                    <a onclick="enableProfileEdit()"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/save-grey.png" id="save-btn" alt="edit"></a>
                                                                 </div>
                                                                 <div class="form-row">
                                                                     <label for="" class="normalB">Name</label>

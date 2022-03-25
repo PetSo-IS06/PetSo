@@ -69,6 +69,15 @@
 .form-title img {
     width: 15px;
     height: auto;
+    cursor: pointer;
+}
+
+.form-title #edit-btn{
+    display: block;
+}
+
+.form-title #save-btn{
+    display: none;
 }
 
 .prof-details .form-row {

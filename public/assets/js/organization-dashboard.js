@@ -96,8 +96,8 @@ function hideProfileOverlay(id) {
 function showProfileOverlay(id) {
     const str = 'popup' + id;
     var x = document.getElementById(str);
-    if (x.style.display !== "block") {
-        x.style.display = "block";
+    if (x.style.display !== "flex") {
+        x.style.display = "flex";
     }
 }
 

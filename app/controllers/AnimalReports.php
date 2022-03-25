@@ -249,4 +249,9 @@ class AnimalReports extends Controller
         $this->view('animalReports/viewAllAnimalReports', $data);
     }
 
+    public function viewSingleReport($id)
+    {
+        $data = $this->reportModel->getReport($id);
+        $this->view('animalReports/viewSingleReport', $data);
+    }
 }

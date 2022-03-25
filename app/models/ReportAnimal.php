@@ -50,11 +50,20 @@ class ReportAnimal
         }
     }
 
+
     public function listAllReports()
     {
         $this->db->query('SELECT * FROM `petso`.`Animal_Report` ');
 
         $result = $this->db->resultSet();    // resultSet returns an array of Objects
+    }
+
+    public function getReport($id)
+    {
+        $this->db->query("SELECT * FROM `petso`.`Animal_Report`
+                                WHERE `id` = $id");
+
+        $result = $this->db->single();  
         return $result;
     }
 }

@@ -85,7 +85,7 @@
             <input type="text" placeholder="Work Type" id="lname" name="worktype">
         </div>
      </div>
-    <br>
+    <br><br>
 
      <input type="checkbox" width="15%" height="15%"> I am fully aware of the requirements mentioned above for this opportunity and confirm that I possess them. 
 

@@ -375,11 +375,12 @@
                     </div>
                     <div class="content-sub-head">
                         <div class="search-sec-bar">
-                                    <input type="search" placeholder="Search..." name="searchAnimalProfile" />
-                                    <i class="fa fa-search"></i>
-                                </div> 
+                            <input type="search" placeholder="Search..." name="searchAnimalProfile" />
+                            <i class="fa fa-search"></i>
+                        </div> 
                         <div class="btn">
-                            <a href="" class="content-sub-head-btn" style="background-color: #1D67BE;" id="">View all</a>
+                            <a id="back-to-an-overview" style="display: none;" onClick="hideAllAnimals()" class="cell-nav">Back</a>
+                            <a onClick="showAllAnimals()" class="content-sub-head-btn" style="background-color: #1D67BE;" id="all-animals-btn">View all</a>
                         </div>
                     </div>
                     </section> 
@@ -476,6 +477,62 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- View All Section -->
+                    <div class="opportunities" id="view-all-animals">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th>ID</th>
+                                    <th style="min-width: 100px">Name</th>
+                                    <th id="col-desc" style="width: 200px">Description</th>
+                                    <th>Created date</th>
+                                    <th>Gender</th>
+                                    <th>Type</th>
+                                    <th>Breed</th>
+                                    <th>Adopted</th>
+                                    <th>Sponsored</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["an-profiles"]['all'] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td style="min-width: 100px" class="cell-nav"><a onClick="" href="#"><?php echo $item->name; ?></a></td>
+                                            <td id="col-desc" style="width: 200px"><?php echo $item->description; ?></td>
+                                            <td><?php echo $item->create_date; ?></td>
+                                            <td><?php echo $item->gender; ?></td>
+                                            <td><?php echo $item->type; ?></td>
+                                            <td><?php echo $item->breed; ?></td>
+                                            <td>
+                                                <?php 
+                                                    if(strcmp($item->adoption_status, 'Not Available') == 0) {
+                                                        echo "<p class='red'>$item->adoption_status</p>";
+                                                    } elseif(strcmp($item->adoption_status, 'Adopted') == 0) {
+                                                        echo "<p class='blue'>$item->adoption_status</p>";
+                                                    } elseif(strcmp($item->adoption_status, 'Available') == 0) {
+                                                        echo "<p class='green'>$item->adoption_status</p>";
+                                                    }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                    if(strcmp($item->sponsorship_status, 'Not Available') == 0) {
+                                                        echo "<p class='red'>$item->sponsorship_status</p>";
+                                                    } elseif(strcmp($item->sponsorship_status, 'Sponsored') == 0) {
+                                                        echo "<p class='blue'>$item->sponsorship_status</p>";
+                                                    } elseif(strcmp($item->sponsorship_status, 'Available') == 0) {
+                                                        echo "<p class='green'>$item->sponsorship_status</p>";
+                                                    }
+                                                ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
                         </div>
                     </div>
                 </section>

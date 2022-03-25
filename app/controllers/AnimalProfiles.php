@@ -89,4 +89,28 @@ class AnimalProfiles extends Controller {
 
         $this->view('animalProfiles/createAnimalProfile', $data);
     }
+
+    public function viewAllAnimalProfiles() {
+        error_reporting(E_ALL ^ E_WARNING);
+        $data = [
+            'title' => 'Home Page',
+            'users' => ''
+        ];
+
+        if($this->animalProfileModel->getAllAnimalProfile()){
+            $profiles = $this->animalProfileModel->getAllAnimalProfile();
+
+            $data = [
+                "profiles" => $profiles
+//                'org_name' => $profiles -> org_name,
+            ];
+            $this->view('animalProfiles/viewAllAnimalProfiles', $data);
+
+        } else {
+            $this->view('animalProfiles/viewAllAnimalProfiles', $data);
+
+        }
+
+        $this->view('animalProfiles/viewAllAnimalProfiles', $data);
+    }
 }

@@ -27,7 +27,7 @@
             <div class="info" id="info">
                 <!--                <div class="infoUpper">-->
                 <div class="headingText">
-                    <h2>Turtle Conserve</h2>
+                    <h2>Animal Profiles</h2>
                 </div>
             </div>
             <hr>
@@ -48,7 +48,7 @@
                                 <div class="cardBody">
                                     <div class="cardBodyInner">
                                         <div class="cardBodyInner1 paddingBot paddingRight paddingTop">
-                                            <div><?php echo $item->gender; ?> <?php echo $item->type; ?> - Age: <?php echo $item->age; ?></div>
+                                            <div><?php echo $item->gender; ?> <?php echo $item->type; ?> - Age: <?php echo $item->age; ?> <br> @ <?php echo $item->org_name; ?></div>
                                             <div class="cardButtons paddingTop">
                                                 <button class="btn-sponsor">Sponsor</button>
                                                 <button class="btn-adopt">Adopt</button>

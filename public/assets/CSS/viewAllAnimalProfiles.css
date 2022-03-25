@@ -203,6 +203,7 @@ body {
     border-radius: 10px;
     border: none;
     font-size: large;
+    margin-left: 20px;
 }
 
 .btn-adopt{
@@ -214,6 +215,8 @@ body {
     border-radius: 10px;
     border: none;
     font-size: large;
+    margin-right: 20px;
+
 }
 
 /* =========== Styles for Tablet View ============= */

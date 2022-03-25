@@ -102,6 +102,7 @@ class AnimalProfiles extends Controller {
 
             $data = [
                 "profiles" => $profiles
+//                'org_name' => $profiles -> org_name,
             ];
             $this->view('animalProfiles/viewAllAnimalProfiles', $data);
 

@@ -7,6 +7,8 @@ class AnimalReports extends Controller
     {
         $this->authModel = $this->model('Authentication');
         $this->reportModel = $this->model('ReportAnimal');
+        $this->conversationModel = $this->model('Conversation');
+        $this->userModel = $this->model('User');
     }
 
     public function index()
@@ -251,7 +253,51 @@ class AnimalReports extends Controller
 
     public function viewSingleReport($id)
     {
-        $data = $this->reportModel->getReport($id);
-        $this->view('animalReports/viewSingleReport', $data);
+        if(isset($_SESSION['user_id'])){
+            $data = [
+                'report' => $this->reportModel->getReport($id),
+                'messageError' => '',
+                'reporter' => $this->reportModel->getRepoter($id),
+                'user' => $this->userModel->getUser(),
+            ];
+
+
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $conversationData = [
+                    'message' => trim($_POST['message']),
+                    'user_id' => $this->userModel->getUser()->us_id,
+                    'animal_report_id' => $id,
+                    'messageError' => '',
+                    'created_date' => date("Y-m-d"),
+                    'created_time' => date("h:i:s")
+                ];
+
+                $data = array_merge($data, $conversationData);
+
+                if(empty($data['message'])){
+                    $data['messageError'] = "Please type a message to add a conversation";
+                }
+
+                if(empty($data['messageError'])){
+                    $this->conversationModel->saveConversation($data); 
+                }
+            }
+
+            $data['conversations'] = $this->conversationModel->getConversations($id);
+            $data['conversation_count'] = $this->conversationModel->getConversationCount($id);
+
+            $this->view('animalReports/viewSingleReport', $data);
+        }else{
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => ' ',
+                'passwordError' => ' ',
+                'attentionMessage' => 'Please login to continue!'
+            ];
+
+            $this->view('pages/login', $data);
+        }
     }
 }

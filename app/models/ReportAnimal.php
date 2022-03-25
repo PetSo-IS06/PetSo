@@ -66,4 +66,13 @@ class ReportAnimal
         $result = $this->db->single();  
         return $result;
     }
+
+    public function getRepoter($id){
+        $this->db->query("SELECT User.us_name, User.us_profile_img FROM `petso`.`Animal_Report` 
+                            INNER JOIN User ON Animal_Report.user_id=User.us_id
+                                WHERE Animal_Report.id = $id");
+
+        $result = $this->db->single();  
+        return $result;
+    }
 }

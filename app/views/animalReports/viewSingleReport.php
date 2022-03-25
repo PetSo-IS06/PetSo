@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/view-single-report.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
-    <title>Document</title>
+    <title>View Single Report</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 

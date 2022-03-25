@@ -39,9 +39,14 @@
                             <div href="<?php echo URL_ROOT; ?>/" class="reportVerticalCard">
                                 <div class="cardsUpper">
                                     <div class="cardBodyImage">
-                                        <!--                                    <img src="-->
-                                        <?php //echo $item->image; ?><!--">-->
-                                        <img src="<?php echo URL_ROOT; ?>/public/uploads/reports/dog.jpg">
+<!--                                        <img src="--><?php //echo $item->image; ?><!--">-->
+<!--                                        <img src="--><?php //echo URL_ROOT; ?><!--/public/uploads/animals/default-img.jpg">-->
+                                        <img src="<?php
+                                        if(!($item->image)) :
+                                            echo URL_ROOT.'/public/uploads/animals/default-img.jpg';
+                                        else :
+                                            echo $item->image;
+                                        endif;?>">
                                     </div>
                                     <h2 style="font-weight: bold" class="paddingTop"><?php echo $item->name; ?></h2>
                                 </div>
@@ -50,8 +55,18 @@
                                         <div class="cardBodyInner1 paddingBot paddingRight paddingTop">
                                             <div><?php echo $item->gender; ?> <?php echo $item->type; ?> - Age: <?php echo $item->age; ?> <br> @ <?php echo $item->org_name; ?></div>
                                             <div class="cardButtons paddingTop">
-                                                <button class="btn-sponsor">Sponsor</button>
-                                                <button class="btn-adopt">Adopt</button>
+                                                <button class="<?php
+                                                if($item->sponsorship_status == 'Available') :
+                                                    echo 'btn-sponsor';
+                                                elseif($item->sponsorship_status == 'Not Available') :
+                                                    echo 'btn-sponsor-hide';
+                                                endif;?>">Sponsor</button>
+                                                <button class="<?php
+                                                if($item->adoption_status == 'Available') :
+                                                    echo 'btn-adopt';
+                                                elseif($item->adoption_status == 'Not Available') :
+                                                    echo 'btn-adopt-hide';
+                                                endif;?>">Adopt</button>
                                             </div>
                                         </div>
                                     </div>

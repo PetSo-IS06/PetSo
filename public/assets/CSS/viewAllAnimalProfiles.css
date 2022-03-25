@@ -191,7 +191,7 @@ body {
     display: flex;
     flex-direction: row;
     align-content: space-between;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .btn-sponsor{
@@ -203,7 +203,25 @@ body {
     border-radius: 10px;
     border: none;
     font-size: large;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
+    cursor: pointer;
+}
+
+.btn-sponsor:hover{
+    color: var(--primary-grey-color);
+    background-color: var( --primary-yellow-color);
+    width: 120px;
+    height: 40px;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: none;
+    font-size: large;
+    /*margin-left: 20px;*/
+    cursor: pointer;
+}
+
+.btn-sponsor-hide{
+    display: none;
 }
 
 .btn-adopt{
@@ -215,8 +233,25 @@ body {
     border-radius: 10px;
     border: none;
     font-size: large;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
+    cursor: pointer;
+}
 
+.btn-adopt:hover{
+    color: var(--black-color);
+    background-color: var( --primary-blue-color);
+    width: 120px;
+    height: 40px;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: none;
+    font-size: large;
+    /*margin-left: 20px;*/
+    cursor: pointer;
+}
+
+.btn-adopt-hide{
+    display: none;
 }
 
 /* =========== Styles for Tablet View ============= */

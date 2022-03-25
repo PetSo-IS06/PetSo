@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-prof-overview.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-prof-popup.css">
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/organization-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
@@ -501,7 +502,7 @@
                                     <?php foreach ($data["an-profiles"]['all'] as $item) { ?>
                                         <tr>
                                             <td><?php echo $item->id; ?></td>
-                                            <td style="min-width: 100px" class="cell-nav"><a onClick="" href="#"><?php echo $item->name; ?></a></td>
+                                            <td style="min-width: 100px" class="cell-nav"><a onClick="showProfileOverlay(<?php echo $item->id; ?>)"><?php echo $item->name; ?></a></td>
                                             <td id="col-desc" style="width: 200px"><?php echo $item->description; ?></td>
                                             <td><?php echo $item->create_date; ?></td>
                                             <td><?php echo $item->gender; ?></td>
@@ -529,6 +530,21 @@
                                                     }
                                                 ?>
                                             </td>
+                                            <!-- Profile Popup -->
+                                            <div id="popup<?php echo $item->id; ?>" class="overlay">
+                                                <div class="popup">
+                                                    <a class="close" onClick="hideProfileOverlay(<?php echo $item->id; ?>)">×</a>
+                                                    <form action="" method="GET">
+                                                        <div class="content">
+                                                            <p class="subtitle"><?php echo $item->id; ?></p>
+                                                            <div class="ov-actions">
+                                                                <a onClick="hideProfileOverlay(<?php echo $item->id; ?>)" class="grey-btn">Cancel</a>
+                                                                <input type="submit" id="approve" class="green-btn" value="Approve">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </tr>
                                     <?php } ?>
                                 <tbody>

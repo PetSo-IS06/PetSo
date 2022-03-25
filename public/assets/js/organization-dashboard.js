@@ -1,3 +1,5 @@
+/************ Section display ************/
+
 function Hide_Opportunities() {
     var x = document.getElementById("opportunities");
     if (x.style.display === "flex") {
@@ -80,8 +82,26 @@ function hideAllAnimals() {
     showAnimalsOverview();
     back_btn.style.display = "none";
 }
+/************ Pop Ups************/
 
-// Side panel navigation 
+// Animal Profiles Popups
+function hideProfileOverlay(id) {
+    const str = 'popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
+function showProfileOverlay(id) {
+    const str = 'popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+    }
+}
+
+/************ Side panel Navigation************/
 
 function showVolunteerPanel() {
     var x = document.getElementById("vol-sec");

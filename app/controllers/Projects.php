@@ -539,4 +539,11 @@ class Projects extends Controller {
 
         $this->view('projects/viewAllProjects', $data);
     }
+
+
+    public function volunteerApplication() {
+
+
+    $this->view('projects/volunteerApplicationForm');
+  }
 }

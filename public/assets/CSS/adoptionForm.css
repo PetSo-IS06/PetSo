@@ -1,0 +1,77 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+
+.column1 {
+    float: left;
+    width: 40%;
+    padding: 10px;
+    height: 100%;
+}
+
+.column2 {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 100%;
+
+}
+
+img {
+    border-radius: 50%;
+}
+
+input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+input[type=checkbox]{
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(0, 0, 0);
+    box-sizing: border-box;
+}
+
+input[type=textarea] {
+    width: 100%;
+    height: 75px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.purple-btn{
+    width: 100px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+
+    .column1 {
+        width: 100%;
+    }
+
+    
+}

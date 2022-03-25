@@ -45,18 +45,12 @@
                     </form>
                 </div>
             </div>
-
-            <!--                                    <a onclick="Content_edit();">-->
-            <!--                                        <img src="-->
-            <!--                --><?php //echo URL_ROOT; ?><!--/public/assets/img/icons/edit.png">-->
-            <!--                                    </a>-->
-            <!--                                </div>-->
         </div>
         <hr>
         <!-- Card display division-->
         <div class="cards">
             <?php foreach ($data["reports"] as $item) { ?>
-                <div class="container2Card">
+                <a class="container2Card" style="text-decoration: none;" href="<?php echo URL_ROOT; ?>/animalReports/ViewSingleReport/<?php echo $item->id; ?>">
                     <div class="info" id="info">
                         <div href="<?php echo URL_ROOT; ?>/" class="reportVerticalCard">
                             <div class="cardsUpper">
@@ -84,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             <?php } ?>
         </div>
 

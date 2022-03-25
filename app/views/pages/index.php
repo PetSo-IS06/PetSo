@@ -60,7 +60,8 @@
             <h2>Adopt</h2>
             <i class="fa fa-dog"></i>
             <p>Contribute to a welfare project & help save live</p>
-            <a href="<?php echo URL_ROOT;?>/Adoptions/adoptionApplication" class="hero-cards-single-btn " id="">Adopt</a>
+            <a href="<?php echo URL_ROOT; ?>/Adoptions/adoptionApplication" class="hero-cards-single-btn "
+               id="">Adopt</a>
         </div>
         <div class="hero-cards-single">
             <h2>Sponsor</h2>
@@ -117,7 +118,7 @@
             <!-- Card display division-->
 
             <?php foreach ($data["reports"] as $item) { ?>
-                <div class="container2Card">
+                <a class="container2Card" href="<?php echo URL_ROOT; ?>/animalReports/ViewSingleReport/<?php echo $item->id; ?>">
                     <div class="info" id="info">
                         <div href="<?php echo URL_ROOT; ?>/" class="reportVerticalCard">
                             <h2 style="font-weight: bold"><?php echo $item->heading; ?></h2>
@@ -141,11 +142,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             <?php } ?>
 
             <div class="viewAllButton">
-                <a href="<?php echo URL_ROOT; ?>/pages/index">
                 <a href="<?php echo URL_ROOT; ?>/AnimalReports/viewAllAnimalReports">
                     <button type="submit">
                         View All
@@ -155,7 +155,9 @@
 
         </div>
     </div>
+
 </div>
+
 </div>
 <div id="footer">
     <?php
@@ -164,5 +166,3 @@
 </div>
 </body>
 </html>
-
-

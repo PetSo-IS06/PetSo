@@ -36,6 +36,51 @@ function Show_Opportunities() {
     }
 }
 
+function showAllAnimals() {
+    var x = document.getElementById("view-all-animals");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        hideAnimalsOverview();
+    }
+}
+
+function showAnimalsOverview() {
+    var x = document.getElementById("prof-overview");
+    var btn = document.getElementById("all-animals-btn");
+    var back_btn = document.getElementById("back-to-an-overview");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        hideAllAnimals();
+    }
+    btn.classList.remove("disable");
+    back_btn.style.display === "none";
+}
+
+function hideAnimalsOverview() {
+    var x = document.getElementById("prof-overview");
+    var btn = document.getElementById("all-animals-btn");
+    var back_btn = document.getElementById("back-to-an-overview");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "none";
+    }
+    btn.classList.add("disable");
+    back_btn.style.display = "block";
+}
+
+function hideAllAnimals() {
+    var x = document.getElementById("view-all-animals");
+    var back_btn = document.getElementById("back-to-an-overview");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "none";
+    }
+    showAnimalsOverview();
+    back_btn.style.display = "none";
+}
+
 // Side panel navigation 
 
 function showVolunteerPanel() {
@@ -113,6 +158,8 @@ function showAnimalProfilesPanel() {
         hideProjectPanel();
         hideVolApplications();
         hideFaundraisingPanel();
+        hideAllAnimals();
+        showAnimalsOverview();
     }
 }
 

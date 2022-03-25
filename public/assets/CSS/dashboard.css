@@ -128,8 +128,12 @@ input {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 /* Organization Dashboard */
-#vol-sec, #fund-sec, #volApp-sec, #animal-sec {
+#vol-sec, #fund-sec, #volApp-sec, #animal-sec, #view-all-animals {
   display: none;
+}
+
+#prof-overview {
+  display: block;
 }
 
 /* Admin Dashboard */

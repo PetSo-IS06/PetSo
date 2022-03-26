@@ -46,6 +46,12 @@
                         </a>
                     </li>
                     <li>
+                        <a onClick="showReportsPanel()" id="rep-tag">
+                        <i class="fas fa-hand-holding-medical"></i>
+                        <span>Animal Reports</span>
+                        </a>
+                    </li>
+                    <li>
                         <a onClick="showVolunteerPanel()" id="vol-tag">
                         <i class="fas fa-hands-helping"></i>
                         <span>Volunteers</span>
@@ -150,6 +156,28 @@
                             </table>
                         </div>
                     </div>
+                </section>
+            </section>
+
+            <!-- Animal Reports Section -->
+            <section class="page-content" id="rep-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Animal Reports</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
+                                    <input type="search" placeholder="Search..." name="searchPrj" />
+                                    <i class="fa fa-search"></i>
+                                </div>
+                        <div class="btn">
+                            <!-- <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
+                            <a class="content-sub-head-btn" id="applications-btn" onClick="showVolApplications">Applications</a> -->
+                            <a class="content-sub-head-btn" id="view-all-btn">View All</a>
+                        </div>
+                    </div>
+
                 </section>
             </section>
 

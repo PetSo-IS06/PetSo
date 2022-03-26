@@ -239,6 +239,7 @@ function showVolunteerPanel() {
         hideProjectPanel();
         hideFaundraisingPanel();
         hideAnimalProfilesPanel();
+        hideReportPanel();
     }
 }
 
@@ -261,6 +262,7 @@ function showProjectsPanel() {
         hideFaundraisingPanel();
         hideVolApplications();
         hideAnimalProfilesPanel();
+        hideReportPanel();
     }
 }
 
@@ -283,12 +285,35 @@ function showFaundraisingPanel() {
         hideProjectPanel();
         hideVolApplications();
         hideAnimalProfilesPanel();
+        hideReportPanel();
     }
 }
 
 function hideFaundraisingPanel() {
     var x = document.getElementById("fund-sec");
     var tag = document.getElementById("fund-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
+function showReportPanel() {
+    var x = document.getElementById("rep-sec");
+    var tag = document.getElementById("rep-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideVolunteerPanel();
+        hideProjectPanel();
+        hideVolApplications();
+        hideAnimalProfilesPanel();
+    }
+}
+
+function hideReportPanel() {
+    var x = document.getElementById("rep-sec");
+    var tag = document.getElementById("rep-tag");
     if (x.style.display !== "none") {
         x.style.display = "none";
         tag.classList.remove("active-tag");
@@ -307,6 +332,7 @@ function showAnimalProfilesPanel() {
         hideFaundraisingPanel();
         hideAllAnimals();
         showAnimalsOverview();
+        hideReportPanel();
     }
 }
 
@@ -329,6 +355,7 @@ function showVolApplications() {
         hideProjectPanel();
         hideFaundraisingPanel();
         hideAnimalProfilesPanel();
+        hideReportPanel();
     }
 }
 

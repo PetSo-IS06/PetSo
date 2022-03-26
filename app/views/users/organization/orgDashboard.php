@@ -46,6 +46,12 @@
                         </a>
                     </li>
                     <li>
+                        <a onClick="showReportPanel()" id="rep-tag">
+                        <i class="fas fa-hand-holding-medical"></i>
+                        <span>Animal Reports</span>
+                        </a>
+                    </li>
+                    <li>
                         <a onClick="showVolunteerPanel()" id="vol-tag">
                         <i class="fas fa-hands-helping"></i>
                         <span>Volunteers</span>
@@ -151,6 +157,61 @@
                         </div>
                     </div>
                 </section>
+            </section>
+
+            <!-- Animal Reports Section -->
+            <section class="page-content" id="rep-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Animal Reports</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
+                                    <input type="search" placeholder="Search..." name="searchPrj" />
+                                    <i class="fa fa-search"></i>
+                                </div>
+                        <div class="btn">
+                            <!-- <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
+                            <a class="content-sub-head-btn" id="applications-btn" onClick="showVolApplications">Applications</a> -->
+                            <a class="content-sub-head-btn" id="view-all-btn">View All</a>
+                        </div>
+                    </div>
+
+                </section>
+
+                <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th><input type="checkbox" name=""></th>
+                                    <th>ID</th>
+                                    <th>Heading</th>
+                                    <th>District</th>
+                                    <th>Area</th>
+                                    <th>Animal Type</th>
+                                    <th>Created Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["reports"] as $item) { ?>
+                                        <tr>
+                                            <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td><?php echo $item->heading; ?></td>
+                                            <td><?php echo $item->district; ?></td>
+                                            <td><?php echo $item->area; ?></td>
+                                            <td><?php echo $item->animal_type; ?></td>
+                                            <td><?php echo $item->create_date; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
             </section>
 
             <!-- Volunteer Opportunities Section -->

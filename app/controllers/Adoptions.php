@@ -4,15 +4,16 @@ class Adoptions extends Controller {
 
     public function __construct() {
         $this->adoptionModel = $this->model('Adoption');
+        $this->animalProfileModel = $this->model('AnimalProfile');
     }
 
-    public function adoptionApplication() {
+    public function adoptionApplication($id) {
 
         $data= [
             'fullname'=>'',
             'address'=>'',
             'mobileNo'=>'',
-            'requirements'=>'',
+        
             'fullnameError' => '',
             'addressError' => '',
             'mobileNoError' => '',
@@ -27,7 +28,8 @@ class Adoptions extends Controller {
                 'fullname'=>trim(($_POST['fullname'])),
                 'address'=>trim(($_POST['address'])),
                 'mobileNo'=>trim(($_POST['mobileNo'])),
-                'requirements'=>trim(($_POST['requirements'])),
+                
+                'animalprofileId'=> $id,
                 'fullnameError' => '',
                 'addressError' => '',
                 'mobileNoError' => '',
@@ -53,9 +55,8 @@ class Adoptions extends Controller {
                 header('location:' . URL_ROOT . '/pages/index');
             }
         }
-
-       
-
+         $data['animal_profile']= $this->animalProfileModel->getAnimalProfilebyID($id) ;
+         
         $this->view('animalProfiles/adoptionForm',$data);
 
     }

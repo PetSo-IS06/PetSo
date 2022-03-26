@@ -139,7 +139,7 @@
        <a href= '' class='purple-btn v-btn_width'>volunteer Now </a> </center>
    </div>
 </div> "; }?>
-</div>
+
 
 
        <br> 
@@ -160,21 +160,20 @@
 
         <div class='flexcontainer'>
         <div class='donate_col1'> 
-        <div class='normalB'> Total Needed </div>
-        <div class='normalB'> Rs 100000 </div>
+        <div class='normalB'> Total Needed <br>
+         Rs 100000 </div>
         </div>
         
         <div class='donate_col2'> 
-        <div class='normalB'> Total Raised </div> 
-        <div class='normalB'> Rs 25000 </div>
+        <div class='normalB'> Total Raised <br>
+         Rs 25000 </div>
         </div>
-      
         <div class='donate_col3'>
-        <div class='normalB'> Remaining </div> 
-        <div class='normalB'> 75000 </div>
+        <div class='normalB'> Remaining <br> 
+         75000 </div>
         </div>
         </div>
-     <center><a href='' class='blue-btn d-btn_width'>Donate Now </a> </center>
+     <center><a href='<?php echo URL_ROOT.'/Projects/volunteerApplication/id'; ?>' class='blue-btn d-btn_width'>Donate Now </a> </center>
     
         <div class='colum2'>
          <div class='subtitleB grey'> Donors </div> <hr><br>
@@ -187,7 +186,8 @@
         </div>
     </div>
 </div>";}?>
-
+</div>
+       </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

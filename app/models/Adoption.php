@@ -9,13 +9,14 @@
         }
 
         public function createAdoptionApplication($data) {
-            $this->db->query("INSERT INTO `petso`.`Adoption` (`fullname`,`address`,`mobileNo`, `requirements`) VALUES (:fullname,:address, :mobileNo, :requirements)");
+            $this->db->query("INSERT INTO `petso`.`Adoption` (`fullname`,`address`,`mobileNo`,  `animalprofileId`) VALUES (:fullname,:address, :mobileNo,  :animalprofileId)");
             
          
             $this->db->bind(':fullname', $data['fullname'] );
             $this->db->bind(':address', $data['address'] );
             $this->db->bind(':mobileNo', $data['mobileNo'] );
-            $this->db->bind(':requirements', $data['requirements'] );
+            
+            $this->db->bind(':animalprofileId', $data['animalprofileId'] );
 
             if($this->db->execute()) {
                 return true;

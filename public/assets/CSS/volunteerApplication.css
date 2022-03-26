@@ -48,14 +48,14 @@
             box-sizing: border-box;
         }
         .dropcon {
-            width: 48%;
+            width: 45%;
             display: inline-block;
             box-sizing: border-box;
             
         }
 
         .drop {
-            width: 49%;
+            width: 45%;
             display: inline-block;
             border: 2px solid rgb(0, 0, 0);
             border-radius: 16px;
@@ -72,10 +72,19 @@
             width: 10%;
         }
 
-        .checkbox{
-            width: 15%;
-            height: 15%;
+        input[type=checkbox]{
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgb(0, 0, 0);
+            box-sizing: border-box;
         }
+
+        .textArea .text-box a textarea{
+            outline: black 1px;
+            border: black 1px;
+            border: 2px solid black;
+        }
+        
      
 
         @media screen and (max-width: 600px) {

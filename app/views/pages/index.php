@@ -60,14 +60,14 @@
             <h2>Adopt</h2>
             <i class="fa fa-dog"></i>
             <p>Contribute to a welfare project & help save live</p>
-            <a href="<?php echo URL_ROOT; ?>/Adoptions/adoptionApplication" class="hero-cards-single-btn "
+            <a href="<?php echo URL_ROOT; ?>/animalProfiles/viewAllAnimalProfiles" class="hero-cards-single-btn "
                id="">Adopt</a>
         </div>
         <div class="hero-cards-single">
             <h2>Sponsor</h2>
             <i class="fa fa-hand-holding-usd"></i>
             <p>Contribute to a welfare project & help save live</p>
-            <a href="/" class="hero-cards-single-btn " id="">Sponsor</a>
+            <a href="<?php echo URL_ROOT; ?>/animalProfiles/viewAllAnimalProfiles" class="hero-cards-single-btn " id="">Sponsor</a>
         </div>
     </div>
 </div>

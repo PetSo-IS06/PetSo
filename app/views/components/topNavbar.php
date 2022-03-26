@@ -41,9 +41,9 @@
             <label class="nav-menu-main-links-explore" id="explore">Explore 
                 <div class="dropdown-content-explore" id="explore">
                     <a href="<?php echo URL_ROOT;?>/projects/viewAllProjects">Welfare Projects</a>
-                    <a href="#">Animals Reported</a>
-                    <a href="#">Adoption</a>
-                    <a href="#">Sposorships</a>
+                    <a href="<?php echo URL_ROOT;?>/AnimalReports/viewAllAnimalReports">Animals Reported</a>
+                    <a href="<?php echo URL_ROOT;?>/animalProfiles/viewAllAnimalProfiles">Adoption</a>
+                    <a href="<?php echo URL_ROOT;?>/animalProfiles/viewAllAnimalProfiles">Sponsorships</a>
                 </div>
                 <i class="fas fa-chevron-down dropdown-arrow"></i>
             </label>

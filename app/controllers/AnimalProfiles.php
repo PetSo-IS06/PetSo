@@ -20,7 +20,7 @@ class AnimalProfiles extends Controller {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             //File Upload
-            $output_dir = "uploads/projects";//Path for file upload
+            $output_dir = "uploads/animals";//Path for file upload
             $RandomNum = time();
 
             if(!empty($_FILES['prof-image']['name'])) {
@@ -112,5 +112,64 @@ class AnimalProfiles extends Controller {
         }
 
         $this->view('animalProfiles/viewAllAnimalProfiles', $data);
+    }
+
+    public function editProfile($id) {
+        error_reporting(E_ALL ^ E_WARNING);
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // File upload
+            $output_dir = "uploads/animals";//Path for file upload
+            $RandomNum = time();
+
+            if(!empty($_FILES['prof-image']['name'])) {
+                $file_name = str_replace(' ','-',strtolower($_FILES['prof-image']['name']));
+                $ImageExt = substr($file_name, strrpos($file_name, '.'));
+                $ImageExt = str_replace('.','',$ImageExt);
+                $file_name = preg_replace("/\.[^.\s]{3,4}$/", "", $file_name);
+                $Newfile_name = $file_name.'-'.$RandomNum.'.'.$ImageExt;
+                $ret[$Newfile_name]= $output_dir.$Newfile_name;
+                move_uploaded_file($_FILES["prof-image"]["tmp_name"], $output_dir."/".$Newfile_name );
+                $prof_img = $output_dir."/".$Newfile_name;
+            }
+
+            $data = [
+                'name' => trim($_POST['name']),
+                'type' => trim($_POST['type']),
+                'breed' => trim($_POST['breed']),
+                'age' => trim($_POST['age']),
+                'gender' => trim($_POST['gender']),
+                'description' => trim($_POST['description']),
+                'adoption' => trim($_POST['adoption']),
+                'requirements' => trim($_POST['requirements']),
+                'sponsorship' => trim($_POST['sponsorship']),
+                'monthlyCost' => trim($_POST['monthlyCost']),
+                'image' => $prof_img
+            ];
+    
+            if($data){
+                if($this->animalProfileModel->updateProfile($id, $data)) {
+                    if(!empty($data['image'])){
+                        $this->animalProfileModel->updateProfilePic($id, $data['image']);
+                    }
+                    header('location:' . URL_ROOT . '/OrgDashboards/dashboard');
+                } else {
+                    die('Something went wrong.');
+                }
+
+            }
+        }
+    }
+
+    public function deleteProfile($id) {
+        error_reporting(E_ALL ^ E_WARNING);
+
+        if($this->animalProfileModel->deleteProfile($id)) {
+            header('location:' . URL_ROOT . '/OrgDashboards/dashboard');
+        } else {
+            die('Something went wrong.');
+        }
     }
 }

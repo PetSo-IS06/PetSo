@@ -103,18 +103,18 @@ function showProfileOverlay(id) {
 }
 
 function enableProfileEdit($id){
-    const str = 'edit-animal-prof' + $id;
-    const targetDiv = document.getElementById(str);
-    const inputFields = targetDiv.getElementsByTagName("input");
-    const textFields = targetDiv.getElementsByTagName("textarea");
+    var str = 'edit-animal-prof' + $id;
+    var targetDiv = document.getElementById(str);
+    var inputFields = targetDiv.getElementsByTagName("input");
+    var textFields = targetDiv.getElementsByTagName("textarea");
     for(let i=0; i<inputFields.length; i++) {
         inputFields[i].disabled = false;
     }
     for(let i=0; i<textFields.length; i++) {
         textFields[i].disabled = false;
     }
-    hideEditBtn();
-    showSaveBtn();
+    hideEditBtn($id);
+    showSaveBtn($id);
     showTypeList();
     showGenderList();
     showAdoptStatList();
@@ -123,18 +123,18 @@ function enableProfileEdit($id){
 }
 
 function disableProfileEdit($id){
-    const str = 'edit-animal-prof' + $id;
-    const targetDiv = document.getElementById(str);
-    const inputFields = targetDiv.getElementsByTagName("input");
-    const textFields = targetDiv.getElementsByTagName("textarea");
+    var str = 'edit-animal-prof' + $id;
+    var targetDiv = document.getElementById(str);
+    var inputFields = targetDiv.getElementsByTagName("input");
+    var textFields = targetDiv.getElementsByTagName("textarea");
     for(let i=0; i<inputFields.length; i++) {
         inputFields[i].disabled = true;
     }
     for(let i=0; i<textFields.length; i++) {
         textFields[i].disabled = true;
     }
-    showEditBtn();
-    hideSaveBtn();
+    showEditBtn($id);
+    hideSaveBtn($id);
     hideTypeList();
     hideGenderList();
     hideAdoptStatList();
@@ -204,23 +204,27 @@ function hideSponStatList(){
     y.style.display = 'block';
 }
 
-function hideEditBtn(){
-    var x = document.getElementById('edit-btn');
+function hideEditBtn($id){
+    var str = 'edit-btn' + $id;
+    var x = document.getElementById(str);
     x.style.display = 'none'
 }
 
-function showEditBtn(){
-    var x = document.getElementById('edit-btn');
+function showEditBtn($id){
+    var str = 'edit-btn' + $id;
+    var x = document.getElementById(str);
     x.style.display = 'block'
 }
 
 function hideSaveBtn(){
-    var x = document.getElementById('save-btn');
+    var str = 'save-btn' + $id;
+    var x = document.getElementById(str);
     x.style.display = 'none'
 }
 
-function showSaveBtn(){
-    var x = document.getElementById('save-btn');
+function showSaveBtn($id){
+    var str = 'save-btn' + $id;
+    var x = document.getElementById(str);
     x.style.display = 'block'
 }
 

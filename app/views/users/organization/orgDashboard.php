@@ -535,7 +535,7 @@
                                             <div id="popup<?php echo $item->id; ?>" class="overlay">
                                                 <div class="popup" id="animal-prof-popup">
                                                     <a class="close" onClick="hideProfileOverlay(<?php echo $item->id; ?>)">×</a>
-                                                    <form action="<?php echo URL_ROOT . '/AnimalProfiles/editProfile/'.$item->id; ?>" method="POST" id="edit-an-prof-form" enctype="multipart/form-data">
+                                                    <form action="<?php echo URL_ROOT . '/AnimalProfiles/editProfile/'.$item->id; ?>" method="POST" id="<?php echo 'edit-an-prof-form'.$item->id; ?>" enctype="multipart/form-data">
                                                     <div class="prof-content" id="<?php echo 'edit-animal-prof'.$item->id; ?>">
                                                         <div class="prof-info">
                                                             <div class="prof-view">
@@ -556,8 +556,8 @@
                                                             <div class="prof-details">
                                                                 <div class="form-title">
                                                                     <h3>Profile Details</h3>
-                                                                    <a onclick="enableProfileEdit(<?php echo $item->id; ?>)"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit-grey.png" id="edit-btn" alt="edit"></a>
-                                                                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/save-grey.png" class="save-btn" id="save-btn" alt="save" style="display: none;">
+                                                                    <a onclick="enableProfileEdit(<?php echo $item->id; ?>)"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit-grey.png" id="<?php echo 'edit-btn'.$item->id; ?>" alt="edit"></a>
+                                                                    <input type="submit" value="Save" id="<?php echo 'save-btn'.$item->id; ?>" style="display: none;">
                                                                 </div>
                                                                 <div class="form-row">
                                                                     <label for="" class="normalB">Name</label>
@@ -637,11 +637,13 @@
                                                             </div>
                                                         </div>
                                                         </form>
-                                                        <script>
-                                                            $('img.save-btn').click(function(){
-                                                                $('#edit-an-prof-form').submit();
+                                                        <!-- <script>
+                                                            var str = 'img.save-btn'+ '#edit-an-prof-form';
+                                                            var form = '#edit-an-prof-form' + '#edit-an-prof-form';
+                                                            $(str).click(function(){
+                                                                $(form).submit();
                                                             });
-                                                        </script>
+                                                        </script> -->
                                                         <div class="prof-action">
                                                             <form action="" method="GET" id="delete-an-prof-form">
                                                                 <input type="submit" id="approve" value="Delete">

@@ -14,10 +14,8 @@
 .prof-content {
     display: flex;
     flex-direction: column;
-    /* row-gap: 20px; */
     justify-content: space-between;
     padding: 0 3rem;
-    /* padding-right: 3rem; */
 }
 
 .prof-info {
@@ -36,10 +34,6 @@
     justify-content: center;
     align-items: center;
 }
-/* 
-.prof-view .change-img {
-    display: none;
-} */
 
 .prof-view  img{
     height: 150px;
@@ -78,12 +72,19 @@
     margin-bottom: 5px;
 }
 
-/* .form-title #edit-btn{
-    display: block;
-} */
-
-.form-title #save-btn{
-    display: none;
+.form-title input[type=submit]{
+    padding: 3px 6px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-purple-color);
+    color: var(--white-color);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out;
+    -webkit-transition: background-color 0.3s ease-out;
 }
 
 .prof-details .form-row {

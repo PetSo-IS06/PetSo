@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-prof-overview.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-prof-popup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/organization-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
@@ -534,8 +535,8 @@
                                             <div id="popup<?php echo $item->id; ?>" class="overlay">
                                                 <div class="popup" id="animal-prof-popup">
                                                     <a class="close" onClick="hideProfileOverlay(<?php echo $item->id; ?>)">×</a>
-                                                    <form action="<?php echo URL_ROOT . '/AnimalProfiles/editProfile'; ?>" method="POST" id="edit-an-prof">
-                                                    <div class="prof-content" id="edit-animal-prof">
+                                                    <form action="<?php echo URL_ROOT . '/AnimalProfiles/editProfile/'.$item->id; ?>" method="POST" id="edit-an-prof-form" enctype="multipart/form-data">
+                                                    <div class="prof-content" id="<?php echo 'edit-animal-prof'.$item->id; ?>">
                                                         <div class="prof-info">
                                                             <div class="prof-view">
                                                                 <img src="<?php if(!empty($item->image)) echo(URL_ROOT.'/'.$item->image);
@@ -546,13 +547,17 @@
                                                                         <span><?php echo $item->gender; ?></span> &#9679; <span><?php echo $item->breed; ?></span>
                                                                     </div>
                                                                     <span><?php echo $item->age; ?></span>
+                                                                    <div class="change-img" id="change-img">
+                                                                        <label for="prof-image" class="normal">Change image</label>
+                                                                        <input type="file" accept="image/*" id="prof-image" name="prof-image" class="">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="prof-details">
                                                                 <div class="form-title">
                                                                     <h3>Profile Details</h3>
-                                                                    <a onclick="enableProfileEdit()"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit-grey.png" id="edit-btn" alt="edit"></a>
-                                                                    <a onclick="enableProfileEdit()"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/save-grey.png" id="save-btn" alt="edit"></a>
+                                                                    <a onclick="enableProfileEdit(<?php echo $item->id; ?>)"><img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit-grey.png" id="edit-btn" alt="edit"></a>
+                                                                    <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/save-grey.png" class="save-btn" id="save-btn" alt="save" style="display: none;">
                                                                 </div>
                                                                 <div class="form-row">
                                                                     <label for="" class="normalB">Name</label>
@@ -561,9 +566,9 @@
                                                                 <div class="form-row">
                                                                     <label for="" class="normalB">Type</label>
                                                                     <div id="animal-type" style="display: none;">
-                                                                        <input name="type" type="text" list="type" class="select-cat" value="Dog">
+                                                                        <input name="type" type="text" list="type" class="select-cat" value="<?php echo $item->type; ?>">
                                                                         <datalist id="type">
-                                                                            <option value="Dog" checked>Dog</option>
+                                                                            <option value="Dog">Dog</option>
                                                                             <option value="Cat">Cat</option>
                                                                             <option value="Bird">Bird</option>
                                                                             <option value="Other">Other</option>
@@ -581,29 +586,33 @@
                                                                 </div>
                                                                 <div class="form-row">
                                                                     <label for="" class="normalB">Gender</label>
-                                                                    <input type="text" list="gender" name="gender" id="gender" value="<?php echo $item->gender; ?>" disabled>
-                                                                    <datalist id="type">
-                                                                        <option value="Dog">Male</option>
-                                                                        <option value="Cat">Female</option>
-                                                                    </datalist>
-                                                                </div>
+                                                                    <div id="animal-gender" style="display: none;">
+                                                                        <input name="gender" type="text" list="gender" class="select-cat" value="<?php echo $item->gender; ?>">
+                                                                        <datalist id="gender">
+                                                                            <option value="Male">Male</option>
+                                                                            <option value="Female">Female</option>
+                                                                        </datalist>
+                                                                    </div>
+                                                                    <input type="text" name="" id="gender-in" value="<?php echo $item->gender; ?>" disabled>                                                                </div>
                                                                 <div class="form-row">
                                                                     <label for="" class="normalB">Description</label>
-                                                                    <textarea rows="5" name="requirements" maxlength="200" disabled><?php echo $item->description; ?></textarea>                                                                 
+                                                                    <textarea rows="5" name="description" maxlength="200" disabled><?php echo $item->description; ?></textarea>                                                                 
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="prof-stat">
                                                             <div class="adopt">
-                                                                <div class="check">
-                                                                    <?php 
-                                                                    if($item->adoption_status == 'Available')
-                                                                        echo '<input type="checkbox" name="adoption" value="true" onClick="toggleAdoption()" checked>';
-                                                                    else
-                                                                        echo '<input type="checkbox" name="adoption" value="true" onClick="toggleAdoption()">';
-                                                                    ?>
-                                                                    <!-- <input type="checkbox" name="adoption" value="true" onClick="toggleAdoption()" checked> -->
-                                                                    <label for="adoption" class="normal">Open for adoption</label>
+                                                                <div class="adopt-row">
+                                                                    <label for="adopt-status" class="normalB">Adoption status</label>
+                                                                    <div id="adopt-status" style="display: none;">
+                                                                        <input name="adoption" type="text" list="adopt-status-types" class="select-cat" value="<?php echo $item->adoption_status; ?>">
+                                                                        <datalist id="adopt-status-types">
+                                                                            <option value="Available">Available</option>
+                                                                            <option value="Not Available">Not Available</option>
+                                                                            <option value="Adopted">Adopted</option>
+                                                                        </datalist>
+                                                                    </div>
+                                                                    <input type="text" name="" id="adopt-in" value="<?php echo $item->adoption_status; ?>" disabled>
                                                                 </div>
                                                                 <div class="stat-text">
                                                                     <label for="requirements" class="normalB">Requirements(if any)</label>
@@ -611,23 +620,30 @@
                                                                 </div>
                                                             </div>
                                                             <div class="sponsor">
-                                                                <div class="check">
-                                                                    <?php 
-                                                                    if($item->sponsorship_status == 'Available')
-                                                                        echo '<input type="checkbox" name="sponsorship" value="true" onClick="toggleSponsorship()" checked>';
-                                                                    else
-                                                                        echo '<input type="checkbox" name="sponsorship" value="true" onClick="toggleSponsorship()">';
-                                                                    ?>
-                                                                    <!-- <input type="checkbox" name="sponsorship" value="true" onClick="toggleSponsorship()" checked> -->
-                                                                    <label for="sponsorship" class="normal">Open for Sponsoring</label>
+                                                                <div class="spon-row">
+                                                                    <label for="spon-status" class="normalB">Sponsorship status</label>
+                                                                    <div id="spon-status" style="display: none;">
+                                                                        <input name="sponsorship" type="text" list="spon-status-types" class="select-cat" value="<?php echo $item->sponsorship_status; ?>">
+                                                                        <datalist id="spon-status-types">
+                                                                            <option value="Available">Available</option>
+                                                                            <option value="Not Available">Not Available</option>
+                                                                            <option value="Sponsored">Sponsored</option>
+                                                                        </datalist>
+                                                                    </div>
+                                                                    <input type="text" name="" id="spon-in" value="<?php echo $item->sponsorship_status; ?>" disabled>
                                                                 </div>
-                                                                <label for="monthlyCost" class="normalB">Monthly Cost (LKR)*</label>
+                                                                <label for="monthlyCost" class="normalB" style="margin-top: 10px;">Monthly Cost (LKR)*</label>
                                                                 <input type="number" name="monthlyCost" id="monthlyCost" value="<?php echo $item->monthly_cost; ?>" max="100000" disabled>
                                                             </div>
                                                         </div>
                                                         </form>
+                                                        <script>
+                                                            $('img.save-btn').click(function(){
+                                                                $('#edit-an-prof-form').submit();
+                                                            });
+                                                        </script>
                                                         <div class="prof-action">
-                                                            <form action="">
+                                                            <form action="" method="GET" id="delete-an-prof-form">
                                                                 <input type="submit" id="approve" value="Delete">
                                                             </form>
                                                         </div>

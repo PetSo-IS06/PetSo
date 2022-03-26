@@ -91,6 +91,7 @@ function hideProfileOverlay(id) {
     if (x.style.display !== "none") {
         x.style.display = "none";
     }
+    disableProfileEdit($id);
 }
 
 function showProfileOverlay(id) {
@@ -101,8 +102,9 @@ function showProfileOverlay(id) {
     }
 }
 
-function enableProfileEdit(){
-    const targetDiv = document.getElementById("edit-animal-prof");
+function enableProfileEdit($id){
+    const str = 'edit-animal-prof' + $id;
+    const targetDiv = document.getElementById(str);
     const inputFields = targetDiv.getElementsByTagName("input");
     const textFields = targetDiv.getElementsByTagName("textarea");
     for(let i=0; i<inputFields.length; i++) {
@@ -113,6 +115,93 @@ function enableProfileEdit(){
     }
     hideEditBtn();
     showSaveBtn();
+    showTypeList();
+    showGenderList();
+    showAdoptStatList();
+    showSponStatList();
+    showImgUploadBtn();
+}
+
+function disableProfileEdit($id){
+    const str = 'edit-animal-prof' + $id;
+    const targetDiv = document.getElementById(str);
+    const inputFields = targetDiv.getElementsByTagName("input");
+    const textFields = targetDiv.getElementsByTagName("textarea");
+    for(let i=0; i<inputFields.length; i++) {
+        inputFields[i].disabled = true;
+    }
+    for(let i=0; i<textFields.length; i++) {
+        textFields[i].disabled = true;
+    }
+    showEditBtn();
+    hideSaveBtn();
+    hideTypeList();
+    hideGenderList();
+    hideAdoptStatList();
+    hideSponStatList();
+}
+
+function showTypeList(){
+    var x = document.getElementById('animal-type');
+    x.style.display = 'block';
+    var y = document.getElementById('type-in');
+    y.style.display = 'none';
+}
+
+function hideTypeList(){
+    var x = document.getElementById('animal-type');
+    x.style.display = 'none';
+    var y = document.getElementById('type-in');
+    y.style.display = 'block';
+}
+
+function showGenderList(){
+    var x = document.getElementById('animal-gender');
+    x.style.display = 'block';
+    var y = document.getElementById('gender-in');
+    y.style.display = 'none';
+}
+
+function hideGenderList(){
+    var x = document.getElementById('animal-gender');
+    x.style.display = 'none';
+    var y = document.getElementById('gender-in');
+    y.style.display = 'block';
+}
+
+function showAdoptStatList(){
+    var x = document.getElementById('adopt-status');
+    x.style.display = 'block';
+    var y = document.getElementById('adopt-in');
+    y.style.display = 'none';
+}
+
+function hideAdoptStatList(){
+    var x = document.getElementById('adopt-status');
+    x.style.display = 'none';
+    var y = document.getElementById('adopt-in');
+    y.style.display = 'block';
+}
+
+function showImgUploadBtn(){
+    var x = document.getElementById('change-img');
+    if(x.style.display === 'none'){
+        x.style.display = 'block';
+    }
+}
+
+function showSponStatList(){
+    var x = document.getElementById('spon-status');
+    x.style.display = 'block';
+    var y = document.getElementById('spon-in');
+    y.style.display = 'none';
+}
+
+function hideSponStatList(){
+    var x = document.getElementById('spon-status');
+    x.style.display = 'none';
+    var y = document.getElementById('spon-in');
+    y.style.display = 'block';
 }
 
 function hideEditBtn(){
@@ -134,10 +223,6 @@ function showSaveBtn(){
     var x = document.getElementById('save-btn');
     x.style.display = 'block'
 }
-
-$('#save-btn').click(function(){
-    $('#edit-an-prof').submit();
- });
 
 /************ Side panel Navigation************/
 

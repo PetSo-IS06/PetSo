@@ -111,7 +111,6 @@ body {
 .container1 text {
     margin-bottom: 30px;
     color: #555454;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -167,6 +166,8 @@ body {
     border: 1px solid #C4C4C4;
     box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+    overflow-y: auto;
+    height: 500px;
 }
 .container2 h2 {
     font-weight: normal;
@@ -299,6 +300,7 @@ input[type=text], select {
 }
 
 .container2Card {
+    text-decoration: none;
     position: relative;
     padding: 20px;
     width: 100%;
@@ -311,6 +313,7 @@ input[type=text], select {
     box-shadow: 3px 6px 5px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     margin-top: 20px;
+    color: var(--black-color);
 }
 
 /*.reportVerticalCard {*/

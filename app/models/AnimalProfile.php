@@ -98,4 +98,13 @@ class AnimalProfile
             return false;
         }
     }
+
+    public function getProfile($id)
+    {
+        $this->db->query("SELECT P.*, O.org_name, O.org_mobile, O.org_email FROM `petso`.`Animal_Profile` AS P, `petso`.`Organization` AS O WHERE O.org_id = P.org_id AND`id` = $id");
+
+        $result = $this->db->single();
+        return $result;
+    }
+
 }

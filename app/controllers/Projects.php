@@ -486,6 +486,11 @@ class Projects extends Controller {
         //     'title' => ''
         // ];
 
+        // $to = 'imtiaz.azma@gmail.com';
+        // $body = 'Test mail';
+        // $subject = 'Check PHP Mailer';
+        // sendMail($to, $body, $subject);
+
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             $data = [
@@ -493,7 +498,8 @@ class Projects extends Controller {
             ];
 
             if($this->projectModel->approveProject($id)) {
-                header('location:' . URL_ROOT . '/pages/index');
+                
+                header('location:' . URL_ROOT . '/AdminDashboards/dashboard');
             } else {
                 die('Something went wrong.');
             }

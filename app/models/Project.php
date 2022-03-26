@@ -141,7 +141,7 @@
         public function approveProject($id) {
             $this->db->query('UPDATE `petso`.`Project` SET `status` = :status WHERE (`id` = :id)');
             
-            $this->db->bind(':status', 'Approved');
+            $this->db->bind(':status', 'Ongoing');
             $this->db->bind(':id', $id);
 
             if($this->db->execute()) {

@@ -19,10 +19,18 @@
         }
 
         public function getPendingProjects() {
-            $this->db->query('SELECT Project.*, Organization.org_name, Organization.org_district
-                                FROM Project
-                                JOIN Organization ON Project.org_id = Organization.org_id
-                                WHERE Project.status = :status');
+            $this->db->query('SELECT P.id AS proj_id, P.title AS proj_title, P.cause AS proj_cause, P.initiation_date AS proj_init, 
+                            P.create_date AS proj_create, P.status AS proj_status, P.volunteering, P.fundraising,
+                            O.org_name, 
+                            F.target_amount, F.funds_for, F.funding_start, F.funding_end,
+                            V.reason AS vol_reason, V.description AS vol_desc, 
+                            V.area AS vol_area, V.district AS vol_district, V.work_start, V.work_end,
+                            V.app_open, V.app_close, V.requirements AS vol_req
+                            FROM Project AS P, Organization AS O, Fundraiser AS F, Volunteer_Opportunity AS V
+                            WHERE P.status = :status
+                            AND P.org_id = O.org_id
+                            AND P.id = F.prj_id
+                            AND P.id = V.prj_id');
 
             $this->db->bind(':status', 'Pending');
 

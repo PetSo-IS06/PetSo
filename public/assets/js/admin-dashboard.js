@@ -1,4 +1,20 @@
 // Project Panel Popups
+function showPendProjOverlay(id) {
+    const str = 'prj-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+    }
+}
+
+function hidePendProjOverlay(id) {
+    const str = 'prj-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
 function hideApproveOverlay(id) {
     const str = 'popup' + id;
     var x = document.getElementById(str);
@@ -87,15 +103,34 @@ function showRequestsPanel() {
     if (x.style.display !== "block") {
         x.style.display = "block";
         tag.classList.add("active-tag");
-        hideProjectPanel();
+        hideProjectsPanel();
     }
 }
 
-function hideProjectPanel() {
+function hideRequestsPanel() {
+    var x = document.getElementById("req-sec");
+    var tag = document.getElementById("req-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
+function hideProjectsPanel() {
     var x = document.getElementById("proj-sec");
     var tag = document.getElementById("proj-tag");
     if (x.style.display !== "none") {
         x.style.display = "none";
         tag.classList.remove("active-tag");
+    }
+}
+
+function showProjectsPanel() {
+    var x = document.getElementById("proj-sec");
+    var tag = document.getElementById("proj-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideRequestsPanel();
     }
 }

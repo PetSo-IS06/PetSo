@@ -610,31 +610,12 @@ class SMTP
 
         return true;
     }
-
-    /**
-     * Calculate an MD5 HMAC hash.
-     * Works like hash_hmac('md5', $data, $key)
-     * in case that function is not available.
-     *
-     * @param string $data The data to hash
-     * @param string $key  The key to hash with
-     *
-     * @return string
-     */
+    
     protected function hmac($data, $key)
     {
         if (function_exists('hash_hmac')) {
             return hash_hmac('md5', $data, $key);
         }
-
-        //The following borrowed from
-        //http://php.net/manual/en/function.mhash.php#27225
-
-        //RFC 2104 HMAC implementation for php.
-        //Creates an md5 HMAC.
-        //Eliminates the need to install mhash to compute a HMAC
-        //by Lance Rushing
-
         $bytelen = 64; //byte length for md5
         if (strlen($key) > $bytelen) {
             $key = pack('H*', md5($key));
@@ -693,42 +674,12 @@ class SMTP
         }
     }
 
-    /**
-     * Send an SMTP DATA command.
-     * Issues a data command and sends the msg_data to the server,
-     * finalizing the mail transaction. $msg_data is the message
-     * that is to be send with the headers. Each header needs to be
-     * on a single line followed by a <CRLF> with the message headers
-     * and the message body being separated by an additional <CRLF>.
-     * Implements RFC 821: DATA <CRLF>.
-     *
-     * @param string $msg_data Message data to send
-     *
-     * @return bool
-     */
     public function data($msg_data)
     {
         //This will use the standard timelimit
         if (!$this->sendCommand('DATA', 'DATA', 354)) {
             return false;
         }
-
-        /* The server is ready to accept data!
-         * According to rfc821 we should not send more than 1000 characters on a single line (including the LE)
-         * so we will break the data up into lines by \r and/or \n then if needed we will break each of those into
-         * smaller lines to fit within the limit.
-         * We will also look for lines that start with a '.' and prepend an additional '.'.
-         * NOTE: this does not count towards line-length limit.
-         */
-
-        //Normalize line breaks before exploding
-        $lines = explode("\n", str_replace(["\r\n", "\r"], "\n", $msg_data));
-
-        /* To distinguish between a complete RFC822 message and a plain message body, we check if the first field
-         * of the first line (':' separated) does not contain a space then it _should_ be a header and we will
-         * process all lines before a blank line as headers.
-         */
-
         $field = substr($lines[0], 0, strpos($lines[0], ':'));
         $in_headers = false;
         if (!empty($field) && strpos($field, ' ') === false) {
@@ -788,17 +739,6 @@ class SMTP
         return $result;
     }
 
-    /**
-     * Send an SMTP HELO or EHLO command.
-     * Used to identify the sending server to the receiving server.
-     * This makes sure that client and server are in a known state.
-     * Implements RFC 821: HELO <SP> <domain> <CRLF>
-     * and RFC 2821 EHLO.
-     *
-     * @param string $host The host name or IP to connect to
-     *
-     * @return bool
-     */
     public function hello($host = '')
     {
         //Try extended hello first (RFC 2821)
@@ -814,17 +754,6 @@ class SMTP
         return $this->sendHello('HELO', $host);
     }
 
-    /**
-     * Send an SMTP HELO or EHLO command.
-     * Low-level implementation used by hello().
-     *
-     * @param string $hello The HELO string
-     * @param string $host  The hostname to say we are
-     *
-     * @return bool
-     *
-     * @see hello()
-     */
     protected function sendHello($hello, $host)
     {
         $noerror = $this->sendCommand($hello, $hello . ' ' . $host, 250);
@@ -838,12 +767,6 @@ class SMTP
         return $noerror;
     }
 
-    /**
-     * Parse a reply to HELO/EHLO command to discover server extensions.
-     * In case of HELO, the only parameter that can be discovered is a server name.
-     *
-     * @param string $type `HELO` or `EHLO`
-     */
     protected function parseHelloFields($type)
     {
         $this->server_caps = [];
@@ -880,18 +803,6 @@ class SMTP
         }
     }
 
-    /**
-     * Send an SMTP MAIL command.
-     * Starts a mail transaction from the email address specified in
-     * $from. Returns true if successful or false otherwise. If True
-     * the mail transaction is started and then one or more recipient
-     * commands may be called followed by a data command.
-     * Implements RFC 821: MAIL <SP> FROM:<reverse-path> <CRLF>.
-     *
-     * @param string $from Source address of this message
-     *
-     * @return bool
-     */
     public function mail($from)
     {
         $useVerp = ($this->do_verp ? ' XVERP' : '');
@@ -903,15 +814,6 @@ class SMTP
         );
     }
 
-    /**
-     * Send an SMTP QUIT command.
-     * Closes the socket if there is no error or the $close_on_error argument is true.
-     * Implements from RFC 821: QUIT <CRLF>.
-     *
-     * @param bool $close_on_error Should the connection close if an error occurs?
-     *
-     * @return bool
-     */
     public function quit($close_on_error = true)
     {
         $noerror = $this->sendCommand('QUIT', 'QUIT', 221);
@@ -924,18 +826,6 @@ class SMTP
         return $noerror;
     }
 
-    /**
-     * Send an SMTP RCPT command.
-     * Sets the TO argument to $toaddr.
-     * Returns true if the recipient was accepted false if it was rejected.
-     * Implements from RFC 821: RCPT <SP> TO:<forward-path> <CRLF>.
-     *
-     * @param string $address The address the message is being sent to
-     * @param string $dsn     Comma separated list of DSN notifications. NEVER, SUCCESS, FAILURE
-     *                        or DELAY. If you specify NEVER all other notifications are ignored.
-     *
-     * @return bool
-     */
     public function recipient($address, $dsn = '')
     {
         if (empty($dsn)) {
@@ -1041,21 +931,6 @@ class SMTP
 
         return true;
     }
-
-    /**
-     * Send an SMTP SAML command.
-     * Starts a mail transaction from the email address specified in $from.
-     * Returns true if successful or false otherwise. If True
-     * the mail transaction is started and then one or more recipient
-     * commands may be called followed by a data command. This command
-     * will send the message to the users terminal if they are logged
-     * in and send them an email.
-     * Implements RFC 821: SAML <SP> FROM:<reverse-path> <CRLF>.
-     *
-     * @param string $from The address the message is from
-     *
-     * @return bool
-     */
     public function sendAndMail($from)
     {
         return $this->sendCommand('SAML', "SAML FROM:$from", 250);
@@ -1147,24 +1022,6 @@ class SMTP
     {
         return $this->server_caps;
     }
-
-    /**
-     * Get metadata about the SMTP server from its HELO/EHLO response.
-     * The method works in three ways, dependent on argument value and current state:
-     *   1. HELO/EHLO has not been sent - returns null and populates $this->error.
-     *   2. HELO has been sent -
-     *     $name == 'HELO': returns server name
-     *     $name == 'EHLO': returns boolean false
-     *     $name == any other string: returns null and populates $this->error
-     *   3. EHLO has been sent -
-     *     $name == 'HELO'|'EHLO': returns the server name
-     *     $name == any other string: if extension $name exists, returns True
-     *       or its options (e.g. AUTH mechanisms supported). Otherwise returns False.
-     *
-     * @param string $name Name of SMTP extension or 'HELO'|'EHLO'
-     *
-     * @return string|bool|null
-     */
     public function getServerExt($name)
     {
         if (!$this->server_caps) {
@@ -1311,14 +1168,6 @@ class SMTP
         return $this->do_verp;
     }
 
-    /**
-     * Set error messages and codes.
-     *
-     * @param string $message      The error message
-     * @param string $detail       Further detail on the error
-     * @param string $smtp_code    An associated SMTP error code
-     * @param string $smtp_code_ex Extended SMTP code
-     */
     protected function setError($message, $detail = '', $smtp_code = '', $smtp_code_ex = '')
     {
         $this->error = [
@@ -1389,14 +1238,6 @@ class SMTP
         return $this->Timeout;
     }
 
-    /**
-     * Reports an error number and string.
-     *
-     * @param int    $errno   The error number returned by PHP
-     * @param string $errmsg  The error message returned by PHP
-     * @param string $errfile The file the error occurred in
-     * @param int    $errline The line number the error occurred on
-     */
     protected function errorHandler($errno, $errmsg, $errfile = '', $errline = 0)
     {
         $notice = 'Connection failed.';
@@ -1411,15 +1252,6 @@ class SMTP
         );
     }
 
-    /**
-     * Extract and return the ID of the last SMTP transaction based on
-     * a list of patterns provided in SMTP::$smtp_transaction_id_patterns.
-     * Relies on the host providing the ID in response to a DATA command.
-     * If no reply has been received yet, it will return null.
-     * If no pattern was matched, it will return false.
-     *
-     * @return bool|string|null
-     */
     protected function recordLastTransactionID()
     {
         $reply = $this->getLastReply();

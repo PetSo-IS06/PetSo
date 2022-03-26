@@ -29,8 +29,8 @@ class ReportAnimal
     public function saveReport($data)
     {
         $this->db->query('INSERT INTO `petso`.`Animal_Report`
-            (`situation`, `district`, `area`, `animal_type`, `reporter_name`, `reporter_number`,`reporter_email`,`user_id`,`image`, `heading`)
-            VALUES (:situation, :district, :area, :animal_type, :reporter_name, :reporter_number, :reporter_email, :user_id, :image, :heading)');
+            (`situation`, `district`, `area`, `animal_type`, `reporter_name`, `reporter_number`,`reporter_email`,`user_id`,`image`, `heading` , `created_date`)
+            VALUES (:situation, :district, :area, :animal_type, :reporter_name, :reporter_number, :reporter_email, :user_id, :image, :heading, :created_date)');
 
         $this->db->bind(':situation', $data['situation']);
         $this->db->bind(':district', $data['district']);
@@ -42,6 +42,7 @@ class ReportAnimal
         $this->db->bind(':user_id', $_SESSION['user_id']);
         $this->db->bind(':image', $data['report-image']);
         $this->db->bind(':heading', $data['heading']);
+        $this->db->bind(':created_date', $data['created_date']);
 
         if ($this->db->execute()) {
             return true;

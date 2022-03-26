@@ -151,7 +151,9 @@ class AnimalReports extends Controller
             'nameError' => '',
             'mobileError' => '',
             'emailError' => '',
-            'imgError' => ''
+            'imgError' => '',
+            'created_date' => date("Y-m-d"),
+            'created_time' => date("h:i:s")
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -193,7 +195,9 @@ class AnimalReports extends Controller
                 'animalError' => '',
                 'nameError' => '',
                 'mobileError' => '',
-                'emailError' => ''
+                'emailError' => '',
+                'created_date' => date("Y-m-d"),
+                'created_time' => date("h:i:s")
             ];
 
             // regular expressions
@@ -226,6 +230,8 @@ class AnimalReports extends Controller
                 } else {
                     die('Something went wrong.');
                 }
+            } else {
+                $this->view('animalReports/nonEmergencyReportForm', $data);
             }
         }
         $this->view('animalReports/nonEmergencyReportForm', $data);

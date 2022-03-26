@@ -172,4 +172,27 @@ class AnimalProfiles extends Controller {
             die('Something went wrong.');
         }
     }
+
+    public function viewSingleProfile($id)
+    {
+        if(isset($_SESSION['user_id'])){
+            $data = [
+                'profile' => $this->animalProfileModel->getProfile($id),
+                'messageError' => '',
+            ];
+
+            $this->view('animalProfiles/viewSingleAnimalProfile', $data);
+        }else{
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => ' ',
+                'passwordError' => ' ',
+                'attentionMessage' => 'Please login to continue!'
+            ];
+
+            $this->view('pages/login', $data);
+        }
+    }
+
 }

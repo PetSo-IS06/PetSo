@@ -152,8 +152,8 @@ class AnimalReports extends Controller
             'mobileError' => '',
             'emailError' => '',
             'imgError' => '',
-            'created_date' => date("Y-m-d"),
-            'created_time' => date("h:i:s")
+            'create_date' => date("Y-m-d"),
+            'create_time' => date("h:i:s")
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -196,8 +196,8 @@ class AnimalReports extends Controller
                 'nameError' => '',
                 'mobileError' => '',
                 'emailError' => '',
-                'created_date' => date("Y-m-d"),
-                'created_time' => date("h:i:s")
+                'create_date' => date("Y-m-d"),
+                'create_time' => date("h:i:s")
             ];
 
             // regular expressions

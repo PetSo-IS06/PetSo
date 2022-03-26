@@ -87,4 +87,15 @@ class AnimalProfile
             return false;
         }
     }
+    public function deleteProfile($id){
+        $this->db->query('DELETE FROM `petso`.`Animal_Profile` WHERE (`id` = :id)');
+
+        $this->db->bind(':id', $id);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

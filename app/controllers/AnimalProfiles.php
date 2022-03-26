@@ -162,4 +162,14 @@ class AnimalProfiles extends Controller {
             }
         }
     }
+
+    public function deleteProfile($id) {
+        error_reporting(E_ALL ^ E_WARNING);
+
+        if($this->animalProfileModel->deleteProfile($id)) {
+            header('location:' . URL_ROOT . '/OrgDashboards/dashboard');
+        } else {
+            die('Something went wrong.');
+        }
+    }
 }

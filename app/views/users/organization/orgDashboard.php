@@ -637,15 +637,8 @@
                                                             </div>
                                                         </div>
                                                         </form>
-                                                        <!-- <script>
-                                                            var str = 'img.save-btn'+ '#edit-an-prof-form';
-                                                            var form = '#edit-an-prof-form' + '#edit-an-prof-form';
-                                                            $(str).click(function(){
-                                                                $(form).submit();
-                                                            });
-                                                        </script> -->
                                                         <div class="prof-action">
-                                                            <form action="" method="GET" id="delete-an-prof-form">
+                                                            <form action="<?php echo URL_ROOT . '/AnimalProfiles/deleteProfile/'.$item->id; ?>" method="GET" id="delete-an-prof-form">
                                                                 <input type="submit" id="approve" value="Delete">
                                                             </form>
                                                         </div>

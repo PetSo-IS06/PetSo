@@ -48,6 +48,17 @@
             return $result;
         }
 
+        public function getMyAnimalReports() {
+            $this->db->query('SELECT * FROM `petso`.`Animal_Report` WHERE `org_id` = :org_id and `status`= :status');
+
+            $this->db->bind(':org_id', $_SESSION['user_id']);
+            $this->db->bind(':status', "pending");
+
+            $result = $this->db->resultSet();
+
+            return $result;
+        }
+
         public function getMyAnimalProfilesTotal() {
             $this->db->query('SELECT * FROM `petso`.`Animal_Profile` WHERE `org_id` = :org_id');
 

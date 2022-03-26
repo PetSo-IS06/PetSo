@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a onClick="showReportsPanel()" id="rep-tag">
+                        <a onClick="showReportPanel()" id="rep-tag">
                         <i class="fas fa-hand-holding-medical"></i>
                         <span>Animal Reports</span>
                         </a>
@@ -179,6 +179,39 @@
                     </div>
 
                 </section>
+
+                <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th><input type="checkbox" name=""></th>
+                                    <th>ID</th>
+                                    <th>Heading</th>
+                                    <th>District</th>
+                                    <th>Area</th>
+                                    <th>Animal Type</th>
+                                    <th>Created Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["reports"] as $item) { ?>
+                                        <tr>
+                                            <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td><?php echo $item->heading; ?></td>
+                                            <td><?php echo $item->district; ?></td>
+                                            <td><?php echo $item->area; ?></td>
+                                            <td><?php echo $item->animal_type; ?></td>
+                                            <td><?php echo $item->create_date; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
             </section>
 
             <!-- Volunteer Opportunities Section -->

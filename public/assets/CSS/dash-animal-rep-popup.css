@@ -1,0 +1,95 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+#animal-report-popup {
+ display: flex;
+ flex-direction: column;
+ margin: 5vw auto;
+ width: 70%;
+ /* min-height: 500px; */
+}
+
+.report-view {
+ display: flex;
+ flex-direction:row;
+ column-gap: 2rem;
+ justify-content: space-around;
+ align-items: stretch;
+ padding: 1rem;
+}
+
+.report-view .rep-img{
+ flex-grow: 1;
+ /* height: 200px;
+ width: 200px; */
+}
+
+.rep-img img{
+ border-radius: 25px;
+ height: auto;
+ width: 400px;
+}
+
+.rep-details {
+ display: flex;
+ flex-direction: column;
+ flex-grow: 1;
+ justify-content: space-between;
+}
+
+.rep-title{
+ margin-bottom: 1rem;
+}
+
+.rep-info{
+ display: flex;
+ flex-direction: column;
+ row-gap: 1rem;
+}
+
+.rep-content{
+ display: flex;
+ flex-direction: column;
+ row-gap: 1rem;
+}
+
+.rep-loc {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.rep-row {
+ display: flex;
+ justify-content: flex-start;
+ flex-direction: row;
+ column-gap: 20px;
+}
+
+.rep-action{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.rep-action input[type=submit] {
+ padding: 12px 26px;
+ cursor: pointer;
+ text-decoration: none;
+ outline: none;
+ border-radius: 10px;
+ color: var(--white-color);
+ font-weight: bold;
+ letter-spacing: 1px;
+ transition: 0.3s ease-out;
+ -webkit-transition: background-color 0.3s ease-out;
+}
+
+.rep-action #approve-btn {
+ background: var(--primary-green-color);
+}
+
+.rep-action #reject-btn {
+ background: var(--primary-red-color);
+}

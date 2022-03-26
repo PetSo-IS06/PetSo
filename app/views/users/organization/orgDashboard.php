@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-prof-overview.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-prof-popup.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-animal-rep-popup.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/organization-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
@@ -199,11 +200,59 @@
                                         <tr>
                                             <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
                                             <td><?php echo $item->id; ?></td>
-                                            <td><?php echo $item->heading; ?></td>
+                                            <td class="cell-nav"><a onClick="showReportOverlay(<?php echo $item->id; ?>)"><?php echo $item->heading; ?></a></td>
                                             <td><?php echo $item->district; ?></td>
                                             <td><?php echo $item->area; ?></td>
                                             <td><?php echo $item->animal_type; ?></td>
                                             <td><?php echo $item->create_date; ?></td>
+
+                                            <!-- Report Popup -->
+                                            <div id="popup<?php echo $item->id; ?>" class="overlay">
+                                                <div class="popup" id="animal-report-popup">
+                                                    <a class="close" onClick="hideReportOverlay(<?php echo $item->id; ?>)">×</a>
+                                                    <div class="report-view">
+                                                        <div class="rep-img">
+                                                            <img src="<?php echo URL_ROOT; ?>/public/uploads/animals/sandy-1648275761.jpg" alt="Report image">
+                                                        </div>
+                                                        <div class="rep-details">
+                                                            <div class="rep-info">
+                                                                <div class="rep-title">
+                                                                    <h3 class="subtitleB">Title of the Report</h3>
+                                                                </div>
+                                                                <div class="rep-content">
+                                                                    <div class="rep-loc">
+                                                                        <label for="" class="normalB">Horana, Badulla</label>
+                                                                        <label for="" class="normalB">Status: <span class="normal green">Pending</span></label>
+                                                                    </div>
+                                                                    <div class="rep-row">
+                                                                        <label for="rep-date" class="normalB">Reported on</label>
+                                                                        <p id="rep-date" class="normal">Date here</p>
+                                                                    </div>
+                                                                    <div class="rep-row">
+                                                                        <label for="rep-date" class="normalB">Reported by</label>
+                                                                        <p id="rep-date" class="normal">Date here</p>
+                                                                    </div>
+                                                                    <div class="rep-row">
+                                                                        <label for="rep-date" class="normalB">Reported On</label>
+                                                                        <p id="rep-date" class="normal">User name</p>
+                                                                    </div>
+                                                                    <div class="rep-dec">
+                                                                        <p>Description of the report here. Description of the report here. Description of the report here</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="rep-action">
+                                                                <form action="<?php echo URL_ROOT . '/AnimalReports/reject/'.$item->id; ?>" method="GET">
+                                                                    <input type="submit" id="reject-btn" value="Reject">
+                                                                </form>
+                                                                <form action="<?php echo URL_ROOT . '/AnimalReports/approve/'.$item->id; ?>" method="GET">
+                                                                    <input type="submit" id="approve-btn" value="Approve">
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
                                     <?php } ?>
                                 <tbody>

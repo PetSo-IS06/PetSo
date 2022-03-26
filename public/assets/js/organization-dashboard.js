@@ -102,6 +102,23 @@ function showProfileOverlay(id) {
     }
 }
 
+// Animal Reports Popups
+function hideReportOverlay(id) {
+    const str = 'popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
+function showReportOverlay(id) {
+    const str = 'popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "flex") {
+        x.style.display = "flex";
+    }
+}
+
 function enableProfileEdit($id){
     var str = 'edit-animal-prof' + $id;
     var targetDiv = document.getElementById(str);

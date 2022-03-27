@@ -47,7 +47,11 @@
                     </div> <br><br>
 
                 <div class="com-form-nav">
+<<<<<<< HEAD
                 <a href="<?php echo URL_ROOT;?>" class="grey-btn">Cancel</a>
+=======
+                <a href="" class="grey-btn">Cancel</a>
+>>>>>>> 746b268 (make complaint)
                 <button class="purple-btn" type="submit">Submit</button>
                 </div>
               

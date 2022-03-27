@@ -230,4 +230,38 @@
             $result = $this->db->rowCount();   
             return $result;
         }
+
+
+        public function createVolunteerApplication($data) {
+            $this->db->query("INSERT INTO `petso`.`Volunteer_Application` (`applicant_name`,`dob`,`mobile`, `occupation`,`email`,`event`,`organizer`,`worktype`,`nic`, `address`, `applied_date`)
+             VALUES (:applicant_name,:dob, :mobile, :occupation, :email, :event, :organizer, :worktype, :nic,  :address , :applied_date)");
+            
+         
+            $this->db->bind(':applicant_name', $data['applicant_name'] );
+            $this->db->bind(':dob', $data['dob'] );
+            $this->db->bind(':occupation', $data['occupation'] );
+            $this->db->bind(':address', $data['address'] );
+            $this->db->bind(':mobile', $data['mobile'] );
+            $this->db->bind(':email', $data['email'] );
+            $this->db->bind(':event', $data['event'] );
+            $this->db->bind(':organizer', $data['organizer'] );
+            $this->db->bind(':worktype', $data['worktype'] );
+            $this->db->bind(':nic', $data['nic'] );
+            $this->db->bind(':applied_date', $data['applied_date'] );
+
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }   
+        }
+
+        public function getvolOpportunityID($id)
+    {
+        $this->db->query("SELECT *  FROM `petso`.`Volunteer_Opportunity` WHERE  id=$id");
+
+        $result = $this->db->single();    // resultSet returns an array of Objects
+        return $result;
+    }
+
     }

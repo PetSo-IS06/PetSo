@@ -11,6 +11,30 @@
  max-height: 680px;
 }
 
+.prj-btn {
+ display: flex;
+ justify-content: flex-end;
+}
+
+.prj-btn a {
+ padding: 5px 10px;
+ cursor: pointer;
+ text-decoration: none;
+ margin-left: 0.5rem;
+ border: none;
+ outline: none;
+ border-radius: 7px;
+ color: var(--white-color);
+}
+
+.prj-btn #view-all-prj-btn{
+ background: var(--primary-yellow-color);
+}
+
+.prj-btn #view-pend-prj-btn{
+ background: var(--primary-blue-color);
+}
+
 .pend-proj-content {
  display: flex;
  flex-direction: row;
@@ -63,7 +87,7 @@
  text-decoration: underline;
 }
 
-.pend-proj-action input[type=submit] {
+.pend-proj-action a {
  padding: 12px 26px;
  cursor: pointer;
  text-decoration: none;
@@ -77,8 +101,9 @@
  -webkit-transition: background-color 0.3s ease-out;
 }
 
-.pend-proj-action input[type=submit]:hover{
+.pend-proj-action a:hover{
  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ text-decoration: none;
 }
 
 .pend-proj-action #reject {

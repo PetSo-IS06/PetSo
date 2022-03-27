@@ -524,7 +524,7 @@
                             <div class="view-all card3">
                                 <h1 class="heading1B grey"><?php echo $data["an-profiles"]['animals-total']; ?></h1>
                                 <h3  class="normalB grey">Profiles available currently</h3>
-                                <a  class="normalB purple" href="">View all &rarr;</a>
+                                <a  class="normalB purple" onClick="showAllAnimals()">View all &rarr;</a>
                             </div>
                             <a href="<?php echo URL_ROOT; ?>/AnimalProfiles/create">
                                 <div class="create-prof-card">

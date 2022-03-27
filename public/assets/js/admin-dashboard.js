@@ -1,3 +1,53 @@
+// Project Panel Sections
+function showPendProjects() {
+    var x = document.getElementById("all-pend-prj");
+    var disable_btn = document.getElementById("view-pend-prj-btn");
+    var show__btn = document.getElementById("view-all-prj-btn");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        hideAllProjects();
+    }
+    // disable_btn.classList.remove("disable");
+    disable_btn.style.display === "none";
+    show__btn.style.display === "block";
+}
+
+function hidePendProjects() {
+    var x = document.getElementById("all-pend-prj");
+    var disable_btn = document.getElementById("view-all-prj-btn");
+    var show__btn = document.getElementById("view-pend-prj-btn");
+    if (x.style.display != "none") {
+        x.style.display = "none";
+    }
+    disable_btn.style.display === "none";
+    show__btn.style.display === "block";
+}
+
+function showAllProjects() {
+    var x = document.getElementById("all-prj");
+    var disable_btn = document.getElementById("view-all-prj-btn");
+    var show__btn = document.getElementById("view-pend-prj-btn");
+    if (x.style.display != "block") {
+        x.style.display = "block";
+        hidePendProjects();
+    }
+    disable_btn.style.display === "none";
+    show__btn.style.display === "block";
+}
+
+function hideAllProjects() {
+    var x = document.getElementById("all-prj");
+    var disable_btn = document.getElementById("view-pend-prj-btn");
+    var show__btn = document.getElementById("view-all-prj-btn");
+    if (x.style.display != "none") {
+        x.style.display = "none";
+    }
+    showPendProjects();
+    disable_btn.style.display === "none";
+    show__btn.style.display === "block";
+}
+
+
 // Project Panel Popups
 function showPendProjOverlay(id) {
     const str = 'prj-popup' + id;
@@ -16,7 +66,7 @@ function hidePendProjOverlay(id) {
 }
 
 function hideApproveOverlay(id) {
-    const str = 'popup' + id;
+    const str = 'app-prj-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "none") {
         x.style.display = "none";
@@ -24,7 +74,7 @@ function hideApproveOverlay(id) {
 }
 
 function showApproveOverlay(id) {
-    const str = 'popup' + id;
+    const str = 'app-prj-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "block") {
         x.style.display = "block";
@@ -32,7 +82,7 @@ function showApproveOverlay(id) {
 }
 
 function hideRejectOverlay(id) {
-    const str = 'rej-popup' + id;
+    const str = 'rej-prj-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "none") {
         x.style.display = "none";
@@ -40,7 +90,7 @@ function hideRejectOverlay(id) {
 }
 
 function showRejectOverlay(id) {
-    const str = 'rej-popup' + id;
+    const str = 'rej-prj-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "block") {
         x.style.display = "block";

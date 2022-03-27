@@ -1,0 +1,38 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+.us-btn {
+ display: flex;
+ justify-content: flex-end;
+}
+
+.us-btn a {
+ padding: 5px 10px;
+ cursor: pointer;
+ text-decoration: none;
+ margin-left: 0.5rem;
+ border: none;
+ outline: none;
+ border-radius: 7px;
+ color: var(--white-color);
+}
+
+.us-btn #view-user-btn{
+ background: var(--primary-purple-color);
+ display: none;
+}
+
+.us-btn #view-org-btn{
+ background: var(--primary-yellow-color);
+}
+
+.us-btn #view-admin-btn{
+ background: var(--primary-blue-color);
+}
+
+.ad-overview {
+ display: flex;
+ flex-direction: column;
+ row-gap: 1rem;
+}

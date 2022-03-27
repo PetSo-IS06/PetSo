@@ -178,5 +178,12 @@
             $result = $this->db->rowCount(); 
             return $result;
         }
+
+        public function getAllOrganizations(){
+            $this->db->query("SELECT O.*, A.email FROM Organization O, Account A WHERE O.account_id = A.id");
+
+            $result = $this->db->resultSet(); 
+            return $result;
+        }
     }
     

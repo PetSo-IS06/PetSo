@@ -59,4 +59,10 @@
             $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;
         }
+
+        public function getAllAdmins() {
+            $this->db->query("SELECT Ad.*, A.email FROM Admin Ad, Account A WHERE Ad.account_id = A.id");
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
     }

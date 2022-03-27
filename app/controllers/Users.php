@@ -227,8 +227,5 @@
         public function notification(){
             $this->view('components/notification');
         }
-
-       
-
 }
    

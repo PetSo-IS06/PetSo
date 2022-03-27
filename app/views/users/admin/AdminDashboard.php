@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-proj-popup.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-users-sec.css">
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/orgDetail.css'>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/admin-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
@@ -39,13 +40,13 @@
                         </a>
                     </li>
                     <li>
-                        <a  onClick="" id="">
+                        <a onClick="showUsersPanel()" id="usr-tag">
                         <i class="fas fa-rocket"></i>
                         <span>Users</span>
                         </a>
                     </li>
                     <li>
-                        <a class="active-tag"  onClick="showRequestsPanel()" id="req-tag">
+                        <a onClick="showRequestsPanel()" id="req-tag">
                         <i class="fas fa-hands-helping"></i>
                         <span>Account Requests</span>
                         </a>
@@ -82,7 +83,130 @@
                     </li>
             </div>
 
-           
+           <!-- Users Section -->
+           <section class="page-content" id="usr-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B"><?php echo SITE_NAME; ?> Users</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
+                            <input type="search" placeholder="Search..." name="searchPrj" />
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="us-btn">
+                            <a id="view-user-btn" onClick="showUsers()">Users</a>
+                            <a id="view-org-btn" onClick="showOrgs()">Organizations</a>
+                            <a id="view-admin-btn" onClick="showAdmins()">Admins</a>
+                        </div>
+                    </div>
+                    </section>
+
+                    <!-- Initial display - View Users -->
+                    <div class="opportunities" id="all-users">
+                        <h1 class="subtitle">Users (<?php echo sizeof($data["allUsers"]);?>)</h1>
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                    <tr class="table-head">
+                                        <th>User ID</th>
+                                        <th>Name</th>
+                                        <th id="col-desc" style="width: 150px">Email</th>
+                                        <th>Mobile</th>
+                                        <th>Account status</th>
+                                        <th>Area</th>
+                                        <th>District</th>
+                                        <th>Joined date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["allUsers"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->us_id; ?></td>
+                                            <td class="cell-nav"><a href=""><?php echo $item->us_name; ?></a></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->email; ?></td>
+                                            <td><?php echo $item->us_mobile; ?></td>
+                                            <td><?php echo $item->account_status; ?></td>
+                                            <td><?php echo $item->us_city; ?></td>
+                                            <td><?php echo $item->us_district; ?></td>
+                                            <td><?php echo $item->joined_date; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- View Organizations -->
+                    <div class="opportunities" id="all-org">
+                        <h1 class="subtitle">Organizations (<?php echo sizeof($data["allOrgs"]);?>)</h1>
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                    <tr class="table-head">
+                                        <th>Org ID</th>
+                                        <th>Name</th>
+                                        <th id="col-desc" style="width: 150px">Email</th>
+                                        <th>Mobile</th>
+                                        <th>Respond to help</th>
+                                        <th>Area</th>
+                                        <th>District</th>
+                                        <th>Website</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["allOrgs"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->org_id; ?></td>
+                                            <td class="cell-nav"><a href=""><?php echo $item->org_name; ?></a></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->email; ?></td>
+                                            <td><?php echo $item->org_mobile; ?></td>
+                                            <td><?php echo $item->if_findhelp; ?></td>
+                                            <td><?php echo $item->org_area; ?></td>
+                                            <td><?php echo $item->org_district; ?></td>
+                                            <td><?php echo $item->org_website; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- View Admins -->
+                    <div class="opportunities" id="all-admins">
+                        <div class="ad-overview">
+                            <div class="ad-ov-head">
+                                <h1 class="subtitle">Administrators (<?php echo sizeof($data["allAdmins"]);?>)</h1>
+                            </div>
+                            <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                    <tr class="table-head">
+                                        <th>Admin ID</th>
+                                        <th>Name</th>
+                                        <th>Mobile</th>
+                                        <th>Email</th>
+                                        <th>Joined Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["allAdmins"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->ad_id; ?></td>
+                                            <td class="cell-nav"><a href=""><?php echo $item->ad_name; ?></a></td>
+                                            <td><?php echo $item->ad_mobile; ?></td>
+                                            <td><?php echo $item->email; ?></td>
+                                            <td><?php echo $item->joined_date; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
 
             <!-- Profile Requests -->
             <section class="page-content" id="req-sec">

@@ -48,6 +48,13 @@
             $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;
         }
+ 
+        public function getAllUserAccounts() {
+            $this->db->query("SELECT U.*, A.email FROM User U, Account A WHERE U.account_id = A.id");
+
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
 
         // public function findUserByEmail($email) {
         //     // prepared statement

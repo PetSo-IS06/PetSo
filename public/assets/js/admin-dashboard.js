@@ -1,3 +1,71 @@
+// Users Panel Sections
+function showUsers() {
+    var x = document.getElementById("all-users");
+    var disable_btn = document.getElementById("view-user-btn");
+    var show__btn1 = document.getElementById("view-org-btn");
+    var show__btn2 = document.getElementById("view-admin-btn");
+
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        hideOrgs();
+        hideAdmins();
+    }
+    disable_btn.style.display = "none";
+    show__btn1.style.display = "block";
+    show__btn2.style.display = "block";
+}
+
+function hideUsers() {
+    var x = document.getElementById("all-users");
+    if (x.style.display != "none") {
+        x.style.display = "none";
+    }
+}
+
+function showOrgs() {
+    var x = document.getElementById("all-org");
+    var disable_btn = document.getElementById("view-org-btn");
+    var show__btn1 = document.getElementById("view-user-btn");
+    var show__btn2 = document.getElementById("view-admin-btn");
+    if (x.style.display != "block") {
+        x.style.display = "block";
+        hideUsers();
+        hideAdmins();
+    }
+    disable_btn.style.display = "none";
+    show__btn1.style.display = "block";
+    show__btn2.style.display = "block";
+}
+
+function hideOrgs() {
+    var x = document.getElementById("all-org");
+    if (x.style.display != "none") {
+        x.style.display = "none";
+    }
+}
+
+function showAdmins() {
+    var x = document.getElementById("all-admins");
+    var disable_btn = document.getElementById("view-admin-btn");
+    var show__btn1 = document.getElementById("view-user-btn");
+    var show__btn2 = document.getElementById("view-org-btn");
+    if (x.style.display != "block") {
+        x.style.display = "block";
+        hideUsers();
+        hideOrgs();
+    }
+    disable_btn.style.display = "none";
+    show__btn1.style.display = "block";
+    show__btn2.style.display = "block";
+}
+
+function hideAdmins() {
+    var x = document.getElementById("all-admins");
+    if (x.style.display != "none") {
+        x.style.display = "none";
+    }
+}
+
 // Project Panel Sections
 function showPendProjects() {
     var x = document.getElementById("all-pend-prj");
@@ -7,20 +75,15 @@ function showPendProjects() {
         x.style.display = "block";
         hideAllProjects();
     }
-    // disable_btn.classList.remove("disable");
     disable_btn.style.display = "none";
     show__btn.style.display = "block";
 }
 
 function hidePendProjects() {
     var x = document.getElementById("all-pend-prj");
-    var disable_btn = document.getElementById("view-all-prj-btn");
-    var show__btn = document.getElementById("view-pend-prj-btn");
     if (x.style.display != "none") {
         x.style.display = "none";
     }
-    // disable_btn.style.display === "none";
-    // show__btn.style.display === "block";
 }
 
 function showAllProjects() {
@@ -37,16 +100,11 @@ function showAllProjects() {
 
 function hideAllProjects() {
     var x = document.getElementById("all-prj");
-    var disable_btn = document.getElementById("view-pend-prj-btn");
-    var show__btn = document.getElementById("view-all-prj-btn");
     if (x.style.display != "none") {
         x.style.display = "none";
     }
     showPendProjects();
-    // disable_btn.style.display === "none";
-    // show__btn.style.display === "block";
 }
-
 
 // Project Panel Popups
 function showPendProjOverlay(id) {
@@ -163,6 +221,26 @@ function showOrgDetailsOverlay(id) {
 }
 
 // Side navigation
+function showUsersPanel() {
+    var x = document.getElementById("usr-sec");
+    var tag = document.getElementById("usr-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideProjectsPanel();
+        hideRequestsPanel();
+    }
+}
+
+function hideUsersPanel() {
+    var x = document.getElementById("usr-sec");
+    var tag = document.getElementById("usr-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
 function showRequestsPanel() {
     var x = document.getElementById("req-sec");
     var tag = document.getElementById("req-tag");
@@ -170,6 +248,7 @@ function showRequestsPanel() {
         x.style.display = "block";
         tag.classList.add("active-tag");
         hideProjectsPanel();
+        hideUsersPanel();
     }
 }
 
@@ -198,5 +277,6 @@ function showProjectsPanel() {
         x.style.display = "block";
         tag.classList.add("active-tag");
         hideRequestsPanel();
+        hideUsersPanel();
     }
 }

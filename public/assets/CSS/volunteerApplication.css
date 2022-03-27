@@ -13,8 +13,8 @@
 
         .row:after {
             content: "";
-            display: table;
             clear: both;
+            display: flex;
           }
 
           .column1 {
@@ -48,14 +48,14 @@
             box-sizing: border-box;
         }
         .dropcon {
-            width: 45%;
+            width: 48%;
             display: inline-block;
             box-sizing: border-box;
             
         }
 
         .drop {
-            width: 45%;
+            width: 49%;
             display: inline-block;
             border: 2px solid rgb(0, 0, 0);
             border-radius: 16px;

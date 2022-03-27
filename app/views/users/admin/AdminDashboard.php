@@ -280,9 +280,9 @@
                                 <tr class="table-head">
                                     <th>ID</th>
                                     <th>Title</th>
-                                    <th id="col-desc" style="width: 130px">Cause</th>
+                                    <th id="col-desc" style="width: 150px">Cause</th>
                                     <th>Create Date</th>
-                                    <th id="col-desc" style="width: 100px">Organization</th>
+                                    <th id="col-desc" style="width: 130px">Organization</th>
                                     <th>Volunteering</th>
                                     <th>Fundraising</th>
                                     <th>Initiation Date</th>
@@ -293,17 +293,23 @@
                                         <tr>
                                             <td><?php echo $item->proj_id; ?></td>
                                             <td class="cell-nav"><a onClick="showPendProjOverlay(<?php echo $item->proj_id; ?>)"><?php echo $item->proj_title; ?></a></td>
-                                            <td id="col-desc" style="width: 130px"><?php echo $item->proj_cause; ?></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->proj_cause; ?></td>
                                             <td><?php echo $item->proj_create; ?></td>
-                                            <td id="col-desc" style="width: 100px"><?php echo $item->org_name; ?></td>
+                                            <td id="col-desc" style="width: 130px"><?php echo $item->org_name; ?></td>
                                             <td>
-                                                <?php if($item->volunteering == 'True') echo '<span class="green">Available</span>';
-                                                        else '<span class="red">Not Available</span>'
+                                                <?php if($item->volunteering == 'True') {
+                                                    echo '<span class="green">Available</span>';
+                                                } else{
+                                                    echo '<span class="red">Not Available</span>';
+                                                }
                                                 ?>
                                             </td>
                                             <td>
-                                                <?php if($item->fundraising == 'True') echo '<span class="green">Available</span>';
-                                                        else '<span class="red">Not Available</span>'
+                                                <?php if($item->fundraising == 'True') {
+                                                    echo '<span class="green">Available</span>';
+                                                } else{
+                                                    echo '<span class="red">Not Available</span>';
+                                                }
                                                 ?>
                                             </td>
                                             <td><?php echo $item->proj_init; ?></td>

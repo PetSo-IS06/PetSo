@@ -252,8 +252,8 @@
                 </section>
             </section>
 
-             <!-- Projects Section -->
-             <section class="page-content" id="proj-sec">
+            <!-- Projects Section -->
+            <section class="page-content" id="proj-sec">
                 <section>
                     <div class="content-head">
                         <h1 class="heading2B">Welfare Projects</h1>
@@ -265,8 +265,8 @@
                             <i class="fa fa-search"></i>
                         </div>
                         <div class="prj-btn">
-                            <a class="content-sub-head-btn" id="view-pend-prj-btn" onClick="showPendProjects()">Pending</a>
-                            <a class="content-sub-head-btn" id="view-all-prj-btn" onClick="showAllProjects()">View All</a>
+                            <a class="" id="view-pend-prj-btn" onClick="showPendProjects()" style="display: none;">Pending</a>
+                            <a class="" id="view-all-prj-btn" onClick="showAllProjects()">View All</a>
                         </div>
                     </div>
                     </section>
@@ -326,7 +326,7 @@
                                             </label></td> -->
 
                                             <!-- Project Details Popup -->
-                                            <div id="prj-popup<?php echo $item->proj_id; ?>" class="overlay">
+                                            <div id="pend-prj-det-popup<?php echo $item->proj_id; ?>" class="overlay">
                                                 <div class="popup" id="pend-proj-popup">
                                                     <a class="close" onClick="hidePendProjOverlay(<?php echo $item->proj_id; ?>)">×</a>
                                                     <div class="pend-proj-content">
@@ -458,9 +458,9 @@
                                 <thead>
                                 <tr class="table-head">
                                     <th>ID</th>
-                                    <th>All</th>
+                                    <th>Title</th>
                                     <th id="col-desc" style="width: 150px">Cause</th>
-                                    <th>Create Date</th>
+                                    <th>Status</th>
                                     <th id="col-desc" style="width: 130px">Organization</th>
                                     <th>Volunteering</th>
                                     <th>Fundraising</th>
@@ -468,12 +468,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data["pendProjects"] as $item) { ?>
+                                    <?php foreach ($data["allProjects"] as $item) { ?>
                                         <tr>
                                             <td><?php echo $item->proj_id; ?></td>
-                                            <td class="cell-nav"><a onClick="showPendProjOverlay(<?php echo $item->proj_id; ?>)"><?php echo $item->proj_title; ?></a></td>
+                                            <td class="cell-nav"><a onClick="showProjOverlay(<?php echo $item->proj_id; ?>)"><?php echo $item->proj_title; ?></a></td>
                                             <td id="col-desc" style="width: 150px"><?php echo $item->proj_cause; ?></td>
-                                            <td><?php echo $item->proj_create; ?></td>
+                                            <td><?php echo $item->proj_status; ?></td>
                                             <td id="col-desc" style="width: 130px"><?php echo $item->org_name; ?></td>
                                             <td>
                                                 <?php if($item->volunteering == 'True') {
@@ -492,23 +492,11 @@
                                                 ?>
                                             </td>
                                             <td><?php echo $item->proj_init; ?></td>
-                                            <!-- <td>
-                                                <a onClick="showApproveOverlay(<?php echo $item->proj_id; ?>)" class="green-btn cell-btn" id="cell-btn">Approve</a>
-                                                <a onClick="showRejectOverlay(<?php echo $item->proj_id; ?>)" class="grey-btn cell-btn">Reject</a>
-                                            </td> -->
-                                            <!-- <td><label class="row-dd"><i class="fas fa-ellipsis-v"></i>
-                                                <div id="dropdown<?php echo $item->id; ?>" class="dropdown">
-                                                    <a href="#">Welfare Projects</a>
-                                                    <a href="#">Animals Reported</a>
-                                                    <a href="#">Adoption</a>
-                                                    <a href="#">Sposorships</a>
-                                                </div>
-                                            </label></td> -->
 
                                             <!-- Project Details Popup -->
                                             <div id="prj-popup<?php echo $item->proj_id; ?>" class="overlay">
                                                 <div class="popup" id="pend-proj-popup">
-                                                    <a class="close" onClick="hidePendProjOverlay(<?php echo $item->proj_id; ?>)">×</a>
+                                                    <a class="close" onClick="hideProjOverlay(<?php echo $item->proj_id; ?>)">×</a>
                                                     <div class="pend-proj-content">
                                                         <div class="pend-proj-col">
                                                             <div class="pend-proj-row">
@@ -583,45 +571,8 @@
                                                                 <p id="pend-prj-vol-req" class="normal"><?php echo $item->vol_req; ?></p>
                                                             </div>
                                                             <span class="normal purple"><a href="<?php echo URL_ROOT . '/Projects/projectView/'.$item->proj_id; ?>" class="">Click here </a> to view complete project</span>
-                                                            <div class="pend-proj-action">
-                                                                <a onClick="showRejectOverlay(<?php echo $item->proj_id;?>)" id="reject">Reject</a>
-                                                                <a onClick="showApproveOverlay(<?php echo $item->proj_id;?>)" id="approve">Approve</a>
-                                                            </div>
                                                         </div>    
                                                     </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Approval Popup -->
-                                            <div id="app-prj-popup<?php echo $item->proj_id; ?>" class="overlay">
-                                                <div class="popup">
-                                                <h2 class="heading2B">Approve Project</h2>
-                                                <a class="close" onClick="hideApproveOverlay(<?php echo $item->proj_id; ?>)">×</a>
-                                                <form action="<?php echo URL_ROOT . '/Projects/approveProject/' . $item->proj_id; ?>" method="GET">
-                                                    <div class="content">
-                                                        <p class="subtitle">Are you sure that you want to allow <?php echo $item->org_name; ?> to carry out the project with ID <?php echo $item->proj_id; ?> in <?php echo SITE_NAME; ?>?</p>
-                                                        <div class="ov-actions">
-                                                            <a onClick="hideApproveOverlay(<?php echo $item->proj_id; ?>)" class="grey-btn">Cancel</a>
-                                                            <input type="submit" id="approve" class="green-btn" value="Approve">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                </div>
-                                            </div>
-                                            <!-- Reject Popup -->
-                                            <div id="rej-prj-popup<?php echo $item->proj_id; ?>" class="overlay">
-                                                <div class="popup">
-                                                <h2 class="heading2B">Reject Project</h2>
-                                                <a class="close" onClick="hideRejectOverlay(<?php echo $item->proj_id; ?>)">×</a>
-                                                <form action="<?php echo URL_ROOT . '/Projects/rejectProject/' . $item->proj_id; ?>" method="GET">
-                                                    <div class="content">
-                                                        <p class="subtitle">Are you sure that you want to reject <?php echo $item->org_name; ?>'s request to carry out the project with ID <?php echo $item->proj_id; ?> in <?php echo SITE_NAME; ?>?</p>
-                                                        <div class="ov-actions">
-                                                            <a onClick="hideRejectOverlay(<?php echo $item->proj_id; ?>)" class="grey-btn">Cancel</a>
-                                                            <input type="submit" id="reject" class="red-btn" value="Reject">
-                                                        </div>
-                                                    </div>
-                                                </form>
                                                 </div>
                                             </div>
                                         </tr>

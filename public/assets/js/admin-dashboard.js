@@ -8,8 +8,8 @@ function showPendProjects() {
         hideAllProjects();
     }
     // disable_btn.classList.remove("disable");
-    disable_btn.style.display === "none";
-    show__btn.style.display === "block";
+    disable_btn.style.display = "none";
+    show__btn.style.display = "block";
 }
 
 function hidePendProjects() {
@@ -19,8 +19,8 @@ function hidePendProjects() {
     if (x.style.display != "none") {
         x.style.display = "none";
     }
-    disable_btn.style.display === "none";
-    show__btn.style.display === "block";
+    // disable_btn.style.display === "none";
+    // show__btn.style.display === "block";
 }
 
 function showAllProjects() {
@@ -31,8 +31,8 @@ function showAllProjects() {
         x.style.display = "block";
         hidePendProjects();
     }
-    disable_btn.style.display === "none";
-    show__btn.style.display === "block";
+    disable_btn.style.display = "none";
+    show__btn.style.display = "block";
 }
 
 function hideAllProjects() {
@@ -43,14 +43,14 @@ function hideAllProjects() {
         x.style.display = "none";
     }
     showPendProjects();
-    disable_btn.style.display === "none";
-    show__btn.style.display === "block";
+    // disable_btn.style.display === "none";
+    // show__btn.style.display === "block";
 }
 
 
 // Project Panel Popups
 function showPendProjOverlay(id) {
-    const str = 'prj-popup' + id;
+    const str = 'pend-prj-det-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "block") {
         x.style.display = "block";
@@ -58,6 +58,22 @@ function showPendProjOverlay(id) {
 }
 
 function hidePendProjOverlay(id) {
+    const str = 'pend-prj-det-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
+function showProjOverlay(id) {
+    const str = 'prj-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+    }
+}
+
+function hideProjOverlay(id) {
     const str = 'prj-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "none") {

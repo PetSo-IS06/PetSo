@@ -3,6 +3,7 @@
 class AdminDashboards extends Controller {
     public function __construct() {
         $this->adminDashboardModel = $this->model('AdminDashboard');
+        $this->projectModel = $this->model('Project');
     }
 
     public function index() {
@@ -14,12 +15,14 @@ class AdminDashboards extends Controller {
     }
 
     public function dashboard(){
-        $pendingProjects = $this->adminDashboardModel->getPendingProjects();
+        $pendingProjects = $this->projectModel->getPendingProjects();
+        $allProjects = $this->projectModel->getAllProjects();
         $pendingRequests = $this->adminDashboardModel->getPendingRequests();
         
         $data = [
             "pendProjects" => $pendingProjects,
             "pendRequests" => $pendingRequests,
+            "allProjects" => $allProjects,
             "funds" => ''
         ];
 

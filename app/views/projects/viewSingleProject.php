@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Welfare Project Header</title>
+    <link rel="icon" href="<?php echo URL_ROOT; ?>/public/assets/img/icons/favicon.png">
+    <title><?php echo SITE_NAME; ?> | Welfare Project</title>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/ProjectView.css'/>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css'/>
 </head>

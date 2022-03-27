@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Adoption Application</title>
+    <link rel="icon" href="<?php echo URL_ROOT; ?>/public/assets/img/icons/favicon.png">
+    <title><?php echo SITE_NAME; ?> | Adoption</title>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/adoptionForm.css'/>
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css'/>
 </head>

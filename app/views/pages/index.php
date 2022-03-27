@@ -44,30 +44,30 @@
             <i class="fa fa-search"></i>
         </div>
     </div>
-    <div class="hero-cards">
+    <div class="hero-cards pg-body">
         <div class="hero-cards-single">
             <h2>Donate</h2>
             <i class="fa fa-hand-holding-heart"></i>
             <p>Contribute to a welfare project & help save live</p>
-            <a href="/" class="hero-cards-single-btn " id="">Donate</a>
+            <a href="<?php echo URL_ROOT;?>/projects/viewAllProjects" class="hero-cards-single-btn " id="">Donate</a>
         </div>
         <div class="hero-cards-single">
             <h2>Volunteer</h2>
             <i class="fa fa-hand-sparkles"></i>
-            <p>Contribute to a welfare project & help save live</p>
-            <a href="/" class="hero-cards-single-btn" id="">Volunteer</a>
+            <p>Involve yourself in a life-changing experience</p>
+            <a href="<?php echo URL_ROOT;?>/projects/viewAllProjects" class="hero-cards-single-btn" id="">Volunteer</a>
         </div>
         <div class="hero-cards-single">
             <h2>Adopt</h2>
             <i class="fa fa-dog"></i>
-            <p>Contribute to a welfare project & help save live</p>
+            <p>Find a friend who'll always stick by yr side</p>
             <a href="<?php echo URL_ROOT; ?>/animalProfiles/viewAllAnimalProfiles" class="hero-cards-single-btn "
                id="">Adopt</a>
         </div>
         <div class="hero-cards-single">
             <h2>Sponsor</h2>
             <i class="fa fa-hand-holding-usd"></i>
-            <p>Contribute to a welfare project & help save live</p>
+            <p>Help animal shelters take good care of their animals</p>
             <a href="<?php echo URL_ROOT; ?>/animalProfiles/viewAllAnimalProfiles" class="hero-cards-single-btn " id="">Sponsor</a>
         </div>
     </div>
@@ -78,8 +78,8 @@
 
         <!--1-->
         <div class="container1">
-            <h2>Let us help you find shelter and care for an animal in need</h2>
-            <text>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis
+            <h2 class="subtitleB grey">Let us help you find shelter and care for an animal in need</h2>
+            <text class="normal grey">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis
                 enim velit mollit. Exercitation.
             </text>
             <div class="reportButton">
@@ -87,7 +87,7 @@
                     <button>Report Now</button>
                 </a>
             </div>
-            <h4>With the help of all you animal lovers, Petso has manged to save many lives</h4>
+            <h4 class="normal grey">With the help of all you animal lovers, Petso has manged to save many lives</h4>
 
             <div class="stats">
                 <div class="container1Card">

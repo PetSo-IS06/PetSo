@@ -23,9 +23,9 @@
     </div>
     <div class="nav-right">
         <div class="nav-menu-top">
-            <a href="" class="nav-menu-main-links">
+            <!-- <a href="" class="nav-menu-main-links">
                 <i class="fas fa-bell notify"></i>
-            </a>
+            </a> -->
             <?php if(isset($_SESSION['user_id'])) : ?>
                 <a href="<?php echo URL_ROOT;?>/Authentications/logout" class="nav-menu-main-links">Log out</a>
                 <a href="<?php echo URL_ROOT;?>/" class="nav-menu-profile-tag" id="tag1">My Profile</a>

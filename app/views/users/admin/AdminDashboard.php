@@ -29,7 +29,7 @@
                     </a>
                     <div class="menu-heading">
                         <h3 class="subtitleB center"><?php echo $_SESSION['user_name']; ?></h3>
-                        <label >ID: 000000</label>
+                        <label>AD_00<?php echo $_SESSION['user_id']; ?></label>
                     </div>
                     
                     <ul class="admin-menu">
@@ -41,19 +41,19 @@
                     </li>
                     <li>
                         <a onClick="showUsersPanel()" id="usr-tag">
-                        <i class="fas fa-rocket"></i>
+                        <i class="fa-solid fa-users"></i>
                         <span>Users</span>
                         </a>
                     </li>
                     <li>
                         <a onClick="showRequestsPanel()" id="req-tag">
-                        <i class="fas fa-hands-helping"></i>
+                        <i class="fa-solid fa-person-circle-question"></i>
                         <span>Account Requests</span>
                         </a>
                     </li>
                     <li>
-                        <a  onClick="showProjectsPanel()" id="proj-tag">
-                        <i class="fas fa-comment-dollar"></i>
+                        <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
+                        <i class="fas fa-hands-helping"></i>
                         <span>Welfare Projects</span>
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                     </li>
                     <li>
                         <a href="#0">
-                        <i class="fas fa-dog"></i>
+                        <i class="fa-solid fa-octagon-exclamation"></i>
                         <span>Complaints</span>
                         </a>
                     </li>
@@ -75,12 +75,7 @@
                         <span>Finance</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#0">
-                        <i class="fas fa-receipt"></i>
-                        <span>My Account</span>
-                        </a>
-                    </li>
+                </nav>
             </div>
 
            <!-- Users Section -->
@@ -183,7 +178,7 @@
                                         <div class="admin-icon">
                                             <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/admin-icon.png" alt="">
                                         </div>
-                                        <a href="" class="subtitleB purple">Add +</a>
+                                        <a onclick="showCreateAdminForm()" class="subtitleB purple">Add +</a>
                                     </div>
                                     <div class="ad-card-bot">
                                         <h4 class="subtitle">Total System Admins</h4>
@@ -204,30 +199,60 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Create Admin Popup -->
+                            <div id="create-ad-popup" class="overlay">
+                                <div class="popup" id="admin-popup">
+                                    <a class="close" onClick="hideCreateAdminForm()">×</a>
+                                    <form action="<?php echo URL_ROOT . '/Admins/createAdmin'; ?>" method="POST">
+                                        <div class="create-ad">
+                                            <div>
+                                               <h3 class="subtitle center">Enter Admin Info and Initial Login Credentials</h3> 
+                                            </div>
+                                            <div class="inputBx2" id="">
+                                                <input name="name" id="name" type="text" value="">
+                                                <span class="normalB">Admin Name</span>
+                                            </div>
+                                            <div class="inputBx2" id="">
+                                                <input name="email" id="email" type="text" value="">
+                                                <span class="normalB">Admin Email</span>
+                                            </div>
+                                            <div class="inputBx2" id="">
+                                                <input name="password" id="password" type="text" value="">
+                                                <span class="normalB">Initial Password</span>
+                                            </div>
+                                            <div class="ad-form-action">
+                                                <a onClick="hideCreateAdminForm()" class="ad-form-btn normalB" id="create-admin-close">Cancel</a>
+                                                <input type="submit" id="create-admin" class="ad-form-btn normalB" value="Create">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
                             <div class="table-wrapper">
-                            <table class="fl-table">
-                                <thead>
-                                    <tr class="table-head">
-                                        <th>Admin ID</th>
-                                        <th>Name</th>
-                                        <th>Mobile</th>
-                                        <th>Email</th>
-                                        <th>Joined Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($data["allAdmins"] as $item) { ?>
-                                        <tr>
-                                            <td><?php echo $item->ad_id; ?></td>
-                                            <td class="cell-nav"><a href=""><?php echo $item->ad_name; ?></a></td>
-                                            <td><?php echo $item->ad_mobile; ?></td>
-                                            <td><?php echo $item->email; ?></td>
-                                            <td><?php echo $item->joined_date; ?></td>
+                                <table class="fl-table">
+                                    <thead>
+                                        <tr class="table-head">
+                                            <th>Admin ID</th>
+                                            <th>Name</th>
+                                            <th>Mobile</th>
+                                            <th>Email</th>
+                                            <th>Joined Date</th>
                                         </tr>
-                                    <?php } ?>
-                                <tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($data["allAdmins"] as $item) { ?>
+                                            <tr>
+                                                <td><?php echo $item->ad_id; ?></td>
+                                                <td class="cell-nav"><a href=""><?php echo $item->ad_name; ?></a></td>
+                                                <td><?php echo $item->ad_mobile; ?></td>
+                                                <td><?php echo $item->email; ?></td>
+                                                <td><?php echo $item->joined_date; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    <tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </section>

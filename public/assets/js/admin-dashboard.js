@@ -106,6 +106,21 @@ function hideAllProjects() {
     showPendProjects();
 }
 
+// Users Panel Popups
+function showCreateAdminForm() {
+    var x = document.getElementById('create-ad-popup');
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+    }
+}
+
+function hideCreateAdminForm() {
+    var x = document.getElementById('create-ad-popup');
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
 // Project Panel Popups
 function showPendProjOverlay(id) {
     const str = 'pend-prj-det-popup' + id;

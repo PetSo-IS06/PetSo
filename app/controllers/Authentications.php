@@ -266,7 +266,6 @@
             $this->view('users/newPassword', $data);
         }
 
-        
         public function sendOTP($mobile) {
             
             $randomNum = substr(str_shuffle("0123456789"), 0, 4);

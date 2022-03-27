@@ -87,6 +87,7 @@
 
 .ad-card-top a:hover{
  text-decoration: underline;
+ cursor: pointer;
 }
 
 .ad-card-bot {
@@ -109,4 +110,46 @@
  z-index: 7;
  height: 80px; 
  width: auto;
+}
+
+/* Create Admin Popup */
+#admin-popup {
+ display: flex;
+ flex-direction: column;
+ margin: 5vw auto;
+ width: 30%;
+ min-height: 400px;
+ max-height: 600px;
+}
+
+.create-ad{
+ display: flex;
+ flex-direction: column;
+ row-gap: 1.5rem;
+ padding: 1rem;
+}
+
+.ad-form-action {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.ad-form-btn {
+ padding: 12px 16px;
+ cursor: pointer;
+ text-decoration: none;
+ margin-left: 0.5rem;
+ border: none;
+ outline: none;
+ border-radius: 7px;
+ color: var(--white-color);
+}
+
+.ad-form-action #create-admin-close {
+ background: var(--primary-grey-color);
+}
+
+.ad-form-action #create-admin{
+ background: var(--primary-green-color);
 }

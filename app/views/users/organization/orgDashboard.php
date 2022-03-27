@@ -30,7 +30,7 @@
                     </a>
                     <div class="menu-heading">
                         <h3 class="subtitleB center"><?php echo $_SESSION['user_name']; ?></h3>
-                        <label >ID: 000000</label>
+                        <label >OG_00<?php echo $_SESSION['user_id']; ?></label>
                     </div>
                     
                     <ul class="admin-menu">
@@ -42,7 +42,7 @@
                     </li>
                     <li>
                         <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
-                        <i class="fas fa-rocket"></i>
+                        <i class="fas fa-hands-helping"></i>
                         <span>My Projects</span>
                         </a>
                     </li>

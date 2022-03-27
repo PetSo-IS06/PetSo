@@ -176,8 +176,33 @@
                     <!-- View Admins -->
                     <div class="opportunities" id="all-admins">
                         <div class="ad-overview">
+                            <h1 class="subtitle">Administrators</h1>
                             <div class="ad-ov-head">
-                                <h1 class="subtitle">Administrators (<?php echo sizeof($data["allAdmins"]);?>)</h1>
+                                <div class="all-ad-card">
+                                    <div class="ad-card-top">
+                                        <div class="admin-icon">
+                                            <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/admin-icon.png" alt="">
+                                        </div>
+                                        <a href="" class="subtitleB purple">Add +</a>
+                                    </div>
+                                    <div class="ad-card-bot">
+                                        <h4 class="subtitle">Total System Admins</h4>
+                                        <h3 class="subtitleB"><?php echo sizeof($data["allAdmins"]);?></h3>
+                                    </div>
+                                </div>
+                                <div class="ad-role-card">
+                                    <div class="ad-role-title">
+                                        <h4 class="subtitle">Role of an Admin</h4>
+                                    </div>
+                                    <div class="ad-role-body">
+                                        <ol>
+                                            <li>Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.</li>
+                                            <li>Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim</li>
+                                            <li>Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi.</li>
+                                            <li>Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.</li>
+                                        </ol>
+                                    </div>
+                                </div>
                             </div>
                             <div class="table-wrapper">
                             <table class="fl-table">

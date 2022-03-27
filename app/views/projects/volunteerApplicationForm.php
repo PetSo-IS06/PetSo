@@ -110,7 +110,7 @@
      <br><br>
                
                <div class="vol-form-nav">
-               <a href="" class="grey-btn">Cancel</a>
+               <a href="<?php echo URL_ROOT;?>" class="grey-btn">Cancel</a>
                <button class="purple-btn" type="submit">Apply</button>
               </div>
      </div>

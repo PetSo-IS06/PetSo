@@ -52,3 +52,4 @@
             $this->view('users/user/inquries', $data);
         }
     }
+    

@@ -77,4 +77,64 @@ class ReportAnimal
         $result = $this->db->single();  
         return $result;
     }
+
+    public function getLastInsertedId(){
+        return $this->db->getLastInsertedId();
+    }
+
+    public function assignToOrganizations($animal_report_id){
+        $animal_report = $this->getReport($animal_report_id);
+
+        $this->db->query('SELECT O.*
+        FROM Organization as O, Org_Animal as A
+        WHERE O.org_id = A.org
+        and O.org_district = :district
+        and O.org_area = :area
+        and A.animal_type = :animal and O.if_findhelp = :if_findhelp');
+
+        $this->db->bind(':district', $animal_report->district);
+        $this->db->bind(':area', $animal_report->area);
+        $this->db->bind(':animal', $animal_report->animal_type);
+        $this->db->bind(':if_findhelp', "yes");
+
+        $result = $this->db->resultSet();    
+        if($result==null) {
+            $this->db->query('SELECT O.*
+            FROM Organization as O, Org_Animal as A
+            WHERE O.org_id = A.org
+            and O.org_district = :district
+            and A.animal_type = :animal and O.if_findhelp = :if_findhelp');
+
+            $this->db->bind(':district', $animal_report->district);
+            $this->db->bind(':animal', $animal_report->animal_type);
+            $this->db->bind(':if_findhelp', "yes");
+
+            $result = $this->db->resultSet();    
+        }
+
+        if($result!=null){
+            foreach($result as $organization){
+                //assign animal reports
+                $this->db->query('INSERT INTO `petso`.`Organization_Animal_Report`
+                (`org_id`, `animal_report_id`, `status`)
+                VALUES (:org_id, :animal_report_id, :status)');
+    
+                $this->db->bind(':org_id', $organization->org_id);
+                $this->db->bind(':animal_report_id', $animal_report->id);
+                $this->db->bind(':status', "pending");
+        
+                if ($this->db->execute()) {
+                    //send sms
+                    if(!empty($organization->org_mobile)){
+                        sendSMS("An animal is in need of help. Please check your dashboard", $organization->org_mobile);
+                    }
+
+                    //send email
+                    if(!empty($organization->org_email)){
+                        sendMail($organization->org_email, "Animal in need", "Petso Alert");
+                    }
+                } 
+            }
+        }
+    }
 }

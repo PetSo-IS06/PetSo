@@ -226,6 +226,10 @@ class AnimalReports extends Controller
                 // register user from model function
                 if ($this->reportModel->saveReport($data)) {
                     // redirect to confirmation page
+                    $animal_report_id = $this->reportModel->getLastInsertedId();
+                    
+                    $this->reportModel->assignToOrganizations($animal_report_id);
+
                     header('location:' . URL_ROOT . '/pages/index');
                 } else {
                     die('Something went wrong.');

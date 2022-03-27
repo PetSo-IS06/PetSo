@@ -189,7 +189,7 @@
         }
 
         public function getPendingProjects() {
-            $this->db->query('SELECT P.id AS proj_id, P.title AS proj_title, P.cause AS proj_cause, P.create_date AS proj_create, 
+            $this->db->query('SELECT P.id AS proj_id, P.title AS proj_title, P.cause AS proj_cause, P.create_date AS proj_create, P.image AS proj_image, 
                                 P.initiation_date AS proj_init, P.status AS proj_status, P.volunteering, P.fundraising,
                                 O.org_name, 
                                 F.target_amount, F.funds_for, F.funding_start, F.funding_end,
@@ -209,7 +209,7 @@
         }
 
         public function getAllProjects() {
-            $this->db->query('SELECT P.id AS proj_id, P.title AS proj_title, P.cause AS proj_cause, P.create_date AS proj_create, 
+            $this->db->query('SELECT P.id AS proj_id, P.title AS proj_title, P.cause AS proj_cause, P.create_date AS proj_create, P.image AS proj_image,
                                 P.initiation_date AS proj_init, P.status AS proj_status, P.volunteering, P.fundraising,
                                 O.org_name, 
                                 F.target_amount, F.funds_for, F.funding_start, F.funding_end,

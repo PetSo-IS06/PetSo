@@ -50,10 +50,20 @@
  row-gap: 1rem;
 }
 
+.proj-img img{
+ border-radius: 10px;
+ max-width: 205px;
+ max-height: 150px;
+}
+
 .pend-proj-col {
  flex-grow: 1;
  display: flex;
  flex-direction: column;
+ row-gap: 5px;
+}
+
+.pend-proj-col #vol {
  row-gap: 10px;
 }
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-proj-popup.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-users-sec.css">
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/orgDetail.css'>
+    <script src="https://kit.fontawesome.com/e2ae29c3d1.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/admin-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
@@ -41,13 +42,13 @@
                     </li>
                     <li>
                         <a onClick="showUsersPanel()" id="usr-tag">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fas fa-users"></i>
                         <span>Users</span>
                         </a>
                     </li>
                     <li>
                         <a onClick="showRequestsPanel()" id="req-tag">
-                        <i class="fa-solid fa-person-circle-question"></i>
+                        <i class="fa-solid fa-circle-dot"></i>
                         <span>Account Requests</span>
                         </a>
                     </li>
@@ -65,7 +66,7 @@
                     </li>
                     <li>
                         <a href="#0">
-                        <i class="fa-solid fa-octagon-exclamation"></i>
+                        <i class="fa-solid fa-person-circle-exclamation"></i>
                         <span>Complaints</span>
                         </a>
                     </li>
@@ -79,7 +80,7 @@
             </div>
 
            <!-- Users Section -->
-           <section class="page-content" id="usr-sec">
+            <section class="page-content" id="usr-sec">
                 <section>
                     <div class="content-head">
                         <h1 class="heading2B"><?php echo SITE_NAME; ?> Users</h1>
@@ -506,6 +507,9 @@
                                                     <div class="pend-proj-content">
                                                         <div class="pend-proj-col">
                                                             <div class="pend-proj-row">
+                                                                <div class="proj-img">
+                                                                    <img src="<?php echo (URL_ROOT.'/public/'.$item->proj_image); ?>" alt="project image">
+                                                                </div>
                                                                 <div class="pend-proj-field">
                                                                     <p id="pend-prj-title" class="subtitleB"><?php echo $item->proj_title; ?></p>
                                                                 </div>
@@ -516,10 +520,6 @@
                                                                 <div class="pend-proj-field">
                                                                     <label for="pend-prj-org" class="normalB">Organization:</label>
                                                                     <p id="pend-prj-org" class="normal"><?php echo $item->org_name; ?></p>
-                                                                </div>
-                                                                <div class="pend-proj-field">
-                                                                    <label for="pend-prj-org" class="normalB">Project Status:</label>
-                                                                    <p id="pend-prj-org" class="normal blue"><?php echo $item->proj_status; ?></p>
                                                                 </div>
                                                             </div>
                                                             <div class="pend-proj-row">
@@ -542,7 +542,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>                          
-                                                        <div class="pend-proj-col">
+                                                        <div class="pend-proj-col" id="">
                                                             <h3 class="subtitleB">Volunteer Details</h3>
                                                             <div class="pend-proj-field">
                                                                 <label for="pend-vol-for" class="normalB">Volunteers for:</label>
@@ -674,6 +674,9 @@
                                                     <div class="pend-proj-content">
                                                         <div class="pend-proj-col">
                                                             <div class="pend-proj-row">
+                                                                <div class="proj-img">
+                                                                    <img src="<?php echo (URL_ROOT.'/public/'.$item->proj_image); ?>" alt="project image">
+                                                                </div>
                                                                 <div class="pend-proj-field">
                                                                     <p id="pend-prj-title" class="subtitleB"><?php echo $item->proj_title; ?></p>
                                                                 </div>

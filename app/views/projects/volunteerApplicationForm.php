@@ -94,12 +94,12 @@
             <input type="text" placeholder="Event/project" id="lname" name="event">
          </div>
          <div class="col1">
-         <label>Organizers</label><br>
-            <input type="text" placeholder="Organizers" id="lname" name="organizer">
+         <label class="normalB grey">Organizers</label><br>
+            <input type="text" placeholder="Organizers" id="lname" name="organizer" value="<?php echo $data['organizer']; ?>">
           </div>
          <div class="col1">
-         <label>Type of Work</label><br>
-            <input type="text" placeholder="Work Type" id="lname" name="worktype">
+         <label class="normalB grey">Type of Work</label><br>
+            <input type="text" placeholder="Work Type" id="lname" name="worktype" value="<?php echo $data['worktype']; ?>">
         </div>
      </div>
 

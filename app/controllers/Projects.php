@@ -544,6 +544,9 @@ class Projects extends Controller {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8374cb0 (volunteer Application created)
     public function volunteerApplication($id) {
 
         if(isset($_SESSION['user_id'])){
@@ -576,6 +579,7 @@ class Projects extends Controller {
             
 
         ];
+<<<<<<< HEAD
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -663,9 +667,92 @@ class Projects extends Controller {
 }
 =======
     public function volunteerApplication() {
+=======
+>>>>>>> 8374cb0 (volunteer Application created)
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data= [
+                'applicant_name'=>trim(($_POST['applicant_name'])),
+                'address'=>trim(($_POST['address'])),
+                'mobile'=>trim(($_POST['mobile'])),
+                'nic'=>trim(($_POST['nic'])),
+                'dob'=>trim(($_POST['dob'])),
+                'occupation'=>trim(($_POST['occupation'])),
+                'email'=>trim(($_POST['email'])),
+                'event'=>trim(($_POST['event'])),
+                'worktype'=>trim(($_POST['worktype'])),
+                'organizer'=>trim(($_POST['organizer'])),
+                'applied_date'=>date("Y-m-d"),
+                'vol_opp_id'=> $id,
+                'user_id' =>$this->userModel->getUser()->us_id,
+        
+
+                'applicant_nameError'=>'',
+                'addressError'=>'',
+                'mobileError'=>'',
+                'nicError'=>'',
+                'dobError' => '',
+                'occupationError' => '',
+                'emailError' => '',
+                'eventError' => '',
+                'organizerError' => '',
+                'worktypeError' => '',
+            
+               
+    
+            ];
+
+            if(empty($data['applicant_name'])) {
+                $data['applicant_nameError'] = 'Please enter your Full name';
+            }
+            if(empty($data['address'])) {
+                $data['addressError'] = 'Please enter the Address';
+            }
+            if(empty($data['mobile'])) {
+                $data['mobileError'] = 'Please enter the mobile Number';
+
+            }
+            if(empty($data['nic'])) {
+                $data['nicError'] = 'Please enter the valid NIC number';
+
+            }
+            if(empty($data['dob'])) {
+                $data['dobError'] = 'Please Choose Date of Birth';
+
+            }
+            if(empty($data['occupation'])) {
+                $data['occupationError'] = 'Please enter the occupation';
+
+            }
+            if(empty($data['email'])) {
+                $data['emailError'] = 'Please enter the Email Address';
+
+            }
 
 
-    $this->view('projects/volunteerApplicationForm');
+
+
+
+            $this->projectModel->createVolunteerApplication($data);
+
+
+            if(empty($data['applicant_nameError']) && empty($data['addressError']) && empty($data['mobileError']) && empty($data['nicError'])
+            && empty($data['dobError']) && empty($data['emailError']) && empty($data['occupationError']) )
+            
+            {
+
+                $this->projectModel->createVolunteerApplication($data);
+              
+                header('location:' . URL_ROOT . '/pages/index');
+            }
+        }
+ 
+        $data['vol_opportunity']= $this->projectModel->getvolOpportunityID($id); 
+    
+    $this->view('projects/volunteerApplicationForm', $data);
   }
 >>>>>>> 7596dfa (volunteer form)
+}
 }

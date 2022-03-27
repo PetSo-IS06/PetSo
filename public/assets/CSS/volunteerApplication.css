@@ -78,6 +78,7 @@
             border: 2px solid rgb(0, 0, 0);
             box-sizing: border-box;
         }
+     
 
         .textArea .text-box a textarea{
             outline: black 1px;

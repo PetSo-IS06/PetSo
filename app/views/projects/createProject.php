@@ -79,10 +79,10 @@
                             </div>
                         </div>
                     </div>
-                    <span class="invalidInput"><?php echo $data[1]['causeError']; ?></span>
+                    <span class="invalidInput"><?php echo $data['causeError']; ?></span>
 
                     <div class="inputBx2" id="other-title-in">
-                        <input name="otherCause" id="otherCause" type="text" value="<?php echo $data[1]['otherCause']; ?>">
+                        <input name="otherCause" id="otherCause" type="text" value="<?php echo $data['otherCause']; ?>">
                         <span class="normalB">Other</span>
                     </div>
                     <span class="invalidInput"><?php echo '' ?></span>
@@ -106,29 +106,29 @@
                     <h2 class="grey subtitleB">Project Details</h2>
                     <hr>
                     <div class="inputBx2" id="">
-                        <input name="title" id="title" type="text" required="required" value="<?php echo $data[1]['title']; ?>">
+                        <input name="title" id="title" type="text" required="required" value="<?php echo $data['title']; ?>">
                         <span class="normalB">Project Title</span>
                     </div>
-                    <span class="invalidInput"><?php echo $data[1]['titleError']; ?></span>
+                    <span class="invalidInput"><?php echo $data['titleError']; ?></span>
 
                     <div class="inputBx2" id="">
-                        <input name="initDate" id="datefield" type="date" required="required" value="<?php echo $data[1]['initDate']; ?>"> 
+                        <input name="initDate" id="datefield" type="date" required="required" value="<?php echo $data['initDate']; ?>"> 
                         <span class="normalB">Initiation date</span>
                     </div>
-                    <span class="invalidInput"><?php echo $data[1]['initDateError']; ?></span>
+                    <span class="invalidInput"><?php echo $data['initDateError']; ?></span>
 
                     <div class="textArea" style="margin-top: 1rem;">
                         <span class="normalB">Project description</span>
                         <div class="text-box" id="">
-                            <textarea rows="7" name="prjDescription" placeholder="Max 450 characters" maxlength="450"><?php echo $data[1]['prjDescription']; ?></textarea> 
+                            <textarea rows="7" name="prjDescription" placeholder="Max 450 characters" maxlength="450"><?php echo $data['prjDescription']; ?></textarea> 
                         </div>
-                        <span class="invalidInput"><?php echo $data[1]['prjDescriptionError']; ?></span>
+                        <span class="invalidInput"><?php echo $data['prjDescriptionError']; ?></span>
                     </div> 
 
                     <div>
                         <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
                         <input type="file" accept="image/*" id="prj-image" name="prj-image">
-                        <span class="invalidInput"><?php echo $data[1]['prjImageError']; ?></span>
+                        <span class="invalidInput"><?php echo $data['prjImageError']; ?></span>
                     </div>
 
                     <div class="prj-form-nav">
@@ -160,17 +160,17 @@
                         <div class="textArea" style="margin-top: 1rem;">
                             <span class="normalB">Why should people volunteer for this project?</span>
                             <div class="text-box" id="">
-                                <textarea rows="5" name="volReason" placeholder="Max 250 characters" maxlength="250"><?php echo $data[1]['volReason']; ?></textarea>
+                                <textarea rows="5" name="volReason" placeholder="Max 250 characters" maxlength="250"><?php echo $data['volReason']; ?></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo $data[1]['volReasonError']; ?></span>
+                            <span class="invalidInput"><?php echo $data['volReasonError']; ?></span>
                         </div> 
 
                         <div class="textArea" style="margin-top: 1rem;">
                             <span class="normalB">Work Description</span>
                             <div class="text-box" id="">
-                                <textarea rows="5" name="volDescription" placeholder="Max 250 characters" maxlength="250"><?php echo $data[1]['volDescription']; ?></textarea>
+                                <textarea rows="5" name="volDescription" placeholder="Max 250 characters" maxlength="250"><?php echo $data['volDescription']; ?></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo $data[1]['volDescriptionError']; ?></span>
+                            <span class="invalidInput"><?php echo $data['volDescriptionError']; ?></span>
                         </div> 
 
                         <div class="vol-inputs">
@@ -191,7 +191,7 @@
                                                 <?php }?>
                                             </datalist>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['districtError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data['districtError']; ?></span>
 
                                     <div class="selectBx">
                                         <input name="area" type="text" list="areas" class="select-cat">
@@ -205,7 +205,7 @@
                                             <?php }?>
                                             </datalist>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['areaError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data['areaError']; ?></span>
 
                                 </div>
 
@@ -250,7 +250,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['workFromError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data['workFromError']; ?></span>
 
                                     <div class="selectBx" id="selectBx">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
@@ -295,7 +295,7 @@
                                 <div class="textArea" style="margin-top: 1rem;">
                                     <span class="normalB">Requirements</span>
                                     <div class="text-box" id="requirements">
-                                        <textarea name="volRequirements" onInput="handleInput(event)" rows="8"><?php echo $data[1]['volRequirements']; ?></textarea> 
+                                        <textarea name="volRequirements" onInput="handleInput(event)" rows="8"><?php echo $data['volRequirements']; ?></textarea> 
                                     </div>
                                     <span class="invalidInput"><?php echo ''; ?></span>
                                 </div> 
@@ -304,17 +304,17 @@
                                 <div class="vol-inputs-col-row">
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="workStart" id="datefield" type="date" required="required" value="<?php echo $data[1]['workStart'];?>"> 
+                                            <input name="workStart" id="datefield" type="date" required="required" value="<?php echo $data['workStart'];?>"> 
                                             <span class="normalB">Work Start date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['workStartError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['workStartError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="workEnd" id="datefield" type="date" required="required" value="<?php echo $data[1]['workEnd'];?>"> 
+                                            <input name="workEnd" id="datefield" type="date" required="required" value="<?php echo $data['workEnd'];?>"> 
                                             <span class="normalB">Work End date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['workEndError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['workEndError']; ?></span>
                                     </div>
                                 </div>
                                 <div class="vol-inputs-col-row" id="work-days">
@@ -355,29 +355,29 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['daysError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data['daysError']; ?></span>
 
                                 </div>
                                 <div class="vol-inputs-col-row">
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="appOpen" id="datefield" type="date" value="<?php echo $data[1]['appOpen'];?>"> 
+                                            <input name="appOpen" id="datefield" type="date" value="<?php echo $data['appOpen'];?>"> 
                                             <span class="normalB">Application Opening date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['appOpenError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['appOpenError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="appClose" id="datefield" type="date" value="<?php echo $data[1]['appClose'];?>"> 
+                                            <input name="appClose" id="datefield" type="date" value="<?php echo $data['appClose'];?>"> 
                                             <span class="normalB">Application Closing date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['appCloseError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['appCloseError']; ?></span>
                                     </div>
                                 </div>
                                 <div class="textArea" id="notes" style="margin-top: 1rem;">
                                     <span class="normalB">Additional Notes</span>
                                     <div class="text-box" id="">
-                                        <textarea name="addNotes" onInput="handleInput(event)" rows="3" placeholder="Max 250 characters" maxlength="250"><?php echo $data[1]['addNotes']; ?></textarea> 
+                                        <textarea name="addNotes" onInput="handleInput(event)" rows="3" placeholder="Max 250 characters" maxlength="250"><?php echo $data['addNotes']; ?></textarea> 
                                     </div>
                                     <span class="invalidInput"><?php echo ''; ?></span>
                                 </div> 
@@ -420,17 +420,17 @@
                             <div class="textArea" style="margin-top: 1rem;">
                                 <span class="normalB">What will the funds be used for?</span>
                                 <div class="text-box" id="">
-                                    <textarea rows="10" name="prjFundsFor"><?php echo $data[1]['prjFundsFor']; ?></textarea> 
+                                    <textarea rows="10" name="prjFundsFor"><?php echo $data['prjFundsFor']; ?></textarea> 
                                 </div>
-                                <span class="invalidInput"><?php echo $data[1]['prjFundsForError']; ?></span>
+                                <span class="invalidInput"><?php echo $data['prjFundsForError']; ?></span>
                             </div>
                             <div class="fund-inputs-bottom">
                                 <div class="fund-inputs-bottom-col">
                                     <div class="inputBx2" id="">
-                                        <input name="targetAmount" id="title" type="number" required="required" value="<?php echo $data[1]['targetAmount']; ?>">
+                                        <input name="targetAmount" id="title" type="number" required="required" value="<?php echo $data['targetAmount']; ?>">
                                         <span class="normalB">Target Amount (LKR)</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['targetAmountError']; ?></span>
+                                    <span class="invalidInput"><?php echo $data['targetAmountError']; ?></span>
                                 </div>
                             </div>
                             <div>

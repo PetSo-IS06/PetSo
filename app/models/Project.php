@@ -107,14 +107,12 @@
 
         public function saveFundraiser($data, $prjID, $bankID) {
             $this->db->query('INSERT INTO `petso`.`Fundraiser` 
-            (`prj_id`, `funds_for`, `target_amount`, `funding_start`, `funding_end`, `bank_acnt_id`, `image`) 
-            VALUES (:prj_id, :funds_for, :target_amount, :funding_start, :funding_end, :bank_acnt_id, :image)');
+            (`prj_id`, `funds_for`, `target_amount`, `bank_acnt_id`, `image`) 
+            VALUES (:prj_id, :funds_for, :target_amount, :bank_acnt_id, :image)');
             
             $this->db->bind(':prj_id', $prjID);
             $this->db->bind(':funds_for', $data['prjFundsFor']);
             $this->db->bind(':target_amount', $data['targetAmount']);
-            $this->db->bind(':funding_start', $data['fundStart']);
-            $this->db->bind(':funding_end', $data['fundEnd']);
             $this->db->bind(':bank_acnt_id', $bankID);
             $this->db->bind(':image',  $data['fund-image']);
 

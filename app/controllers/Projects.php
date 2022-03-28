@@ -139,7 +139,7 @@ class Projects extends Controller {
                 'vol-image' => $vol_img,
                 'funding' => trim($_POST['funding']),
                 'prjFundsFor' => trim($_POST['prjFundsFor']),
-                'targetAmount' => trim($_POST['targetAmount']),
+                'targetAmount' => floatval(trim($_POST['targetAmount'])),
                 'fundStart' => trim($_POST['fundStart']),
                 'fundEnd' => trim($_POST['fundEnd']),
                 'fund-image' => $fund_img,

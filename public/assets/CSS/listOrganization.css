@@ -1,0 +1,90 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+.report-form-container {
+    height: 450px;
+    padding: 1rem;
+    box-shadow: -1px 0px 5px 4px #C4C4C4;
+    border-radius: 25px;
+    color: var(--primary-grey-color);
+    margin: 2rem calc((100vw - 1200px) / 2);
+    display: flex;
+}
+
+.report-form-container .form-row {
+    display: flex;
+    padding: 1.5rem;
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+}
+.report-form-container h2 {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pgbody {
+    display: flex;
+    justify-content: center;
+}
+
+.form-btn-cancel {
+    padding: 12px 24px;
+    text-decoration: none;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: var(--primary-light-grey-color);
+    color: var(--white-color);
+}
+
+.emergency {
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+}
+
+.errorHeading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    align-items: center;
+}
+
+.errorHeading img {
+    width: 250px;
+    border-radius: 100px;
+}
+
+.form-title {
+    font-size: 17px;
+}
+
+/* =========== Styles for mobile View ============= */
+@media screen and (max-width: 450px) {
+
+    .half-width {
+        width: 300px;
+    }
+
+    .report-form-container {
+        width: 40%;
+        padding: 1rem;
+        box-shadow: -1px 0px 5px 4px #C4C4C4;
+        border-radius: 25px;
+        color: var(--primary-grey-color);
+        margin: 2rem calc((100vw - 1200px) / 2);
+        display: flex;
+    }
+
+    .upload-button{
+        margin-top: 20px;
+    }
+
+}

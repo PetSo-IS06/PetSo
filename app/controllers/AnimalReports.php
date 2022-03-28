@@ -56,7 +56,8 @@ class AnimalReports extends Controller
                 'animal' => trim($_POST['animal']),
                 'districtError' => '',
                 'areaError' => '',
-                'animalError' => ''
+                'animalError' => '',
+                'organizations' => ''
             ];
 
             // Input Validation
@@ -81,16 +82,23 @@ class AnimalReports extends Controller
                     ];
                     $this->view('animalReports/listOrganizations', $data);
                 } else {
-                    $this->view('animalReports/listOrganizations', 'Could not list organizations');
-                    die('Could not list organizations');
+                    $this->view('animalReports/listOrganization');
+                    die('No organization details to be displayed');
                 }
             } else {
                 $this->view('animalReports/emergencyReportForm', $data);
             }
+        } else {
+            $this->view('animalReports/emergencyReportForm', $data);
         }
-
-        $this->view('animalReports/reportAnimalForm', $data);
     }
+
+    public function listOrganization()
+    {
+        $this->view('animalReports/listOrganization');
+
+    }
+
 
     public function nonEmergencyReportForm()
     {

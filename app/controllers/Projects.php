@@ -501,6 +501,20 @@ class Projects extends Controller {
         $this->view('pages/index');
     }
 
+    public function updateFundTransfer($id) {
+
+        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            if($this->projectModel->updateFundTransfer($id)) {
+                header('location:' . URL_ROOT . '/AdminDashboards/dashboard');
+            } else {
+                die('Something went wrong.');
+            }
+        }
+
+        $this->view('users/admin/adminDashboard');
+    }
+
     public function rejectProject($id) {
 
         if($_SERVER['REQUEST_METHOD'] == 'GET') {

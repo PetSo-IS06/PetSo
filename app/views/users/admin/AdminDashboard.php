@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-proj-popup.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/ad-dash-payments.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-users-sec.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/ad-dash-overview.css">
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/orgDetail.css'>
@@ -983,7 +984,7 @@
                                                         <div class="pay-det-col">
                                                             <div class="pay-det-field">
                                                                 <label for="" class="normalB">Fundraiser status:</label>
-                                                                <p id="" class="normal"><?php echo $item->fundraiser_status; ?></p>
+                                                                <p id="" class="normal green"><?php echo $item->fundraiser_status; ?></p>
                                                             </div>
                                                             <div class="pay-det-field">
                                                                 <label for="" class="normalB">Organization:</label>
@@ -995,7 +996,7 @@
                                                             </div>
                                                             <div class="pay-det-field">
                                                                 <label for="" class="normalB">Raised amount:</label>
-                                                                <p id="" class="normal"><?php echo $item->raised_amount; ?></p>
+                                                                <p id="" class="normalB purple"><?php echo $item->raised_amount; ?></p>
                                                             </div>
                                                         </div>
                                                         <div class="pay-det-col">
@@ -1018,9 +1019,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="pay-det-action">
-                                                        <a onClick="hidePayDetailsOverlay(<?php echo $item->id; ?>)" id="reject">Cancel</a>
+                                                        <a onClick="hidePayDetailsOverlay(<?php echo $item->id; ?>)" class="" id="cancel-btn">Cancel</a>
                                                         <form action="<?php echo URL_ROOT . '/Projects/updateFundTransfer/' . $item->id; ?>" method="GET">
-                                                            <input type="submit" value="Payment Done">
+                                                            <input type="submit" id="done-btn" value="Payment Done">
                                                         </form>
                                                     </div>
                                                 </div>

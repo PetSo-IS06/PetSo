@@ -138,6 +138,19 @@
             }
         }
 
+        public function updateFundTransfer($id) {
+            $this->db->query('UPDATE `petso`.`Fundraiser` SET `payment` = :status WHERE (`id` = :id)');
+            
+            $this->db->bind(':status', 'Complete');
+            $this->db->bind(':id', $id);
+
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function approveProject($id) {
             $this->db->query('UPDATE `petso`.`Project` SET `status` = :status WHERE (`id` = :id)');
             

@@ -227,5 +227,49 @@
         public function notification(){
             $this->view('components/notification');
         }
+
+       public function sponsor(){
+
+        $data= [
+            'start_date'=>'',
+            'end_date'=>'',
+            
+
+            'start_dateError'=>'',
+            'end_dateError'=>'',
+
+        ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data= [
+                'start_date'=>trim(($_POST['start_date'])),
+                'end_date'=>trim(($_POST['end_date'])),
+
+                'start_dateError'=>'',
+                'end_dateError'=>'',
+
+            ];
+
+            if(empty($data['start_date'])) {
+                $data['start_dateError'] = 'Please Select Sponsor Start Date';
+            }
+            if(empty($data['end_date'])) {
+                $data['end_dateError'] = 'Please select end of the Sponsor Date';
+            }
+
+            if(empty($data['start_dateError']) && empty($data['end_dateError'])){
+
+                $this->userModel->getsponsorDate($data);
+
+                header('location:' . URL_ROOT . '/pages/index');
+
+            }
+        }
+
+           $this->view('users/user/sponsor', $data);
+       }
+
 }
    

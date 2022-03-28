@@ -8,6 +8,28 @@ btn.onclick = function () {
   }
 }
 
+function hideOther() {
+    const targetDiv = document.getElementById("other-title-in");
+    const inputFields = targetDiv.getElementsByTagName("input");
+    if (targetDiv.style.opacity !== "0.5") {
+        targetDiv.style.opacity = "0.5";
+        for(let i=0; i<inputFields.length; i++) {
+            inputFields[i].disabled = true;
+        }
+    }
+}
+
+function showOther() {
+    const targetDiv = document.getElementById("other-title-in");
+    const inputFields = targetDiv.getElementsByTagName("input");
+    if (targetDiv.style.opacity !== "1") {
+        targetDiv.style.opacity = "1";
+        for(let i=0; i<inputFields.length; i++) {
+            inputFields[i].disabled = false;
+        }
+    }
+}
+
 // Form visibility toggle
 function hideNewAccountForm() {
     const targetDiv = document.getElementById("new-account");

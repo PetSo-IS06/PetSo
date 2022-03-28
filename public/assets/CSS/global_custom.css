@@ -438,6 +438,7 @@ margin: 0;
 .textArea .text-box {
     position: relative;
     margin-bottom: 5px;
+    margin-top: 10px;
     display: flex;
     /* width: 100%; */
     align-items: center;

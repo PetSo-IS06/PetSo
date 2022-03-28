@@ -103,31 +103,47 @@ function showProfileOverlay(id) {
 }
 
 // Animal Reports Popups
-function hideReportOverlay(id) {
-    const str = 'popup' + id;
+function hideAllReportOverlay(id) {
+    const str = 'all-rep-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "none") {
         x.style.display = "none";
     }
 }
 
-function showReportOverlay(id) {
-    const str = 'popup' + id;
+function showAllReportOverlay(id) {
+    const str = 'all-rep-popup' + id;
     var x = document.getElementById(str);
     if (x.style.display !== "flex") {
         x.style.display = "flex";
     }
 }
 
-function enableProfileEdit($id){
+function hidePendReportOverlay(id) {
+    const str = 'pend-rep-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
+function showPendReportOverlay(id) {
+    const str = 'pend-rep-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "flex") {
+        x.style.display = "flex";
+    }
+}
+
+function enableProfileEdit($id) {
     var str = 'edit-animal-prof' + $id;
     var targetDiv = document.getElementById(str);
     var inputFields = targetDiv.getElementsByTagName("input");
     var textFields = targetDiv.getElementsByTagName("textarea");
-    for(let i=0; i<inputFields.length; i++) {
+    for (let i = 0; i < inputFields.length; i++) {
         inputFields[i].disabled = false;
     }
-    for(let i=0; i<textFields.length; i++) {
+    for (let i = 0; i < textFields.length; i++) {
         textFields[i].disabled = false;
     }
     hideEditBtn($id);
@@ -139,15 +155,15 @@ function enableProfileEdit($id){
     showImgUploadBtn();
 }
 
-function disableProfileEdit($id){
+function disableProfileEdit($id) {
     var str = 'edit-animal-prof' + $id;
     var targetDiv = document.getElementById(str);
     var inputFields = targetDiv.getElementsByTagName("input");
     var textFields = targetDiv.getElementsByTagName("textarea");
-    for(let i=0; i<inputFields.length; i++) {
+    for (let i = 0; i < inputFields.length; i++) {
         inputFields[i].disabled = true;
     }
-    for(let i=0; i<textFields.length; i++) {
+    for (let i = 0; i < textFields.length; i++) {
         textFields[i].disabled = true;
     }
     showEditBtn($id);
@@ -158,88 +174,88 @@ function disableProfileEdit($id){
     hideSponStatList();
 }
 
-function showTypeList(){
+function showTypeList() {
     var x = document.getElementById('animal-type');
     x.style.display = 'block';
     var y = document.getElementById('type-in');
     y.style.display = 'none';
 }
 
-function hideTypeList(){
+function hideTypeList() {
     var x = document.getElementById('animal-type');
     x.style.display = 'none';
     var y = document.getElementById('type-in');
     y.style.display = 'block';
 }
 
-function showGenderList(){
+function showGenderList() {
     var x = document.getElementById('animal-gender');
     x.style.display = 'block';
     var y = document.getElementById('gender-in');
     y.style.display = 'none';
 }
 
-function hideGenderList(){
+function hideGenderList() {
     var x = document.getElementById('animal-gender');
     x.style.display = 'none';
     var y = document.getElementById('gender-in');
     y.style.display = 'block';
 }
 
-function showAdoptStatList(){
+function showAdoptStatList() {
     var x = document.getElementById('adopt-status');
     x.style.display = 'block';
     var y = document.getElementById('adopt-in');
     y.style.display = 'none';
 }
 
-function hideAdoptStatList(){
+function hideAdoptStatList() {
     var x = document.getElementById('adopt-status');
     x.style.display = 'none';
     var y = document.getElementById('adopt-in');
     y.style.display = 'block';
 }
 
-function showImgUploadBtn(){
+function showImgUploadBtn() {
     var x = document.getElementById('change-img');
-    if(x.style.display === 'none'){
+    if (x.style.display === 'none') {
         x.style.display = 'block';
     }
 }
 
-function showSponStatList(){
+function showSponStatList() {
     var x = document.getElementById('spon-status');
     x.style.display = 'block';
     var y = document.getElementById('spon-in');
     y.style.display = 'none';
 }
 
-function hideSponStatList(){
+function hideSponStatList() {
     var x = document.getElementById('spon-status');
     x.style.display = 'none';
     var y = document.getElementById('spon-in');
     y.style.display = 'block';
 }
 
-function hideEditBtn($id){
+function hideEditBtn($id) {
     var str = 'edit-btn' + $id;
     var x = document.getElementById(str);
     x.style.display = 'none'
 }
 
-function showEditBtn($id){
+function showEditBtn($id) {
     var str = 'edit-btn' + $id;
     var x = document.getElementById(str);
     x.style.display = 'block'
 }
 
-function hideSaveBtn(){
+function hideSaveBtn() {
     var str = 'save-btn' + $id;
     var x = document.getElementById(str);
     x.style.display = 'none'
 }
 
-function showSaveBtn($id){
+function showSaveBtn($id) {
     var str = 'save-btn' + $id;
     var x = document.getElementById(str);
     x.style.display = 'block'
@@ -335,6 +351,52 @@ function hideReportPanel() {
         x.style.display = "none";
         tag.classList.remove("active-tag");
     }
+}
+
+// Showing all pending reports
+function showPendingReports() {
+    var x = document.getElementById("init-display-pend-rep");
+    var btn = document.getElementById("all-reports-btn");
+    var back_btn = document.getElementById("back-to-report-panel");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        hideAllAnimalReports();
+    }
+    btn.classList.remove("disable");
+    btn.disabled = false;
+    back_btn.style.display === "none";
+}
+
+function hidePendingReports() {
+    var x = document.getElementById("init-display-pend-rep");
+    var btn = document.getElementById("all-reports-btn");
+    var back_btn = document.getElementById("back-to-report-panel");
+    if (x.style.display != "none") {
+        x.style.display = "none";
+    }
+    btn.classList.add("disable");
+    btn.disabled = true;
+    back_btn.style.display = "block";
+}
+
+function showAllAnimalReports() {
+    var x = document.getElementById("dis-all-rep");
+    if (x.style.display != "block") {
+        x.style.display = "block";
+        hidePendingReports();
+    }
+}
+
+function hideAllAnimalReports() {
+    var x = document.getElementById("dis-all-rep");
+    var back_btn = document.getElementById("back-to-report-panel");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "none";
+    }
+    showPendingReports();
+    back_btn.style.display = "none";
 }
 
 function showAnimalProfilesPanel() {

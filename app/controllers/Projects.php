@@ -512,13 +512,12 @@ class Projects extends Controller {
     public function viewAllProjects() {
 
         $data = [
-            'projects' => $this->projectModel->getAllApprovedProjects(),
-            'on_going_projects' => $this->projectModel->getProjectByStatus('ongoing'),
-            'completed_projects' => $this->projectModel->getProjectByStatus('completed'),
-            'upcoming_projects' => $this->projectModel->getProjectByStatus('ongoing'),
-
-            'on_going_projects_count' => $this->projectModel->getCountByStatus('ongoing'),
-            'upcoming_projects_count' => $this->projectModel->getCountByStatus('completed'),
+            'projects' => $this->projectModel->getAllProjects(),
+            'on_going_projects' => $this->projectModel->getProjectByStatus('Ongoing'),
+            'completed_projects' => $this->projectModel->getProjectByStatus('Completed'),
+            'upcoming_projects' => $this->projectModel->getProjectByStatus('Ongoing'),
+            'on_going_projects_count' => $this->projectModel->getCountByStatus('Ongoing'),
+            'upcoming_projects_count' => $this->projectModel->getCountByStatus('Completed'),
             'completed_projects_count' => $this->projectModel->getCountByStatus('Completed'),
             'total_projects_count' => $this->projectModel->getProjectCount(),
 

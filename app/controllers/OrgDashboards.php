@@ -17,7 +17,8 @@ class OrgDashboards extends Controller {
         $projects = $this->orgDashboardModel->getMyProjects();
         $volOpp = $this->orgDashboardModel->getMyVolOpportunities();
         $funds = $this->orgDashboardModel->getMyFundraisers();
-        $reports = $this->orgDashboardModel->getMyAnimalReports();
+        $pending_reports = $this->orgDashboardModel->getMyPendingAnimalReports();
+        $all_reports = $this->orgDashboardModel->getMyAllAnimalReports();
 
         // Animal Profiles Overview
         $all =  $this->orgDashboardModel->getMyAnimalProfiles();
@@ -51,7 +52,8 @@ class OrgDashboards extends Controller {
             "volOpp" => $volOpp,
             "funds" => $funds,
             "an-profiles" => $animalProfiles,
-            "reports" => $reports
+            "pending_reports" => $pending_reports,
+            "all_reports" => $all_reports
         ];
 
         $this->view('users/organization/orgDashboard', $data);

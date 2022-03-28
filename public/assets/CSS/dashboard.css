@@ -128,11 +128,11 @@ input {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 /* Organization Dashboard */
-#vol-sec, #fund-sec, #volApp-sec, #animal-sec, #view-all-animals, #rep-sec {
+#vol-sec, #fund-sec, #volApp-sec, #animal-sec, #view-all-animals, #rep-sec, #dis-all-rep {
   display: none;
 }
 
-#prof-overview {
+#prof-overview, #init-display-pend-rep {
   display: block;
 }
 

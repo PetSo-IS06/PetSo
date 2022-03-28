@@ -173,92 +173,202 @@
                                     <i class="fa fa-search"></i>
                                 </div>
                         <div class="btn">
-                            <!-- <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
-                            <a class="content-sub-head-btn" id="applications-btn" onClick="showVolApplications">Applications</a> -->
-                            <a class="content-sub-head-btn" id="view-all-btn">View All</a>
+                            <a id="back-to-report-panel" style="display: none;" onClick="hideAllAnimalReports()" class="cell-nav">Back</a>
+                            <a onClick="showAllAnimalReports()" class="content-sub-head-btn" style="background-color: #1D67BE;" id="all-reports-btn">View all</a>
                         </div>
                     </div>
 
                 </section>
+                <!-- Initial Display -->
+                <div class="opportunities" id="init-display-pend-rep">
+                    <div class="table-wrapper">
+                        <table class="fl-table">
+                            <thead>
+                            <tr class="table-head">
+                                <th><input type="checkbox" name=""></th>
+                                <th>ID</th>
+                                <th>Heading</th>
+                                <th>District</th>
+                                <th>Area</th>
+                                <th>Animal Type</th>
+                                <th>Reported Date</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($data["pending_reports"] as $item) { ?>
+                                    <tr>
+                                        <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
+                                        <td><?php echo $item->id; ?></td>
+                                        <td class="cell-nav"><a onClick="showPendReportOverlay(<?php echo $item->id; ?>)"><?php echo $item->heading; ?></a></td>
+                                        <td><?php echo $item->district; ?></td>
+                                        <td><?php echo $item->area; ?></td>
+                                        <td><?php echo $item->animal_type; ?></td>
+                                        <td><?php echo $item->create_date; ?></td>
+                                        <td>
+                                            <?php
+                                                echo "<p class='green'>$item->status</p"; 
+                                            ?>
+                                        </td>
 
-                <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
-                        <div class="table-wrapper">
-                            <table class="fl-table">
-                                <thead>
-                                <tr class="table-head">
-                                    <th><input type="checkbox" name=""></th>
-                                    <th>ID</th>
-                                    <th>Heading</th>
-                                    <th>District</th>
-                                    <th>Area</th>
-                                    <th>Animal Type</th>
-                                    <th>Created Date</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($data["reports"] as $item) { ?>
-                                        <tr>
-                                            <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
-                                            <td><?php echo $item->id; ?></td>
-                                            <td class="cell-nav"><a onClick="showReportOverlay(<?php echo $item->id; ?>)"><?php echo $item->heading; ?></a></td>
-                                            <td><?php echo $item->district; ?></td>
-                                            <td><?php echo $item->area; ?></td>
-                                            <td><?php echo $item->animal_type; ?></td>
-                                            <td><?php echo $item->create_date; ?></td>
+                                        <?php 
+                                            $date_words = '';
+                                            if(isset($item->create_date)){
+                                                $create_date = strtotime($item->create_date);
+                                                $date_words = date("F j, Y", $create_date);
+                                            }
 
-                                            <!-- Report Popup -->
-                                            <div id="popup<?php echo $item->id; ?>" class="overlay">
-                                                <div class="popup" id="animal-report-popup">
-                                                    <a class="close" onClick="hideReportOverlay(<?php echo $item->id; ?>)">×</a>
-                                                    <div class="report-view">
-                                                        <div class="rep-img">
-                                                            <img src="<?php echo URL_ROOT; ?>/public/uploads/animals/sandy-1648275761.jpg" alt="Report image">
-                                                        </div>
-                                                        <div class="rep-details">
-                                                            <div class="rep-info">
-                                                                <div class="rep-title">
-                                                                    <h3 class="subtitleB">Title of the Report</h3>
+                                            if(!empty($item->image)){
+                                                $report_image_url = URL_ROOT."/public/$item->image";
+                                            }else{
+                                                $report_image_url = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
+                                            }
+                                        ?>
+
+                                        <!-- Report Popup -->
+                                        <div id="pend-rep-popup<?php echo $item->id; ?>" class="overlay">
+                                            <div class="popup" id="animal-report-popup">
+                                                <a class="close" onClick="hidePendReportOverlay(<?php echo $item->id; ?>)">×</a>
+                                                <div class="report-view">
+                                                    <div class="rep-img">
+                                                        <img src="<?php echo $report_image_url?>" alt="Report image">
+                                                    </div>
+                                                    <div class="rep-details">
+                                                        <div class="rep-info">
+                                                            <div class="rep-title">
+                                                                <h3 class="subtitleB">Title of the Report</h3>
+                                                            </div>
+                                                            <div class="rep-content">
+                                                                <div class="rep-loc">
+                                                                    <label for="" class="normalB"><?php echo $item->area ?>, <?php echo $item->district?></label>
+                                                                    <label for="" class="normalB">Status: <span class="normal green"><?php echo $item->status ?></span></label>
                                                                 </div>
-                                                                <div class="rep-content">
-                                                                    <div class="rep-loc">
-                                                                        <label for="" class="normalB">Horana, Badulla</label>
-                                                                        <label for="" class="normalB">Status: <span class="normal green">Pending</span></label>
-                                                                    </div>
-                                                                    <div class="rep-row">
-                                                                        <label for="rep-date" class="normalB">Reported on</label>
-                                                                        <p id="rep-date" class="normal">Date here</p>
-                                                                    </div>
-                                                                    <div class="rep-row">
-                                                                        <label for="rep-date" class="normalB">Reported by</label>
-                                                                        <p id="rep-date" class="normal">Date here</p>
-                                                                    </div>
-                                                                    <div class="rep-row">
-                                                                        <label for="rep-date" class="normalB">Reported On</label>
-                                                                        <p id="rep-date" class="normal">User name</p>
-                                                                    </div>
-                                                                    <div class="rep-dec">
-                                                                        <p>Description of the report here. Description of the report here. Description of the report here</p>
-                                                                    </div>
+                                                                <div class="rep-row">
+                                                                    <label for="rep-date" class="normalB">Reported on</label>
+                                                                    <p id="rep-date" class="normal"><?php echo $date_words ?></p>
+                                                                </div>
+                                                                <div class="rep-row">
+                                                                    <label for="rep-date" class="normalB">Reported by</label>
+                                                                    <p id="rep-date" class="normal"><?php echo $item->reporter_name ?></p>
+                                                                </div>
+                                                                <div class="rep-dec">
+                                                                    <p><?php echo $item->situation ?><br></p>
                                                                 </div>
                                                             </div>
-                                                            <div class="rep-action">
-                                                                <form action="<?php echo URL_ROOT . '/AnimalReports/reject/'.$item->id; ?>" method="GET">
-                                                                    <input type="submit" id="reject-btn" value="Reject">
-                                                                </form>
-                                                                <form action="<?php echo URL_ROOT . '/AnimalReports/approve/'.$item->id; ?>" method="GET">
-                                                                    <input type="submit" id="approve-btn" value="Approve">
-                                                                </form>
+                                                        </div>
+                                                        <div class="rep-action">
+                                                            <form action="<?php echo URL_ROOT . '/AnimalReports/handleIgnore/'.$item->id; ?>" method="GET">
+                                                                <input type="submit" id="reject-btn" value="Ignore">
+                                                            </form>
+                                                            <form action="<?php echo URL_ROOT . '/AnimalReports/handleApprove/'.$item->id; ?>" method="GET">
+                                                                <input type="submit" id="approve-btn" value="Approve">
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tr>
+                                <?php } ?>
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <!-- All Animal Reports -->
+                <div class="opportunities" id="dis-all-rep">
+                    <div class="table-wrapper">
+                        <table class="fl-table">
+                            <thead>
+                            <tr class="table-head">
+                                <th><input type="checkbox" name=""></th>
+                                <th>ID</th>
+                                <th>Heading</th>
+                                <th>District</th>
+                                <th>Area</th>
+                                <th>Animal Type</th>
+                                <th>Reported Date</th>
+                                <th>Status<th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($data["all_reports"] as $item) { ?>
+                                    <tr>
+                                        <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
+                                        <td><?php echo $item->id; ?></td>
+                                        <td class="cell-nav"><a onClick="showAllReportOverlay(<?php echo $item->id; ?>)"><?php echo $item->heading; ?></a></td>
+                                        <td><?php echo $item->district; ?></td>
+                                        <td><?php echo $item->area; ?></td>
+                                        <td><?php echo $item->animal_type; ?></td>
+                                        <td><?php echo $item->create_date; ?></td>
+                                        <td>
+                                            <?php
+                                            if($item->status == "Pending"){
+                                                echo "<p class='blue'>$item->status</p"; 
+                                            }elseif($item->status == "Accepted"){
+                                                echo "<p class='green'>$item->status</p"; 
+                                            }elseif($item->status == "Ignored"){
+                                                echo "<p class='red'>$item->status</p"; 
+                                            }
+                                            ?>
+                                        </td>
+
+                                        <?php 
+                                            $date_words = '';
+                                            if(isset($item->create_date)){
+                                                $create_date = strtotime($item->create_date);
+                                                $date_words = date("F j, Y", $create_date);
+                                            }
+
+                                             if(!empty($item->image)){
+                                                $report_image_url = URL_ROOT."/public/$item->image";
+                                            }else{
+                                                $report_image_url = "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg?20200913095930";
+                                            }
+                                        ?>
+
+                                        <!-- Report Popup -->
+                                        <div id="all-rep-popup<?php echo $item->id; ?>" class="overlay">
+                                            <div class="popup" id="animal-report-popup">
+                                                <a class="close" onClick="hideAllReportOverlay(<?php echo $item->id; ?>)">×</a>
+                                                <div class="report-view">
+                                                    <div class="rep-img">
+                                                        <img src="<?php echo $report_image_url ?>" alt="Report image">
+                                                    </div>
+                                                    <div class="rep-details">
+                                                        <div class="rep-info">
+                                                            <div class="rep-title">
+                                                                <h3 class="subtitleB">Title of the Report</h3>
+                                                            </div>
+                                                            <div class="rep-content">
+                                                                <div class="rep-loc">
+                                                                    <label for="" class="normalB"><?php echo $item->area ?>, <?php echo $item->district?></label>
+                                                                    <label for="" class="normalB">Status: <span class="normal green"><?php echo $item->status ?></span></label>
+                                                                </div>
+                                                                <div class="rep-row">
+                                                                    <label for="rep-date" class="normalB">Reported on</label>
+                                                                    <p id="rep-date" class="normal"><?php echo $date_words ?></p>
+                                                                </div>
+                                                                <div class="rep-row">
+                                                                    <label for="rep-date" class="normalB">Reported by</label>
+                                                                    <p id="rep-date" class="normal"><?php echo $item->reporter_name ?></p>
+                                                                </div>
+                                                                <div class="rep-dec">
+                                                                    <p><?php echo $item->situation ?><br></p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </tr>
-                                    <?php } ?>
-                                <tbody>
-                            </table>
-                        </div>
+                                        </div>
+                                    </tr>
+                                <?php } ?>
+                            <tbody>
+                        </table>
                     </div>
+                </div>
 
 
             </section>

@@ -48,19 +48,35 @@
             return $result;
         }
 
-        public function getMyAnimalReports() {
+        public function getMyPendingAnimalReports() {
             $this->db->query('SELECT Animal_Report.id, Animal_Report.heading, Animal_Report.situation, Animal_Report.district,
             Animal_Report.area, Animal_Report.animal_type, Animal_Report.image, Animal_Report.reporter_name, Animal_Report.NIC,
             Animal_Report.reporter_number, Animal_Report.reporter_email, Animal_Report.user_id, 
-            Animal_Report.create_date, Animal_Report.status FROM Animal_Report 
+            Animal_Report.create_date, Organization_Animal_Report.status FROM Animal_Report 
 
             INNER JOIN Organization_Animal_Report ON Animal_Report.id=Organization_Animal_Report.animal_report_id INNER JOIN Organization
             ON Organization.org_id=Organization_Animal_Report.org_id
-            WHERE Organization_Animal_Report.org_id=:org_id and (Organization_Animal_Report.status=:status1 or Organization_Animal_Report.status=:status2)' );
+            WHERE Organization_Animal_Report.org_id=:org_id and Organization_Animal_Report.status=:status');
 
             $this->db->bind(':org_id', $_SESSION['user_id']);
-            $this->db->bind(':status1', "pending");
-            $this->db->bind(':status2', "accepted");
+            $this->db->bind(':status', "Pending");
+
+            $result = $this->db->resultSet();
+
+            return $result;
+        }
+
+        public function getMyAllAnimalReports() {
+            $this->db->query('SELECT Animal_Report.id, Animal_Report.heading, Animal_Report.situation, Animal_Report.district,
+            Animal_Report.area, Animal_Report.animal_type, Animal_Report.image, Animal_Report.reporter_name, Animal_Report.NIC,
+            Animal_Report.reporter_number, Animal_Report.reporter_email, Animal_Report.user_id, 
+            Animal_Report.create_date, Organization_Animal_Report.status FROM Animal_Report 
+
+            INNER JOIN Organization_Animal_Report ON Animal_Report.id=Organization_Animal_Report.animal_report_id INNER JOIN Organization
+            ON Organization.org_id=Organization_Animal_Report.org_id
+            WHERE Organization_Animal_Report.org_id=:org_id' );
+
+            $this->db->bind(':org_id', $_SESSION['user_id']);
 
             $result = $this->db->resultSet();
 

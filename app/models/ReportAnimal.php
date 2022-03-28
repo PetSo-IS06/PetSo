@@ -70,7 +70,7 @@ class ReportAnimal
     }
 
     public function getRepoter($id){
-        $this->db->query("SELECT User.us_name, User.us_profile_img FROM `petso`.`Animal_Report` 
+        $this->db->query("SELECT User.us_name, User.us_profile_img, User.us_mobile FROM `petso`.`Animal_Report` 
                             INNER JOIN User ON Animal_Report.user_id=User.us_id
                                 WHERE Animal_Report.id = $id");
 
@@ -136,5 +136,34 @@ class ReportAnimal
                 } 
             }
         }
+    }
+    
+    public function approveAnimalReport($animal_report_id, $org_id)
+    {
+        $this->db->query("UPDATE `petso`.`Organization_Animal_Report`
+                SET status='Accepted' WHERE org_id=$org_id AND animal_report_id=$animal_report_id");
+
+        if ($this->db->execute()) {
+            $this->db->query("DELETE FROM `petso`.`Organization_Animal_Report`
+                WHERE status='pending' AND animal_report_id=$animal_report_id");
+
+            if($this->db->execute()){
+                return true;
+            }else{
+                return false;
+            }    
+        } 
+    }
+
+    public function ignoreAnimalReport($animal_report_id, $org_id)
+    {
+        $this->db->query("UPDATE `petso`.`Organization_Animal_Report`
+            SET status='Ignored' WHERE org_id=$org_id AND animal_report_id=$animal_report_id");
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        } 
     }
 }

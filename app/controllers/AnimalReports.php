@@ -9,6 +9,7 @@ class AnimalReports extends Controller
         $this->reportModel = $this->model('ReportAnimal');
         $this->conversationModel = $this->model('Conversation');
         $this->userModel = $this->model('User');
+        $this->organizationModel = $this->model('Organization');
     }
 
     public function index()
@@ -310,4 +311,73 @@ class AnimalReports extends Controller
             $this->view('pages/login', $data);
         }
     }
+
+
+    public function handleApprove($id){
+        if(!empty($_SESSION['user_id'])){
+            if($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+                $data = [
+                    'title' => ''
+                ];
+
+                if($this->reportModel->approveAnimalReport($id, $_SESSION['user_id'])) {
+                    $repoter = $this->reportModel->getRepoter($id);
+
+                    try{
+                        $organization_name = $this->organizationModel->getOrganization($_SESSION['user_id'])[0]->org_name;
+                        sendSMS("Your animal report has been accepeted by $organization_name Animal Welfare Organization", $repoter->us_mobile);
+                        header('location:' . URL_ROOT . '/OrgDashboards/dashboard');
+                    }catch(Exception $e){
+                        header('location:' . URL_ROOT . '/OrgDashboards/dashboard');
+                    }
+                } else {
+                    die('Something went wrong.');
+                }
+            }
+
+            $this->view('pages/index'); 
+        }else{
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => ' ',
+                'passwordError' => ' ',
+                'attentionMessage' => 'Please login to continue!'
+            ];
+
+            $this->view('pages/login', $data);
+        }
+    }
+
+
+    public function handleIgnore($id){
+        if(!empty($_SESSION['user_id'])){
+            if($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+                $data = [
+                    'title' => ''
+                ];
+
+                if($this->reportModel->ignoreAnimalReport($id, $_SESSION['user_id'])) { 
+                    header('location:' . URL_ROOT . '/OrgDashboards/dashboard');
+                } else {
+                    die('Something went wrong.');
+                }
+            }
+
+            $this->view('pages/index');
+        }else{
+            $data = [
+                'email' => '',
+                'password' => '',
+                'emailError' => ' ',
+                'passwordError' => ' ',
+                'attentionMessage' => 'Please login to continue!'
+            ];
+
+            $this->view('pages/login', $data);
+        }
+    }
+    
 }

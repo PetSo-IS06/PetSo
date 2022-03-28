@@ -236,6 +236,26 @@ function showOrgDetailsOverlay(id) {
 }
 
 // Side navigation
+function showOverviewPanel() {
+    var x = document.getElementById("over-sec");
+    var tag = document.getElementById("over-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideProjectsPanel();
+        hideRequestsPanel();
+    }
+}
+
+function hideOverviewPanel() {
+    var x = document.getElementById("over-sec");
+    var tag = document.getElementById("over-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
 function showUsersPanel() {
     var x = document.getElementById("usr-sec");
     var tag = document.getElementById("usr-tag");

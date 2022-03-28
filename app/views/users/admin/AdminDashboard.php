@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-proj-popup.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-users-sec.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/ad-dash-overview.css">
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/orgDetail.css'>
     <script src="https://kit.fontawesome.com/e2ae29c3d1.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/admin-dashboard.js"></script>
+    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/ad-dash-overview.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
 <body>
@@ -35,7 +38,7 @@
                     
                     <ul class="admin-menu">
                     <li>
-                        <a href="#0">
+                        <a class="active-tag" onClick="showOverviewPanel()" id="over-tag">
                         <i class="fas fa-th-large"></i>
                         <span>Overview</span>
                         </a>
@@ -53,7 +56,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
+                        <a onClick="showProjectsPanel()" id="proj-tag">
                         <i class="fas fa-hands-helping"></i>
                         <span>Welfare Projects</span>
                         </a>
@@ -78,6 +81,144 @@
                     </li>
                 </nav>
             </div>
+
+            <!-- Overview Section -->
+            <section class="page-content" id="over-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Overview</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="ov-cont">
+                        <div class="ov-cont-row">
+                            <div class="ov-total-card">
+                                <div class="tot-card-head">
+                                    <div class="card-icon">
+                                        <i class="fa-solid fa-magnifying-glass-dollar"></i>
+                                    </div>
+                                    <h2 class="subtitleB">LKR 120, 000</h2>
+                                </div>
+                                <span class="normalB">Total Funds Raised</span>
+                                <div class="card-graph" id="total-funds" style="width: 260px ; height: 150px;">
+                                    <script type="text/javascript">
+                                        google.charts.load("current", {packages:['corechart']});
+                                        google.charts.setOnLoadCallback(drawChart);
+                                        function drawChart() {
+                                        var totalFundsData = google.visualization.arrayToDataTable([
+                                            ["Element", "Density", { role: "style" } ],
+                                            ["2019", 8.94, "color: #9F2884"],
+                                            ["2020", 10.49, "color: #1D67BE"],
+                                            ["2021", 19.30, "color: #EEC93D"],
+                                            ["2022", 21.45, "color: #5CB85C"]
+                                        ]);
+
+                                        var view = new google.visualization.DataView(totalFundsData);
+                                        view.setColumns([0, 1,
+                                                        { calc: "stringify",
+                                                            sourceColumn: 1,
+                                                            type: "string",
+                                                            color: "#EEC93D",
+                                                            role: "annotation" },
+                                                        2]);
+                                        var totalFunds = new google.visualization.ColumnChart(document.getElementById("total-funds"));
+                                        totalFunds.draw(view);
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="ov-total-card">
+                                <div class="tot-card-head">
+                                    <div class="card-icon">
+                                        <i class="fa-solid fa-hand-sparkles"></i>
+                                    </div>
+                                    <h2 class="subtitleB">LKR 120, 000</h2>
+                                </div>
+                                <span class="normalB">Total Volunteers</span>
+                                <div class="card-graph"  id="total-vols" style="width: 260px ; height: 150px;">
+                                    <script type="text/javascript">
+                                        google.charts.load('current', {'packages':['corechart']});
+                                        google.charts.setOnLoadCallback(drawChart);
+                                        function drawChart() {
+                                            var data = google.visualization.arrayToDataTable([
+                                            ['Opp', 'Vol'],
+                                            [ 8,      12],
+                                            [ 4,      5.5],
+                                            [ 11,     14],
+                                            [ 4,      5],
+                                            [ 3,      3.5],
+                                            [ 6.5,    7]
+                                            ]);
+
+                                            var options = {
+                                            hAxis: {minValue: 0, maxValue: 15},
+                                            vAxis: {minValue: 0, maxValue: 15},
+                                            chartArea: {width:'70%'},
+                                            trendlines: {
+                                                0: {
+                                                type: 'linear',
+                                                showR2: true,
+                                                visibleInLegend: true
+                                                }
+                                            }
+                                            };
+
+                                            var chartLinear = new google.visualization.ScatterChart(document.getElementById('total-vols'));
+                                            chartLinear.draw(data, options);
+
+                                            options.trendlines[0].type = 'exponential';
+                                            options.colors = ['#6F9654'];
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="ov-total-card">
+                                <div class="tot-card-head">
+                                    <div class="card-icon">
+                                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    </div>
+                                    <h2 class="subtitleB">LKR 120, 000</h2>
+                                </div>
+                                <span class="normalB">Total Sponsorships</span>
+                                <div class="card-graph"  id="total-spons" style="width: 260px ; height: 150px;">
+                                    <script type="text/javascript">
+                                        google.charts.load("current", {packages:["corechart"]});
+                                        google.charts.setOnLoadCallback(drawChart);
+                                        function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ["Animal", "LKR", { role: "style" } ],
+                                            ["Dogs", 8.94, "#9F2884"],
+                                            ["Cats", 10.49, "#EEC93D"],
+                                            ["Birds", 19.30, "#9F2884"],
+                                            ["Other", 21.45, "#EEC93D"]
+                                        ]);
+
+                                        var view = new google.visualization.DataView(data);
+                                        view.setColumns([0, 1,
+                                                        { calc: "stringify",
+                                                            sourceColumn: 1,
+                                                            type: "string",
+                                                            role: "annotation" },
+                                                        2]);
+                                        var chart = new google.visualization.BarChart(document.getElementById("total-spons"));
+                                        chart.draw(view);
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ov-cont-row">
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Initial display -->
+                <section>
+                    <div class="opportunities" id="">
+
+                    </div>
+                </section>
+            </section>
 
            <!-- Users Section -->
             <section class="page-content" id="usr-sec">

@@ -52,9 +52,9 @@
                 if(empty($data['password'])) {
                     $data['passwordError'] = 'Please enter password';
                 } elseif(strlen(($data['password'])) < 8) {
-                    $data['passwordError'] = 'Password must have atleast 8 characters';
+                    $data['passwordError'] = 'Password must have at least 8 characters';
                 } elseif(!preg_match($passwordValidation, $data['password'])) {
-                    $data['passwordError'] = 'Password should contain atleast 1 numeric value';
+                    $data['passwordError'] = 'Password should contain at least 1 numeric value';
                 }
 
                 // make sure errors are empty

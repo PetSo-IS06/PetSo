@@ -7,6 +7,7 @@ class Adoptions extends Controller {
         $this->animalProfileModel = $this->model('AnimalProfile');
     }
 
+    
     public function adoptionApplication($id) {
 
         $data= [
@@ -55,7 +56,7 @@ class Adoptions extends Controller {
                 header('location:' . URL_ROOT . '/pages/index');
             }
         }
-         $data['animal_profile']= $this->animalProfileModel->getAnimalProfilebyID($id) ;
+        $data['animal_profile']= $this->animalProfileModel->getAnimalProfilebyID($id) ;
          
         $this->view('animalProfiles/adoptionForm',$data);
 

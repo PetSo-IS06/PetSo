@@ -1,0 +1,22 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+@import './global_custom.css';
+
+img {
+    border-radius: 50%;
+}
+.inputBx{
+    width: 40%;
+}
+.card2{
+    width:80%;
+    float: right;
+    margin-left: 100px;
+    
+}
+.column{
+    width: 50%;
+    float: left;
+    margin-left: 100px;
+}

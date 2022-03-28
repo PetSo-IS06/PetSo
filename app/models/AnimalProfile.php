@@ -106,5 +106,14 @@ class AnimalProfile
         $result = $this->db->single();
         return $result;
     }
+  
+    public function getAnimalProfilebyID($id)
+    {
+        $this->db->query("SELECT *  FROM `petso`.`Animal_Profile`  WHERE `id` = $id");
+
+        $result = $this->db->single();
+        return $result;
+    }
+
 
 }

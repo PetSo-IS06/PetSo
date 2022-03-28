@@ -537,6 +537,7 @@ class Projects extends Controller {
     }
 
 
+
     public function volunteerApplication($id) {
 
         if(isset($_SESSION['user_id'])){
@@ -650,6 +651,4 @@ class Projects extends Controller {
             $this->view('projects/volunteerApplicationForm', $data);
   }
 }
-
 }
-

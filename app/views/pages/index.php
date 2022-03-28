@@ -74,7 +74,7 @@
 </div>
 
 <div>
-    <div class="animalReportSection">
+    <div class="animalReportSection pg-body">
 
         <!--1-->
         <div class="container1">
@@ -126,12 +126,12 @@
                             <hr>
                             <div class="cardBody">
                                 <div class="cardBodyInner">
-                                    <div class="cardBodyInner1 paddingBot paddingRight">
+                                    <div class="cardBodyInner1 grey paddingBot paddingRight">
                                         <div><span>Animal:</span> <?php echo $item->animal_type; ?></div>
                                         <div><span>Location:</span><?php echo $item->area; ?>
                                             , <?php echo $item->district; ?></div>
                                     </div>
-                                    <div class="paddingBot"><span>Description:</span> <?php echo $item->situation; ?>
+                                    <div class="paddingBot grey"><span>Description:</span> <?php echo $item->situation; ?>
                                     </div>
                                     <div class="paddingBot conversation"><span>Conversations:</span> 0</div>
                                 </div>

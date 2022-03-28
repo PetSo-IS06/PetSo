@@ -432,28 +432,11 @@
                                     </div>
                                     <span class="invalidInput"><?php echo $data[1]['targetAmountError']; ?></span>
                                 </div>
-                                <div class="fund-inputs-bottom-col">
-                                    <div class="fund-inputs-bottom-col-row">
-                                        <div id="fund-date">
-                                            <div class="inputBx2" id="date">
-                                                <input name="fundStart" id="datefield" type="date" required="required" value="<?php echo $data[1]['fundStart']; ?>"> 
-                                                <span class="normalB">Fundraising Start date</span>
-                                            </div>
-                                            <span class="invalidInput"><?php echo $data[1]['fundStartError']; ?></span>
-                                        </div>
-                                        <div id="fund-date">
-                                            <div class="inputBx2" id="date">
-                                                <input name="fundEnd" id="datefield" type="date" required="required" value="<?php echo $data[1]['fundEnd']; ?>"> 
-                                                <span class="normalB">Fundraising End date</span>
-                                            </div>
-                                            <span class="invalidInput"><?php echo $data[1]['fundEndError']; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div>
                                 <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
                                 <input type="file" accept="image/*" id="fund-image" name="fund-image">
+                                <p class="purple normalB" style="margin-top: 10px">Note: Raised funds will be transferred to the bank account specified in your profile</p>
                             </div>
                         </div>
 

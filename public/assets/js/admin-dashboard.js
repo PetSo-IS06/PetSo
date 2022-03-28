@@ -264,6 +264,7 @@ function showUsersPanel() {
         tag.classList.add("active-tag");
         hideProjectsPanel();
         hideRequestsPanel();
+        hideOverviewPanel();
     }
 }
 
@@ -284,6 +285,7 @@ function showRequestsPanel() {
         tag.classList.add("active-tag");
         hideProjectsPanel();
         hideUsersPanel();
+        hideOverviewPanel();
     }
 }
 
@@ -313,5 +315,6 @@ function showProjectsPanel() {
         tag.classList.add("active-tag");
         hideRequestsPanel();
         hideUsersPanel();
+        hideOverviewPanel();
     }
 }

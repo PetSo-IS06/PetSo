@@ -91,6 +91,43 @@
                     </div>
                     <div class="ov-cont">
                         <div class="ov-cont-row">
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fa-solid fa-building-ngo heading2 purple"></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d",sizeof($data["allOrgs"]));?></h3>
+                                </div>
+                                <p class="normalB">Welfare Organizations</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fas fa-users heading2 purple"></i></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d", sizeof($data["allUsers"]));?></h3>
+                                </div>
+                                <p class="normalB">Users</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fa-solid fa-user-shield heading2 purple"></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d",sizeof($data["allAdmins"]));?></h3>
+                                </div>
+                                <p class="normalB">Administrators</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                <i class="fa-solid fa-paw heading2 purple"></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d",sizeof($data["allAdmins"]));?></h3>
+                                </div>
+                                <p class="normalB">Animals</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fa-solid fa-triangle-exclamation heading2 purple"></i>
+                                    <h3 class="subtitleB purple">50</h3>
+                                </div>
+                                <p class="normalB">Animals Reported</p>
+                            </div>
+                        </div>
+                        <div class="ov-cont-row">
                             <div class="ov-total-card">
                                 <div class="tot-card-head">
                                     <div class="card-icon">
@@ -106,10 +143,9 @@
                                         function drawChart() {
                                         var totalFundsData = google.visualization.arrayToDataTable([
                                             ["Element", "Density", { role: "style" } ],
-                                            ["2019", 8.94, "color: #9F2884"],
-                                            ["2020", 10.49, "color: #1D67BE"],
-                                            ["2021", 19.30, "color: #EEC93D"],
-                                            ["2022", 21.45, "color: #5CB85C"]
+                                            <?php foreach ($data["annualFunds"] as $item) {?>
+                                            ["<?php echo $item->year; ?>", <?php echo $item->sum; ?>, "color: #5CB85C"],
+                                            <?php }; ?>
                                         ]);
 
                                         var view = new google.visualization.DataView(totalFundsData);
@@ -205,9 +241,6 @@
                                     </script>
                                 </div>
                             </div>
-                        </div>
-                        <div class="ov-cont-row">
-
                         </div>
                     </div>
                 </section>

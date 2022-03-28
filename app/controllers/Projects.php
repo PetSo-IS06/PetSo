@@ -434,6 +434,8 @@ class Projects extends Controller {
 
     public function donate($id) {
 
+        $data = $this->projectModel->getFundraiserDetails($id);
+
         //Retrieve donation messages from DB
 
         $results = '';

@@ -16,13 +16,39 @@
  justify-content: space-between;
 }
 
+.ov-sum-card {
+ display: flex;
+ flex-grow: 1;
+ flex-direction: column;
+ background-color: #fff;
+ row-gap: 10px;
+ align-items: center;
+ border: 1px solid var(--primary-very-light-grey-color);
+ box-sizing: border-box;
+ box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+ padding: 10px;
+}
+
+.ov-sum-card p{
+ align-self: flex-start;
+}
+
+.ov-sum-card .sum-icon {
+ display: flex;
+ flex-direction: row;
+ column-gap: 10px;
+ justify-content: flex-start;
+ width: 100%;
+}
+
 .ov-total-card {
  flex-grow: 1;
  flex-shrink: 1;
  display: flex;
  flex-direction: column;
  background-color: #fff;
- row-gap: 10px;
+ /* row-gap: 10px; */
  border: 1px solid var(--primary-very-light-grey-color);
  box-sizing: border-box;
  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);

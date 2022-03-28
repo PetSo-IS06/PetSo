@@ -233,6 +233,13 @@
             return $result;
         }
 
+        public function getTotalAnnualDonations() {
+            $this->db->query("SELECT YEAR(date) AS year, SUM(amount) AS sum FROM Donation GROUP BY year LIMIT 4");
+
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
+
         public function getFundraiser($id) {
             $this->db->query("SELECT * FROM Fundraiser where prj_id=$id");
 
@@ -241,6 +248,13 @@
         }
 
         public function getAllApprovedProjects() {
+            $this->db->query("SELECT * FROM Project WHERE status!='Pending'");
+
+            $result = $this->db->resultSet();   
+            return $result;
+        }
+
+        public function getFundraiserDetails($id) {
             $this->db->query("SELECT * FROM Project WHERE status!='Pending'");
 
             $result = $this->db->resultSet();   

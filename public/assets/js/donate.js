@@ -36,29 +36,12 @@ function hideSec2() {
     }
 }
 
-function setAmount() {
-    var ele = document.getElementsByName("amount");
-    for(var i=0;i<ele.length;i++)
-        ele[i].checked = false;    
-}
-
-function emptyOtherCol() {
-    var oth = document.getElementById("otherAmount");
-    oth.value = '';
-}
-
-function makePayment(){
-    var amnt = document.getElementsByName("amount");
-    var othAmnt = document.getElementById("otherAmount");
-    var finalAmnt;
-    if(amnt[0].value != '' || amnt[0] != 0){
-        finalAmnt = amnt[0].value;
-    } else {
-        finalAmnt = otherAmount.value;
+function disableContinue() {
+    var btn = document.getElementById("donate-cont-btn");
+    var val = document.getElementById("amount");
+    if(val.value < 500) {
+        btn.href = '#'
+        btn.style.opacity = '0.5';
+        btn.style.pointer-events;  'none';
     }
-    var ele = document.getElementsByName("amount");
-    for(var i=0;i<ele.length;i++)
-        ele[i].value = finalAmnt;
-
-    document.getElementById('donate-form').submit();
 }

@@ -179,33 +179,39 @@
                                     <label class="grey normalB">Location</label>
                                 </div>
                                 <div class="vol-inputs-col-row">
-                                    <div class="selectBx">
-                                        <input name="district" type="text" list="districts" class="select-cat">
-                                            <datalist id="districts">
+                                    <div style="flex-grow:1">
+                                        <label for="district">District</label>
+                                        <div class="selectBx">
+                                            <input name="district" id="district" type="text" list="districts" class="select-cat">
+                                                <datalist id="districts">
+                                                    <?php
+                                                        $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
+                                                        $district = json_decode($str_district, true);
+                                                        foreach ($district as $item) {
+                                                    ?>
+                                                    <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+                                                    <?php }?>
+                                                </datalist>
+                                        </div>
+                                        <span class="invalidInput"><?php echo $data['districtError']; ?></span>
+                                    </div>
+                                    <div style="flex-grow:1">
+                                        <label for="area">Area</label>
+                                        <div class="selectBx">
+                                            <input name="area" name="area" type="text" list="areas" class="select-cat">
+                                                <datalist id="areas">
                                                 <?php
-                                                    $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
-                                                    $district = json_decode($str_district, true);
-                                                    foreach ($district as $item) {
+                                                    $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
+                                                    $area = json_decode($str_areas, true);
+                                                    foreach ($area as $item) {
                                                 ?>
                                                 <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
                                                 <?php }?>
-                                            </datalist>
+                                                </datalist>
+                                        </div>
+                                        <span class="invalidInput"><?php echo $data['areaError']; ?></span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data['districtError']; ?></span>
-
-                                    <div class="selectBx">
-                                        <input name="area" type="text" list="areas" class="select-cat">
-                                            <datalist id="areas">
-                                            <?php
-                                                $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
-                                                $area = json_decode($str_areas, true);
-                                                foreach ($area as $item) {
-                                            ?>
-                                            <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
-                                            <?php }?>
-                                            </datalist>
-                                    </div>
-                                    <span class="invalidInput"><?php echo $data['areaError']; ?></span>
+                                    
 
                                 </div>
 
@@ -213,83 +219,87 @@
                                     <label class="grey normalB">Work Hours</label>
                                 </div>
                                 <div class="vol-inputs-col-row">
-                                    <div class="selectBx" id="selectBx">
-                                        <input type="checkbox" id="options-view-button" name="selectbox">
-                                        <div id="select-button">
-                                            <div id="selected-value">
-                                                <span class="normalB">From*</span>
+                                    <div style="flex-grow:1">
+                                        <div class="selectBx" id="selectBx">
+                                            <input type="checkbox" id="options-view-button" name="selectbox">
+                                            <div id="select-button">
+                                                <div id="selected-value">
+                                                    <span class="normalB">From*</span>
+                                                </div>
+                                                <div id="chevrons">
+                                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                                </div>
                                             </div>
-                                            <div id="chevrons">
-                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            <div id="options">
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="Not specified">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="Not specified">
+                                                    <span class="label">Not specified</span>
+                                                    <span class="opt-val">Not specified</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="8:00AM">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="8:00AM">
+                                                    <span class="label">8:00AM</span>
+                                                    <span class="opt-val">8:00AM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="9:00AM">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="9:00AM">
+                                                    <span class="label">9:00AM</span>
+                                                    <span class="opt-val">9:00AM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="10:00AM">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="10:00AM">
+                                                    <span class="label">10:00AM</span>
+                                                    <span class="opt-val">10:00AM</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div id="options">
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="Not specified">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="Not specified">
-                                                <span class="label">Not specified</span>
-                                                <span class="opt-val">Not specified</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="8:00AM">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="8:00AM">
-                                                <span class="label">8:00AM</span>
-                                                <span class="opt-val">8:00AM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="9:00AM">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="9:00AM">
-                                                <span class="label">9:00AM</span>
-                                                <span class="opt-val">9:00AM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="10:00AM">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="10:00AM">
-                                                <span class="label">10:00AM</span>
-                                                <span class="opt-val">10:00AM</span>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <span class="invalidInput"><?php echo $data['workFromError']; ?></span>
-
-                                    <div class="selectBx" id="selectBx">
-                                        <input type="checkbox" id="options-view-button" name="selectbox">
-                                        <div id="select-button">
-                                            <div id="selected-value">
-                                                <span class="normalB">To*</span>
-                                            </div>
-                                            <div id="chevrons">
-                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                            </div>
-                                        </div>
-                                        <div id="options">
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="Not specified">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="Not specified">
-                                                <span class="label">Not specified</span>
-                                                <span class="opt-val">Not specified</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="3:00PM">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="3:00PM">
-                                                <span class="label">3:00PM</span>
-                                                <span class="opt-val">3:00PM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="4:00PM">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="4:00PM">
-                                                <span class="label">4:00PM</span>
-                                                <span class="opt-val">4:00PM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="5:00PM">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="5:00PM">
-                                                <span class="label">5:00PM</span>
-                                                <span class="opt-val">5:00PM</span>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo ''; ?></span>
+                                    <div style="flex-grow:1">
+                                        <div class="selectBx" id="selectBx" style="width: 100%">
+                                            <input type="checkbox" id="options-view-button" name="selectbox">
+                                            <div id="select-button">
+                                                <div id="selected-value">
+                                                    <span class="normalB">To*</span>
+                                                </div>
+                                                <div id="chevrons">
+                                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                                </div>
+                                            </div>
+                                            <div id="options">
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="Not specified">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="Not specified">
+                                                    <span class="label">Not specified</span>
+                                                    <span class="opt-val">Not specified</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="3:00PM">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="3:00PM">
+                                                    <span class="label">3:00PM</span>
+                                                    <span class="opt-val">3:00PM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="4:00PM">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="4:00PM">
+                                                    <span class="label">4:00PM</span>
+                                                    <span class="opt-val">4:00PM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="5:00PM">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="5:00PM">
+                                                    <span class="label">5:00PM</span>
+                                                    <span class="opt-val">5:00PM</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="invalidInput"><?php echo ''; ?></span>
+                                    </div>
+                                    
 
                                 </div>
                                 <div class="textArea" style="margin-top: 1rem;">
@@ -317,7 +327,7 @@
                                         <span class="invalidInput"><?php echo $data['workEndError']; ?></span>
                                     </div>
                                 </div>
-                                <div class="vol-inputs-col-row" id="work-days">
+                                <div class="vol-inputs-col-row" style="flex-direction: column" id="work-days">
                                     <div class="selectBx" id="selectBx">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
                                         <div id="select-button">
@@ -356,7 +366,6 @@
                                         </div>
                                     </div>
                                     <span class="invalidInput"><?php echo $data['daysError']; ?></span>
-
                                 </div>
                                 <div class="vol-inputs-col-row">
                                     <div class="widen">

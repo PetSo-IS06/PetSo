@@ -69,7 +69,7 @@
                             <?php  echo $data['animal_profile']->requirements ?>
                     <br><br>
             <input type="checkbox" id="Requirements">  I confirm that I am eligible for this Adoption <br><br>
-            <button type="submit" name = "submit" class="purple-btn">Apply </a>
+            <button type="submit" name = "submit" class="purple-btn">Apply </button>
         </div>
      </div>
   <br><br><br>

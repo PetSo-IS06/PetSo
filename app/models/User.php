@@ -112,10 +112,11 @@
         }
 
         public function getsponsorDate($data){
-            $this->db->query("INSERT INTO `petso`.`Sponsorship`(`start_date`, `end_date`) VALUES (:start_date , :end_date)");
+            $this->db->query("INSERT INTO `petso`.`Sponsorship`(`start_date`, `end_date`) VALUES (:start_date , :end_date )");
 
             $this->db->bind(':start_date', $data['start_date'] );
             $this->db->bind(':end_date', $data['end_date'] );
+           
 
             if($this->db->execute()) {
                 return true;
@@ -123,8 +124,6 @@
                 return false;
             }
             
-        }
-
-        
+        }       
 
     }

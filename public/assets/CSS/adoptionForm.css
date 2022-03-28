@@ -62,6 +62,15 @@ input[type=textarea] {
     width: 100px;
 }
 
+.cardBodyImage img {
+    width: 100%;
+    padding: 2px;
+    height: 100%;
+    clip-path: circle();
+   
+}
+
+
 
 
 @media screen and (max-width: 600px) {

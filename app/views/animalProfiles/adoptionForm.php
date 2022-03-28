@@ -23,21 +23,20 @@
 
     <div class="row">
         <div class="column1">
-        <?php
+        <center> <div class="cardBodyImage">
+                                    <img src="<?php
+                                    if (!($item->image)) :
+                                        echo URL_ROOT . '/public/uploads/animals/default-img.jpg';
+                                    else :
+                                        echo $item->image;
+                                    endif; ?>">
+                                </div>
 
-                $image_url = '';
-                if(!empty($data['animal_profile']->image))
-            
-                {
-                             $image = $data['animal_profile']->image;
-                                $image_url = URL_ROOT."/public/$image";
-                } 
-         ?>
-
-           <center> <img src="<?php echo $image_url ?> ">
+  
             <h2><?php echo $data['animal_profile']->name ?></h2>
             <p><?php echo $data['animal_profile']->age ?></p></center>
         </div>
+     </div>
         <form action="<?php echo URL_ROOT; ?>/Adoptions/adoptionApplication" method="POST" enctype="multipart/form-data">
         <div class="column2">
         
@@ -52,7 +51,7 @@
                         <div class="text-box" id="">
                             <textarea rows="3" name="address"><?php echo $data['address']; ?></textarea> 
                         </div>
-                        <span class="invalidInput"><?php echo $data['addressError'];; ?></span>
+                        <span class="invalidInput"><?php echo $data['addressError']; ?></span>
                     </div>
             
           

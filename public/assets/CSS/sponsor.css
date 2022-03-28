@@ -12,9 +12,11 @@ img {
 .card2{
     width:80%;
     float: right;
+    margin-left: 100px;
     
 }
 .column{
     width: 50%;
     float: left;
+    margin-left: 100px;
 }

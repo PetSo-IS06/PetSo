@@ -74,9 +74,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a onClick="showPaymentsPanel()" id="pay-tag">
                         <i class="fas fa-receipt"></i>
-                        <span>Finance</span>
+                        <span>Payments</span>
                         </a>
                     </li>
                 </nav>
@@ -602,7 +602,7 @@
             </section>
 
             <!-- Projects Section -->
-            <section class="page-content" id="proj-sec">
+            <section class="page-content" id="ad-proj-sec">
                 <section>
                     <div class="content-head">
                         <h1 class="heading2B">Welfare Projects</h1>
@@ -934,7 +934,105 @@
                     </div>
                 </section>
             </section>
+            
+            <!-- Payments Section -->
+            <section class="page-content" id="pay-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Payments</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                    </div>
+                    </section>
 
+                    <!-- Initial display -->
+                    <div class="opportunities" id="">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th>Fundraiser ID</th>
+                                    <th>Action</th>
+                                    <th>Organization</th>
+                                    <th id="col-desc" style="width: 150px">Project title</th>
+                                    <th>Target Amount</th>
+                                    <th>Raised Amount</th>
+                                    <th>Fundraiser Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["fundPayments"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td class="cell-nav purple"><a onClick="showPayDetailsOverlay(<?php echo $item->id; ?>)">Update</a></td>
+                                            <td><?php echo $item->org_name; ?></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->title; ?></td>
+                                            <td><?php echo $item->target_amount; ?></td>
+                                            <td><?php echo $item->raised_amount; ?></td>
+                                            <td><?php echo $item->fundraiser_status; ?></td>
+
+                                            <!-- Pending Payments Popup -->
+                                            <div id="pend-pay-popup<?php echo $item->id; ?>" class="overlay">
+                                                <div class="popup" id="pend-pay-details">
+                                                    <div class="pay-head">
+                                                        <h1 class="subtitleB center"><?php echo $item->title; ?></h1>
+                                                        <a class="close" onClick="hidePayDetailsOverlay(<?php echo $item->id; ?>)">×</a>
+                                                    </div>
+                                                    <div class="pay-det-cont">
+                                                        <div class="pay-det-col">
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Fundraiser status:</label>
+                                                                <p id="" class="normal"><?php echo $item->fundraiser_status; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Organization:</label>
+                                                                <p id="" class="normal"><?php echo $item->org_name; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Targeted amount:</label>
+                                                                <p id="" class="normal"><?php echo $item->target_amount; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Raised amount:</label>
+                                                                <p id="" class="normal"><?php echo $item->raised_amount; ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pay-det-col">
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Account holder:</label>
+                                                                <p id="" class="normal"><?php echo $item->account_holder; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Account No.:</label>
+                                                                <p id="" class="normal"><?php echo $item->account_no; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Bank:</label>
+                                                                <p id="" class="normal"><?php echo $item->bank; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Branch:</label>
+                                                                <p id="" class="normal"><?php echo $item->branch; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pay-det-action">
+                                                        <a onClick="hidePayDetailsOverlay(<?php echo $item->id; ?>)" id="reject">Cancel</a>
+                                                        <form action="<?php echo URL_ROOT . '/Projects/updateFundTransfer/' . $item->id; ?>" method="GET">
+                                                            <input type="submit" value="Payment Done">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </section>
         </div>
     </div>
     <div id="footer">

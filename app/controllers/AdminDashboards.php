@@ -26,7 +26,8 @@ class AdminDashboards extends Controller {
         $allUsers = $this->userModel->getAllUserAccounts();
         $allOrgs = $this->organizationModel->getAllOrganizations();
         $allAdmins = $this->adminModel->getAllAdmins();
-        $allAnimals = $this->animalProfileModel->getAllAnimalProfiles();
+        $allAnimals = $this->animalProfileModel->getAllAnimalProfiles(); 
+        $fundPayments = $this->projectModel->getFundraiserPayments(); 
         
         $data = [
             "pendProjects" => $pendingProjects,
@@ -36,7 +37,8 @@ class AdminDashboards extends Controller {
             "allOrgs" => $allOrgs,
             "allAdmins" => $allAdmins,
             "allAnimals" => $allAnimals,
-            "annualFunds" => $annualFunds
+            "annualFunds" => $annualFunds,
+            "fundPayments" => $fundPayments
         ];
 
         $this->view('users/admin/adminDashboard', $data);

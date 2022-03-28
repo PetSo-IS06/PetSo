@@ -254,6 +254,22 @@
             return $result;
         }
 
+        public function getFundraiserPayments() {
+            $this->db->query("SELECT F.*, O.org_name, P.title, B.account_holder, B.bank, B.account_no, B.branch
+                                FROM Fundraiser F, Organization O, Project P, Bank_Account B
+                                WHERE F.payment = :pay_status 
+                                AND F.fundraiser_status = :fund_status
+                                AND F.prj_id = P.id
+                                AND B.id = F.bank_acnt_id
+                                AND P.org_id = O.org_id");
+
+            $this->db->bind(':pay_status', 'Pending' );
+            $this->db->bind(':fund_status', 'Complete' );
+
+            $result = $this->db->resultSet();   
+            return $result;
+        }
+
         public function getFundraiserDetails($id) {
             $this->db->query("SELECT * FROM Project WHERE status!='Pending'");
 

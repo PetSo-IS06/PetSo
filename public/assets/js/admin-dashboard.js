@@ -121,6 +121,23 @@ function hideCreateAdminForm() {
     }
 }
 
+// Pending Payments Popups
+function showPayDetailsOverlay(id) {
+    const str = 'pend-pay-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+    }
+}
+
+function hidePayDetailsOverlay(id) {
+    const str = 'pend-pay-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
 // Project Panel Popups
 function showPendProjOverlay(id) {
     const str = 'pend-prj-det-popup' + id;
@@ -244,6 +261,8 @@ function showOverviewPanel() {
         tag.classList.add("active-tag");
         hideProjectsPanel();
         hideRequestsPanel();
+        hidePaymentsPanel();
+        hideUsersPanel();
     }
 }
 
@@ -265,6 +284,7 @@ function showUsersPanel() {
         hideProjectsPanel();
         hideRequestsPanel();
         hideOverviewPanel();
+        hidePaymentsPanel();
     }
 }
 
@@ -286,6 +306,7 @@ function showRequestsPanel() {
         hideProjectsPanel();
         hideUsersPanel();
         hideOverviewPanel();
+        hidePaymentsPanel();
     }
 }
 
@@ -299,7 +320,7 @@ function hideRequestsPanel() {
 }
 
 function hideProjectsPanel() {
-    var x = document.getElementById("proj-sec");
+    var x = document.getElementById("ad-proj-sec");
     var tag = document.getElementById("proj-tag");
     if (x.style.display !== "none") {
         x.style.display = "none";
@@ -308,7 +329,7 @@ function hideProjectsPanel() {
 }
 
 function showProjectsPanel() {
-    var x = document.getElementById("proj-sec");
+    var x = document.getElementById("ad-proj-sec");
     var tag = document.getElementById("proj-tag");
     if (x.style.display !== "block") {
         x.style.display = "block";
@@ -316,5 +337,29 @@ function showProjectsPanel() {
         hideRequestsPanel();
         hideUsersPanel();
         hideOverviewPanel();
+        hidePaymentsPanel();
     }
 }
+
+function hidePaymentsPanel() {
+    var x = document.getElementById("pay-sec");
+    var tag = document.getElementById("pay-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
+function showPaymentsPanel() {
+    var x = document.getElementById("pay-sec");
+    var tag = document.getElementById("pay-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideRequestsPanel();
+        hideUsersPanel();
+        hideOverviewPanel();
+        hideProjectsPanel();
+    }
+}
+

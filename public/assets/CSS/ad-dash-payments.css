@@ -1,0 +1,28 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+#pend-pay-details {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  row-gap: 10px;
+}
+
+.pay-det-cont {
+ display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.pay-det-col {
+ display: flex;
+ flex-direction: column;
+ row-gap: 10px;
+}
+
+.pay-det-field {
+ display: flex;
+ flex-direction: row;
+ column-gap: 10px;
+}

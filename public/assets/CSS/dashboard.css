@@ -137,7 +137,7 @@ input {
 }
 
 /* Admin Dashboard */
-#req-sec, #all-prj, #usr-sec, #all-org, #all-admins, #proj-sec {
+#req-sec, #all-prj, #usr-sec, #all-org, #all-admins, #ad-proj-sec, #pay-sec {
   display: none;
 }
 

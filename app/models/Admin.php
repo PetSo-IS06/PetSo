@@ -59,7 +59,6 @@
             $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;
         }
-<<<<<<< HEAD
 
         public function registerAdmin($data, $accountID) {
             $this->db->query("INSERT INTO `petso`.`Admin` (`account_id`, `ad_name`, `joined_date`) VALUES (:acnt_id, :name, :date)");
@@ -81,7 +80,3 @@
             return $result;
         }
     }
-=======
-    }
-    
->>>>>>> 1775d37 (sponsor form created)

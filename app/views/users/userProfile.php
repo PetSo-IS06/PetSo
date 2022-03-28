@@ -23,7 +23,7 @@
         <!--1-->
         <div class="container1">
             <a href="userProfile.php">
-                <img src="" alt="Add your image here">
+                <img src="<?php echo URL_ROOT; ?>/public/assets/img/profile/blank-profile-picture-973460__480.webp" alt="Add your image here">
             </a>
             <br>
             <h2><?php echo $data['username']; ?></h2>
@@ -32,8 +32,8 @@
             <hr>
 
             <div class = "container1Bot">
-                <text class="date"> Account Created on: <span> 00/00/00 </span></text> <br>
-                <text class="date"> Last active on: : <span> 00/00/00 </span></text>
+                <text class="date"> Account Created on: <span> 2022/03/29 </span></text> <br>
+<!--                <text class="date"> Last active on: : <span> 00/00/00 </span></text>-->
                 <br><br><br>
                 <a class="reset"> Reset Password </a> <br>
                 <a class="delete"> Delete Account </a>
@@ -49,7 +49,7 @@
                 <div class="infoUpper">
                     <h2>Personal Info</h2>
                     <a onclick="Content_edit();">
-                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit.png">
+                        <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/edit.png" alt="Add Your Image">
                     </a>
                 </div>
                 <hr>
@@ -57,7 +57,7 @@
                     <div class="inputs">
                         <text>Name: &nbsp;<span> <?php echo $data['username']; ?></span></text> <br>
                     </div>
-                    <div class="inputs">
+                    <div class="inputs">f
                         <text>Mobile No: &nbsp;<span><?php echo $data['mobile']; ?></span></text>
                     </div>
                     <div class="inputs">
@@ -122,7 +122,7 @@
             <hr>
             <div class="form">
                 <div class="inputBx LogIn">
-                    <input id="" type="submit" value="1" >
+                    <input id="" type="submit" value="No Activities" >
                 </div>
             </div>
         </div>

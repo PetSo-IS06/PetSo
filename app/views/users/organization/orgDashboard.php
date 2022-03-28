@@ -355,7 +355,7 @@
                                                                     <p id="rep-date" class="normal"><?php echo $item->reporter_name ?></p>
                                                                 </div>
                                                                 <div class="rep-dec">
-                                                                    <p><?php echo $item->situation ?><br></p>
+                                                                    <p><?php echo $item->situation ?></p>
                                                                 </div>
                                                             </div>
                                                         </div>

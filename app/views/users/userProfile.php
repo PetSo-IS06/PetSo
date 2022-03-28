@@ -23,7 +23,7 @@
         <!--1-->
         <div class="container1">
             <a href="userProfile.php">
-                <img src="" alt="Add your image here">
+                <img src="<?php echo URL_ROOT; ?>/public/assets/img/profile/blank-profile-picture-973460__480.webp" alt="Add your image here">
             </a>
             <br>
             <h2><?php echo $data['username']; ?></h2>

@@ -247,3 +247,11 @@ input[type=text], select {
     margin-bottom: 25px;
     width: 100%;
 }
+
+.reset:hover{
+    color: var(--primary-purple-color);
+}
+
+.delete:hover{
+    color: var(--primary-purple-color);
+}

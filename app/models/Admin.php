@@ -59,4 +59,24 @@
             $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;
         }
+
+        public function registerAdmin($data, $accountID) {
+            $this->db->query("INSERT INTO `petso`.`Admin` (`account_id`, `ad_name`, `joined_date`) VALUES (:acnt_id, :name, :date)");
+            
+            $this->db->bind(':acnt_id', $accountID );
+            $this->db->bind(':name', $data['name'] );
+            $this->db->bind(':date', date("d-m-Y"));
+
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function getAllAdmins() {
+            $this->db->query("SELECT Ad.*, A.email FROM Admin Ad, Account A WHERE Ad.account_id = A.id");
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
     }

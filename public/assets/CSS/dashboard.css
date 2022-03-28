@@ -137,7 +137,7 @@ input {
 }
 
 /* Admin Dashboard */
-#req-sec {
+#req-sec, #all-prj, #usr-sec, #all-org, #all-admins  {
   display: none;
 }
 
@@ -272,6 +272,9 @@ input {
 /* ---------------- Table Styles ------------------------ */
 .table-wrapper{
     margin-top: 1rem;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
     /* box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 ); */
 }
 

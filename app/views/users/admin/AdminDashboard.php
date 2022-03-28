@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="icon" href="<?php echo URL_ROOT; ?>/public/assets/img/icons/favicon.png">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-proj-popup.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-users-sec.css">
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/orgDetail.css'>
+    <script src="https://kit.fontawesome.com/e2ae29c3d1.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/admin-dashboard.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
@@ -27,7 +30,7 @@
                     </a>
                     <div class="menu-heading">
                         <h3 class="subtitleB center"><?php echo $_SESSION['user_name']; ?></h3>
-                        <label >ID: 000000</label>
+                        <label>AD_00<?php echo $_SESSION['user_id']; ?></label>
                     </div>
                     
                     <ul class="admin-menu">
@@ -38,20 +41,20 @@
                         </a>
                     </li>
                     <li>
-                        <a  onClick="" id="">
-                        <i class="fas fa-rocket"></i>
+                        <a onClick="showUsersPanel()" id="usr-tag">
+                        <i class="fas fa-users"></i>
                         <span>Users</span>
                         </a>
                     </li>
                     <li>
-                        <a class="active-tag"  onClick="showRequestsPanel()" id="req-tag">
-                        <i class="fas fa-hands-helping"></i>
+                        <a onClick="showRequestsPanel()" id="req-tag">
+                        <i class="fa-solid fa-circle-dot"></i>
                         <span>Account Requests</span>
                         </a>
                     </li>
                     <li>
-                        <a  onClick="showProjectsPanel()" id="proj-tag">
-                        <i class="fas fa-comment-dollar"></i>
+                        <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
+                        <i class="fas fa-hands-helping"></i>
                         <span>Welfare Projects</span>
                         </a>
                     </li>
@@ -63,7 +66,7 @@
                     </li>
                     <li>
                         <a href="#0">
-                        <i class="fas fa-dog"></i>
+                        <i class="fa-solid fa-person-circle-exclamation"></i>
                         <span>Complaints</span>
                         </a>
                     </li>
@@ -73,15 +76,188 @@
                         <span>Finance</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#0">
-                        <i class="fas fa-receipt"></i>
-                        <span>My Account</span>
-                        </a>
-                    </li>
+                </nav>
             </div>
 
-           
+           <!-- Users Section -->
+            <section class="page-content" id="usr-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B"><?php echo SITE_NAME; ?> Users</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                        <div class="search-sec-bar">
+                            <input type="search" placeholder="Search..." name="searchPrj" />
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="us-btn">
+                            <a id="view-user-btn" onClick="showUsers()">Users</a>
+                            <a id="view-org-btn" onClick="showOrgs()">Organizations</a>
+                            <a id="view-admin-btn" onClick="showAdmins()">Admins</a>
+                        </div>
+                    </div>
+                    </section>
+
+                    <!-- Initial display - View Users -->
+                    <div class="opportunities" id="all-users">
+                        <h1 class="subtitle">Users (<?php echo sizeof($data["allUsers"]);?>)</h1>
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                    <tr class="table-head">
+                                        <th>User ID</th>
+                                        <th>Name</th>
+                                        <th id="col-desc" style="width: 150px">Email</th>
+                                        <th>Mobile</th>
+                                        <th>Account status</th>
+                                        <th>Area</th>
+                                        <th>District</th>
+                                        <th>Joined date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["allUsers"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->us_id; ?></td>
+                                            <td class="cell-nav"><a href=""><?php echo $item->us_name; ?></a></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->email; ?></td>
+                                            <td><?php echo $item->us_mobile; ?></td>
+                                            <td><?php echo $item->account_status; ?></td>
+                                            <td><?php echo $item->us_city; ?></td>
+                                            <td><?php echo $item->us_district; ?></td>
+                                            <td><?php echo $item->joined_date; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- View Organizations -->
+                    <div class="opportunities" id="all-org">
+                        <h1 class="subtitle">Organizations (<?php echo sizeof($data["allOrgs"]);?>)</h1>
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                    <tr class="table-head">
+                                        <th>Org ID</th>
+                                        <th>Name</th>
+                                        <th id="col-desc" style="width: 150px">Email</th>
+                                        <th>Mobile</th>
+                                        <th>Respond to help</th>
+                                        <th>Area</th>
+                                        <th>District</th>
+                                        <th>Website</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["allOrgs"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->org_id; ?></td>
+                                            <td class="cell-nav"><a href=""><?php echo $item->org_name; ?></a></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->email; ?></td>
+                                            <td><?php echo $item->org_mobile; ?></td>
+                                            <td><?php echo $item->if_findhelp; ?></td>
+                                            <td><?php echo $item->org_area; ?></td>
+                                            <td><?php echo $item->org_district; ?></td>
+                                            <td><?php echo $item->org_website; ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- View Admins -->
+                    <div class="opportunities" id="all-admins">
+                        <div class="ad-overview">
+                            <h1 class="subtitle">Administrators</h1>
+                            <div class="ad-ov-head">
+                                <div class="all-ad-card">
+                                    <div class="ad-card-top">
+                                        <div class="admin-icon">
+                                            <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/admin-icon.png" alt="">
+                                        </div>
+                                        <a onclick="showCreateAdminForm()" class="subtitleB purple">Add +</a>
+                                    </div>
+                                    <div class="ad-card-bot">
+                                        <h4 class="subtitle">Total System Admins</h4>
+                                        <h3 class="subtitleB"><?php echo sizeof($data["allAdmins"]);?></h3>
+                                    </div>
+                                </div>
+                                <div class="ad-role-card">
+                                    <div class="ad-role-title">
+                                        <h4 class="subtitle">Role of an Admin</h4>
+                                    </div>
+                                    <div class="ad-role-body">
+                                        <ol>
+                                            <li>Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.</li>
+                                            <li>Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim</li>
+                                            <li>Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi.</li>
+                                            <li>Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Create Admin Popup -->
+                            <div id="create-ad-popup" class="overlay">
+                                <div class="popup" id="admin-popup">
+                                    <a class="close" onClick="hideCreateAdminForm()">×</a>
+                                    <form action="<?php echo URL_ROOT . '/Admins/createAdmin'; ?>" method="POST">
+                                        <div class="create-ad">
+                                            <div>
+                                               <h3 class="subtitle center">Enter Admin Info and Initial Login Credentials</h3> 
+                                            </div>
+                                            <div class="inputBx2" id="">
+                                                <input name="name" id="name" type="text" value="">
+                                                <span class="normalB">Admin Name</span>
+                                            </div>
+                                            <div class="inputBx2" id="">
+                                                <input name="email" id="email" type="text" value="">
+                                                <span class="normalB">Admin Email</span>
+                                            </div>
+                                            <div class="inputBx2" id="">
+                                                <input name="password" id="password" type="text" value="">
+                                                <span class="normalB">Initial Password</span>
+                                            </div>
+                                            <div class="ad-form-action">
+                                                <a onClick="hideCreateAdminForm()" class="ad-form-btn normalB" id="create-admin-close">Cancel</a>
+                                                <input type="submit" id="create-admin" class="ad-form-btn normalB" value="Create">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="table-wrapper">
+                                <table class="fl-table">
+                                    <thead>
+                                        <tr class="table-head">
+                                            <th>Admin ID</th>
+                                            <th>Name</th>
+                                            <th>Mobile</th>
+                                            <th>Email</th>
+                                            <th>Joined Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($data["allAdmins"] as $item) { ?>
+                                            <tr>
+                                                <td><?php echo $item->ad_id; ?></td>
+                                                <td class="cell-nav"><a href=""><?php echo $item->ad_name; ?></a></td>
+                                                <td><?php echo $item->ad_mobile; ?></td>
+                                                <td><?php echo $item->email; ?></td>
+                                                <td><?php echo $item->joined_date; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    <tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
 
             <!-- Profile Requests -->
             <section class="page-content" id="req-sec">
@@ -251,8 +427,8 @@
                 </section>
             </section>
 
-             <!-- Projects Section -->
-             <section class="page-content" id="proj-sec">
+            <!-- Projects Section -->
+            <section class="page-content" id="proj-sec">
                 <section>
                     <div class="content-head">
                         <h1 class="heading2B">Welfare Projects</h1>
@@ -263,47 +439,58 @@
                             <input type="search" placeholder="Search..." name="searchPrj" />
                             <i class="fa fa-search"></i>
                         </div>
-                        <div class="btn">
-                            <a class="content-sub-head-btn" id="opportunities-btn" onClick="">Summary</a>
-                            <a class="content-sub-head-btn" id="applications-btn" onClick="">Pending</a>
-                            <a class="content-sub-head-btn" id="view-all-btn">View All</a>
+                        <div class="prj-btn">
+                            <a class="" id="view-pend-prj-btn" onClick="showPendProjects()" style="display: none;">Pending</a>
+                            <a class="" id="view-all-prj-btn" onClick="showAllProjects()">View All</a>
                         </div>
                     </div>
                     </section>
 
                     <!-- Initial display -->
-                    <div class="opportunities" id="opportunities" style="display:flex; flex-direction: column;">
+                    <div class="opportunities" id="all-pend-prj">
                         <div class="table-wrapper">
                             <table class="fl-table">
                                 <thead>
                                 <tr class="table-head">
-                                    <th><input type="checkbox" name="">All</th>
                                     <th>ID</th>
                                     <th>Title</th>
-                                    <th id="col-desc" style="width: 130px">Cause</th>
+                                    <th id="col-desc" style="width: 150px">Cause</th>
                                     <th>Create Date</th>
-                                    <th id="col-desc" style="width: 100px">Organization</th>
+                                    <th id="col-desc" style="width: 130px">Organization</th>
                                     <th>Volunteering</th>
                                     <th>Fundraising</th>
-                                    <th>Action</th>
-                                    <!-- <th></th> -->
+                                    <th>Initiation Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($data["pendProjects"] as $item) { ?>
                                         <tr>
-                                            <td><input type='checkbox' name='selectedProject' value='<?php echo $item->id; ?>'></td>
-                                            <td><?php echo $item->id; ?></td>
-                                            <td class="cell-nav"><a href=""><?php echo $item->title; ?></a></td>
-                                            <td id="col-desc" style="width: 130px"><?php echo $item->cause; ?></td>
-                                            <td><?php echo $item->create_date; ?></td>
-                                            <td id="col-desc" style="width: 100px"><?php echo $item->org_name; ?></td>
-                                            <td><input type="checkbox" name=""></td>
-                                            <td><input type="checkbox" name=""></td>
-                                            <td class="action-col">
-                                                <a onClick="showApproveOverlay(<?php echo $item->id; ?>)" class="green-btn cell-btn" id="cell-btn">Approve</a>
-                                                <a onClick="showRejectOverlay(<?php echo $item->id; ?>)" class="grey-btn cell-btn">Reject</a>
+                                            <td><?php echo $item->proj_id; ?></td>
+                                            <td class="cell-nav"><a onClick="showPendProjOverlay(<?php echo $item->proj_id; ?>)"><?php echo $item->proj_title; ?></a></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->proj_cause; ?></td>
+                                            <td><?php echo $item->proj_create; ?></td>
+                                            <td id="col-desc" style="width: 130px"><?php echo $item->org_name; ?></td>
+                                            <td>
+                                                <?php if($item->volunteering == 'True') {
+                                                    echo '<span class="green">Available</span>';
+                                                } else{
+                                                    echo '<span class="red">Not Available</span>';
+                                                }
+                                                ?>
                                             </td>
+                                            <td>
+                                                <?php if($item->fundraising == 'True') {
+                                                    echo '<span class="green">Available</span>';
+                                                } else{
+                                                    echo '<span class="red">Not Available</span>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td><?php echo $item->proj_init; ?></td>
+                                            <!-- <td>
+                                                <a onClick="showApproveOverlay(<?php echo $item->proj_id; ?>)" class="green-btn cell-btn" id="cell-btn">Approve</a>
+                                                <a onClick="showRejectOverlay(<?php echo $item->proj_id; ?>)" class="grey-btn cell-btn">Reject</a>
+                                            </td> -->
                                             <!-- <td><label class="row-dd"><i class="fas fa-ellipsis-v"></i>
                                                 <div id="dropdown<?php echo $item->id; ?>" class="dropdown">
                                                     <a href="#">Welfare Projects</a>
@@ -313,16 +500,102 @@
                                                 </div>
                                             </label></td> -->
 
+                                            <!-- Project Details Popup -->
+                                            <div id="pend-prj-det-popup<?php echo $item->proj_id; ?>" class="overlay">
+                                                <div class="popup" id="pend-proj-popup">
+                                                    <a class="close" onClick="hidePendProjOverlay(<?php echo $item->proj_id; ?>)">×</a>
+                                                    <div class="pend-proj-content">
+                                                        <div class="pend-proj-col">
+                                                            <div class="pend-proj-row">
+                                                                <div class="proj-img">
+                                                                    <img src="<?php echo (URL_ROOT.'/public/'.$item->proj_image); ?>" alt="project image">
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <p id="pend-prj-title" class="subtitleB"><?php echo $item->proj_title; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-cause" class="normalB">Cause:</label>
+                                                                    <p id="pend-prj-cause" class="normal"><?php echo $item->proj_cause; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-org" class="normalB">Organization:</label>
+                                                                    <p id="pend-prj-org" class="normal"><?php echo $item->org_name; ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="pend-proj-row">
+                                                                <h3 class="subtitleB">Fundraiser Details</h3>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-amnt" class="normalB">Target Amount:</label>
+                                                                    <p id="pend-prj-amnt" class="normal"><?php echo $item->target_amount; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-fund-for" class="normalB">Funds for:</label>
+                                                                    <p id="pend-prj-fund-for" class="normal"><?php echo $item->funds_for; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-fund-start" class="normalB">Start Fundraising on:</label>
+                                                                    <p id="pend-prj-fund-start" class="normal"><?php echo $item->funding_start; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-fund-end" class="normalB">End Fundraising on:</label>
+                                                                    <p id="pend-prj-fund-end" class="normal"><?php echo $item->funding_end; ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>                          
+                                                        <div class="pend-proj-col" id="">
+                                                            <h3 class="subtitleB">Volunteer Details</h3>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-vol-for" class="normalB">Volunteers for:</label>
+                                                                <p id="pend-vol-for" class="normal"><?php echo $item->vol_reason; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-desc" class="normalB">Description:</label>
+                                                                <p id="pend-prj-vol-desc" class="normal"><?php echo $item->vol_desc; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-loc" class="normalB">Location:</label>
+                                                                <p id="pend-prj-vol-loc" class="normal"><?php echo $item->vol_area.', '.$item->vol_district; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-start" class="normalB">Work start:</label>
+                                                                <p id="pend-prj-vol-start" class="normal"><?php echo $item->work_start; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-end" class="normalB">Work ends:</label>
+                                                                <p id="pend-prj-vol-end" class="normal"><?php echo $item->work_end; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-open" class="normalB">Applications opens:</label>
+                                                                <p id="pend-prj-vol-open" class="normal"><?php echo $item->app_open; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-close" class="normalB">Applications closes:</label>
+                                                                <p id="pend-prj-vol-close" class="normal"><?php echo $item->app_close; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-req" class="normalB">Requirements:</label>
+                                                                <p id="pend-prj-vol-req" class="normal"><?php echo $item->vol_req; ?></p>
+                                                            </div>
+                                                            <span class="normal purple"><a href="<?php echo URL_ROOT . '/Projects/projectView/'.$item->proj_id; ?>" class="">Click here </a> to view complete project</span>
+                                                            <div class="pend-proj-action">
+                                                                <a onClick="showRejectOverlay(<?php echo $item->proj_id;?>)" id="reject">Reject</a>
+                                                                <a onClick="showApproveOverlay(<?php echo $item->proj_id;?>)" id="approve">Approve</a>
+                                                            </div>
+                                                        </div>    
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <!-- Approval Popup -->
-                                            <div id="popup<?php echo $item->id; ?>" class="overlay">
+                                            <div id="app-prj-popup<?php echo $item->proj_id; ?>" class="overlay">
                                                 <div class="popup">
                                                 <h2 class="heading2B">Approve Project</h2>
-                                                <a class="close" onClick="hideApproveOverlay(<?php echo $item->id; ?>)">×</a>
-                                                <form action="<?php echo URL_ROOT . '/Projects/approveProject/' . $item->id; ?>" method="GET">
+                                                <a class="close" onClick="hideApproveOverlay(<?php echo $item->proj_id; ?>)">×</a>
+                                                <form action="<?php echo URL_ROOT . '/Projects/approveProject/' . $item->proj_id; ?>" method="GET">
                                                     <div class="content">
-                                                        <p class="subtitle">Are you sure that you want to allow <?php echo $item->org_name; ?> to carry out the project with ID <?php echo $item->id; ?> in <?php echo SITE_NAME; ?>?</p>
+                                                        <p class="subtitle">Are you sure that you want to allow <?php echo $item->org_name; ?> to carry out the project with ID <?php echo $item->proj_id; ?> in <?php echo SITE_NAME; ?>?</p>
                                                         <div class="ov-actions">
-                                                            <a onClick="hideApproveOverlay(<?php echo $item->id; ?>)" class="grey-btn">Cancel</a>
+                                                            <a onClick="hideApproveOverlay(<?php echo $item->proj_id; ?>)" class="grey-btn">Cancel</a>
                                                             <input type="submit" id="approve" class="green-btn" value="Approve">
                                                         </div>
                                                     </div>
@@ -330,19 +603,153 @@
                                                 </div>
                                             </div>
                                             <!-- Reject Popup -->
-                                            <div id="rej-popup<?php echo $item->id; ?>" class="overlay">
+                                            <div id="rej-prj-popup<?php echo $item->proj_id; ?>" class="overlay">
                                                 <div class="popup">
                                                 <h2 class="heading2B">Reject Project</h2>
-                                                <a class="close" onClick="hideRejectOverlay(<?php echo $item->id; ?>)">×</a>
-                                                <form action="<?php echo URL_ROOT . '/Projects/rejectProject/' . $item->id; ?>" method="GET">
+                                                <a class="close" onClick="hideRejectOverlay(<?php echo $item->proj_id; ?>)">×</a>
+                                                <form action="<?php echo URL_ROOT . '/Projects/rejectProject/' . $item->proj_id; ?>" method="GET">
                                                     <div class="content">
-                                                        <p class="subtitle">Are you sure that you want to reject <?php echo $item->org_name; ?>'s request to carry out the project with ID <?php echo $item->id; ?> in <?php echo SITE_NAME; ?>?</p>
+                                                        <p class="subtitle">Are you sure that you want to reject <?php echo $item->org_name; ?>'s request to carry out the project with ID <?php echo $item->proj_id; ?> in <?php echo SITE_NAME; ?>?</p>
                                                         <div class="ov-actions">
-                                                            <a onClick="hideRejectOverlay(<?php echo $item->id; ?>)" class="grey-btn">Cancel</a>
+                                                            <a onClick="hideRejectOverlay(<?php echo $item->proj_id; ?>)" class="grey-btn">Cancel</a>
                                                             <input type="submit" id="reject" class="red-btn" value="Reject">
                                                         </div>
                                                     </div>
                                                 </form>
+                                                </div>
+                                            </div>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- View All display -->
+                    <div class="opportunities" id="all-prj">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th id="col-desc" style="width: 150px">Cause</th>
+                                    <th>Status</th>
+                                    <th id="col-desc" style="width: 130px">Organization</th>
+                                    <th>Volunteering</th>
+                                    <th>Fundraising</th>
+                                    <th>Initiation Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["allProjects"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->proj_id; ?></td>
+                                            <td class="cell-nav"><a onClick="showProjOverlay(<?php echo $item->proj_id; ?>)"><?php echo $item->proj_title; ?></a></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->proj_cause; ?></td>
+                                            <td><?php echo $item->proj_status; ?></td>
+                                            <td id="col-desc" style="width: 130px"><?php echo $item->org_name; ?></td>
+                                            <td>
+                                                <?php if($item->volunteering == 'True') {
+                                                    echo '<span class="green">Available</span>';
+                                                } else{
+                                                    echo '<span class="red">Not Available</span>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php if($item->fundraising == 'True') {
+                                                    echo '<span class="green">Available</span>';
+                                                } else{
+                                                    echo '<span class="red">Not Available</span>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td><?php echo $item->proj_init; ?></td>
+
+                                            <!-- Project Details Popup -->
+                                            <div id="prj-popup<?php echo $item->proj_id; ?>" class="overlay">
+                                                <div class="popup" id="pend-proj-popup">
+                                                    <a class="close" onClick="hideProjOverlay(<?php echo $item->proj_id; ?>)">×</a>
+                                                    <div class="pend-proj-content">
+                                                        <div class="pend-proj-col">
+                                                            <div class="pend-proj-row">
+                                                                <div class="proj-img">
+                                                                    <img src="<?php echo (URL_ROOT.'/public/'.$item->proj_image); ?>" alt="project image">
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <p id="pend-prj-title" class="subtitleB"><?php echo $item->proj_title; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-cause" class="normalB">Cause:</label>
+                                                                    <p id="pend-prj-cause" class="normal"><?php echo $item->proj_cause; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-org" class="normalB">Organization:</label>
+                                                                    <p id="pend-prj-org" class="normal"><?php echo $item->org_name; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-org" class="normalB">Project Status:</label>
+                                                                    <p id="pend-prj-org" class="normal blue"><?php echo $item->proj_status; ?></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="pend-proj-row">
+                                                                <h3 class="subtitleB">Fundraiser Details</h3>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-amnt" class="normalB">Target Amount:</label>
+                                                                    <p id="pend-prj-amnt" class="normal"><?php echo $item->target_amount; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-fund-for" class="normalB">Funds for:</label>
+                                                                    <p id="pend-prj-fund-for" class="normal"><?php echo $item->funds_for; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-fund-start" class="normalB">Start Fundraising on:</label>
+                                                                    <p id="pend-prj-fund-start" class="normal"><?php echo $item->funding_start; ?></p>
+                                                                </div>
+                                                                <div class="pend-proj-field">
+                                                                    <label for="pend-prj-fund-end" class="normalB">End Fundraising on:</label>
+                                                                    <p id="pend-prj-fund-end" class="normal"><?php echo $item->funding_end; ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>                          
+                                                        <div class="pend-proj-col">
+                                                            <h3 class="subtitleB">Volunteer Details</h3>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-vol-for" class="normalB">Volunteers for:</label>
+                                                                <p id="pend-vol-for" class="normal"><?php echo $item->vol_reason; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-desc" class="normalB">Description:</label>
+                                                                <p id="pend-prj-vol-desc" class="normal"><?php echo $item->vol_desc; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-loc" class="normalB">Location:</label>
+                                                                <p id="pend-prj-vol-loc" class="normal"><?php echo $item->vol_area.', '.$item->vol_district; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-start" class="normalB">Work start:</label>
+                                                                <p id="pend-prj-vol-start" class="normal"><?php echo $item->work_start; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-end" class="normalB">Work ends:</label>
+                                                                <p id="pend-prj-vol-end" class="normal"><?php echo $item->work_end; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-open" class="normalB">Applications opens:</label>
+                                                                <p id="pend-prj-vol-open" class="normal"><?php echo $item->app_open; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-close" class="normalB">Applications closes:</label>
+                                                                <p id="pend-prj-vol-close" class="normal"><?php echo $item->app_close; ?></p>
+                                                            </div>
+                                                            <div class="pend-proj-field">
+                                                                <label for="pend-prj-vol-req" class="normalB">Requirements:</label>
+                                                                <p id="pend-prj-vol-req" class="normal"><?php echo $item->vol_req; ?></p>
+                                                            </div>
+                                                            <span class="normal purple"><a href="<?php echo URL_ROOT . '/Projects/projectView/'.$item->proj_id; ?>" class="">Click here </a> to view complete project</span>
+                                                        </div>    
+                                                    </div>
                                                 </div>
                                             </div>
                                         </tr>

@@ -482,18 +482,11 @@ class Projects extends Controller {
     }
 
     public function approveProject($id) {
-        // $data = [
-        //     'title' => ''
-        // ];
 
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-            $data = [
-                'title' => ''
-            ];
-
             if($this->projectModel->approveProject($id)) {
-                header('location:' . URL_ROOT . '/pages/index');
+                header('location:' . URL_ROOT . '/AdminDashboards/dashboard');
             } else {
                 die('Something went wrong.');
             }
@@ -503,18 +496,11 @@ class Projects extends Controller {
     }
 
     public function rejectProject($id) {
-        // $data = [
-        //     'title' => ''
-        // ];
 
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-            $data = [
-                'title' => ''
-            ];
-
             if($this->projectModel->rejectProject($id)) {
-                header('location:' . URL_ROOT . '/pages/index');
+                header('location:' . URL_ROOT . '/AdminDashboards/dashboard');
             } else {
                 die('Something went wrong.');
             }
@@ -526,7 +512,7 @@ class Projects extends Controller {
     public function viewAllProjects() {
 
         $data = [
-            'projects' => $this->projectModel->getAllProjects(),
+            'projects' => $this->projectModel->getAllApprovedProjects(),
             'on_going_projects' => $this->projectModel->getProjectByStatus('ongoing'),
             'completed_projects' => $this->projectModel->getProjectByStatus('completed'),
             'upcoming_projects' => $this->projectModel->getProjectByStatus('ongoing'),

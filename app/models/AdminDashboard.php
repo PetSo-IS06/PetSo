@@ -18,19 +18,6 @@
             // return $result;
         }
 
-        public function getPendingProjects() {
-            $this->db->query('SELECT Project.*, Organization.org_name, Organization.org_district
-                                FROM Project
-                                JOIN Organization ON Project.org_id = Organization.org_id
-                                WHERE Project.status = :status');
-
-            $this->db->bind(':status', 'Pending');
-
-            $result = $this->db->resultSet();
-
-            return $result;
-        }
-
         public function getPendingRequests() {
             $this->db->query('SELECT o.*, a.email
                                 FROM Organization AS o, Account AS a 

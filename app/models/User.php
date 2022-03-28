@@ -25,14 +25,15 @@
         public function register($data, $accountID) {
 
             $this->db->query(
-                'INSERT INTO `petso`.`User` (`account_id`, `us_name`, `us_mobile`, `account_status`) 
-                VALUES (:accountID, :username, :mobile, :accountStatus)');
+                'INSERT INTO `petso`.`User` (`account_id`, `us_name`, `us_mobile`, `account_status`, `joined_date`) 
+                VALUES (:accountID, :username, :mobile, :accountStatus, :date)');
 
             // bind values
             $this->db->bind(':accountID', $accountID);
             $this->db->bind(':username', $data['username']);
             $this->db->bind(':mobile', $data['mobile']);
             $this->db->bind(':accountStatus', 'active');
+            $this->db->bind(':date', date("d-m-Y"));
 
             // execute function
             if($this->db->execute()) {
@@ -44,6 +45,13 @@
 
         public function getUsers() {
             $this->db->query("SELECT * FROM User");
+
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
+ 
+        public function getAllUserAccounts() {
+            $this->db->query("SELECT U.*, A.email FROM User U, Account A WHERE U.account_id = A.id");
 
             $result = $this->db->resultSet();    // resultSet returns an array of Objects
             return $result;

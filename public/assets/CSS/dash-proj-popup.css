@@ -1,0 +1,125 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+#pend-proj-popup {
+ display: flex;
+ flex-direction: column;
+ margin: 2vw auto;
+ width: 80%;
+ min-height: 550px;
+ max-height: 680px;
+}
+
+.prj-btn {
+ display: flex;
+ justify-content: flex-end;
+}
+
+.prj-btn a {
+ padding: 5px 10px;
+ cursor: pointer;
+ text-decoration: none;
+ margin-left: 0.5rem;
+ border: none;
+ outline: none;
+ border-radius: 7px;
+ color: var(--white-color);
+}
+
+.prj-btn #view-all-prj-btn{
+ background: var(--primary-yellow-color);
+}
+
+.prj-btn #view-pend-prj-btn{
+ background: var(--primary-blue-color);
+}
+
+.pend-proj-content {
+ display: flex;
+ flex-direction: row;
+ /* justify-content: space-between; */
+ column-gap: 1rem;
+ padding: 1rem;
+}
+
+.pend-proj-row{
+ display: flex;
+ flex-direction: column;
+ /* justify-content: space-between; */
+ row-gap: 1rem;
+}
+
+.proj-img img{
+ border-radius: 10px;
+ max-width: 205px;
+ max-height: 150px;
+}
+
+.pend-proj-col {
+ flex-grow: 1;
+ display: flex;
+ flex-direction: column;
+ row-gap: 5px;
+}
+
+.pend-proj-col #vol {
+ row-gap: 10px;
+}
+
+.pend-proj-col h3 {
+ margin-top: 1rem;
+}
+
+.pend-proj-field {
+ display: flex;
+ justify-content: flex-start;
+ flex-direction: row;
+ column-gap: 10px;
+ max-width: 619px;
+}
+
+.pend-proj-field #pend-prj-title{
+ border-bottom: 1px solid var(--primary-very-light-grey-color);
+}
+
+.pend-proj-field label {
+ min-width: 160px;
+}
+
+.pend-proj-action {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.pend-proj-col a:hover {
+ text-decoration: underline;
+}
+
+.pend-proj-action a {
+ padding: 12px 26px;
+ cursor: pointer;
+ text-decoration: none;
+ outline: none;
+ border-radius: 10px;
+ color: var(--white-color);
+ font-weight: bold;
+ letter-spacing: 1px;
+ transition: 0.3s ease-out;
+ margin: 0;
+ -webkit-transition: background-color 0.3s ease-out;
+}
+
+.pend-proj-action a:hover{
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ text-decoration: none;
+}
+
+.pend-proj-action #reject {
+ background: var(--primary-red-color);
+}
+
+.pend-proj-action #approve {
+ background: var(--primary-green-color);
+}

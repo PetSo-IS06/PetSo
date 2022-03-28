@@ -1,0 +1,155 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+.us-btn {
+ display: flex;
+ justify-content: flex-end;
+}
+
+.us-btn a {
+ padding: 5px 10px;
+ cursor: pointer;
+ text-decoration: none;
+ margin-left: 0.5rem;
+ border: none;
+ outline: none;
+ border-radius: 7px;
+ color: var(--white-color);
+}
+
+.us-btn #view-user-btn{
+ background: var(--primary-purple-color);
+ display: none;
+}
+
+.us-btn #view-org-btn{
+ background: var(--primary-yellow-color);
+}
+
+.us-btn #view-admin-btn{
+ background: var(--primary-blue-color);
+}
+
+.ad-overview {
+ display: flex;
+ flex-direction: column;
+ row-gap: 1rem;
+}
+
+.ad-ov-head {
+ display: flex;
+ flex-direction: row;
+ column-gap: 10px;
+ justify-content: space-between;
+}
+
+.all-ad-card {
+ flex-grow: 2;
+ display: flex;
+ flex-direction: column;
+ border: 1px solid var(--primary-very-light-grey-color);
+ box-sizing: border-box;
+ box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+ padding: 1rem;
+ max-width: 300px;
+ row-gap: 10px;
+}
+
+.ad-role-card {
+ flex-grow: 4;
+ display: flex;
+ flex-direction: column;
+ border: 1px solid var(--primary-very-light-grey-color);
+ box-sizing: border-box;
+ box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.25);
+ border-radius: 15px;
+ padding: 1rem;
+ row-gap: 10px;
+ max-width: 577px;
+}
+
+.ad-role-title{
+ border-bottom: 1px solid var(--primary-very-light-grey-color);
+ padding-bottom: 5px;
+}
+
+.ad-card-top {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.ad-role-body {
+ margin: 0 1rem;
+}
+
+.ad-card-top a:hover{
+ text-decoration: underline;
+ cursor: pointer;
+}
+
+.ad-card-bot {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+}
+
+.ad-card-top .admin-icon{
+ height: 90px;
+ width: 90px;
+ z-index: 5;
+ background: var(--primary-purple-color);
+ border: 1px solid var(--primary-very-light-grey-color);
+ box-sizing: border-box;
+ border-radius: 6px;
+}
+
+.admin-icon img {
+ z-index: 7;
+ height: 80px; 
+ width: auto;
+}
+
+/* Create Admin Popup */
+#admin-popup {
+ display: flex;
+ flex-direction: column;
+ margin: 5vw auto;
+ width: 30%;
+ min-height: 400px;
+ max-height: 600px;
+}
+
+.create-ad{
+ display: flex;
+ flex-direction: column;
+ row-gap: 1.5rem;
+ padding: 1rem;
+}
+
+.ad-form-action {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.ad-form-btn {
+ padding: 12px 16px;
+ cursor: pointer;
+ text-decoration: none;
+ margin-left: 0.5rem;
+ border: none;
+ outline: none;
+ border-radius: 7px;
+ color: var(--white-color);
+}
+
+.ad-form-action #create-admin-close {
+ background: var(--primary-grey-color);
+}
+
+.ad-form-action #create-admin{
+ background: var(--primary-green-color);
+}

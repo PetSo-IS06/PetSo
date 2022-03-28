@@ -5,8 +5,8 @@
 #pend-pay-details {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  row-gap: 10px;
+  width: 40%;
+  row-gap: 20px;
 }
 
 .pay-det-cont {
@@ -25,7 +25,7 @@
 .pay-det-field {
  display: flex;
  flex-direction: row;
- column-gap: 10px;
+ column-gap: 15px;
 }
 
 .pay-det-action{

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/hero-section.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/indexAnimalReport.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--    <link rel='stylesheet' href='-->
     <?php //echo URL_ROOT; ?><!--/public/assets/CSS/components/form-container.css'>-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -34,7 +35,7 @@
             <h1>Report an Animal to an<br/>Animal Shelter</h1>
         </div>
     </div>
-    <div class="search-sec">
+    <!-- <div class="search-sec">
         <div class="search-sec-bar">
             <input type="search" placeholder="Search Welfare Organizations..." name="searchOrg"/>
             <i class="fa fa-search"></i>
@@ -43,7 +44,7 @@
             <input type="search" placeholder="Search Welfare Projects..." name="searchPrj"/>
             <i class="fa fa-search"></i>
         </div>
-    </div>
+    </div> -->
     <div class="hero-cards pg-body">
         <div class="hero-cards-single">
             <h2>Donate</h2>

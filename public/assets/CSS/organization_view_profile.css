@@ -176,7 +176,7 @@ input[type=text], select {
   font-size: 16px;
   cursor: pointer;
   border-radius: 10px;
-  margin-left: 420px;
+  margin-left: 412px;
   margin-top: 20px;
 }
 
@@ -190,7 +190,7 @@ input[type=text], select {
   font-size: 16px;
   cursor: pointer;
   border-radius: 10px;
-  margin-left: 420px;
+  margin-left: 400px;
   margin-top: 20px;
 }
 
@@ -203,8 +203,8 @@ input[type=text], select {
   font-size: 16px;
   cursor: pointer;
   border-radius: 10px;
-  margin-left: 763px;
-  margin-top: 105px;
+  margin-left: 700px;
+  margin-top: 97px;
 }
 
 .upload-btn-wrapper {

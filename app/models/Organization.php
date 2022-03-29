@@ -26,11 +26,11 @@
         public function addOrganization($data, $accountID) {
             $this->db->query('INSERT INTO `petso`.`Organization` (`account_id`, `org_name`, `org_mobile`, `org_landline`, 
             `org_address1`, `org_address2`, `org_area`, `org_district`, `if_findhelp`, 
-            `org_website`, `org_facebook`,  `org_insta`, `org_profile_img`, `org_doc`, `account_status`) 
+            `org_website`, `org_facebook`,  `org_insta`, `org_profile_img`, `org_doc`, `account_status`, `req_date`) 
 
             values (:accountID, :org_name, :org_mobile, :org_landline,
             :org_address1, :org_address2, :org_area, :org_district, :if_findhelp, 
-            :org_website, :org_facebook, :org_insta, :org_profile_img, :org_doc, :account_status)');
+            :org_website, :org_facebook, :org_insta, :org_profile_img, :org_doc, :account_status, :req_date)');
 
             $this->db->bind(':accountID', $accountID);
             $this->db->bind(':org_name', $data['org_name']);
@@ -48,6 +48,7 @@
             $this->db->bind(':org_profile_img', $data['org_profile_img']);
             $this->db->bind(':org_doc', $data['org_doc']);
             $this->db->bind(':account_status', 'pending');
+            $this->db->bind(':req_date', $data['req_date']);
 
             if($this->db->execute()){
                 return true;
@@ -173,7 +174,7 @@
         }
 
         public function getOrganizationsCount(){
-            $this->db->query("SELECT * FROM `petso`.`Organization` WHERE account_status!='pending'");
+            $this->db->query("SELECT * FROM `petso`.`Organization`");
 
             $result = $this->db->rowCount(); 
             return $result;

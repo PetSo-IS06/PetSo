@@ -23,7 +23,9 @@
                     through your contribution</p><br>
                     
                 <div>  
-                    <input type="text" id="header-search" placeholder="Search Welfare Project" name="search">
+                    <form action="<?php echo URL_ROOT; ?>/projects/viewAllProjects" method="POST">
+                        <input type="text" id="header-search" placeholder="Search Welfare Project" name="keyword">
+                    </form>
                 </div>
                     
             </div><br><br><br>

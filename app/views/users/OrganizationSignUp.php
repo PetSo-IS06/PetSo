@@ -98,22 +98,32 @@
                     }
                 ?>
 
+                <?php
+                    $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
+                    $districts = json_decode($str_district, true);
+
+                    $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
+                    $areas = json_decode($str_areas, true);
+                ?>
                 <div class="div dropcon">
                     <label class="drop-lable">Select District</label> <br>
                     <select name="org_district" class="adptxtbox" id="">
-                        <option value="volvo">Kandy</option>
-                        <option value="saab">Colombo</option>
-                        <option value="opel">Galle</option>
-                        <option value="audi">Polonnaruwa</option>
+                        <?php 
+                        foreach($districts as $district){
+                            echo "<option value='$district'>$district</option>";
+                        }
+                        ?>
                     </select>
                 </div>
             
                 <div class="div dropcon">
                     <label class="drop-lable">Select Area</label> <br>
                     <select name="org_area" class="adptxtbox" id=" ">
-                        <option value="volvo ">Dehiwela</option>
-                        <option value="saab ">Wellawatta</option>
-                        <option value="opel ">Colombo 7</option>
+                    <?php 
+                        foreach($areas as $area){
+                            echo "<option value='$area'>$area</option>";
+                        }
+                        ?>
                     </select>
                 </div>
                 <?php
@@ -307,8 +317,8 @@
                         href>privacy policy.</a> </p><br>
 
                 <div class="p3-btn">
-                    <button style="float: left; background-color: rgb(44, 39, 32);" class="button"
-                        type="button">Cancel</button>
+                    <a href="/petso/index"style="float: left; background-color: rgb(44, 39, 32);" class="button"
+                        type="button">Cancel</a>
                     <input class="button" type="submit" name="submit" value="Request Account"/>
                 </div>
             </div>

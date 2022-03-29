@@ -121,7 +121,7 @@ class ReportAnimal
     
                 $this->db->bind(':org_id', $organization->org_id);
                 $this->db->bind(':animal_report_id', $animal_report->id);
-                $this->db->bind(':status', "pending");
+                $this->db->bind(':status', "Pending");
         
                 if ($this->db->execute()) {
                     //send sms

@@ -302,4 +302,14 @@
         return $result;
     }
 
+    public function searchByKeyword($keyword, $status)
+    {
+        $this->db->query("SELECT * FROM `petso`.`Project` 
+        INNER JOIN petso.Organization ON petso.Project.org_id=petso.Organization.org_id WHERE
+        (LOWER(title) LIKE LOWER('%$keyword%') OR  LOWER(Organization.org_name) LIKE LOWER('%$keyword%')) AND (Project.status='$status')");
+
+        $result = $this->db->resultSet();   
+        return $result;
+    }
+
     }

@@ -124,14 +124,14 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 if(isset($_POST['submit'])){
                     $data = [
-                        "org_name"               => isset($_POST['org_name']) ? trim($_POST['org_name']) : '',
+                        "org_name"               => isset($_POST['org_name']) ? $_POST['org_name'] : '',
                         "org_mobile"             => isset($_POST['org_mobile']) ? trim($_POST['org_mobile']) : '',
-                        "org_landline"           => isset($_POST['org_landline']) ? trim($_POST['org_landline']) : '',
+                        "org_landline"           => isset($_POST['org_landline']) ? $_POST['org_landline'] : '',
                         "email"                  => isset($_POST['email']) ? trim($_POST['email']) : '',
                         "password"               => isset($_POST['password']) ? trim($_POST['password']) : '',
                         "org_confirm_password"   => isset($_POST['org_confirm_password']) ? trim($_POST['org_confirm_password']) : '',
-                        "org_address1"           => isset($_POST['org_address1']) ? trim($_POST['org_address1']) : '',
-                        "org_address2"           => isset($_POST['org_address2']) ? trim($_POST['org_address2']) : '',
+                        "org_address1"           => isset($_POST['org_address1']) ? $_POST['org_address1'] : '',
+                        "org_address2"           => isset($_POST['org_address2']) ? $_POST['org_address2'] : '',
                         "org_area"               => isset($_POST['org_area']) ? trim($_POST['org_area']) : '',
                         "org_district"           => isset($_POST['org_district']) ? trim($_POST['org_district']) : '',
                         "if_findhelp"            => isset($_POST['if_findhelp']) ? trim($_POST['if_findhelp']) : '',
@@ -140,7 +140,8 @@
                         "org_insta"              => isset($_POST['org_insta']) ? trim($_POST['org_insta']) : '',
                         "org_profile_img"        => isset($_POST['org_profile_img']) ? trim($_POST['org_profile_img']) : '',
                         "org_doc"                => isset($_POST['org_doc']) ? trim($_POST['org_doc']) : '',
-                        "animals"                => isset($_POST['animals']) ? $_POST['animals'] : []
+                        "animals"                => isset($_POST['animals']) ? $_POST['animals'] : [],
+                        "req_date"               => date("Y-m-d")
                     ];
 
                     

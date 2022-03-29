@@ -19,9 +19,8 @@
         $url = URL_ROOT."/organizations/organizationViewProfile";
 
         if(empty($data['org_profile_img'])){
-            echo"
+            echo"<br><br>
             <div class='column1'>
-            
                 <div class='upload_image_content'> 
                     <form action='$url' method='POST' enctype='multipart/form-data'>
                         <div class='upload-btn-wrapper'>
@@ -36,7 +35,7 @@
         }else {
             $img_name = $data['org_profile_img'];
             $img_url = URL_ROOT."/public/$img_name";
-            echo"
+            echo"<br><br>
             <div class='column1' style='background-image:url($img_url); background-repeat:no-repeat; background-position:center; background-size: cover;'>
                 <div class='upload_image_content'> 
                     <form action='$url' method='POST' enctype='multipart/form-data'>
@@ -64,7 +63,8 @@
                 <div class="heading">
                     <div class="title">About</div>
                     <hr class="heading-hr">
-                </div>
+                </div><br>
+                <p><?php $name=$data['organization']->org_name; echo "We are $name organization"; ?></p>
             </div>
             </div>
 
@@ -151,9 +151,9 @@
                         ?>
                     </div>
                     <div id="account_id">
-                    <?php 
-                        $id = $data['organization']->org_id;
-                        echo "ID : $id";
+                        <?php 
+                            $id = $data['organization']->org_id;
+                            echo "ID : $id";
                         ?>
                     </div> <br><br>
                     <div class="account_status">
@@ -161,19 +161,17 @@
                             Account Created On : 
                         </div>
                         <div style="float:right; font-size:20px; margin-right:13px">
-                           01/02/2021
+                        <?php 
+                            $date = $data['organization']->req_date;
+                            echo $date;
+                        ?>
                         </div>
-                        <div style="float:left; font-weight:bold; font-size:20px; margin-left:15px; margin-top:30px">
-                            Last active on : 
-                        </div>
-                        <div style="float:right; font-size:20px; margin-right:13px; margin-top:30px">
-                           01/02/2021
-                        </div>
+                        
                         <div style="float:left; font-weight:bold; font-size:20px; margin-left:15px; margin-top:30px">
                             Account Status :&nbsp &nbsp &nbsp &nbsp &nbsp 
                         </div>
                         <div style="float:right; font-size:20px; margin-right:13px; margin-top:30px">
-                           active
+                           Active
                         </div>
                     </div>
                 </div>

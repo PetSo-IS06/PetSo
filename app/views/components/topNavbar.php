@@ -37,18 +37,23 @@
         </div>
         <div class="nav-menu-main" id="main-links">
             <a href="<?php echo URL_ROOT;?>/pages/index" class="nav-menu-main-links">Home</a>
-            <a href="<?php echo URL_ROOT;?>/pages/services" class="nav-menu-main-links">Services</a>
-            <label class="nav-menu-main-links-explore" id="explore">Explore 
-                <div class="dropdown-content-explore" id="explore">
-                    <a href="<?php echo URL_ROOT;?>/projects/viewAllProjects">Welfare Projects</a>
-                    <a href="<?php echo URL_ROOT;?>/AnimalReports/viewAllAnimalReports">Animals Reported</a>
-                    <a href="<?php echo URL_ROOT;?>/animalProfiles/viewAllAnimalProfiles">Adoption</a>
-                    <a href="<?php echo URL_ROOT;?>/animalProfiles/viewAllAnimalProfiles">Sponsorships</a>
-                </div>
-                <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </label>
-            <a href="<?php echo URL_ROOT;?>/pages/aboutUs" class="nav-menu-main-links">About Us</a>
-            <a href="<?php echo URL_ROOT;?>/pages/faq" class="nav-menu-main-links">FAQs</a>
+            <a href="<?php echo URL_ROOT;?>/projects/viewAllProjects" class="nav-menu-main-links">Welfare Projects</a>
+<!--            <a href="--><?php //echo URL_ROOT;?><!--/pages/services" class="nav-menu-main-links">Services</a>-->
+            <a href="<?php echo URL_ROOT;?>/AnimalReports/viewAllAnimalReports" class="nav-menu-main-links">Animals Reported</a>
+            <a href="<?php echo URL_ROOT;?>/animalProfiles/viewAllAnimalProfiles" class="nav-menu-main-links">Adoption</a>
+            <a href="<?php echo URL_ROOT;?>/animalProfiles/viewAllAnimalProfiles" class="nav-menu-main-links">Sponsorships</a>
+
+<!--            <label class="nav-menu-main-links-explore" id="explore">Explore -->
+<!--                <div class="dropdown-content-explore" id="explore">-->
+<!--                    <a href="--><?php //echo URL_ROOT;?><!--/projects/viewAllProjects">Welfare Projects</a>-->
+<!--                    <a href="--><?php //echo URL_ROOT;?><!--/AnimalReports/viewAllAnimalReports">Animals Reported</a>-->
+<!--                    <a href="--><?php //echo URL_ROOT;?><!--/animalProfiles/viewAllAnimalProfiles">Adoption</a>-->
+<!--                    <a href="--><?php //echo URL_ROOT;?><!--/animalProfiles/viewAllAnimalProfiles">Sponsorships</a>-->
+<!--                </div>-->
+<!--                <i class="fas fa-chevron-down dropdown-arrow"></i>-->
+<!--            </label>-->
+<!--            <a href="--><?php //echo URL_ROOT;?><!--/pages/aboutUs" class="nav-menu-main-links">About Us</a>-->
+<!--            <a href="--><?php //echo URL_ROOT;?><!--/pages/faq" class="nav-menu-main-links">FAQs</a>-->
             <?php if(isset($_SESSION['user_id'])) : ?>
                 <label  class="nav-menu-profile-tag" id="tag2">
                     <img src="<?php echo URL_ROOT; ?>/public/assets/img/icons/profile-img.png" alt="Profile Pic">

@@ -524,6 +524,15 @@ class Projects extends Controller {
             'organizations_count' => $this->organizationModel->getOrganizationsCount()
         ];
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            if(!empty($_POST['keyword'])){
+                $keyword = $_POST['keyword'];
+                $data['on_going_projects'] = $this->projectModel->searchByKeyword($keyword, 'Ongoing');
+                $data['completed_projects'] = $this->projectModel->searchByKeyword($keyword, 'Completed');
+            }
+        }
+
         $this->view('projects/viewAllProjects', $data);
     }
 

@@ -262,10 +262,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchPrj" />
-                            <i class="fa fa-search"></i>
-                        </div>
                         <div class="us-btn">
                             <a id="view-user-btn" onClick="showUsers()">Users</a>
                             <a id="view-org-btn" onClick="showOrgs()">Organizations</a>
@@ -442,10 +438,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchReq" />
-                            <i class="fa fa-search"></i>
-                        </div>
                     </div>
                     </section>
 
@@ -610,10 +602,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchPrj" />
-                            <i class="fa fa-search"></i>
-                        </div>
                         <div class="prj-btn">
                             <a class="" id="view-pend-prj-btn" onClick="showPendProjects()" style="display: none;">Pending</a>
                             <a class="" id="view-all-prj-btn" onClick="showAllProjects()">View All</a>

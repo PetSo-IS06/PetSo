@@ -540,7 +540,6 @@ class Projects extends Controller {
 
     public function volunteerApplication($id) {
 
-        if(isset($_SESSION['user_id'])){
         $data= [
             'applicant_name'=>'',
             'address'=>'',
@@ -553,7 +552,7 @@ class Projects extends Controller {
             'organizer' => '',
             'worktype' => '',
             'vol_opp_id' => '',
-            'user_id' => '',
+           
 
             'applicant_nameError'=>'',
             'addressError'=>'',
@@ -587,7 +586,7 @@ class Projects extends Controller {
                 'organizer'=>trim(($_POST['organizer'])),
                 'applied_date'=>date("Y-m-d"),
                 'vol_opp_id'=> $id,
-                'user_id' =>$this->userModel->getUser()->us_id,
+                
         
 
                 'applicant_nameError'=>'',
@@ -651,5 +650,5 @@ class Projects extends Controller {
             $this->view('projects/volunteerApplicationForm', $data);
   }
 }
-}
+
 

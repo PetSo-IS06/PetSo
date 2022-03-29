@@ -60,6 +60,13 @@
                                                 echo 'btn-sponsor-hide';
                                             endif; ?>">Sponsor
                                             </button>
+
+                                            <?php
+                                            $animalprofileId=$data['animal_profile'];
+                                            $adopt_url= URL_ROOT."/Adoptions/adoptionApplication/$animalprofileId->id";
+                                            ?>
+
+                                           <form action="<?php echo $adopt_url ?>" method="POST" enctype="multipart/form-data">
                                             <button class="<?php
                                             if ($item->adoption_status == 'Available') :
                                                 echo 'btn-adopt';
@@ -67,6 +74,7 @@
                                                 echo 'btn-adopt-hide';
                                             endif; ?>">Adopt
                                             </button>
+                                           </form>
                                         </div>
                                     </div>
                                 </div>

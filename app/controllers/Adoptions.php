@@ -14,6 +14,7 @@ class Adoptions extends Controller {
             'fullname'=>'',
             'address'=>'',
             'mobileNo'=>'',
+            'animalprofileId'=>'',
         
             'fullnameError' => '',
             'addressError' => '',

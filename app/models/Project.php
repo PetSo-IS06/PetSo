@@ -282,9 +282,14 @@
         }
 
         public function getFundraiserDetails($id) {
-            $this->db->query("SELECT * FROM Project WHERE status!='Pending'");
+            $this->db->query("SELECT F.*, O.org_name, O.org_district, P.title FROM petso.Fundraiser F, Organization O, Project P
+            WHERE P.id = :id
+            AND F.prj_id = P.id
+            AND P.org_id = O.org_id;");
 
-            $result = $this->db->resultSet();   
+            $this->db->bind(':id', $id);
+
+            $result = $this->db->single();   
             return $result;
         }
 

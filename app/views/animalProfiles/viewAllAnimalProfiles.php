@@ -42,7 +42,7 @@
                                     if (!($item->image)) :
                                         echo URL_ROOT . '/public/uploads/animals/default-img.jpg';
                                     else :
-                                        echo $item->image;
+                                        echo  URL_ROOT . '/public/'.$item->image;
                                     endif; ?>">
                                 </div>
                                 <h2 style="font-weight: bold" class="paddingTop"><?php echo $item->name; ?></h2>
@@ -60,13 +60,16 @@
                                                 echo 'btn-sponsor-hide';
                                             endif; ?>">Sponsor
                                             </button>
-                                            <button class="<?php
-                                            if ($item->adoption_status == 'Available') :
-                                                echo 'btn-adopt';
-                                            elseif ($item->adoption_status == 'Not Available') :
-                                                echo 'btn-adopt-hide';
-                                            endif; ?>">Adopt
-                                            </button>
+                                            <a href="<?php echo URL_ROOT.'/Adoptions/adoptionApplication/'.$item->id;?>">
+                                                <button class="<?php
+                                                if ($item->adoption_status == 'Available') :
+                                                    echo 'btn-adopt';
+                                                elseif ($item->adoption_status == 'Not Available') :
+                                                    echo 'btn-adopt-hide';
+                                                endif; ?>">Adopt
+                                                </button>
+                                            </a>
+                                            
                                         </div>
                                     </div>
                                 </div>

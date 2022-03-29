@@ -300,7 +300,7 @@ class Projects extends Controller {
             'volunteer_opportunity'=> $vol,
             'fundraiser'=> $fund,
         ];
-        $this->view('projects/singleProject', $data);
+        $this->view('projects/viewSingleProject', $data);
     }
 
     public function createVolunteerOpportunity() {
@@ -359,7 +359,7 @@ class Projects extends Controller {
 
         $results = '';
 
-        $this->view('projects/donationForm', $results);
+        $this->view('projects/donationForm', $data);
     }
 
     public function saveTransaction() {

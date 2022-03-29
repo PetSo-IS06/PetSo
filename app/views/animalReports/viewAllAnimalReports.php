@@ -61,7 +61,7 @@
                                     if (!($item->image)) :
                                         echo URL_ROOT . '/public/uploads/animals/default-img.jpg';
                                     else :
-                                        echo $item->image;
+                                        echo URL_ROOT . '/public/'.$item->image;
                                     endif; ?>">
                                 </div>
                             </div>

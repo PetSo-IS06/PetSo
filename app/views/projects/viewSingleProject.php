@@ -49,7 +49,7 @@
           <div class="subtitleB grey">Vacancies Left  </div>
           <div class="normal grey">Check volunteer section below for more details <br><br>
             30 have applied already </div> <br>
-            <a href= "<?php echo URL_ROOT;?>/Projects/volunteerApplication" class="yellow-btn">Volunteer Now </a>
+            <a href= "<?php echo URL_ROOT.'/Projects/volunteerApplication/'.$data['volunteer_opportunity']->id;?>" class="yellow-btn">Volunteer Now </a>
         </center>
         </div>
         </div> <br>

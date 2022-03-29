@@ -107,14 +107,12 @@
 
         public function saveFundraiser($data, $prjID, $bankID) {
             $this->db->query('INSERT INTO `petso`.`Fundraiser` 
-            (`prj_id`, `funds_for`, `target_amount`, `funding_start`, `funding_end`, `bank_acnt_id`, `image`) 
-            VALUES (:prj_id, :funds_for, :target_amount, :funding_start, :funding_end, :bank_acnt_id, :image)');
+            (`prj_id`, `funds_for`, `target_amount`, `bank_acnt_id`, `image`) 
+            VALUES (:prj_id, :funds_for, :target_amount, :bank_acnt_id, :image)');
             
             $this->db->bind(':prj_id', $prjID);
             $this->db->bind(':funds_for', $data['prjFundsFor']);
             $this->db->bind(':target_amount', $data['targetAmount']);
-            $this->db->bind(':funding_start', $data['fundStart']);
-            $this->db->bind(':funding_end', $data['fundEnd']);
             $this->db->bind(':bank_acnt_id', $bankID);
             $this->db->bind(':image',  $data['fund-image']);
 
@@ -129,6 +127,19 @@
             $this->db->query('UPDATE `petso`.`Project` SET `status` = :status WHERE (`id` = :id)');
             
             $this->db->bind(':status', 'Rejected');
+            $this->db->bind(':id', $id);
+
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function updateFundTransfer($id) {
+            $this->db->query('UPDATE `petso`.`Fundraiser` SET `payment` = :status WHERE (`id` = :id)');
+            
+            $this->db->bind(':status', 'Complete');
             $this->db->bind(':id', $id);
 
             if($this->db->execute()) {
@@ -233,6 +244,13 @@
             return $result;
         }
 
+        public function getTotalAnnualDonations() {
+            $this->db->query("SELECT YEAR(date) AS year, SUM(amount) AS sum FROM Donation GROUP BY year LIMIT 4");
+
+            $result = $this->db->resultSet();    // resultSet returns an array of Objects
+            return $result;
+        }
+
         public function getFundraiser($id) {
             $this->db->query("SELECT * FROM Fundraiser where prj_id=$id");
 
@@ -244,6 +262,34 @@
             $this->db->query("SELECT * FROM Project WHERE status!='Pending'");
 
             $result = $this->db->resultSet();   
+            return $result;
+        }
+
+        public function getFundraiserPayments() {
+            $this->db->query("SELECT F.*, O.org_name, P.title, B.account_holder, B.bank, B.account_no, B.branch
+                                FROM Fundraiser F, Organization O, Project P, Bank_Account B
+                                WHERE F.payment = :pay_status 
+                                AND F.fundraiser_status = :fund_status
+                                AND F.prj_id = P.id
+                                AND B.id = F.bank_acnt_id
+                                AND P.org_id = O.org_id");
+
+            $this->db->bind(':pay_status', 'Pending' );
+            $this->db->bind(':fund_status', 'Complete' );
+
+            $result = $this->db->resultSet();   
+            return $result;
+        }
+
+        public function getFundraiserDetails($id) {
+            $this->db->query("SELECT F.*, O.org_name, O.org_district, P.title FROM petso.Fundraiser F, Organization O, Project P
+            WHERE P.id = :id
+            AND F.prj_id = P.id
+            AND P.org_id = O.org_id;");
+
+            $this->db->bind(':id', $id);
+
+            $result = $this->db->single();   
             return $result;
         }
 

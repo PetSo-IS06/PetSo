@@ -11,6 +11,8 @@ class Projects extends Controller {
     public function createProject() {
         error_reporting(E_ALL ^ E_WARNING);
         error_reporting(E_ALL ^ E_NOTICE);
+        // error_reporting(E_ERROR | E_PARSE);
+
         $data = [
             'cause' => '',
             'otherCause' => '',
@@ -34,16 +36,6 @@ class Projects extends Controller {
             'funding' => '',           //Yes or No
             'prjFundsFor' => '',
             'targetAmount' => '',
-            'fundStart' => '',
-            'fundEnd' => '',
-            'bankInfo' => '',         //newAccount or savedAccount
-            'accountHolder' => '',
-            'bank' => '',
-            'branch' => '',
-            'branchCode' => '',
-            'accountNo' => '',
-            'saveAccount' => '',
-            'selectedAccount' => '',
             'causeError' => '',
             'titleError' => '',
             'initDateError' => '',
@@ -61,14 +53,7 @@ class Projects extends Controller {
             'appOpenError' => '',
             'appCloseError' => '',
             'prjFundsForError' => '',
-            'targetAmountError' => '',
-            'fundStartError' => '',
-            'fundEndError' => '',
-            'accountHolderError' => '',
-            'bankError' => '',
-            'branchError' => '',
-            'branchCodeError' => '',
-            'accountNoError' => ''
+            'targetAmountError' => ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -139,18 +124,8 @@ class Projects extends Controller {
                 'vol-image' => $vol_img,
                 'funding' => trim($_POST['funding']),
                 'prjFundsFor' => trim($_POST['prjFundsFor']),
-                'targetAmount' => trim($_POST['targetAmount']),
-                'fundStart' => trim($_POST['fundStart']),
-                'fundEnd' => trim($_POST['fundEnd']),
+                'targetAmount' => floatval(trim($_POST['targetAmount'])),
                 'fund-image' => $fund_img,
-                'bankInfo' => trim($_POST['bankInfo']),
-                'accountHolder' => trim($_POST['accountHolder']),
-                'bank' => trim($_POST['bank']),
-                'branch' => trim($_POST['branch']),
-                'branchCode' => trim($_POST['branchCode']),
-                'accountNo' => trim($_POST['accountNo']),
-                'saveAccount' => trim($_POST['saveAccount']),       // if selected -> True
-                'selectedAccount' => trim($_POST['selectedAccount']),
                 'causeError' => '',
                 'titleError' => '',
                 'initDateError' => '',
@@ -167,14 +142,7 @@ class Projects extends Controller {
                 'appOpenError' => '',
                 'appCloseError' => '',
                 'prjFundsForError' => '',
-                'targetAmountError' => '',
-                'fundStartError' => '',
-                'fundEndError' => '',
-                'accountHolderError' => '',
-                'bankError' => '',
-                'branchError' => '',
-                'branchCodeError' => '',
-                'accountNoError' => ''
+                'targetAmountError' => ''
             ];
 
             $vol = 'False';
@@ -281,45 +249,7 @@ class Projects extends Controller {
                 } elseif((int)$data['targetAmount'] > 200000) {
                     $data['targetAmountError'] = 'Maximum amount that can be raised is LKR 200,000';
                 }
-                if(empty($data['fundStart'])) {
-                    $data['fundStartError'] = 'Specify the date to start raising funds';
-                }else {
-                    $fundStart = strtotime($data['fundStart']);
-                    $date_now = time();
-                    
-                    // Check if it's a future date
-                    if($date_now > $fundStart) {
-                        $data['fundStartError'] = 'Please select an upcoming day';
-                    }
-                }
-                if(empty($data['fundEnd'])) {
-                    $data['fundEndError'] = 'Specify the date to close the fundaraiser';
-                }else {
-                    $fundEnd = strtotime($data['fundEnd']);
-                    $date_now = time();
-                    
-                    // Check if it's a future date
-                    if($date_now > $fundEnd) {
-                        $data['fundEndError'] = 'Please select an upcoming day';
-                    }elseif($fundEnd < strtotime($data['fundStart'])) {
-                        $data['fundEndError'] = 'Please make sure the date is set to after start date';
-                    }
-                }
 
-                if(strcmp($data['bankInfo'], 'newAccount') == 0) {
-                    if(empty($data['accountHolder'])) {
-                        $data['accountHolderError'] = 'Please provide the name of the account holder';
-                    }
-                    if(empty($data['bank'])) {
-                        $data['bankError'] = 'Please provide the bank name';
-                    }
-                    if(empty($data['branch'])) {
-                        $data['branchError'] = 'Please provide the branch name';
-                    }
-                    if(empty($data['accountNo'])) {
-                        $data['accountNoError'] = 'Please provide the account number';
-                    }
-                }    
             }
 
             if(empty($data['causeError']) && empty($data['titleError']) && empty($data['initDateError']) 
@@ -328,10 +258,7 @@ class Projects extends Controller {
             && empty($data['areaError']) && empty($data['workFromError'])
             && empty($data['workStartError']) && empty($data['daysError'])
             && empty($data['appOpenError']) && empty($data['prjFundsForError'])
-            && empty($data['targetAmountError']) && empty($data['fundStartError'])
-            && empty($data['fundEndError']) && empty($data['accountHolderError'])
-            && empty($data['bankError']) && empty($data['branchError'])
-            && empty($data['branchCodeError']) && empty($data['accountNoError'])) {
+            && empty($data['targetAmountError'])) {
                 
                 $prjID = $this->projectModel->saveProject($data, $vol, $fund);
 
@@ -344,21 +271,12 @@ class Projects extends Controller {
                         }
                     }
                     if(strcmp($data['funding'], 'Yes') == 0) {
-                        if(strcmp($data['bankInfo'], 'savedAccount') == 0) {
-                            $bankID = $data['selectedAccount'];
-                        } elseif(strcmp($data['bankInfo'], 'newAccount') == 0) {
-                            $bankID = $this->organizationModel->saveBankAccount($data);
-                        }
-
-                        if($bankID != -1) {
-                            if($this->projectModel->saveFundraiser($data, $prjID, $bankID)) {
-                                echo 'Fundraising details saved';
-                            } else {
-                                die('Could not save fundraiser details.');
-                            }
+                        if($this->projectModel->saveFundraiser($data, $prjID, 1)) {
+                            echo 'Fundraising details saved';
                         } else {
-                            die('Could not get Bank ID');
-                        }                    
+                            die('Could not save fundraiser details.');
+                        }
+                                          
                     }
 
                     header('location:' . URL_ROOT . '/pages/index');
@@ -368,18 +286,19 @@ class Projects extends Controller {
             }
         }
 
-        $accounts = $this->organizationModel->getBankAccounts();
-        $results = array($accounts, $data);
-
-        $this->view('projects/createProject', $results);
+        $this->view('projects/createProject', $data);
     }
   
     public function projectView($id) {
+
+        $project = $this->projectModel->getprojectView($id);
+        $vol = $this->projectModel->getVolunteerOpportunity($id);
+        $fund = $this->projectModel->getFundraiser($id);
     
         $data = [
-            'project'=>$this->projectModel->getprojectView($id),
-            'volunteer_opportunity'=> $this->projectModel->getVolunteerOpportunity($id),
-            'fundraiser'=> $this->projectModel->getFundraiser($id),
+            'project'=> $project,
+            'volunteer_opportunity'=> $vol,
+            'fundraiser'=> $fund,
         ];
         $this->view('projects/viewSingleProject', $data);
     }
@@ -434,11 +353,13 @@ class Projects extends Controller {
 
     public function donate($id) {
 
+        $data = $this->projectModel->getFundraiserDetails($id);
+
         //Retrieve donation messages from DB
 
         $results = '';
 
-        $this->view('projects/donationForm', $results);
+        $this->view('projects/donationForm', $data);
     }
 
     public function saveTransaction() {
@@ -493,6 +414,20 @@ class Projects extends Controller {
         }
 
         $this->view('pages/index');
+    }
+
+    public function updateFundTransfer($id) {
+
+        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+            if($this->projectModel->updateFundTransfer($id)) {
+                header('location:' . URL_ROOT . '/AdminDashboards/dashboard');
+            } else {
+                die('Something went wrong.');
+            }
+        }
+
+        $this->view('users/admin/adminDashboard');
     }
 
     public function rejectProject($id) {

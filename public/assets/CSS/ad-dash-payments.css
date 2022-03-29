@@ -1,0 +1,58 @@
+@import './variables/font_sizes.css';
+@import './variables/colors.css';
+@import './variables/screen_sizes.css';
+
+#pend-pay-details {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  row-gap: 20px;
+}
+
+.pay-det-cont {
+ display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.pay-det-col {
+ flex-grow: 1;
+ display: flex;
+ flex-direction: column;
+ row-gap: 10px;
+}
+
+.pay-det-field {
+ display: flex;
+ flex-direction: row;
+ column-gap: 15px;
+}
+
+.pay-det-action{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ margin-top: 1rem;
+}
+
+.pay-det-action a, input[type=submit] {
+ padding: 12px 26px;
+ cursor: pointer;
+ text-decoration: none;
+ outline: none;
+ border-radius: 10px;
+ color: var(--white-color);
+ font-weight: bold;
+ letter-spacing: 1px;
+ transition: 0.3s ease-out;
+ -webkit-transition: background-color 0.3s ease-out;
+}
+
+.pay-det-action #cancel-btn {
+ background: var(--primary-light-grey-color);
+}
+
+.pay-det-action #done-btn {
+ background: var(--primary-green-color);
+}
+

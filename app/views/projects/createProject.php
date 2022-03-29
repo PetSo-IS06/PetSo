@@ -36,100 +36,99 @@
                 
                 <!-- Project Cause Form -->    
                 <div class="form-sec card2" id="prj-cause">
-                        <h2 class="grey subtitleB">Cause of the Welfare Project</h2>
-                        <hr>
-                        <div class="instr">
-                            <p class="grey normal">Submit all the necessary details regarding your next project and raise funds, and/or enroll volunteers you need. Note that your project will only be published once approved by the system admin.</p>
-                            <p class="purple"><b>Note:</b> You can only have <b>3 ongoing projects</b> maximum at a time.</p>
-                        </div>
-                        <div class="selectBx" id="selectBx">
-                            <input type="checkbox" id="options-view-button" name="selectbox">
-                            <div id="select-button">
-                                <div id="selected-value">
-                                    <span class="normalB">Select the cause of your Project*</span>
-                                </div>
-                                <div id="chevrons">
-                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
-                                </div>
+                    <h2 class="grey subtitleB">Cause of the Welfare Project</h2>
+                    <hr>
+                    <div class="instr">
+                        <p class="grey normal">Submit all the necessary details regarding your next project and raise funds, and/or enroll volunteers you need. Note that your project will only be published once approved by the system admin.</p>
+                        <!-- <p class="purple"><b>Note:</b> You can only have <b>3 ongoing projects</b> maximum at a time.</p> -->
+                    </div>
+                    <div class="selectBx" id="selectBx">
+                        <input type="checkbox" id="options-view-button" name="selectbox">
+                        <div id="select-button">
+                            <div id="selected-value">
+                                <span class="normalB">Select the cause of your Project*</span>
                             </div>
-                            <div id="options">
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="cause" value="Stray animal sterilization">
-                                    <input class="s-c bottom" type="radio" name="cause" value="Stray animal sterilization">
-                                    <span class="label">Stray animal sterilization</span>
-                                    <span class="opt-val">Stray animal sterilization</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="cause" value="Environment Cleaning">
-                                    <input class="s-c bottom" type="radio" name="cause" value="Environment Cleaning">
-                                    <span class="label">Environment Cleaning</span>
-                                    <span class="opt-val">Environment Cleaning</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="cause" value="Animal rescue">
-                                    <input class="s-c bottom" type="radio" name="cause" value="Animal rescue">
-                                    <span class="label">Animal rescue</span>
-                                    <span class="opt-val">Animal rescue</span>
-                                </div>
-                                <div class="option">
-                                    <input class="s-c top" type="radio" name="cause" value="Other">
-                                    <input class="s-c bottom" type="radio" name="cause" value="Other">
-                                    <span class="label">Other</span>
-                                    <span class="opt-val">Other</span>
-                                </div>
+                            <div id="chevrons">
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
                             </div>
                         </div>
-                        <span class="invalidInput"><?php echo $data[1]['causeError']; ?></span>
-
-                        <div class="inputBx2" id="">
-                            <input name="otherCause" id="otherCause" type="text" value="<?php echo $data[1]['otherCause']; ?>">
-                            <span class="normalB">Other</span>
-                        </div>
-                        <span class="invalidInput"><?php echo '' ?></span>
-
-                        <div class="prj-form-nav">
-                            <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
-                            <div class="pagination">
-                                <a style="pointer-events: none">&laquo;</a>
-                                <a href="#" class="active">1</a>
-                                <a onClick="showProjectDetails()">2</a>
-                                <a onClick="showVolunteering()">3</a>
-                                <a onClick="showFunding()">4</a>
-                                <a onClick="showBankInfo()">5</a>
-                                <a onClick="showProjectDetailsNext()">&raquo;</a>
+                        <div id="options">
+                            <div class="option">
+                                <input onclick="hideOther()" class="s-c top" type="radio" name="cause" value="Stray animal sterilization">
+                                <input onclick="hideOther()" class="s-c bottom" type="radio" name="cause" value="Stray animal sterilization">
+                                <span class="label">Stray animal sterilization</span>
+                                <span class="opt-val">Stray animal sterilization</span>
                             </div>
-                            <a id="prj-cause-next-btn" onClick="showProjectDetailsNext()" class="blue-btn">Next</a>
+                            <div class="option">
+                                <input onclick="hideOther()" class="s-c top" type="radio" name="cause" value="Environment Cleaning">
+                                <input onclick="hideOther()" class="s-c bottom" type="radio" name="cause" value="Environment Cleaning">
+                                <span class="label">Environment Cleaning</span>
+                                <span class="opt-val">Environment Cleaning</span>
+                            </div>
+                            <div class="option">
+                                <input onclick="hideOther()" class="s-c top" type="radio" name="cause" value="Animal rescue">
+                                <input onclick="hideOther()" class="s-c bottom" type="radio" name="cause" value="Animal rescue">
+                                <span class="label">Animal rescue</span>
+                                <span class="opt-val">Animal rescue</span>
+                            </div>
+                            <div class="option">
+                                <input onclick="showOther()" class="s-c top" type="radio" name="cause" value="Other">
+                                <input onclick="showOther()" class="s-c bottom" type="radio" name="cause" value="Other">
+                                <span class="label">Other</span>
+                                <span class="opt-val">Other</span>
+                            </div>
                         </div>
                     </div>
+                    <span class="invalidInput"><?php echo $data['causeError']; ?></span>
+
+                    <div class="inputBx2" id="other-title-in">
+                        <input name="otherCause" id="otherCause" type="text" value="<?php echo $data['otherCause']; ?>">
+                        <span class="normalB">Other</span>
+                    </div>
+                    <span class="invalidInput"><?php echo '' ?></span>
+
+                    <div class="prj-form-nav">
+                        <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
+                        <div class="pagination">
+                            <a style="pointer-events: none">&laquo;</a>
+                            <a href="#" class="active">1</a>
+                            <a onClick="showProjectDetails()">2</a>
+                            <a onClick="showVolunteering()">3</a>
+                            <a onClick="showFunding()">4</a>
+                            <a onClick="showProjectDetailsNext()">&raquo;</a>
+                        </div>
+                        <a id="prj-cause-next-btn" onClick="showProjectDetailsNext()" class="blue-btn">Next</a>
+                    </div>
+                </div>
 
                 <!-- Project Details Form -->    
                 <div class="form-sec card2" id="prj-details">
                     <h2 class="grey subtitleB">Project Details</h2>
                     <hr>
                     <div class="inputBx2" id="">
-                        <input name="title" id="title" type="text" required="required" value="<?php echo $data[1]['title']; ?>">
+                        <input name="title" id="title" type="text" required="required" value="<?php echo $data['title']; ?>">
                         <span class="normalB">Project Title</span>
                     </div>
-                    <span class="invalidInput"><?php echo $data[1]['titleError']; ?></span>
+                    <span class="invalidInput"><?php echo $data['titleError']; ?></span>
 
                     <div class="inputBx2" id="">
-                        <input name="initDate" id="datefield" type="date" required="required" value="<?php echo $data[1]['initDate']; ?>"> 
+                        <input name="initDate" id="datefield" type="date" required="required" value="<?php echo $data['initDate']; ?>"> 
                         <span class="normalB">Initiation date</span>
                     </div>
-                    <span class="invalidInput"><?php echo $data[1]['initDateError']; ?></span>
+                    <span class="invalidInput"><?php echo $data['initDateError']; ?></span>
 
-                    <div class="textArea">
+                    <div class="textArea" style="margin-top: 1rem;">
                         <span class="normalB">Project description</span>
                         <div class="text-box" id="">
-                            <textarea rows="10" name="prjDescription"><?php echo $data[1]['prjDescription']; ?></textarea> 
+                            <textarea rows="7" name="prjDescription" placeholder="Max 450 characters" maxlength="450"><?php echo $data['prjDescription']; ?></textarea> 
                         </div>
-                        <span class="invalidInput"><?php echo $data[1]['prjDescriptionError']; ?></span>
+                        <span class="invalidInput"><?php echo $data['prjDescriptionError']; ?></span>
                     </div> 
 
                     <div>
                         <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
                         <input type="file" accept="image/*" id="prj-image" name="prj-image">
-                        <span class="invalidInput"><?php echo $data[1]['prjImageError']; ?></span>
+                        <span class="invalidInput"><?php echo $data['prjImageError']; ?></span>
                     </div>
 
                     <div class="prj-form-nav">
@@ -140,7 +139,6 @@
                             <a href="#" class="active">2</a>
                             <a onClick="showVolunteering()">3</a>
                             <a onClick="showFunding()">4</a>
-                            <a onClick="showBankInfo()">5</a>
                             <a onClick="showVolunteeringNext()">&raquo;</a>
                         </div>
                         <a id="prj-vol-next-btn" onClick="showVolunteeringNext()" class="blue-btn">Next</a>
@@ -153,26 +151,26 @@
                     <hr>
 
                     <div class="bool">
-                        <p class="grey normalB">Would you like to enroll volunteers for the project?</p>
+                        <p class="grey normalB" style="margin-bottom: 10px">Would you like to enroll volunteers for the project?</p>
                         <input type="radio" onClick="showVolForm()" name="volunteering" value="Yes" id="isVolunteering" checked><label>Yes</label>
                         <input type="radio" onClick="hideVolForm()" name="volunteering" value="No" id="noVolunteering"> <label>No</label>
                     </div>
 
                     <div class="vol-form" id="vol-form">
-                        <div class="textArea">
+                        <div class="textArea" style="margin-top: 1rem;">
                             <span class="normalB">Why should people volunteer for this project?</span>
                             <div class="text-box" id="">
-                                <textarea rows="10" name="volReason"><?php echo $data[1]['volReason']; ?></textarea>
+                                <textarea rows="5" name="volReason" placeholder="Max 250 characters" maxlength="250"><?php echo $data['volReason']; ?></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo $data[1]['volReasonError']; ?></span>
+                            <span class="invalidInput"><?php echo $data['volReasonError']; ?></span>
                         </div> 
 
-                        <div class="textArea">
+                        <div class="textArea" style="margin-top: 1rem;">
                             <span class="normalB">Work Description</span>
                             <div class="text-box" id="">
-                                <textarea rows="10" name="volDescription"><?php echo $data[1]['volDescription']; ?></textarea>
+                                <textarea rows="5" name="volDescription" placeholder="Max 250 characters" maxlength="250"><?php echo $data['volDescription']; ?></textarea>
                             </div>
-                            <span class="invalidInput"><?php echo $data[1]['volDescriptionError']; ?></span>
+                            <span class="invalidInput"><?php echo $data['volDescriptionError']; ?></span>
                         </div> 
 
                         <div class="vol-inputs">
@@ -181,33 +179,39 @@
                                     <label class="grey normalB">Location</label>
                                 </div>
                                 <div class="vol-inputs-col-row">
-                                    <div class="selectBx">
-                                        <input name="district" type="text" list="districts" class="select-cat">
-                                            <datalist id="districts">
+                                    <div style="flex-grow:1">
+                                        <label for="district">District</label>
+                                        <div class="selectBx">
+                                            <input name="district" id="district" type="text" list="districts" class="select-cat">
+                                                <datalist id="districts">
+                                                    <?php
+                                                        $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
+                                                        $district = json_decode($str_district, true);
+                                                        foreach ($district as $item) {
+                                                    ?>
+                                                    <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
+                                                    <?php }?>
+                                                </datalist>
+                                        </div>
+                                        <span class="invalidInput"><?php echo $data['districtError']; ?></span>
+                                    </div>
+                                    <div style="flex-grow:1">
+                                        <label for="area">Area</label>
+                                        <div class="selectBx">
+                                            <input name="area" name="area" type="text" list="areas" class="select-cat">
+                                                <datalist id="areas">
                                                 <?php
-                                                    $str_district = file_get_contents(URL_ROOT . '/public/assets/json/districts.json');
-                                                    $district = json_decode($str_district, true);
-                                                    foreach ($district as $item) {
+                                                    $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
+                                                    $area = json_decode($str_areas, true);
+                                                    foreach ($area as $item) {
                                                 ?>
                                                 <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
                                                 <?php }?>
-                                            </datalist>
+                                                </datalist>
+                                        </div>
+                                        <span class="invalidInput"><?php echo $data['areaError']; ?></span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['districtError']; ?></span>
-
-                                    <div class="selectBx">
-                                        <input name="area" type="text" list="areas" class="select-cat">
-                                            <datalist id="areas">
-                                            <?php
-                                                $str_areas = file_get_contents(URL_ROOT . '/public/assets/json/areaList.json');
-                                                $area = json_decode($str_areas, true);
-                                                foreach ($area as $item) {
-                                            ?>
-                                            <option value="<?php echo $item; ?>"><?php echo $item; ?></option>
-                                            <?php }?>
-                                            </datalist>
-                                    </div>
-                                    <span class="invalidInput"><?php echo $data[1]['areaError']; ?></span>
+                                    
 
                                 </div>
 
@@ -215,89 +219,93 @@
                                     <label class="grey normalB">Work Hours</label>
                                 </div>
                                 <div class="vol-inputs-col-row">
-                                    <div class="selectBx" id="selectBx">
-                                        <input type="checkbox" id="options-view-button" name="selectbox">
-                                        <div id="select-button">
-                                            <div id="selected-value">
-                                                <span class="normalB">From*</span>
+                                    <div style="flex-grow:1">
+                                        <div class="selectBx" id="selectBx">
+                                            <input type="checkbox" id="options-view-button" name="selectbox">
+                                            <div id="select-button">
+                                                <div id="selected-value">
+                                                    <span class="normalB">From*</span>
+                                                </div>
+                                                <div id="chevrons">
+                                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                                </div>
                                             </div>
-                                            <div id="chevrons">
-                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            <div id="options">
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="Not specified">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="Not specified">
+                                                    <span class="label">Not specified</span>
+                                                    <span class="opt-val">Not specified</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="8:00AM">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="8:00AM">
+                                                    <span class="label">8:00AM</span>
+                                                    <span class="opt-val">8:00AM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="9:00AM">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="9:00AM">
+                                                    <span class="label">9:00AM</span>
+                                                    <span class="opt-val">9:00AM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workFrom" value="10:00AM">
+                                                    <input class="s-c bottom" type="radio" name="workFrom" value="10:00AM">
+                                                    <span class="label">10:00AM</span>
+                                                    <span class="opt-val">10:00AM</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div id="options">
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="Not specified">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="Not specified">
-                                                <span class="label">Not specified</span>
-                                                <span class="opt-val">Not specified</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="8:00AM">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="8:00AM">
-                                                <span class="label">8:00AM</span>
-                                                <span class="opt-val">8:00AM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="9:00AM">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="9:00AM">
-                                                <span class="label">9:00AM</span>
-                                                <span class="opt-val">9:00AM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workFrom" value="10:00AM">
-                                                <input class="s-c bottom" type="radio" name="workFrom" value="10:00AM">
-                                                <span class="label">10:00AM</span>
-                                                <span class="opt-val">10:00AM</span>
-                                            </div>
-                                        </div>
+                                    <span class="invalidInput"><?php echo $data['workFromError']; ?></span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['workFromError']; ?></span>
-
-                                    <div class="selectBx" id="selectBx">
-                                        <input type="checkbox" id="options-view-button" name="selectbox">
-                                        <div id="select-button">
-                                            <div id="selected-value">
-                                                <span class="normalB">To*</span>
+                                    <div style="flex-grow:1">
+                                        <div class="selectBx" id="selectBx" style="width: 100%">
+                                            <input type="checkbox" id="options-view-button" name="selectbox">
+                                            <div id="select-button">
+                                                <div id="selected-value">
+                                                    <span class="normalB">To*</span>
+                                                </div>
+                                                <div id="chevrons">
+                                                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                                </div>
                                             </div>
-                                            <div id="chevrons">
-                                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                            <div id="options">
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="Not specified">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="Not specified">
+                                                    <span class="label">Not specified</span>
+                                                    <span class="opt-val">Not specified</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="3:00PM">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="3:00PM">
+                                                    <span class="label">3:00PM</span>
+                                                    <span class="opt-val">3:00PM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="4:00PM">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="4:00PM">
+                                                    <span class="label">4:00PM</span>
+                                                    <span class="opt-val">4:00PM</span>
+                                                </div>
+                                                <div class="option">
+                                                    <input class="s-c top" type="radio" name="workTo" value="5:00PM">
+                                                    <input class="s-c bottom" type="radio" name="workTo" value="5:00PM">
+                                                    <span class="label">5:00PM</span>
+                                                    <span class="opt-val">5:00PM</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div id="options">
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="Not specified">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="Not specified">
-                                                <span class="label">Not specified</span>
-                                                <span class="opt-val">Not specified</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="3:00PM">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="3:00PM">
-                                                <span class="label">3:00PM</span>
-                                                <span class="opt-val">3:00PM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="4:00PM">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="4:00PM">
-                                                <span class="label">4:00PM</span>
-                                                <span class="opt-val">4:00PM</span>
-                                            </div>
-                                            <div class="option">
-                                                <input class="s-c top" type="radio" name="workTo" value="5:00PM">
-                                                <input class="s-c bottom" type="radio" name="workTo" value="5:00PM">
-                                                <span class="label">5:00PM</span>
-                                                <span class="opt-val">5:00PM</span>
-                                            </div>
-                                        </div>
+                                        <span class="invalidInput"><?php echo ''; ?></span>
                                     </div>
-                                    <span class="invalidInput"><?php echo ''; ?></span>
+                                    
 
                                 </div>
-                                <div class="textArea">
+                                <div class="textArea" style="margin-top: 1rem;">
                                     <span class="normalB">Requirements</span>
                                     <div class="text-box" id="requirements">
-                                        <textarea name="volRequirements" onInput="handleInput(event)" rows="12"><?php echo $data[1]['volRequirements']; ?></textarea> 
+                                        <textarea name="volRequirements" onInput="handleInput(event)" rows="8"><?php echo $data['volRequirements']; ?></textarea> 
                                     </div>
                                     <span class="invalidInput"><?php echo ''; ?></span>
                                 </div> 
@@ -306,20 +314,20 @@
                                 <div class="vol-inputs-col-row">
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="workStart" id="datefield" type="date" required="required" value="<?php echo $data[1]['workStart'];?>"> 
+                                            <input name="workStart" id="datefield" type="date" required="required" value="<?php echo $data['workStart'];?>"> 
                                             <span class="normalB">Work Start date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['workStartError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['workStartError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="workEnd" id="datefield" type="date" required="required" value="<?php echo $data[1]['workEnd'];?>"> 
+                                            <input name="workEnd" id="datefield" type="date" required="required" value="<?php echo $data['workEnd'];?>"> 
                                             <span class="normalB">Work End date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['workEndError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['workEndError']; ?></span>
                                     </div>
                                 </div>
-                                <div class="vol-inputs-col-row" id="work-days">
+                                <div class="vol-inputs-col-row" style="flex-direction: column" id="work-days">
                                     <div class="selectBx" id="selectBx">
                                         <input type="checkbox" id="options-view-button" name="selectbox">
                                         <div id="select-button">
@@ -357,29 +365,28 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['daysError']; ?></span>
-
+                                    <span class="invalidInput"><?php echo $data['daysError']; ?></span>
                                 </div>
                                 <div class="vol-inputs-col-row">
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="appOpen" id="datefield" type="date" value="<?php echo $data[1]['appOpen'];?>"> 
+                                            <input name="appOpen" id="datefield" type="date" value="<?php echo $data['appOpen'];?>"> 
                                             <span class="normalB">Application Opening date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['appOpenError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['appOpenError']; ?></span>
                                     </div>
                                     <div class="widen">
                                         <div class="inputBx2" id="date">
-                                            <input name="appClose" id="datefield" type="date" value="<?php echo $data[1]['appClose'];?>"> 
+                                            <input name="appClose" id="datefield" type="date" value="<?php echo $data['appClose'];?>"> 
                                             <span class="normalB">Application Closing date</span>
                                         </div>
-                                        <span class="invalidInput"><?php echo $data[1]['appCloseError']; ?></span>
+                                        <span class="invalidInput"><?php echo $data['appCloseError']; ?></span>
                                     </div>
                                 </div>
-                                <div class="textArea" id="notes">
+                                <div class="textArea" id="notes" style="margin-top: 1rem;">
                                     <span class="normalB">Additional Notes</span>
                                     <div class="text-box" id="">
-                                        <textarea name="addNotes" onInput="handleInput(event)" rows="5"><?php echo $data[1]['addNotes']; ?></textarea> 
+                                        <textarea name="addNotes" onInput="handleInput(event)" rows="3" placeholder="Max 250 characters" maxlength="250"><?php echo $data['addNotes']; ?></textarea> 
                                     </div>
                                     <span class="invalidInput"><?php echo ''; ?></span>
                                 </div> 
@@ -400,7 +407,6 @@
                             <a onClick="showProjectDetails()">2</a>
                             <a href="#" class="active">3</a>
                             <a onClick="showFunding()">4</a>
-                            <a onClick="showBankInfo()">5</a>
                             <a onClick="showFundingNext()">&raquo;</a>
                         </div>
                         <a id="prj-fund-next-btn" onClick="showFundingNext()" class="blue-btn">Next</a>
@@ -413,50 +419,33 @@
                     <hr>
 
                     <div id="fund-form">
-                        <div class="bool">
+                        <div class="bool" style="margin-bottom: 10px">
                             <p class="grey normalB">Would you like to raise funds for the project?</p>
                             <input type="radio" onClick="showFundsForm()" name="funding" value="Yes" id="funding" checked><label>Yes</label> 
                             <input type="radio" onClick="hideFundsForm()" name="funding" value="No" id="funding"><label>No</label> 
                         </div>
 
                         <div class="fund-inputs" id="fund-inputs">
-                            <div class="textArea">
+                            <div class="textArea" style="margin-top: 1rem;">
                                 <span class="normalB">What will the funds be used for?</span>
                                 <div class="text-box" id="">
-                                    <textarea rows="10" name="prjFundsFor"><?php echo $data[1]['prjFundsFor']; ?></textarea> 
+                                    <textarea rows="10" name="prjFundsFor"><?php echo $data['prjFundsFor']; ?></textarea> 
                                 </div>
-                                <span class="invalidInput"><?php echo $data[1]['prjFundsForError']; ?></span>
+                                <span class="invalidInput"><?php echo $data['prjFundsForError']; ?></span>
                             </div>
                             <div class="fund-inputs-bottom">
                                 <div class="fund-inputs-bottom-col">
                                     <div class="inputBx2" id="">
-                                        <input name="targetAmount" id="title" type="number" required="required" value="<?php echo $data[1]['targetAmount']; ?>">
+                                        <input name="targetAmount" id="title" type="number" required="required" value="<?php echo $data['targetAmount']; ?>">
                                         <span class="normalB">Target Amount (LKR)</span>
                                     </div>
-                                    <span class="invalidInput"><?php echo $data[1]['targetAmountError']; ?></span>
-                                </div>
-                                <div class="fund-inputs-bottom-col">
-                                    <div class="fund-inputs-bottom-col-row">
-                                        <div id="fund-date">
-                                            <div class="inputBx2" id="date">
-                                                <input name="fundStart" id="datefield" type="date" required="required" value="<?php echo $data[1]['fundStart']; ?>"> 
-                                                <span class="normalB">Fundraising Start date</span>
-                                            </div>
-                                            <span class="invalidInput"><?php echo $data[1]['fundStartError']; ?></span>
-                                        </div>
-                                        <div id="fund-date">
-                                            <div class="inputBx2" id="date">
-                                                <input name="fundEnd" id="datefield" type="date" required="required" value="<?php echo $data[1]['fundEnd']; ?>"> 
-                                                <span class="normalB">Fundraising End date</span>
-                                            </div>
-                                            <span class="invalidInput"><?php echo $data[1]['fundEndError']; ?></span>
-                                        </div>
-                                    </div>
+                                    <span class="invalidInput"><?php echo $data['targetAmountError']; ?></span>
                                 </div>
                             </div>
                             <div>
                                 <p class="grey normalB">Upload a clear image as the cover photo for your project page.</p>
                                 <input type="file" accept="image/*" id="fund-image" name="fund-image">
+                                <p class="purple normalB" style="margin-top: 10px">Note: Raised funds will be transferred to the bank account specified in your profile</p>
                             </div>
                         </div>
 
@@ -472,94 +461,12 @@
                             <a onClick="showProjectDetails()">2</a>
                             <a onClick="showVolunteering()">3</a>
                             <a href="#" class="active">4</a>
-                            <a onClick="showBankInfo()">5</a>
-                            <a onClick="showBankNext()">&raquo;</a>
-                        </div>
-                        <a id="prj-bank-next-btn" onClick="showBankNext()" class="blue-btn">Next</a>
-                    </div>
-                </div>
-
-                <!-- Bank account Details Form -->    
-                <div class="form-sec card2" id="prj-bank">
-                    <h2 class="grey subtitleB">Bank account Details</h2>
-                    <hr>
-
-                    <div class="bool">
-                        <p class="purple normalB">Please note that the account details you mention here will not be made visible to any other users and we only need it to transfer the collected funds after the completion of the fundraiser.</p>
-                        <div class="bool-actions">
-                            <input type="radio" onClick="hideBankAccounts()" name="bankInfo" value="newAccount" id="newAccount" checked> <label>Use a new bank account</label>
-                            <input type="radio" onClick="hideNewAccountForm()" name="bankInfo" value="savedAccount" id="savedAccount"> <label>Select account details in my profile</label>
-                        </div>
-                    </div>
-
-                    <div id="acnt-form">
-                        <div class="acnt-inputs">
-                            <div class="acnt-inputs-col" id="new-account">
-                                <div id="">
-                                    <div class="inputBx2" id="item">
-                                        <input name="accountHolder" id="title" type="text" required="required" value="<?php echo $data[1]['accountHolder']; ?>">
-                                        <span class="normalB">Account Holder’s Name</span>
-                                    </div>
-                                    <span class="invalidInput"><?php echo $data[1]['accountHolderError']; ?></span>
-                                </div>
-                                <div id="">
-                                    <div class="inputBx2" id="item">
-                                        <input name="bank" id="title" type="text" required="required" value="<?php echo $data[1]['bank']; ?>">
-                                        <span class="normalB">Bank Name</span>
-                                    </div>
-                                    <span class="invalidInput"><?php echo $data[1]['bankError']; ?></span>
-                                </div>
-                                <div id="">
-                                    <div class="inputBx2" id="item">
-                                        <input name="branch" id="branch" type="text" required="required" value="<?php echo $data[1]['branch']; ?>">
-                                        <span class="normalB">Branch Name</span>
-                                    </div>
-                                    <span class="invalidInput"><?php echo $data[1]['branchError']; ?></span>
-                                </div>
-                                <div id="">
-                                    <div class="inputBx2" id="item">
-                                        <input name="branchCode" id="branchCode" type="text" required="required" value="<?php echo $data[1]['branchCode']; ?>">
-                                        <span class="normalB">Branch Code</span>
-                                    </div>
-                                    <span class="invalidInput"><?php echo ''; ?></span>
-                                </div>
-                                <div id="">
-                                    <div class="inputBx2" id="item">
-                                        <input name="accountNo" id="accountNo" type="number" required="required" value="<?php echo $data[1]['accountNo']; ?>">
-                                        <span class="normalB">Account Number</span>
-                                    </div>
-                                    <span class="invalidInput"><?php echo $data[1]['accountNoError']; ?></span>
-                                </div>
-                            </div>
-                            <div class="acnt-inputs-col" id="saved-account">
-                                <ul class="bank-acnts">
-                                <?php foreach($data[0] as $item) { ?>
-                                    <li class='acnt-card'>
-                                        <input type="radio" id="<?php echo $item->id;?>" name="selectedAccount" value="<?php echo $item->id;?>"/>
-                                        <label for="<?php echo $item->id;?>">
-                                            <font class="grey normalB"><?php echo($item->bank . ', ' . $item->branch);?><br/></font>
-                                            <font class="grey normal">Acc. No: <?php echo $item->account_no;?></font>
-                                        </label>
-                                    </li>
-                                <?php } ?>
-                                </ul>                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prj-form-nav">
-                        <a href="<?php echo URL_ROOT.'/OrgDashboards/dashboard'; ?>" class="grey-btn">Cancel</a>
-                        <div class="pagination">
-                            <a onClick="showFunding()">&laquo;</a>
-                            <a onClick="showProjectCause()">1</a>
-                            <a onClick="showProjectDetails()">2</a>
-                            <a onClick="showVolunteering()">3</a>
-                            <a onClick="showFunding()">4</a>
-                            <a href="#" class="active">5</a>
                             <a href="#" style="pointer-events: none">&raquo;</a>
                         </div>
                         <input type="submit" class="purple-btn" value="Submit">
                     </div>
                 </div>
+
             </form>
         </div>
         <div id="footer">

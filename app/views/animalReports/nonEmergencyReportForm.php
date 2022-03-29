@@ -122,7 +122,7 @@
         </div>
         <div class="form-row" style="margin-bottom:2rem;">
             <div class="form-input direction">
-                <label class="input-label">Upload Some clear images as if possible. </label>
+                <label class="input-label">Upload a clear image </label>
                 <div class="upload-button">
                     <input type="file" accept="image/*" id="report-image" name="report-image" required>
 <!--                    <a href="--><?php //echo URL_ROOT; ?><!--/pages/index" class="form-btn-upload">Choose File</a>-->

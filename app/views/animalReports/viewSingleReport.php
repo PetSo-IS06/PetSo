@@ -83,7 +83,7 @@
                         <div>
                             <span class="normalB purple"> <i class="fa fa-map-marker"></i> <?php echo $report->area ?>, <?php echo $report->district ?> </span> 
                             <span class="normalB grey" style="float: right;">Status: 
-                            <span class="normalB green"><?php echo $status ?></span> </span>
+                            <span class="normalB green"><?php echo $report->status ?></span> </span>
                         </div>
 
 

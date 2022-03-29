@@ -37,7 +37,7 @@
          <br>
          <div class="normal grey">Check donation section below for more details </div> <br> <br> <br>
         
-         <a href= "" class="purple-btn">Donate now </a>
+         <a href="<?php echo URL_ROOT . '/Projects/donate/'.$data['project']->id; ?>" class="purple-btn">Donate now </a>
         </center>
         </div>
         <div class="columns" >
@@ -49,7 +49,7 @@
           <div class="subtitleB grey">Vacancies Left  </div>
           <div class="normal grey">Check volunteer section below for more details <br><br>
             30 have applied already </div> <br>
-            <a href= "<?php echo URL_ROOT;?>/Projects/volunteerApplication" class="yellow-btn">Volunteer Now </a>
+            <a href= "<?php echo URL_ROOT.'/Projects/volunteerApplication/'.$data['volunteer_opportunity']->id;?>" class="yellow-btn">Volunteer Now </a>
         </center>
         </div>
         </div> <br>
@@ -58,7 +58,7 @@
             <img src="<?php echo URL_ROOT; ?>/public/assets/img/welfare_img/image 3.png" width="100px" height="100px" border-radius="50px">
           </div>
             <div class="col2">
-            <div class="subtitleB grey"> Sterilizing 50 Stray dogs </div> 
+            <div class="subtitleB grey"> <?php echo $data['project']->title ?> </div> 
           <div class="normal grey"> Charley's Home by "Save a Paw" </div> 
            </div>
           <div class="col3">

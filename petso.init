@@ -1,0 +1,333 @@
+-- we don't know how to generate root <with-no-name> (class Root) :(
+grant alter, alter routine, application_password_admin, audit_abort_exempt, audit_admin, authentication_policy_admin, backup_admin, binlog_admin, binlog_encryption_admin, clone_admin, connection_admin, create, create role, create routine, create tablespace, create temporary tables, create user, create view, delete, drop, drop role, encryption_key_admin, event, execute, file, flush_optimizer_costs, flush_status, flush_tables, flush_user_resources, group_replication_admin, index, innodb_redo_log_archive, innodb_redo_log_enable, insert, lock tables, passwordless_user_admin, persist_ro_variables_admin, process, references, reload, replication client, replication slave, replication_applier, replication_slave_admin, resource_group_admin, resource_group_user, role_admin, select, service_connection_admin, session_variables_admin, set_user_id, show databases, show view, show_routine, shutdown, super, system_user, system_variables_admin, table_encryption_admin, trigger, update, xa_recover_admin on *.* to azma@localhost;
+
+grant alter, alter routine, application_password_admin, audit_abort_exempt, audit_admin, authentication_policy_admin, backup_admin, binlog_admin, binlog_encryption_admin, clone_admin, connection_admin, create, create role, create routine, create tablespace, create temporary tables, create user, create view, delete, drop, drop role, encryption_key_admin, event, execute, file, flush_optimizer_costs, flush_status, flush_tables, flush_user_resources, group_replication_admin, index, innodb_redo_log_archive, innodb_redo_log_enable, insert, lock tables, passwordless_user_admin, persist_ro_variables_admin, process, references, reload, replication client, replication slave, replication_applier, replication_slave_admin, resource_group_admin, resource_group_user, role_admin, select, service_connection_admin, session_variables_admin, set_user_id, show databases, show view, show_routine, shutdown, super, system_user, system_variables_admin, table_encryption_admin, trigger, update, xa_recover_admin, grant option on *.* to 'debian-sys-maint'@localhost;
+
+grant audit_abort_exempt, select, system_user on *.* to 'mysql.infoschema'@localhost;
+
+grant audit_abort_exempt, authentication_policy_admin, backup_admin, clone_admin, connection_admin, persist_ro_variables_admin, session_variables_admin, shutdown, super, system_user, system_variables_admin on *.* to 'mysql.session'@localhost;
+
+grant audit_abort_exempt, system_user on *.* to 'mysql.sys'@localhost;
+
+grant alter, alter routine, application_password_admin, audit_abort_exempt, audit_admin, authentication_policy_admin, backup_admin, binlog_admin, binlog_encryption_admin, clone_admin, connection_admin, create, create role, create routine, create tablespace, create temporary tables, create user, create view, delete, drop, drop role, encryption_key_admin, event, execute, file, flush_optimizer_costs, flush_status, flush_tables, flush_user_resources, group_replication_admin, index, innodb_redo_log_archive, innodb_redo_log_enable, insert, lock tables, passwordless_user_admin, persist_ro_variables_admin, process, references, reload, replication client, replication slave, replication_applier, replication_slave_admin, resource_group_admin, resource_group_user, role_admin, select, service_connection_admin, session_variables_admin, set_user_id, show databases, show view, show_routine, shutdown, super, system_user, system_variables_admin, table_encryption_admin, trigger, update, xa_recover_admin on *.* to petsodev;
+
+grant alter, alter routine, application_password_admin, audit_abort_exempt, audit_admin, authentication_policy_admin, backup_admin, binlog_admin, binlog_encryption_admin, clone_admin, connection_admin, create, create role, create routine, create tablespace, create temporary tables, create user, create view, delete, drop, drop role, encryption_key_admin, event, execute, file, flush_optimizer_costs, flush_status, flush_tables, flush_user_resources, group_replication_admin, index, innodb_redo_log_archive, innodb_redo_log_enable, insert, lock tables, passwordless_user_admin, persist_ro_variables_admin, process, references, reload, replication client, replication slave, replication_applier, replication_slave_admin, resource_group_admin, resource_group_user, role_admin, select, service_connection_admin, session_variables_admin, set_user_id, show databases, show view, show_routine, shutdown, super, system_user, system_variables_admin, table_encryption_admin, trigger, update, xa_recover_admin, grant option on *.* to root@localhost;
+
+create table Account
+(
+    id       int auto_increment
+        primary key,
+    email    varchar(255) not null,
+    password varchar(255) not null,
+    type     varchar(255) null
+);
+
+create table Admin
+(
+    ad_id          int auto_increment
+        primary key,
+    account_id     int          null,
+    ad_name        varchar(255) null,
+    ad_mobile      varchar(255) null,
+    ad_profile_img varchar(255) null,
+    joined_date    varchar(255) null,
+    constraint ad_acnt_id
+        foreign key (account_id) references Account (id)
+            on update cascade on delete cascade
+);
+
+create table Adoption
+(
+    idAdoption      int auto_increment
+        primary key,
+    fullname        varchar(250) null,
+    address         varchar(250) null,
+    mobileNo        varchar(250) null,
+    animalprofileId varchar(250) null
+);
+
+create table Complaint
+(
+    id          int auto_increment
+        primary key,
+    subject     varchar(250) null,
+    description varchar(250) null,
+    user_id     int          null,
+    status      varchar(45)  null
+);
+
+create table Conversation
+(
+    id               int auto_increment
+        primary key,
+    animal_report_id int         null,
+    user_id          int         null,
+    message          longtext    null,
+    created_date     date        null,
+    status           varchar(60) null,
+    created_time     time        null,
+    constraint id_UNIQUE
+        unique (id)
+);
+
+create table Organization
+(
+    org_id          int auto_increment
+        primary key,
+    account_id      int          null,
+    org_name        varchar(255) not null,
+    org_mobile      varchar(255) not null,
+    org_landline    varchar(255) null,
+    org_address1    varchar(255) not null,
+    org_address2    varchar(255) null,
+    org_area        varchar(255) null,
+    org_district    varchar(255) null,
+    if_findhelp     varchar(45)  null,
+    org_website     varchar(255) null,
+    org_facebook    varchar(255) null,
+    org_insta       varchar(255) null,
+    org_profile_img varchar(255) null,
+    org_doc         varchar(255) null,
+    account_status  varchar(45)  null,
+    org_email       varchar(45)  null,
+    req_date        varchar(45)  null,
+    constraint org_acnt_id
+        foreign key (account_id) references Account (id)
+            on update cascade on delete cascade
+);
+
+create table Animal_Profile
+(
+    id                 int auto_increment
+        primary key,
+    org_id             int          not null,
+    name               varchar(255) not null,
+    type               varchar(255) null,
+    age                varchar(255) null,
+    breed              varchar(255) null,
+    gender             varchar(45)  null,
+    description        varchar(255) null,
+    image              varchar(255) null,
+    adoption_status    varchar(255) null,
+    requirements       varchar(255) null,
+    sponsorship_status varchar(255) null,
+    monthly_cost       varchar(255) null,
+    create_date        varchar(255) not null,
+    constraint organizationID
+        foreign key (org_id) references Organization (org_id)
+            on delete cascade
+);
+
+create table Bank_Account
+(
+    id             int auto_increment
+        primary key,
+    org_id         int          not null,
+    account_holder varchar(255) null,
+    bank           varchar(255) not null,
+    branch         varchar(255) null,
+    branch_code    varchar(45)  null,
+    account_no     varchar(255) not null,
+    constraint organization_id
+        foreign key (org_id) references Organization (org_id)
+            on update cascade on delete cascade
+);
+
+create table Org_Animal
+(
+    org         int          not null,
+    animal_type varchar(255) not null,
+    primary key (animal_type, org),
+    constraint org
+        foreign key (org) references Organization (org_id)
+);
+
+create index org_idx
+    on Org_Animal (org);
+
+create index account_id
+    on Organization (account_id);
+
+create table Organization_Animal_Report
+(
+    id               int auto_increment
+        primary key,
+    org_id           int         null,
+    animal_report_id int         null,
+    status           varchar(50) null
+);
+
+create table Project
+(
+    id              int auto_increment
+        primary key,
+    title           varchar(255) not null,
+    org_id          int          null,
+    cause           varchar(255) null,
+    create_date     date         null,
+    initiation_date date         null,
+    description     longtext     null,
+    status          varchar(255) not null,
+    volunteering    varchar(255) null,
+    fundraising     varchar(255) null,
+    image           varchar(255) null,
+    constraint org_id
+        foreign key (org_id) references Organization (org_id)
+);
+
+create table Fundraiser
+(
+    id                int auto_increment
+        primary key,
+    prj_id            int                              not null,
+    funds_for         longtext                         not null,
+    target_amount     decimal(10, 2)                   not null,
+    raised_amount     decimal(10, 2) default 0.00      null,
+    funding_start     date                             null,
+    funding_end       date                             null,
+    bank_acnt_id      int                              not null,
+    image             varchar(255)                     null,
+    payment           varchar(45)    default 'Pending' null,
+    fundraiser_status varchar(45)    default 'Ongoing' null,
+    constraint bank_acnt_id
+        foreign key (bank_acnt_id) references Bank_Account (id),
+    constraint project_id
+        foreign key (prj_id) references Project (id)
+            on update cascade on delete cascade
+);
+
+create table Donation
+(
+    id               int auto_increment
+        primary key,
+    fundraiser_id    int                      null,
+    amount           decimal(10, 2)           null,
+    currency         varchar(45)              null,
+    card_holder_name varchar(255)             null,
+    method           varchar(45)              null,
+    donor_name       varchar(255)             null,
+    message          varchar(255)             null,
+    date             date default (curdate()) null,
+    constraint fund_id
+        foreign key (fundraiser_id) references Fundraiser (id)
+            on delete cascade
+);
+
+create index organization_id
+    on Project (org_id);
+
+create table User
+(
+    us_id          int auto_increment
+        primary key,
+    account_id     int          null,
+    us_name        varchar(255) null,
+    us_mobile      varchar(255) null,
+    us_address     varchar(50)  null,
+    us_district    varchar(255) null,
+    us_city        varchar(255) null,
+    us_profile_img varchar(255) null,
+    account_status varchar(45)  null,
+    joined_date    varchar(255) null,
+    constraint us_acnt_id
+        foreign key (account_id) references Account (id)
+            on update cascade on delete cascade
+);
+
+create table Animal_Report
+(
+    id              int auto_increment
+        primary key,
+    heading         varchar(255) null,
+    situation       longtext     null,
+    district        varchar(255) not null,
+    area            varchar(255) not null,
+    animal_type     varchar(255) null,
+    image           varchar(255) null,
+    reporter_name   varchar(255) not null,
+    NIC             varchar(45)  null,
+    reporter_number varchar(255) not null,
+    reporter_email  varchar(255) null,
+    user_id         int          not null,
+    create_date     varchar(255) null,
+    status          varchar(255) null,
+    constraint us_id
+        foreign key (user_id) references User (us_id)
+            on update cascade
+);
+
+create table Sponsorship
+(
+    id             int auto_increment
+        primary key,
+    animal_id      int          null,
+    user_id        int          null,
+    start_date     varchar(255) null,
+    end_date       varchar(255) null,
+    sponsored_date varchar(255) null,
+    amount         varchar(255) null,
+    constraint an_id
+        foreign key (animal_id) references Animal_Profile (id)
+            on delete cascade,
+    constraint usr_id
+        foreign key (user_id) references User (us_id)
+);
+
+create index us_id
+    on Sponsorship (user_id);
+
+create index account_id
+    on User (account_id);
+
+create table Volunteer_Opportunity
+(
+    id                       int auto_increment
+        primary key,
+    prj_id                   int          not null,
+    reason                   varchar(255) null,
+    description              varchar(255) not null,
+    district                 varchar(255) null,
+    area                     varchar(255) null,
+    work_start               varchar(255) null,
+    work_end                 varchar(255) null,
+    work_from                varchar(255) null,
+    work_to                  varchar(45)  null,
+    days                     varchar(255) null,
+    requirements             varchar(255) not null,
+    app_open                 varchar(255) null,
+    app_close                varchar(255) null,
+    total_openings           int          null,
+    remaining_openings       int          null,
+    add_note                 varchar(255) null,
+    Volunteer_Opportunitycol varchar(45)  null,
+    image                    varchar(255) null,
+    constraint proj_id
+        foreign key (prj_id) references Project (id)
+            on update cascade on delete cascade
+);
+
+create table Volunteer_Application
+(
+    id                 int auto_increment
+        primary key,
+    vol_opp_id         int          null,
+    applicant_name     varchar(255) not null,
+    user_id            int          null,
+    nic                varchar(45)  not null,
+    address            varchar(255) null,
+    mobile             varchar(45)  not null,
+    dob                date         not null,
+    add_note           varchar(255) null,
+    application_status varchar(255) null,
+    applied_date       date         not null,
+    occupation         varchar(255) null,
+    email              varchar(255) null,
+    event              varchar(255) null,
+    organizer          varchar(255) null,
+    worktype           varchar(255) null,
+    constraint opp_id
+        foreign key (vol_opp_id) references Volunteer_Opportunity (id)
+            on delete cascade,
+    constraint user
+        foreign key (user_id) references User (us_id)
+);

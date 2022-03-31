@@ -19,7 +19,7 @@
     ?>
 </div>
 
-<div class="animalReportSection">
+<div class="animalReportSection pg-body">
     <div class="container2">
         <div class="info" id="info">
             <!--                <div class="infoUpper">-->
@@ -27,24 +27,7 @@
                 <h2>Find help reports</h2>
             </div>
             <div class="container-p2">
-                <div class="search-container">
-                    <form action="/action_page.php" class="searchForm">
-                        <input type="text" class="search-container-txt" placeholder="Animal.." name="Animal">
-                        <button><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <div class="search-container">
-                    <form action="/action_page.php" class="searchForm">
-                        <input type="text" class="search-container-txt" placeholder="Status.." name="Status">
-                        <button><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <div class="search-container">
-                    <form action="/action_page.php" class="searchForm">
-                        <input type="text" class="search-container-txt" placeholder="Location.." name="Location">
-                        <button><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
+                
             </div>
         </div>
         <hr>
@@ -60,21 +43,26 @@
 
                             </div>
                             <hr>
-                            <div class="cardBody">
+                            <div class="cardBody grey">
                                 <div class="cardBodyInner">
                                     <div class="cardBodyInner1 paddingBot paddingRight">
                                         <div><span>Animal:</span> <?php echo $item->animal_type; ?></div>
                                         <div><span>Location:</span><?php echo $item->area; ?>
                                             , <?php echo $item->district; ?></div>
                                     </div>
-                                    <div class="paddingBot"><span>Description:</span> <?php echo $item->situation; ?>
+                                    <div class="paddingBot" style="width: 350px"><span>Description:</span> <?php echo $item->situation; ?>
                                     </div>
                                     <div class="paddingBot conversation"><span>Conversations:</span> 0</div>
                                 </div>
                                 <div class="cardBodyImage">
                                     <!--                                    <img src="-->
                                     <?php //echo $item->image; ?><!--">-->
-                                    <img src="<?php echo URL_ROOT; ?>/public/uploads/reports/dog.jpg">
+                                    <img src="<?php
+                                    if (!($item->image)) :
+                                        echo URL_ROOT . '/public/uploads/animals/default-img.jpg';
+                                    else :
+                                        echo URL_ROOT . '/public/'.$item->image;
+                                    endif; ?>">
                                 </div>
                             </div>
                         </div>

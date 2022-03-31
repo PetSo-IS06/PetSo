@@ -42,7 +42,7 @@
                                     if (!($item->image)) :
                                         echo URL_ROOT . '/public/uploads/animals/default-img.jpg';
                                     else :
-                                        echo $item->image;
+                                        echo  URL_ROOT . '/public/'.$item->image;
                                     endif; ?>">
                                 </div>
                                 <h2 style="font-weight: bold" class="paddingTop"><?php echo $item->name; ?></h2>
@@ -75,6 +75,7 @@
                                             endif; ?>">Adopt
                                             </button>
                                            </form>
+                                          
                                         </div>
                                     </div>
                                 </div>

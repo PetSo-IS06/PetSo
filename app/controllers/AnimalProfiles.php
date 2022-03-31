@@ -97,8 +97,8 @@ class AnimalProfiles extends Controller {
             'users' => ''
         ];
 
-        if($this->animalProfileModel->getAllAnimalProfile()){
-            $profiles = $this->animalProfileModel->getAllAnimalProfile();
+        if($this->animalProfileModel->getMyAnimalProfiles()){
+            $profiles = $this->animalProfileModel->getMyAnimalProfiles();
 
             $data = [
                 "profiles" => $profiles

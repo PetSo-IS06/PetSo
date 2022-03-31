@@ -92,10 +92,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                                    <input type="search" placeholder="Search..." name="searchPrj" />
-                                    <i class="fa fa-search"></i>
-                                </div>
                         <div class="btn">
                             <a href="<?php echo URL_ROOT; ?>/projects/createProject" class="content-sub-head-btn" id="">Create Project</a>
                         </div>
@@ -168,10 +164,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                                    <input type="search" placeholder="Search..." name="searchPrj" />
-                                    <i class="fa fa-search"></i>
-                                </div>
                         <div class="btn">
                             <a id="back-to-report-panel" style="display: none;" onClick="hideAllAnimalReports()" class="cell-nav">Back</a>
                             <a onClick="showAllAnimalReports()" class="content-sub-head-btn" style="background-color: #1D67BE;" id="all-reports-btn">View all</a>
@@ -381,10 +373,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                                    <input type="search" placeholder="Search..." name="searchPrj" />
-                                    <i class="fa fa-search"></i>
-                                </div>
                         <div class="btn">
                             <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
                             <a class="content-sub-head-btn" id="applications-btn" onClick="showVolApplications">Applications</a>
@@ -436,10 +424,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                                    <input type="search" placeholder="Search..." name="searchPrj" />
-                                    <i class="fa fa-search"></i>
-                                </div>
                         <div class="btn">
                             <a class="content-sub-head-btn" id="opportunities-btn" onClick="Show_Opportunities()">Opportunities</a>
                             <a class="content-sub-head-btn" id="applications-btn" onClick="showVolApplications">Applications</a>
@@ -453,10 +437,6 @@
                         <article class="applications-section" id="applications-section">
                             <div class="article-head">
                                 <h3>My Volunteers</h3>
-                                <div class="search-sec-bar">
-                                    <input type="search" placeholder="Search..." name="searchPrj" />
-                                    <i class="fa fa-search"></i>
-                                </div>
                             </div>
                             <div class="table-wrapper">
                                 <table class="fl-table">
@@ -545,10 +525,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchPrj" />
-                            <i class="fa fa-search"></i>
-                        </div>
                     </div>
                     </section>
 
@@ -596,10 +572,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchAnimalProfile" />
-                            <i class="fa fa-search"></i>
-                        </div> 
                         <div class="btn">
                             <a id="back-to-an-overview" style="display: none;" onClick="hideAllAnimals()" class="cell-nav">Back</a>
                             <a onClick="showAllAnimals()" class="content-sub-head-btn" style="background-color: #1D67BE;" id="all-animals-btn">View all</a>

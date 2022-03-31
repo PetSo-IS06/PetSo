@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/global_custom.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dashboard.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-proj-popup.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/ad-dash-payments.css">
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/dash-users-sec.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/public/assets/CSS/ad-dash-overview.css">
     <link rel='stylesheet' href='<?php echo URL_ROOT; ?>/public/assets/CSS/orgDetail.css'>
     <script src="https://kit.fontawesome.com/e2ae29c3d1.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/admin-dashboard.js"></script>
+    <script type="text/javascript" src="<?php echo URL_ROOT; ?>/public/assets/js/ad-dash-overview.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title><?php echo SITE_NAME; ?> | Dashboard</title>
 </head>
 <body>
@@ -35,7 +39,7 @@
                     
                     <ul class="admin-menu">
                     <li>
-                        <a href="#0">
+                        <a class="active-tag" onClick="showOverviewPanel()" id="over-tag">
                         <i class="fas fa-th-large"></i>
                         <span>Overview</span>
                         </a>
@@ -53,7 +57,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="active-tag" onClick="showProjectsPanel()" id="proj-tag">
+                        <a onClick="showProjectsPanel()" id="proj-tag">
                         <i class="fas fa-hands-helping"></i>
                         <span>Welfare Projects</span>
                         </a>
@@ -71,13 +75,184 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#0">
+                        <a onClick="showPaymentsPanel()" id="pay-tag">
                         <i class="fas fa-receipt"></i>
-                        <span>Finance</span>
+                        <span>Payments</span>
                         </a>
                     </li>
                 </nav>
             </div>
+
+            <!-- Overview Section -->
+            <section class="page-content" id="over-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Overview</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="ov-cont">
+                        <div class="ov-cont-row">
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fa-solid fa-building-ngo heading2 purple"></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d",sizeof($data["allOrgs"]));?></h3>
+                                </div>
+                                <p class="normalB">Welfare Organizations</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fas fa-users heading2 purple"></i></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d", sizeof($data["allUsers"]));?></h3>
+                                </div>
+                                <p class="normalB">Users</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fa-solid fa-user-shield heading2 purple"></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d",sizeof($data["allAdmins"]));?></h3>
+                                </div>
+                                <p class="normalB">Administrators</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                <i class="fa-solid fa-paw heading2 purple"></i>
+                                    <h3 class="subtitleB purple"><?php echo  sprintf("%02d",sizeof($data["allAdmins"]));?></h3>
+                                </div>
+                                <p class="normalB">Animals</p>
+                            </div>
+                            <div class="ov-sum-card">
+                                <div class="sum-icon">
+                                    <i class="fa-solid fa-triangle-exclamation heading2 purple"></i>
+                                    <h3 class="subtitleB purple">50</h3>
+                                </div>
+                                <p class="normalB">Animals Reported</p>
+                            </div>
+                        </div>
+                        <div class="ov-cont-row">
+                            <div class="ov-total-card">
+                                <div class="tot-card-head">
+                                    <div class="card-icon">
+                                        <i class="fa-solid fa-magnifying-glass-dollar"></i>
+                                    </div>
+                                    <h2 class="subtitleB">LKR 120, 000</h2>
+                                </div>
+                                <span class="normalB">Total Funds Raised</span>
+                                <div class="card-graph" id="total-funds" style="width: 260px ; height: 150px;">
+                                    <script type="text/javascript">
+                                        google.charts.load("current", {packages:['corechart']});
+                                        google.charts.setOnLoadCallback(drawChart);
+                                        function drawChart() {
+                                        var totalFundsData = google.visualization.arrayToDataTable([
+                                            ["Element", "Density", { role: "style" } ],
+                                            <?php foreach ($data["annualFunds"] as $item) {?>
+                                            ["<?php echo $item->year; ?>", <?php echo $item->sum; ?>, "color: #5CB85C"],
+                                            <?php }; ?>
+                                        ]);
+
+                                        var view = new google.visualization.DataView(totalFundsData);
+                                        view.setColumns([0, 1,
+                                                        { calc: "stringify",
+                                                            sourceColumn: 1,
+                                                            type: "string",
+                                                            color: "#EEC93D",
+                                                            role: "annotation" },
+                                                        2]);
+                                        var totalFunds = new google.visualization.ColumnChart(document.getElementById("total-funds"));
+                                        totalFunds.draw(view);
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="ov-total-card">
+                                <div class="tot-card-head">
+                                    <div class="card-icon">
+                                        <i class="fa-solid fa-hand-sparkles"></i>
+                                    </div>
+                                    <h2 class="subtitleB">LKR 120, 000</h2>
+                                </div>
+                                <span class="normalB">Total Volunteers</span>
+                                <div class="card-graph"  id="total-vols" style="width: 260px ; height: 150px;">
+                                    <script type="text/javascript">
+                                        google.charts.load('current', {'packages':['corechart']});
+                                        google.charts.setOnLoadCallback(drawChart);
+                                        function drawChart() {
+                                            var data = google.visualization.arrayToDataTable([
+                                            ['Opp', 'Vol'],
+                                            [ 8,      12],
+                                            [ 4,      5.5],
+                                            [ 11,     14],
+                                            [ 4,      5],
+                                            [ 3,      3.5],
+                                            [ 6.5,    7]
+                                            ]);
+
+                                            var options = {
+                                            hAxis: {minValue: 0, maxValue: 15},
+                                            vAxis: {minValue: 0, maxValue: 15},
+                                            chartArea: {width:'70%'},
+                                            trendlines: {
+                                                0: {
+                                                type: 'linear',
+                                                showR2: true,
+                                                visibleInLegend: true
+                                                }
+                                            }
+                                            };
+
+                                            var chartLinear = new google.visualization.ScatterChart(document.getElementById('total-vols'));
+                                            chartLinear.draw(data, options);
+
+                                            options.trendlines[0].type = 'exponential';
+                                            options.colors = ['#6F9654'];
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="ov-total-card">
+                                <div class="tot-card-head">
+                                    <div class="card-icon">
+                                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                                    </div>
+                                    <h2 class="subtitleB">LKR 120, 000</h2>
+                                </div>
+                                <span class="normalB">Total Sponsorships</span>
+                                <div class="card-graph"  id="total-spons" style="width: 260px ; height: 150px;">
+                                    <script type="text/javascript">
+                                        google.charts.load("current", {packages:["corechart"]});
+                                        google.charts.setOnLoadCallback(drawChart);
+                                        function drawChart() {
+                                        var data = google.visualization.arrayToDataTable([
+                                            ["Animal", "LKR", { role: "style" } ],
+                                            ["Dogs", 8.94, "#9F2884"],
+                                            ["Cats", 10.49, "#EEC93D"],
+                                            ["Birds", 19.30, "#9F2884"],
+                                            ["Other", 21.45, "#EEC93D"]
+                                        ]);
+
+                                        var view = new google.visualization.DataView(data);
+                                        view.setColumns([0, 1,
+                                                        { calc: "stringify",
+                                                            sourceColumn: 1,
+                                                            type: "string",
+                                                            role: "annotation" },
+                                                        2]);
+                                        var chart = new google.visualization.BarChart(document.getElementById("total-spons"));
+                                        chart.draw(view);
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Initial display -->
+                <section>
+                    <div class="opportunities" id="">
+
+                    </div>
+                </section>
+            </section>
 
            <!-- Users Section -->
             <section class="page-content" id="usr-sec">
@@ -87,10 +262,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchPrj" />
-                            <i class="fa fa-search"></i>
-                        </div>
                         <div class="us-btn">
                             <a id="view-user-btn" onClick="showUsers()">Users</a>
                             <a id="view-org-btn" onClick="showOrgs()">Organizations</a>
@@ -267,10 +438,6 @@
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchReq" />
-                            <i class="fa fa-search"></i>
-                        </div>
                     </div>
                     </section>
 
@@ -421,17 +588,13 @@
             </section>
 
             <!-- Projects Section -->
-            <section class="page-content" id="proj-sec">
+            <section class="page-content" id="ad-proj-sec">
                 <section>
                     <div class="content-head">
                         <h1 class="heading2B">Welfare Projects</h1>
                         <h3 class="normal"><?php echo date("d M Y");?></h3>
                     </div>
                     <div class="content-sub-head">
-                        <div class="search-sec-bar">
-                            <input type="search" placeholder="Search..." name="searchPrj" />
-                            <i class="fa fa-search"></i>
-                        </div>
                         <div class="prj-btn">
                             <a class="" id="view-pend-prj-btn" onClick="showPendProjects()" style="display: none;">Pending</a>
                             <a class="" id="view-all-prj-btn" onClick="showAllProjects()">View All</a>
@@ -753,7 +916,105 @@
                     </div>
                 </section>
             </section>
+            
+            <!-- Payments Section -->
+            <section class="page-content" id="pay-sec">
+                <section>
+                    <div class="content-head">
+                        <h1 class="heading2B">Payments</h1>
+                        <h3 class="normal"><?php echo date("d M Y");?></h3>
+                    </div>
+                    <div class="content-sub-head">
+                    </div>
+                    </section>
 
+                    <!-- Initial display -->
+                    <div class="opportunities" id="">
+                        <div class="table-wrapper">
+                            <table class="fl-table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th>Fundraiser ID</th>
+                                    <th>Action</th>
+                                    <th>Organization</th>
+                                    <th id="col-desc" style="width: 150px">Project title</th>
+                                    <th>Target Amount</th>
+                                    <th>Raised Amount</th>
+                                    <th>Fundraiser Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data["fundPayments"] as $item) { ?>
+                                        <tr>
+                                            <td><?php echo $item->id; ?></td>
+                                            <td class="cell-nav purple"><a onClick="showPayDetailsOverlay(<?php echo $item->id; ?>)">Update</a></td>
+                                            <td><?php echo $item->org_name; ?></td>
+                                            <td id="col-desc" style="width: 150px"><?php echo $item->title; ?></td>
+                                            <td><?php echo $item->target_amount; ?></td>
+                                            <td><?php echo $item->raised_amount; ?></td>
+                                            <td><?php echo $item->fundraiser_status; ?></td>
+
+                                            <!-- Pending Payments Popup -->
+                                            <div id="pend-pay-popup<?php echo $item->id; ?>" class="overlay">
+                                                <div class="popup" id="pend-pay-details">
+                                                    <div class="pay-head">
+                                                        <h1 class="subtitleB center"><?php echo $item->title; ?></h1>
+                                                        <a class="close" onClick="hidePayDetailsOverlay(<?php echo $item->id; ?>)">×</a>
+                                                    </div>
+                                                    <div class="pay-det-cont">
+                                                        <div class="pay-det-col">
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Fundraiser status:</label>
+                                                                <p id="" class="normal green"><?php echo $item->fundraiser_status; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Organization:</label>
+                                                                <p id="" class="normal"><?php echo $item->org_name; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Targeted amount:</label>
+                                                                <p id="" class="normal"><?php echo $item->target_amount; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Raised amount:</label>
+                                                                <p id="" class="normalB purple"><?php echo $item->raised_amount; ?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pay-det-col">
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Account holder:</label>
+                                                                <p id="" class="normal"><?php echo $item->account_holder; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Account No.:</label>
+                                                                <p id="" class="normal"><?php echo $item->account_no; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Bank:</label>
+                                                                <p id="" class="normal"><?php echo $item->bank; ?></p>
+                                                            </div>
+                                                            <div class="pay-det-field">
+                                                                <label for="" class="normalB">Branch:</label>
+                                                                <p id="" class="normal"><?php echo $item->branch; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pay-det-action">
+                                                        <a onClick="hidePayDetailsOverlay(<?php echo $item->id; ?>)" class="" id="cancel-btn">Cancel</a>
+                                                        <form action="<?php echo URL_ROOT . '/Projects/updateFundTransfer/' . $item->id; ?>" method="GET">
+                                                            <input type="submit" id="done-btn" value="Payment Done">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tr>
+                                    <?php } ?>
+                                <tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </section>
         </div>
     </div>
     <div id="footer">

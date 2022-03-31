@@ -59,12 +59,7 @@
 
 
             <div class="div" style="float: right;">
-                <div class="search-container">
-                    <form action="/action_page.php">
-                        <input type="text" class="search-container-txt" placeholder="Search.." name="">
-                        <button><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
+                
             </div>
             <br> <br><br>
             <hr><br><br>
@@ -152,12 +147,12 @@
             <span class="grey" style="font-weight: 700;  padding: 6px;"> Completed</span>
         </div>
         <div class="div" style="float: right;">
-            <div class="search-container">
+            <!-- <div class="search-container">
                 <form action="/action_page.php">
                     <input type="text" class="search-container-txt" placeholder="Search.." name="">
                     <button><i class="fa fa-search"></i></button>
                 </form>
-            </div>
+            </div> -->
         </div>
         <br> <br><br>
         <hr><br><br>

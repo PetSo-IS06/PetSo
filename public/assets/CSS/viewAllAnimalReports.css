@@ -436,6 +436,9 @@ input {
 
 .paddingBot {
     padding-bottom: 0.55rem;
+    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .paddingRight {

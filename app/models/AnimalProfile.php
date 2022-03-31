@@ -42,9 +42,16 @@ class AnimalProfile
         }
     }
 
-    public function getAllAnimalProfile()
+    public function getMyAnimalProfiles()
     {
         $this->db->query('SELECT P.*, O.org_name FROM `petso`.`Animal_Profile` AS P , `petso`.`Organization` AS O WHERE  O.org_id = P.org_id');
+
+        $result = $this->db->resultSet();    // resultSet returns an array of Objects
+        return $result;
+    }
+
+    public function getAllAnimalProfiles(){
+        $this->db->query('SELECT * FROM `petso`.`Animal_Profile`');
 
         $result = $this->db->resultSet();    // resultSet returns an array of Objects
         return $result;

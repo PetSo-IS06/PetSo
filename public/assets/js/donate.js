@@ -36,8 +36,12 @@ function hideSec2() {
     }
 }
 
-function setAmount() {
-    var ele = document.getElementsByName("amount");
-    for(var i=0;i<ele.length;i++)
-        ele[i].checked = false;    
+function disableContinue() {
+    var btn = document.getElementById("donate-cont-btn");
+    var val = document.getElementById("amount");
+    if(val.value < 500) {
+        btn.href = '#'
+        btn.style.opacity = '0.5';
+        btn.style.pointer-events;  'none';
+    }
 }

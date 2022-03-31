@@ -121,6 +121,23 @@ function hideCreateAdminForm() {
     }
 }
 
+// Pending Payments Popups
+function showPayDetailsOverlay(id) {
+    const str = 'pend-pay-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+    }
+}
+
+function hidePayDetailsOverlay(id) {
+    const str = 'pend-pay-popup' + id;
+    var x = document.getElementById(str);
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+    }
+}
+
 // Project Panel Popups
 function showPendProjOverlay(id) {
     const str = 'pend-prj-det-popup' + id;
@@ -236,6 +253,28 @@ function showOrgDetailsOverlay(id) {
 }
 
 // Side navigation
+function showOverviewPanel() {
+    var x = document.getElementById("over-sec");
+    var tag = document.getElementById("over-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideProjectsPanel();
+        hideRequestsPanel();
+        hidePaymentsPanel();
+        hideUsersPanel();
+    }
+}
+
+function hideOverviewPanel() {
+    var x = document.getElementById("over-sec");
+    var tag = document.getElementById("over-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
 function showUsersPanel() {
     var x = document.getElementById("usr-sec");
     var tag = document.getElementById("usr-tag");
@@ -244,6 +283,8 @@ function showUsersPanel() {
         tag.classList.add("active-tag");
         hideProjectsPanel();
         hideRequestsPanel();
+        hideOverviewPanel();
+        hidePaymentsPanel();
     }
 }
 
@@ -264,6 +305,8 @@ function showRequestsPanel() {
         tag.classList.add("active-tag");
         hideProjectsPanel();
         hideUsersPanel();
+        hideOverviewPanel();
+        hidePaymentsPanel();
     }
 }
 
@@ -277,7 +320,7 @@ function hideRequestsPanel() {
 }
 
 function hideProjectsPanel() {
-    var x = document.getElementById("proj-sec");
+    var x = document.getElementById("ad-proj-sec");
     var tag = document.getElementById("proj-tag");
     if (x.style.display !== "none") {
         x.style.display = "none";
@@ -286,12 +329,37 @@ function hideProjectsPanel() {
 }
 
 function showProjectsPanel() {
-    var x = document.getElementById("proj-sec");
+    var x = document.getElementById("ad-proj-sec");
     var tag = document.getElementById("proj-tag");
     if (x.style.display !== "block") {
         x.style.display = "block";
         tag.classList.add("active-tag");
         hideRequestsPanel();
         hideUsersPanel();
+        hideOverviewPanel();
+        hidePaymentsPanel();
     }
 }
+
+function hidePaymentsPanel() {
+    var x = document.getElementById("pay-sec");
+    var tag = document.getElementById("pay-tag");
+    if (x.style.display !== "none") {
+        x.style.display = "none";
+        tag.classList.remove("active-tag");
+    }
+}
+
+function showPaymentsPanel() {
+    var x = document.getElementById("pay-sec");
+    var tag = document.getElementById("pay-tag");
+    if (x.style.display !== "block") {
+        x.style.display = "block";
+        tag.classList.add("active-tag");
+        hideRequestsPanel();
+        hideUsersPanel();
+        hideOverviewPanel();
+        hideProjectsPanel();
+    }
+}
+

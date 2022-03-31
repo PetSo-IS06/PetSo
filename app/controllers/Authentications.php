@@ -61,45 +61,51 @@
                 if(empty($data['emailError']) && empty($data['passwordError'])){
                     $loggedInAccount = $this->authModel->getAccountInfo($data['email'], $data['password']);
 
-                    if($loggedInAccount->type == 'user') {
-                        $loggedInUser = $this->userModel->login($loggedInAccount->id);
-
-                        if($loggedInUser) {
-                            $this->createUserSession($loggedInAccount, $loggedInUser);
-                            // redirect to Index page
-                            header('location:' . URL_ROOT . '/pages/index');
-                        } else {
-                            $data['passwordError'] = 'Incorrect Password';
+                    if($loggedInAccount) {
+                        if($loggedInAccount->type == 'user') {
+                            $loggedInUser = $this->userModel->login($loggedInAccount->id);
     
-                            $this->view('users/login', $data);
-                        } 
-
-                    } elseif($loggedInAccount->type == 'org') {
-                        $loggedInUser = $this->organizationModel->login($loggedInAccount->id);
-
-                        if($loggedInUser) {
-                            $this->createOrgSession($loggedInAccount, $loggedInUser);
-                            // redirect to Index page
-                            header('location:' . URL_ROOT . '/pages/index');
-                        } else {
-                            $data['passwordError'] = 'Incorrect Password';
-                            $this->view('users/login', $data);
-                        }
-
-                    } elseif($loggedInAccount->type == 'admin'){
-                        $loggedInUser = $this->adminModel->login($loggedInAccount->id);
-
-                        if($loggedInUser) {
-                            $this->createAdminSession($loggedInAccount, $loggedInUser);
-                            // redirect to Index page
-                            header('location:' . URL_ROOT . '/pages/index');
-                        } else {
-                            $data['passwordError'] = 'Incorrect Password';
+                            if($loggedInUser) {
+                                $this->createUserSession($loggedInAccount, $loggedInUser);
+                                // redirect to Index page
+                                header('location:' . URL_ROOT . '/pages/index');
+                            } else {
+                                $data['passwordError'] = 'Incorrect Password';
+        
+                                $this->view('users/login', $data);
+                            } 
     
-                            $this->view('users/login', $data);
+                        } elseif($loggedInAccount->type == 'org') {
+                            $loggedInUser = $this->organizationModel->login($loggedInAccount->id);
+    
+                            if($loggedInUser) {
+                                $this->createOrgSession($loggedInAccount, $loggedInUser);
+                                // redirect to Index page
+                                header('location:' . URL_ROOT . '/pages/index');
+                            } else {
+                                $data['passwordError'] = 'Incorrect Password';
+                                $this->view('users/login', $data);
+                            }
+    
+                        } elseif($loggedInAccount->type == 'admin'){
+                            $loggedInUser = $this->adminModel->login($loggedInAccount->id);
+    
+                            if($loggedInUser) {
+                                $this->createAdminSession($loggedInAccount, $loggedInUser);
+                                // redirect to Index page
+                                header('location:' . URL_ROOT . '/pages/index');
+                            } else {
+                                $data['passwordError'] = 'Incorrect Password';
+        
+                                $this->view('users/login', $data);
+                            }
+    
                         }
-
+                    } else {
+                        $data['passwordError'] = 'Incorrect Password';
                     }
+
+                    
                 }
             } else {
                 $data = [

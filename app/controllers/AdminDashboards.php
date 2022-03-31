@@ -7,6 +7,7 @@ class AdminDashboards extends Controller {
         $this->userModel = $this->model('User');
         $this->organizationModel = $this->model('Organization');
         $this->adminModel = $this->model('Admin');
+        $this->animalProfileModel = $this->model('AnimalProfile');
     }
 
     public function index() {
@@ -20,10 +21,13 @@ class AdminDashboards extends Controller {
     public function dashboard(){
         $pendingProjects = $this->projectModel->getPendingProjects();
         $allProjects = $this->projectModel->getAllProjects();
+        $annualFunds = $this->projectModel->getTotalAnnualDonations();
         $pendingRequests = $this->adminDashboardModel->getPendingRequests();
         $allUsers = $this->userModel->getAllUserAccounts();
         $allOrgs = $this->organizationModel->getAllOrganizations();
         $allAdmins = $this->adminModel->getAllAdmins();
+        $allAnimals = $this->animalProfileModel->getAllAnimalProfiles(); 
+        $fundPayments = $this->projectModel->getFundraiserPayments(); 
         
         $data = [
             "pendProjects" => $pendingProjects,
@@ -32,7 +36,9 @@ class AdminDashboards extends Controller {
             "allUsers" => $allUsers,
             "allOrgs" => $allOrgs,
             "allAdmins" => $allAdmins,
-            "funds" => ''
+            "allAnimals" => $allAnimals,
+            "annualFunds" => $annualFunds,
+            "fundPayments" => $fundPayments
         ];
 
         $this->view('users/admin/adminDashboard', $data);

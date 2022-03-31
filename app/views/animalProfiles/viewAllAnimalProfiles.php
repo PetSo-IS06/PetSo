@@ -60,16 +60,22 @@
                                                 echo 'btn-sponsor-hide';
                                             endif; ?>">Sponsor
                                             </button>
-                                            <a href="<?php echo URL_ROOT.'/Adoptions/adoptionApplication/'.$item->id;?>">
-                                                <button class="<?php
-                                                if ($item->adoption_status == 'Available') :
-                                                    echo 'btn-adopt';
-                                                elseif ($item->adoption_status == 'Not Available') :
-                                                    echo 'btn-adopt-hide';
-                                                endif; ?>">Adopt
-                                                </button>
-                                            </a>
-                                            
+
+                                            <?php
+                                            $animalprofileId=$data['animal_profile'];
+                                            $adopt_url= URL_ROOT."/Adoptions/adoptionApplication/$animalprofileId->id";
+                                            ?>
+
+                                           <form action="<?php echo $adopt_url ?>" method="POST" enctype="multipart/form-data">
+                                            <button class="<?php
+                                            if ($item->adoption_status == 'Available') :
+                                                echo 'btn-adopt';
+                                            elseif ($item->adoption_status == 'Not Available') :
+                                                echo 'btn-adopt-hide';
+                                            endif; ?>">Adopt
+                                            </button>
+                                           </form>
+                                          
                                         </div>
                                     </div>
                                 </div>

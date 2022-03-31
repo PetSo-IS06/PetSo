@@ -460,7 +460,7 @@
                                 <tbody>
                                     <?php foreach ($data["pendRequests"] as $item) { ?>
                                         <tr>
-                                            <td><input type='checkbox' name='selectedProject' value='<?php echo $item->org_id; ?>'></td>
+                                            <td><input type='checkbox' name='pendRequests' value='<?php echo $item->org_id; ?>'></td>
                                             <td><?php echo $item->org_id; ?></td>
                                             <td id="col-desc" style="width: 150px" class="cell-nav"><a onClick="showOrgDetailsOverlay(<?php echo $item->org_id; ?>)"><?php echo $item->org_name; ?></a></td>
                                             <td><?php echo $item->email; ?></td>
@@ -471,21 +471,14 @@
                                                 <a onClick="showApproveReqOverlay(<?php echo $item->org_id; ?>)" class="green-btn cell-btn" id="cell-btn">Approve</a>
                                                 <a onClick="showRejectReqOverlay(<?php echo $item->org_id; ?>)" class="grey-btn cell-btn">Reject</a>
                                             </td>
-                                            <!-- <td><label class="row-dd"><i class="fas fa-ellipsis-v"></i>
-                                                <div id="dropdown<?php echo $item->id; ?>" class="dropdown">
-                                                    <a href="#">Welfare Projects</a>
-                                                    <a href="#">Animals Reported</a>
-                                                    <a href="#">Adoption</a>
-                                                    <a href="#">Sposorships</a>
-                                                </div>
-                                            </label></td> -->
+                                            
 
                                             <!-- View Organization Details -->
                                             <div id="org-details<?php echo $item->org_id; ?>" class="overlay">
                                                 <div class="details-popup">
                                                 <h2 class="heading2B">Organization Details </h2>
                                                 <a class="close" onClick="hideOrgDetailsOverlay(<?php echo $item->org_id; ?>)">×</a>
-                                                <form action="<?php echo ''; ?>" method="GET">
+                                                <form action="<?php echo URL_ROOT; ?>/AdminDashboard/getPendingRequests" method="GET" enctype="multipart/form-data"> 
                                                     <div class="content">
                                                              <div class="box"> 
                                                              <h2 class="heading2B">DashBoard</h2>
@@ -521,7 +514,7 @@
                                                                         <b>Email Address : </b>
                                                                         <?php echo $item->email ?> <br><br>
                                                                         <b>Animal in Care : </b>
-                                                                        
+                                      
                                                                     </div>
                                                                     <div class="column2">
                                                                         <b> Registered Email : </b>

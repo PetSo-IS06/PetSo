@@ -46,13 +46,8 @@
                         <span class="invalidInput"><?php echo $data['descriptionError'];; ?></span>       
                     </div> <br><br>
 
-                <div class="com-form-nav">
-
+                <div class="com-form-nav"> 
                 <a href="<?php echo URL_ROOT;?>" class="grey-btn">Cancel</a>
-                <a href="" class="grey-btn">Cancel</a>
-
-                <a href="<?php echo URL_ROOT;?>" class="grey-btn">Cancel</a>
-
                 <button class="purple-btn" type="submit">Submit</button>
                 </div>
               

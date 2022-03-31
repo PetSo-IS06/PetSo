@@ -110,3 +110,4 @@
             $this->view('users/signup', $data);
         }
     }
+    

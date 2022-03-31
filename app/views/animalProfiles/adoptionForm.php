@@ -37,7 +37,11 @@
             <p><?php echo $data['animal_profile']->age ?></p></center>
         </div>
      </div>
-        <form action="<?php echo URL_ROOT; ?>/Adoptions/adoptionApplication" method="POST" enctype="multipart/form-data">
+
+
+
+        <form action="<?php echo $adopt_url ?>" method="POST" enctype="multipart/form-data">
+
         <div class="column2">
         
             <div class="inputBx2" id="">
@@ -55,22 +59,21 @@
                     </div>
             
           
-            <div class="inputBx2" id="">
+                    <div class="inputBx2" id="">
                             <input name="mobileNo" id="mobileNo" type="text" value="<?php echo $data['mobileNo']; ?>">
                             <span class="normalB">Mobile Number</span>
-                        </div>
+                    </div>
                         <span class="invalidInput"><?php echo $data['mobileNoError']; ?></span><br>
 
-            
-  
                         <span class="normalB grey">Requirements</span> <br><br>
-                            
-                            <?php  echo $data['animal_profile']->requirements ?>
+                             <?php  echo $data['animal_profile']->requirements ?>
                     <br><br>
             <input type="checkbox" id="Requirements">  I confirm that I am eligible for this Adoption <br><br>
             <button type="submit" name = "submit" class="purple-btn">Apply </button>
         </div>
+        </form>
      </div>
+       
   <br><br><br>
 
     <div id="footer">

@@ -33,6 +33,12 @@
             document.getElementById('rangeValue').innerHTML = value;
         }
     </script>
+
+    <?php 
+        $volunteer=$data['volunteer_opportunity'];
+        $vol_url= URL_ROOT."/Projects/volunteerApplication/$volunteer->id";
+
+        ?>
     
          <br>
          <div class="normal grey">Check donation section below for more details </div> <br> <br> <br>
@@ -49,7 +55,7 @@
           <div class="subtitleB grey">Vacancies Left  </div>
           <div class="normal grey">Check volunteer section below for more details <br><br>
             30 have applied already </div> <br>
-            <a href= "<?php echo URL_ROOT.'/Projects/volunteerApplication/'.$data['volunteer_opportunity']->id;?>" class="yellow-btn">Volunteer Now </a>
+            <a href= "<?php echo $vol_url ?>" class="yellow-btn">Volunteer Now </a>
         </center>
         </div>
         </div> <br>
@@ -101,6 +107,7 @@
     if($data['project']->volunteering=="True"){
         $volunteer=$data['volunteer_opportunity'];
         $img_url = URL_ROOT."/public/$volunteer->image";
+        $vol_url= URL_ROOT."/Projects/volunteerApplication/$volunteer->id";
         echo" 
             
     <div class='subtitleB grey'> About Volunteering </div> 
@@ -136,7 +143,7 @@
         <div class='subtitleB grey'> 100 </div> 
       </div> 
     </div> <br> <center>
-       <a href= '<?php echo URL_ROOT;?>/Projects/volunteerApplication' class='purple-btn v-btn_width'>volunteer Now </a> </center>
+       <a href= '$vol_url' class='purple-btn v-btn_width'>volunteer Now </a> </center>
    </div>
 </div> "; }?>
 
@@ -173,7 +180,7 @@
          75000 </div>
         </div>
         </div>
-     <center><a href='<?php echo URL_ROOT.'/Projects/volunteerApplication/id'; ?>' class='blue-btn d-btn_width'>Donate Now </a> </center>
+     <center><a href='$vol_url' class='blue-btn d-btn_width'>Donate Now </a> </center>
     
         <div class='colum2'>
          <div class='subtitleB grey'> Donors </div> <hr><br>
